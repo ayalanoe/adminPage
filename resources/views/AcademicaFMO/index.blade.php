@@ -108,12 +108,15 @@
                
                 <div class="navbar navbar-expand-lg bg-body-tertiary menuNav">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">Inicio</a>
+                        <a class="navbar-brand" href="https://eel.ues.edu.sv/ingreso" target="_blank">Inicio</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://eel.ues.edu.sv/ingreso" target="_blank">Nuevo Ingreso</a>
+                                </li><!--Fin de lista de nuevo ingreso-->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Planes de Estudio
@@ -168,49 +171,36 @@
                                 
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Directorio de Contactos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Calendario Oficial</a>
-                                </li>
+                                </li><!--Fin de lista de contactos-->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Calendario Oficial
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item dropend">                                            
+                                            <a class="dropdown-item nav-link" href="http://www.fmoues.edu.sv/" target="_blank">Calendario Administrativo</a>                                            
+                                            <a class="dropdown-item nav-link" href="http://www.fmoues.edu.sv/" target="_blank">Calendario Académico</a>                                    
+                                        </li>
+                                    </ul>
+                                </li><!--Fin de lista del calendario Oficial-->
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Educación a Distancia</a>
-                                </li>
+                                </li><!--Fin de lista de carreras de educación a distancia-->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Sitios de Interés
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item dropend">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Carreras de Pregrado
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Ingeniería y Arquitectura
-                                                </a>
-                                                <li class="nav-item dropend">
-                                                <ul class="dropdown-menu">
-                                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Ingeniería de Sistemas Informaticos
-                                                    </a>
-                                                </li>
-                                                    <li><a class="dropdown-item" href="#">Ingeniería y Arquitectura</a></li>
-                                                    <li><a class="dropdown-item" href="#">Medicina</a></li>
-                                                    <li><a class="dropdown-item" href="#">Ciencias Agronómicas</a></li>
-                                            </ul>
-                            
-                                            </ul>
-
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Carreras de Posgrado
-                                            </a>
-
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Carreras Técnicas
-                                            </a>
+                                            <a class="dropdown-item" href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a>
+                                            <a class="dropdown-item" href="https://www.ues.edu.sv/" target="_blank">UES-Sitio Principal</a>
+                                            <a class="dropdown-item" href="https://eel.ues.edu.sv/ingreso" target="_blank">UES-Nuevo Ingreso</a>
+                                            <a class="dropdown-item" href="https://www.uese.ues.edu.sv/" target="_blank">UES-Socio Económico</a>
+                                            <a class="dropdown-item" href="http://proyeccionsocial.fmoues.edu.sv/" target="_blank">UES-Proyección Social</a>
+                                            <a class="dropdown-item" href="https://saa.ues.edu.sv/" target="_blank">UES-SAA</a>
                                         </li>
-                                    </ul>
-                                </li>
+                                    </ul><!--Fin de opciones de sitios de interés-->
+                                </li><!--Fin de lista sitios-->
                             
                             </ul>
                         </div>
@@ -382,7 +372,7 @@
             <footer class="footer">
                 <div class="">
                     <div class="row">
-                        <div class="col-9">
+                        <div class="col-8">
                             <p class="mb-0">
                                 <a href="#" class="textc">
                                     © Universidad de El Salvador, Facultad Multidisciplinaria Oriental, Administración Académica, 2024 | Reservados todos los derechos.
@@ -390,7 +380,7 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-3 text-end">
+                        <div class="col-4 text-end">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <a href="#" class="textc">Contacto</a>
