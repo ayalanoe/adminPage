@@ -166,7 +166,8 @@ transition: all .2s ease-out;
 }
 
 .illustration{
-    background-color: var(--bs-primary-bg-subtle);
+    
+    background: var(--bs-dark-bg-subtle);
     color: var(--bs-emphasis-color);
 }
 
@@ -174,6 +175,7 @@ transition: all .2s ease-out;
     box-shadow: 0 0 .875rem 0 rgba(64, 46, 60, 05);
     margin-bottom: 24px;
     background-color: rgb(205, 205, 205);
+    background: var(--bs-dark-bg-subtle);
 }
 
 .illustration-img{
