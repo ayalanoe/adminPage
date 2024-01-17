@@ -224,10 +224,8 @@
                                         <div class="row g-0 w-100"> <!--posicion de la imagen dentro del contenedor-->
                                             <div class="col-6">
                                                 <div class="p-3 m-1"> <!--Padding y margin del texto-->
-                                                    <h4>MOODLE</h4>
-                                                    <p class="mb-0">
-                                                        Esta es para clases
-                                                    </p>
+                                                    <h4>CAMPUS VIRTUAL</h4>                                                    
+                                                    <a class="btn btn-secondary" href="https://virtual.fmoues.edu.sv/login/index.php" target="_blank" role="button">Acceder</a>
                                                 </div>                                               
                                             </div>
                                             <div class="col-6 align-self-end text-end">
@@ -245,9 +243,7 @@
                                             <div class="col-6">
                                                 <div class="p-3 m-1"> <!--Padding y margin del texto-->
                                                     <h4>EXPEDIENTE EN LINEA</h4>
-                                                    <p class="mb-0">
-                                                        Esta es para clases
-                                                    </p>
+                                                    <a class="btn btn-secondary" href="https://eel.ues.edu.sv/" target="_blank" role="button">Acceder</a>
                                                 </div>                                               
                                             </div>
                                             <div class="col-6 align-self-end text-end">
@@ -267,8 +263,10 @@
                                                 <div class="p-3 m-1"> <!--Padding y margin del texto-->
                                                     <h4>EXPEDIENTE MOVIL</h4>
                                                     <p class="mb-0">
-                                                        Esta es para clases
+                                                    
                                                     </p>
+                                                    <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=meel.ganimedes&hl=es&gl=US" target="_blank" role="button"><i class="fa-brands fa-google-play"></i></a>
+                                                    <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=meel.ganimedes&hl=es&gl=US" target="_blank" role="button"><img src="{{ asset('images/HUAWEI.png') }}" class="img-fluid-logo" salt=""></i></a>
                                                 </div>                                               
                                             </div>
                                             <div class="col-6 align-self-end text-end">
@@ -278,6 +276,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
 
 
                         </div>
