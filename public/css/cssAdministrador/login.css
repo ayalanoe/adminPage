@@ -1,0 +1,95 @@
+/*Formato para la pagina en general*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+/*Formato para el navbar que contiene el logo de la ues y el titulo*/
+.navbar {
+    background-color: #ececec;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0;
+    border-bottom: solid 1px black; /*Para que tenga un borde abajo*/
+}
+
+/*Formato para la imagen del logo en el navbar*/
+.navbar img {
+    width: 64px;
+    margin-right: 10px;
+}
+
+/*Formato para el titulo en el navbar*/
+.navbar h4 {
+    color: #690605;
+    margin: 0;
+}
+
+/*Formato para el cuadro del inicio donde se escribe el correo */
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    /*Con el margin-top lo que se hace es dar espacio entre el inicio de sesion y el nav */
+    margin-top: 100px; 
+}
+
+.login-container img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.login-container input {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+    outline: none; /*Se queita la linea por defecto que coloca el navegador*/
+}
+
+/*se usa para que cuando se escriba en el input se ponga una difumacion celeste*/
+.login-container input:focus {
+    border: 1px solid #2196f3;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/*Formato para el boton del iniciar sesion*/
+.login-container button {
+    width: 100%;
+    background-color: #690605;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-container a {
+    text-decoration: none;
+    color: #2196f3;
+    display: block;
+    margin-top: 25px;
+}

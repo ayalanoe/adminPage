@@ -33,3 +33,7 @@ Route::get('/subir-archivo', [subirHorarioClases::class, 'formularioSubirArchivo
 Route::post('/subir-archivo', [subirHorarioClases::class, 'subirArchivo'])->name('guardar-archivo');
 //---------------------------------------------------------------------------------------------------
 
+
+/* RUTAS DEL LOGIN ADMINISTRATIVO */
+Route::get('/loginAcademicaFMO', [LoginController::class, 'formularioLogin']);
+
