@@ -45,3 +45,8 @@ Route::post('/validar-registro',[LoginController::class, 'register'])->name('val
 Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
+
+
+Route::get('/dashboard-administrativo', function () {
+    return view('VistasAdministrador/dashboard');
+});
