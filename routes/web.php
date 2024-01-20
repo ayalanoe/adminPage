@@ -43,3 +43,8 @@ Route::get('/loginAcademicaFMO', [LoginController::class, 'formularioLogin']);
 
 Route::get('/crearUsuario-AAFMO', [creaUsuariosController::class, 'formularioCrearUsuarios']);
 
+
+
+Route::get('/dashboard-administrativo', function () {
+    return view('VistasAdministrador/dashboard');
+});
