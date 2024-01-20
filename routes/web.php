@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\subirHorarioClases;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\creaUsuariosController;
 
 
 /*
@@ -38,8 +37,11 @@ Route::post('/subir-archivo', [subirHorarioClases::class, 'subirArchivo'])->name
 
 
 /* RUTAS DEL LOGIN ADMINISTRATIVO */
-Route::get('/loginAcademicaFMO', [LoginController::class, 'formularioLogin']);
+Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
+Route::view('registro','VistasAdministrador.crearUsuario')->name('registro');
+Route::view('privada', 'VistasAdministrador.secret')->name('privada')->middleware('auth');
 
-
-Route::get('/crearUsuario-AAFMO', [creaUsuariosController::class, 'formularioCrearUsuarios']);
+Route::post('/validar-registro',[LoginController::class, 'register'])->name('validar-registro');
+Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 

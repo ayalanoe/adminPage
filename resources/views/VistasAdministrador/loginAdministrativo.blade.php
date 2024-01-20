@@ -17,9 +17,13 @@
     <div class="login-container">
         <img src="{{ asset('imagesAdmin/usuario.png') }}" alt="LogoUser">
         <h2>Bienvenido</h2>
-        <form action="#" method="post">
+        <form action="{{ route('inicia-sesion') }}" method="post">
+            @csrf
             <label for="email">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required>
+
+            <label for="email">Contraseña:</label>
+            <input type="password" id="pass" name="password" required>
 
             <button type="submit">Continuar</button>
         </form>
