@@ -161,12 +161,12 @@
                                 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-user"></i> Nombre
+                                        <i class="fa-solid fa-user"></i> @auth {{Auth::user()->name}} @endauth
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a class="nav-link " href="#">Mi Perfil</a>
-                                            <a class="nav-link " href="#">Cerrar Sesión</a>                                            
+                                            <a class="nav-link " href="{{ route('logout') }}">Cerrar Sesión</a>                                            
                                         </li>
                                     </ul>
                                 </li>

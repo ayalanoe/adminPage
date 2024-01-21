@@ -9,16 +9,18 @@
 <body>
 
     <div class="navbar">
-        <img src="minerva.png" alt="Logo">
+        <img src="{{ asset('imagesAdmin/minerva.png') }}" alt="Logo">
         <h4>Administracion Academica - FMO</h4>
     </div>
 
     <div class="login-container">
-        <img src="pass.png" alt="Logo">
+        <img src="{{ asset('imagesAdmin/pass.png') }}" alt="Logo">
         <h2>Bienvenido, nombre</h2>
-        <form action="#" method="post">
+
+        <form action="{{ route('validar-password') }}" method="post">
+            @csrf
             <label for="email">Contraseña:</label>
-            <input type="password" id="email" name="email" required>
+            <input type="password" id="password" name="password" required>
 
             <button type="submit">Iniciar Sesión</button>
         </form>
