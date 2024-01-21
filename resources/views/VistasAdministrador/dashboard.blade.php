@@ -59,13 +59,13 @@
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#GesUser" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Gestión de Usuarios
                         </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="{{ route('ManagerUser') }}" class="sidebar-link">Crear Usuario</a>
                             </li>
                             
                         </ul>
@@ -87,40 +87,47 @@
 
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Planes de Estudio
                         </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="#" class="sidebar-link">Carreras de Pregrado</a>
                             </li>
-                            
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Carreras de Posgrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Carreras Técnicas</a>
+                            </li>
                         </ul>
                     </li>
 
 
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#calendarios" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Calendrio Oficial
                         </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="#" class="sidebar-link">Calendario Administrativo</a>
                             </li>
-                            
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Calendario Académico</a>
+                            </li>
                         </ul>
                     </li>
 
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#Anuncios" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Anuncios Académicos
                         </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Equivalencias</a>
                             </li>
@@ -129,13 +136,13 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectContact" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-list pe-2"></i>
                             Directorio de Contactos
                         </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="DirectContact" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="#" class="sidebar-link">Ver listado</a>
                             </li>
                             
                         </ul>
@@ -188,7 +195,7 @@
                     
                     <!-- contenedor de tarjetas de plataformas-->
                         
-                        
+                    @include('VistasAdministrador.gestionUsuarios')
                 </div> <!--container fluid-->
             </main>
             <a href="#" class="theme-toggle">
