@@ -11,19 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //Funcion para el registro de usuarios, es decir que en esta funcion se crearan los usuarios que tendran acceso al sistema 
-    public function register(Request $request){
-
-        $user = new User(); //La clase User es la que tiene laravel podefecto
-        
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password =Hash::make($request->password);
-
-        $user->save(); //Insersion en la base de datos
-        Auth::login($user); //Se crea una sesion, con esto se redirige al dasboard
-        return redirect(route('privada'));
-    } 
 
     public function login(Request $request){
 

@@ -1,13 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-}
+
 
 .formulario {
+    background-color: bisque;
     max-width: 400px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #967777;
     border-radius: 5px;
 }
 

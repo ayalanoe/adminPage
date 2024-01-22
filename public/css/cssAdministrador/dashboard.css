@@ -55,6 +55,15 @@ h4{
     background: var(--bs-dark-bg-subtle);
 }
 
+/*Estilo del contenido principal para la etiquta <main> del dashboar */
+#contenidoPrincipal{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: start;
+}
+
+
 /*Estilos de los elememtos del sidebar*/
 
 

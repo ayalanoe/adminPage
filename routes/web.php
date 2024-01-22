@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\subirHorarioClases;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\VistasAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,30 +24,37 @@ Route::get('/', function () {
 /*//---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
 
     - La estructura de la primer ruta consiste en: get es la peticion http, y recibe 2 parametros. El primero es la ruta que se pasará 
-    la cual se escribe entre comillas y el otro parametro es un arreglo el cual contine la clase controladora y la funcion dentro de esa clase,
-    es decir que "formularioSubirArchivo" es una funcion en la clases "subirHorarioClases" que será la responsable de retornar la vista.
-
-    - La siguiente ruta es lo mismo solo que contiene un parametro ->name que lo que hace es asignar un nombre a la ruta que 
+    la cual se escribe entre comillas y el otro parametro es un arreglo el cual contine la clase controladora y la funcion dentro de esa clase.
+    ->name que lo que hace es asignar un nombre a la ruta que 
     hemos establcido para poder llamar a esa ruta en el codigo, sale mejor llamar la ruta por el nombre en lugar de pasar toda la ruta 
     en una varible o en un lugar donde se necesite.
 */
-    Route::get('/subir-archivo', [subirHorarioClases::class, 'formularioSubirArchivo']);
-    Route::post('/subir-archivo', [subirHorarioClases::class, 'subirArchivo'])->name('guardar-archivo');
 
-    //Rutas get del login y registro del administrador
+    //Rutas para el inicio de sesion y poder ingresar al dashboard
     Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
-    Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro');
-    Route::view('dasboard-admin', 'VistasAdministrador.dashboard')->name('privada')->middleware('auth'); //Ruta protegida
     Route::view('password', 'VistasAdministrador.passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
+    Route::view('dasboard-admin', 'VistasAdministrador.indexAdmin')->name('privada')->middleware('auth'); //Ruta protegida
+    Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
-    //Rutas post del login y registro del administrador 
-    Route::post('/validar-registro',[LoginController::class, 'register'])->name('validar-registro');
     Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
     Route::post('/validar-password', [LoginController::class, 'verificarPassword'])->name('validar-password');
-    Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+    
+
+    //------------ Rutas para el manejo de las vistas en el dashboard ------------
+    Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro')->middleware('auth');
+    Route::post('/validar-registro',[VistasAdminController::class, 'register'])->name('validar-registro');
+
+    Route::get('/horario-clases', [VistasAdminController::class, 'formularioSubirArchivo'])->name('subirHorarioClases');
+    Route::post('/horario-clases', [VistasAdminController::class, 'subirArchivo'])->name('guardar-archivo');
+
+
+    Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
+
+
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Route::view('/gestion-Usuarios','VistasAdministrador.gestionUsuarios')->name('ManagerUser');
+
+
 //---------------------------------- OTRAS RUTAS QUE PUEDAS OCUPAR --------------------------------------
 
 // -----------------------------------------------------------------------------------------------------

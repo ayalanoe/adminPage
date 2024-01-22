@@ -1,16 +1,19 @@
 <!-- resources/views/subir_archivo.blade.php -->
+@extends('Layouts.dashboard')
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Archivo</title>
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/estiloSubirHorario.css')}}">
-</head>
-<body>
+@section('titulo', 'Horario De Claes')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/estiloSubirHorario.css')}}">   
+@endsection
+
+@section('contenido')
+    
+
+
     <div class="formulario">
         <h2>Subir Horario de Clases</h2>
+        
 
         <!-- Esta parte es para mostrar un mensaje si se subio el archivo correctamente -->
         @if(session('mensaje'))
@@ -29,5 +32,5 @@
             <button type="submit">Subir Archivo</button>
         </form>
     </div>
-</body>
-</html>
+
+@endsection

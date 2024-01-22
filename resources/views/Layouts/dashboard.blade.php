@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACADÉMICA FMO</title>
+    <title>Admin-@yield('titulo')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/f3b9f07ba0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
+
+    @yield('css') <!-- Esto es para cargar los estilos de las vistas del administrdor ya que los estilos se cargan en el head del html-->
+
 </head>
 <body>
     <div class="wrapper">
@@ -23,20 +26,18 @@
                                                 <div class=""> <!--Padding y margin del texto-->
                                                     <img src="{{ asset('images/logoues.png') }}" alt="" class="img-fluid-logo">
                                                 </div> 
-                                            </div>        
-                                                                                 
+                                            </div>                                      
                                         </div>
                                         <div class="row">
                                             <div class="col-6 col-md-12 d-flex">
                                                 <div class="p-2"> <!--Padding y margin del texto-->
-                                                    <a href="#">Académica FMO</a>
+                                                    <a href="{{route('privada')}}">Académica FMO</a>
                                                 </div> 
                                             </div>                                              
                                         </div>
                                         
                                     
                         </div>
-
                     </div>
 
 
@@ -65,7 +66,10 @@
                         </a>
                         <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('ManagerUser') }}" class="sidebar-link">Crear Usuario</a>
+                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link">Ver usurios</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('registro') }}" class="sidebar-link">Crear Usuario</a>
                             </li>
                             
                         </ul>
@@ -116,7 +120,7 @@
                                 <a href="#" class="sidebar-link">Calendario Administrativo</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Calendario Académico</a>
+                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
                             </li>
                         </ul>
                     </li>
@@ -190,14 +194,19 @@
             
 
             <!-- TARJETA DE LAS SECCIONES DEL CONTENIDO DE LA WEB-->
-            <main class="content px-3 py-2">
+            <main id="contenidoPrincipal" class="content px-3 py-2">
                 <div class="container-fluid">
                     
-                    <!-- contenedor de tarjetas de plataformas-->
-                        
-                    @include('VistasAdministrador.gestionUsuarios')
+                    <!-- En esta parte se mandaran a llamar las vista induvidules que se hagan, en este caso se usa la notacion 
+                        "yield" para poder llamar las vistas idividuales que se hagan. En este caso yield permite buscar una seccion con el nombre específo que
+                        definamos, en este caso utilizaremos la palabra "contenido" que hará referencia a todo lo que queremos mostrar en el centro del dasboard cunado se 
+                        seleccione una opcion de las que están en el menú
+                    -->
+                    @yield('contenido')
+                    
                 </div> <!--container fluid-->
             </main>
+            
             <a href="#" class="theme-toggle">
                 <i class="fa-solid fa-moon"></i>
                 <i class="fa-solid fa-sun"></i>

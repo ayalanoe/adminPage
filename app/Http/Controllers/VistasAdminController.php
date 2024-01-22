@@ -2,13 +2,34 @@
 
 namespace App\Http\Controllers;
 
-//Son como los imports en java, decir archivos y clases en otros directorios, necesarios para que funcione el controlador
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\CalendarioClase;
+use Illuminate\Support\Facades\Storage;
 
-class subirHorarioClases extends Controller
+class VistasAdminController extends Controller
 {
+    public function gestionUsuarios()
+    {
+        return view('VistasAdministrador/gestionUsuarios');
+    }
+
+    //Funcion para el registro de usuarios, es decir que en esta funcion se crearan los usuarios que tendran acceso al sistema 
+    public function register(Request $request){
+
+        $user = new User(); //La clase User es la que tiene laravel podefecto
+        
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save(); //Insersion en la base de datos
+        Auth::login($user); //Se crea una sesion, con esto se redirige al dasboard
+        return redirect(route('registro'));
+    } 
+
     public function formularioSubirArchivo()
     {
         // Se carga la vista correspondiente para subir el archivo

@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/login.css') }}">
-</head>
-<body>
+@extends('Layouts.dashboard')
 
-    <div class="navbar">
-        <img src="{{ asset('imagesAdmin/minerva.png') }}" alt="Logo">
+<!--Titulo de la pagina, es decir el que aparece en la pestaña, recibe dos parametros
+    el parametro 'titulo' es obligatorio y el otro parametro es el nombre que queramos que aparezca en la pestaña
+-->
+@section('titulo', 'Registro de Ussuarios') 
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registroUsuarios.css') }}">
+@endsection
+
+@section('contenido')
         
-        <h4>Administracion Academica - FMO</h4>
-    </div>
-
     <div class="login-container">
         <img src="{{ asset('imagesAdmin/usuario.png') }}" alt="LogoUser">
         <h2>Crear Usuario</h2>
@@ -32,5 +29,4 @@
         <a href="#">Ayuda</a>
     </div>
 
-</body>
-</html>
+@endsection
