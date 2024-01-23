@@ -12,9 +12,12 @@
               </tr>
             </thead>
             <tbody>
+              @php
+                 $numero = 1 
+              @endphp
               @foreach ($usuarios as $usuario)
                 <tr>
-                  <th scope="row">{{$usuario->id}}</th>
+                  <th scope="row">{{$numero}}</th>  
                   <td>{{$usuario->name}}</td>
                   <td>{{$usuario->email}}</td>
                   <td>
@@ -32,8 +35,10 @@
                     
                   </td>
                 </tr>
+                @php
+                    $numero++
+                @endphp
               @endforeach
             </tbody>
-   
       </table>
 @endsection

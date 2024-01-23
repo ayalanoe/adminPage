@@ -8,7 +8,42 @@
 @endsection
 
 @section('contenido')
-    
+        
+    <h2>Horario de Clases</h2>
+    <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del archivo</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @php
+                $numero = 1 
+            @endphp
+            @foreach ($horario as $horarioClase)
+                <tr>
+                    <th scope="row">{{$numero}}</th>  
+                    <td>{{$horarioClase->nombreArchivo}}</td>
+                    <td>
+
+                        <form class="fluid" action="{{route('eliminarHorarioAcademico', $horarioClase->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                        
+                        <a href="{{ route('contenidoCalendarioAcademico', $horarioClase->id) }}" class="btn btn-secondary" target="_blank"><i class="fa-solid fa-eye"></i></a>
+                        
+                    </td>
+                </tr>
+                @php
+                    $numero++
+                @endphp
+            @endforeach
+            </tbody>
+    </table>
 
 
     <div class="formulario">
