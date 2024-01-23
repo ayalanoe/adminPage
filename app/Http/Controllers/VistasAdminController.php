@@ -13,7 +13,37 @@ class VistasAdminController extends Controller
 {
     public function gestionUsuarios()
     {
-        return view('VistasAdministrador/gestionUsuarios');
+        $usuarios = User::all();
+
+        return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
+    }
+
+    public function destroy($id)
+    {
+        $usuario = User::find($id);
+
+        if (!$usuario) {
+            // Manejar el caso donde el usuario no existe
+            return redirect()->route('gestionUsuarios')->with('error', 'Usuario no encontrado');
+        }
+
+        $usuario->delete();
+
+        return redirect()->route('gestionUsuarios')->with('success', 'Usuario eliminado correctamente');
+    }
+
+    public function restablecerContrasenia($id)
+    {
+        $usuario = User::find($id);
+        if (!$usuario) {
+            return redirect()->route('gestionUsuarios')->with('error', 'Usuario no encontrado');
+        }
+
+        $usuario->password = Hash::make('academica.24fmo');
+        $usuario->save();
+
+        return redirect()->route('gestionUsuarios')->with('success', 'Contraseña restablecida correctamente');
+
     }
 
     //Funcion para el registro de usuarios, es decir que en esta funcion se crearan los usuarios que tendran acceso al sistema 
