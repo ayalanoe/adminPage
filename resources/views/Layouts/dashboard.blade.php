@@ -208,7 +208,7 @@
                         <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
                         <input type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
-                            Please choose a username.
+                            Correo.
                         </div>
                     </div>
                 </div>
