@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\subirHorarioClases;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
 
@@ -49,7 +48,8 @@ Route::get('/', function () {
 
 
     Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
-
+    Route::delete('/usuarios/{id}', [VistasAdminController::class, 'destroy'])->name('usuarios.destroy');
+    Route::post('/usuarios/{id}/reset-pass', [VistasAdminController::class, 'restablecerContrasenia'])->name('resetPass');
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
