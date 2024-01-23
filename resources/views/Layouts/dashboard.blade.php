@@ -195,8 +195,6 @@
 
             <!-- TARJETA DE LAS SECCIONES DEL CONTENIDO DE LA WEB-->
             <main id="contenidoPrincipal" class="content px-3 py-2">
-                <div class="container-fluid">
-                    
                     <!-- En esta parte se mandaran a llamar las vista induvidules que se hagan, en este caso se usa la notacion 
                         "yield" para poder llamar las vistas idividuales que se hagan. En este caso yield permite buscar una seccion con el nombre específo que
                         definamos, en este caso utilizaremos la palabra "contenido" que hará referencia a todo lo que queremos mostrar en el centro del dasboard cunado se 
@@ -204,7 +202,7 @@
                     -->
                     @yield('contenido')
                     
-                </div> <!--container fluid-->
+                
             </main>
             
             <a href="#" class="theme-toggle">

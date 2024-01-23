@@ -1,6 +1,5 @@
 @extends('Layouts.dashboard')
 @section('contenido')
-    <div>
     <h2>Otra Vista</h2>
     <p>Contenido de otra vista...</p>
     <table class="table table-hover">
@@ -34,5 +33,4 @@
             </tbody>
    
       </table>
-</div>
 @endsection
