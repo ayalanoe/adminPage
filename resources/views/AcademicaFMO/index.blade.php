@@ -99,12 +99,10 @@
             <div class="container__footer">
 
                 <div class="box__footer">
-                    <div class="logo">
-                        <img src="images/nueva.png" alt="">
-                    </div>
-                    <div class="terms">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum reiciendis et quasi aut facere vitae vero. Inventore, minus ab voluptate modi repellat, pariatur tempora quisquam, debitis facilis explicabo voluptatem. A.
-                    </div>
+                    <h2>Horario de Atención</h2>
+                    <a href="#">Aula Virtual UES</a>
+                    <a href="#">Expediente en Línea</a>
+                    <a href="#">Expediente Móvil</a>
                 </div>
 
                 <div class="box__footer">
