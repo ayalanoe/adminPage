@@ -42,6 +42,7 @@ Route::get('/', function () {
     //------------ Rutas para el manejo de las vistas en el dashboard ------------
     Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro')->middleware('auth');
     Route::post('/validar-registro',[VistasAdminController::class, 'register'])->name('validar-registro');
+    Route::post('/actualizar/{id}/datos-usuario', [VistasAdminController::class, 'editarDatosUsuario'])->name('actulizarDatosUsuario');
 
     Route::get('/calendario-clases', [VistasAdminController::class, 'formularioSubirArchivo'])->name('subirHorarioClases');
     Route::post('/calendario-clases', [VistasAdminController::class, 'subirArchivo'])->name('guardar-archivo');

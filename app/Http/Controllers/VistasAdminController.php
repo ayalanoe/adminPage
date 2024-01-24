@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\CalendarioClase;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class VistasAdminController extends Controller
 {
@@ -17,6 +18,24 @@ class VistasAdminController extends Controller
             $usuarios = User::all();
 
             return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
+        }
+
+        public function editarDatosUsuario(Request $request, $id){
+
+            $usuario = User::find($id);
+
+            if (!$usuario) {
+                // Manejar el caso donde el usuario no existe
+                return redirect()->route('privada')->with('error', 'Usuario no encontrado');
+            }
+
+            $usuario->name = $request->Nombre;
+            $usuario->email = $request->Correo; 
+
+            $usuario->save();
+
+            return redirect()->route('gestionUsuarios');
+  
         }
 
         public function destroy($id)
