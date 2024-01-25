@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
 
+    <!-- CDN de sweetAlert para las alertas de confirmaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- CDN de JQUERY para poder usar algunas funciones antes de enviar el formulario de la contraseña ---------------------------------------------------------- -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
     @yield('css') <!-- Esto es para cargar los estilos de las vistas del administrdor ya que los estilos se cargan en el head del html-->
 
 </head>
@@ -190,7 +197,7 @@
                         <div class="modal-body">
                             
 
-                            <form action="{{route('actulizarDatosUsuario', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
+                            <form id="formActulizarDatos" action="{{route('actulizarDatosUsuario', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
                                 @csrf
 
                                 <div class="col-md-12">
@@ -230,46 +237,52 @@
 
 
 
-    <!-- Modal Cambiar contraseña-->
-    <div class="modal fade" id="ModalEditarContraseña" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modificación de Contraseña</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-md-12">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Contraseña Actual</label>
-                        </div>
-                    
+            <!-- Modal Cambiar contraseña-->
+            <div class="modal fade" id="ModalEditarContraseña" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modificación de Contraseña</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    
-                    <div class="col-md-12">
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Nueva Contraseña</label>
-                        </div>
-                    </div>
+                    <div class="modal-body">
 
-                    <div class="col-md-12">
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Confirmar Contraseña</label>
-                        </div>
+                        <form id="formCambiarPassword" action="{{ route('actulizarPassword', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
+                            @csrf
+                            
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input name="passwordActual" type="password" class="form-control" id="passActual" placeholder="name@example.com">
+                                    <label for="floatingInput">Contraseña Actual</label>
+                                </div>
+                            
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input name="newPassword" type="password" class="form-control" id="passNueva" placeholder="Password">
+                                    <label for="floatingPassword">Nueva Contraseña</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input name="confirmarNewPassword" type="password" class="form-control" id="confirmarPassNueva" placeholder="Password">
+                                    <label for="floatingPassword">Confirmar Contraseña</label>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelPerfil">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" id="ActualizaPerfil">Actualizar Contraseña</button>
+                            </div>
+
+                        </form>
                     </div>
-                </form>
+                    
+                </div>
+                </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelPerfil">Cancelar</button>
-            <button type="submit" class="btn btn-primary" id="ActualizaPerfil">Actualizar Contraseña</button>
-            </div>
-        </div>
-        </div>
-    </div>
 
 
 
@@ -308,5 +321,94 @@
 
 
     <script src="{{ asset('AdminJS/PerfilModal.js') }}"></script>
+
+    
+    
+    @yield('jsVistasAdmin') <!-- para ingresar los java script de las vistas personalizdas -->
+
+    <!-- Codigo para las respuestas del controlador si completo la acción actulizar los datos del usuario y la contraseña (MODALES) -->
+    
+        @if (Session::has('successDatosPerfil'))
+            <script>
+                Swal.fire({
+                    title: "Informacion",
+                    text: "{{ session('successDatosPerfil') }}",
+                    icon: "success"
+                });
+            </script>
+        @endif
+
+        @if (Session::has('errorUsuario')) <!-- Por si el usuario no existe en editrar perfil y password -->
+            <script>
+                Swal.fire({
+                    title: "Informacion",
+                    text: "{{ session('errorDatosPerfil') }}",
+                    icon: "success"
+                });
+            </script>
+        @endif
+        
+        <!-- Codigo de validacion y respues para el modal del cambiar password -->
+        <script>
+            $('#formCambiarPassword').on('submit', function(e){
+                
+                e.preventDefault(); // Corregir aquí
+
+                // Por ejemplo:
+                var passwordActual = $('#passActual').val();
+                var newPassword = $('#passNueva').val();
+                var confirmarNewPassword = $('#confirmarPassNueva').val();
+
+                if (passwordActual.trim() === '' || newPassword.trim() === '' || confirmarNewPassword.trim() === '') {
+                    
+                    Swal.fire({
+                        title: "Informacion",
+                        text: "Campos vacios",
+                        icon: "error"
+                    });
+
+                    return;
+                }
+
+                if (newPassword !== confirmarNewPassword) {
+                    
+                    Swal.fire({
+                        title: "Informacion",
+                        text: "Las contraseñas no coinciden",
+                        icon: "error"
+                    });
+                    return;
+                }
+
+                // Si la validación es exitosa, puedes permitir que el formulario se envíe
+                this.submit();
+
+            })
+        </script>
+
+        <!-- Alertas por parte del servidor, es decir las repuestas del controlador -->
+        @if (Session::has('passActulizada'))
+            <script>
+                Swal.fire({
+                    title: "Informacion",
+                    text: "{{ session('passActulizada') }}",
+                    icon: "success"
+                });
+            </script>   
+        @endif
+
+        @if (Session::has('passError'))
+            <script>
+                Swal.fire({
+                    title: "Informacion",
+                    text: "{{ session('passError') }}",
+                    icon: "error"
+                });
+            </script>   
+        @endif
+        
+
+    <!-- ---------------------------------------------------------------------------------------------------------------------------- -->
+
 </body>
 </html>

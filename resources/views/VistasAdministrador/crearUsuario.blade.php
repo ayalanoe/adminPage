@@ -30,3 +30,16 @@
     </div>
 
 @endsection
+
+@section('jsVistasAdmin')
+    @if (Session::has('crearUsuarioRespuesta'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('crearUsuarioRespuesta') }}",
+                icon: "success"
+            });
+        </script>   
+    @endif
+@endsection
+

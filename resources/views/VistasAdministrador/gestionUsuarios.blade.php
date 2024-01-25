@@ -22,13 +22,13 @@
                   <td>{{$usuario->email}}</td>
                   <td>
 
-                    <form class="fluid" action="{{route('usuarios.destroy', $usuario->id) }}" method="POST">
+                    <form class="formEliminarUsuario" action="{{route('usuarios.destroy', $usuario->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                    </form>
+                    </form> 
                     
-                    <form action="{{ route('resetPass', $usuario->id)}}" method="POST">
+                    <form class="formResetPassUsuario" action="{{ route('resetPass', $usuario->id)}}" method="POST">
                       @csrf
                       <button type="submit" class="btn btn-secondary">Reestablecer Contraseña</button>
                     </form>
@@ -41,4 +41,65 @@
               @endforeach
             </tbody>
       </table>
+@endsection
+
+@section('jsVistasAdmin')
+  <script>
+    $('.formEliminarUsuario').on('submit', function(e){
+      e.preventDefault();
+      Swal.fire({
+        title: "¿Está seguro?",
+        text: "Se eliminará el usuario",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.submit()
+        } 
+      });
+    })
+
+    $('.formResetPassUsuario').on('submit', function(event){
+      event.preventDefault();
+      Swal.fire({
+        title: "¿Está seguro?",
+        text: "Se restablecerá la contraseña",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, restablecer"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.submit()
+        } 
+      });
+    })
+    
+  </script>
+
+
+  @if (Session::has('usuarioEliminarRespuesta'))
+    <script>
+      Swal.fire({
+          title: "Informacion",
+          text: "{{ session('usuarioEliminarRespuesta') }}",
+          icon: "success"
+      });
+    </script>  
+  @endif
+
+  @if (Session::has('usuarioRestPassRespuesta'))
+    <script>
+      Swal.fire({
+          title: "Informacion",
+          text: "{{ session('usuarioRestPassRespuesta') }}",
+          icon: "success"
+      });
+    </script>  
+  @endif
+    
 @endsection
