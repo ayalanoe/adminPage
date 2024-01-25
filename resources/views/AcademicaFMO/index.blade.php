@@ -90,11 +90,39 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="#" class="select">INICIO</a></li>
-                        <li><a href="#">NUEVO INGRESO</a></li>
-                        <li><a href="#">PLANES DE ESTUDIO</a></li>
-                        <li><a href="#">CALENDARIO OFICIAL</a></li>
+                        <li><a href="https://eel.ues.edu.sv/ingreso" target="_blank">NUEVO INGRESO</a></li>
+
+                        <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item dropend">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Carreras de Pregrado
+                                    </a>        
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Carreras de Posgrado
+                                    </a>        
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Carreras Técnicas
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li><a href="#">DIRECTORIO</a></li>
+                        <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item dropend">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ADMINISTRATIVO
+                                    </a>        
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ACADÉMICO
+                                    </a>        
+                                </li>
+                            </ul>
+                        </li>
+                        
                         <li><a href="#">EDUCACIÓN A DISTANCIA</a></li>
+                        <li><a href="#">FACULTADES</a></li>
                     </ul>
                 </nav>
 
@@ -158,7 +186,7 @@
 
             <div class="box__copyright">
                 <hr>
-                <p>Todos los derechos reservados © 2024 <b>Académica FMO</b></p>
+                <p>Todos los derechos reservados © 2024 - 2024<b>Académica FMO</b></p>
             </div>
         </Footer>
 
