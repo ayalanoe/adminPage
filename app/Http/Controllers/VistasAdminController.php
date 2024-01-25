@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 use App\Models\CalendarioClase;
 use Illuminate\Support\Facades\Storage;
@@ -12,30 +12,27 @@ use Illuminate\Support\Facades\Validator;
 
 class VistasAdminController extends Controller
 {
+   
     //----------------------------- FUNCIONES PARA LA GESTION DE USUARIOS ----------------------------------------------------------------------------------------------------------
         public function gestionUsuarios()
         {
             $usuarios = User::all();
-
             return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
         }
 
         public function editarDatosUsuario(Request $request, $id){
-
+            
             $usuario = User::find($id);
 
             if (!$usuario) {
                 // Manejar el caso donde el usuario no existe
-                return redirect()->route('privada')->with('error', 'Usuario no encontrado');
+                return back()->with('errorUsuario', 'Usuario no encontrado');
             }
 
             $usuario->name = $request->Nombre;
             $usuario->email = $request->Correo; 
-
             $usuario->save();
-
-            return redirect()->route('gestionUsuarios');
-  
+            return back()->with('successDatosPerfil', 'Perfil actualizado correctamente');
         }
 
         public function destroy($id)
@@ -48,8 +45,7 @@ class VistasAdminController extends Controller
             }
 
             $usuario->delete();
-
-            return redirect()->route('gestionUsuarios')->with('success', 'Usuario eliminado correctamente');
+            return back()->with('usuarioEliminarRespuesta', 'Usuario eliminado correctamente');
         }
 
         public function restablecerContrasenia($id)
@@ -62,7 +58,28 @@ class VistasAdminController extends Controller
             $usuario->password = Hash::make('academica.24fmo');
             $usuario->save();
 
-            return redirect()->route('gestionUsuarios')->with('success', 'Contraseña restablecida correctamente');
+            return back()->with('usuarioRestPassRespuesta', 'Se restablecio la contraseña del usuario');
+        }
+
+        public function cambiarPassword(Request $request, $id)
+        {
+            $usuario = User::find($id);
+
+            if (!$usuario) {
+                
+                return back()->with('errorUsuario', 'Usuario no encontrado');
+            }
+
+            $passActual = $request->passwordActual;
+
+            if (Hash::check($passActual, $usuario->password)) {
+
+                $usuario->password = Hash::make($request->newPassword);
+                $usuario->save();
+                return back()->with('passActulizada', 'Contraseña actulizada correctamente');
+            }
+
+            return back()->with('passError', 'La contraseña actual no es la correcta');
 
         }
 
@@ -76,7 +93,7 @@ class VistasAdminController extends Controller
             $user->password = Hash::make($request->password);
 
             $user->save(); //Insersion en la base de datos
-            return redirect(route('privada'));
+            return back()->with('crearUsuarioRespuesta', "Usuario creado correctamente");
         } 
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -147,7 +164,7 @@ class VistasAdminController extends Controller
                 'rutaArchivo' => $ruta,
             ]);
             
-            return redirect()->back()->with('mensaje', 'Archivo subido correctamente.');
+            return redirect()->back()->with('resCalendarioAcademico', 'Archivo subido correctamente');
         }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

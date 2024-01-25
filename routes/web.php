@@ -43,11 +43,12 @@ Route::get('/', function () {
     Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro')->middleware('auth');
     Route::post('/validar-registro',[VistasAdminController::class, 'register'])->name('validar-registro');
     Route::post('/actualizar/{id}/datos-usuario', [VistasAdminController::class, 'editarDatosUsuario'])->name('actulizarDatosUsuario');
+    Route::post('/actualizar/{id}/password-user', [VistasAdminController::class, 'cambiarPassword'])->name('actulizarPassword');
 
     Route::get('/calendario-clases', [VistasAdminController::class, 'formularioSubirArchivo'])->name('subirHorarioClases');
     Route::post('/calendario-clases', [VistasAdminController::class, 'subirArchivo'])->name('guardar-archivo');
     Route::delete('/eliminar/{id}-calendario-clases', [VistasAdminController::class, 'eliminarHorarioAcademico'])->name('eliminarHorarioAcademico');
-    Route::get('/mostrar-calendario-clases/{id}', [VistasAdminController::class, 'verHorarioClases'])->name('contenidoCalendarioAcademico');
+    Route::get('/mostrar-calendario-clases/{id}', [VistasAdminController::class, 'verHorarioClases'])->name('contenidoCalendarioAcademico')->middleware('auth');
 
 
     Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
