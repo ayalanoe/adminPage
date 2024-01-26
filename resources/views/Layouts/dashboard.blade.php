@@ -137,7 +137,7 @@
                         </a>
                         <ul id="DirectContact" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Ver listado</a>
+                                <a href="{{ route('gestionDirectorio') }}" class="sidebar-link">Ver Directorio</a>
                             </li>
                             
                         </ul>

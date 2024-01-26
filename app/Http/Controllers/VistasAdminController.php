@@ -166,5 +166,14 @@ class VistasAdminController extends Controller
             
             return redirect()->back()->with('resCalendarioAcademico', 'Archivo subido correctamente');
         }
+
+
+
+    //----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ----------------------------------------------------------------------------------------------------------
+    public function gestionDirectorio()
+    {
+        $usuarios = User::all();
+        return view('VistasAdministrador/gestionDirectorio', ['usuarios' => $usuarios]);
+    }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

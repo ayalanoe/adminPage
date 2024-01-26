@@ -55,6 +55,7 @@ Route::get('/', function () {
     Route::delete('/usuarios/{id}', [VistasAdminController::class, 'destroy'])->name('usuarios.destroy');
     Route::post('/usuarios/{id}/reset-pass', [VistasAdminController::class, 'restablecerContrasenia'])->name('resetPass');
 
+    Route::get('gestion-directorio', [VistasAdminController::class, 'gestionDirectorio'])->name('gestionDirectorio');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
