@@ -3,7 +3,7 @@
 <!--Titulo de la pagina, es decir el que aparece en la pestaña, recibe dos parametros
     el parametro 'titulo' es obligatorio y el otro parametro es el nombre que queramos que aparezca en la pestaña
 -->
-@section('titulo', 'Registro de Ussuarios') 
+@section('titulo', '- Registro de Usuarios') 
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registroUsuarios.css') }}">
