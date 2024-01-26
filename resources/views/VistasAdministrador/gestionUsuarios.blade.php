@@ -1,4 +1,5 @@
 @extends('Layouts.dashboard')
+@section('titulo', '- Gestión de Usuarios') 
 @section('contenido')
     <h2>Otra Vista</h2>
     <p>Contenido de otra vista...</p>
