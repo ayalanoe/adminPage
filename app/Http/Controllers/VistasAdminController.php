@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class VistasAdminController extends Controller
 {
-   
     //----------------------------- FUNCIONES PARA LA GESTION DE USUARIOS ----------------------------------------------------------------------------------------------------------
         public function gestionUsuarios()
         {
@@ -164,7 +163,7 @@ class VistasAdminController extends Controller
                 'rutaArchivo' => $ruta,
             ]);
             
-            return redirect()->back()->with('resCalendarioAcademico', 'Archivo subido correctamente');
+            return back()->with('resCalendarioAcademico', 'Archivo subido correctamente');
         }
 
 
