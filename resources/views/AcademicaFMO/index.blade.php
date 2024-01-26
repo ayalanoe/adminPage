@@ -162,10 +162,12 @@
             <div class="container__footer">
 
                 <div class="box__footer">
-                    <h2>Horario de Atención</h2>
-                    <a href="#">Aula Virtual UES</a>
-                    <a href="#">Expediente en Línea</a>
-                    <a href="#">Expediente Móvil</a>
+                    <h2>SITIOS DE INTERÉS</h2>
+                    <a href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a>
+                    <a href="https://www.ues.edu.sv/" target="_blank">UES-SITIO PRINCIPAL</a>
+                    <a href="https://www.uese.ues.edu.sv/" target="_blank"><i class="fa-solid fa-scale-balanced"></i> UES-SOCIOECONÓMICO</a>
+                    <a href="http://proyeccionsocial.fmoues.edu.sv/" target="_blank">UES-PROYECCIÓN SOCIAL</a>
+                    <a href="https://saa.ues.edu.sv/" target="_blank">UES-SAA</a>
                 </div>
 
                 <div class="box__footer">
