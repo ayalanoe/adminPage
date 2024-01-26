@@ -59,6 +59,20 @@
         </tbody>
     </table>
 
+    @if (Session::has('resCalendarioAcademico'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resCalendarioAcademico') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+@endsection
+
+@section('modales')
+
     <!-- Modal para subir el calendario academico -->
     <div class="modal fade" id="subirCalendarioAcademico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -70,7 +84,7 @@
                 <div class="modal-body">
                     
 
-                    <form action="{{route('guardar-archivo')}}" method="POST" class="row g-3 needs-validation" novalidate>
+                    <form action="{{route('guardar-archivo')}}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                         @csrf
 
                         <div class="col-md-12">
@@ -97,7 +111,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Subir archivo</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Subir archivo</button>
                         </div>
 
                     </form>
@@ -106,14 +120,6 @@
             </div>
         </div>
     </div>
+
 @endsection
 
-@if (Session::has('resCalendarioAcademico'))
-    <script>
-        Swal.fire({
-            title: "Informacion",
-            text: "{{ session('resCalendarioAcademico') }}",
-            icon: "success"
-        });
-    </script>
-@endif

@@ -185,7 +185,8 @@
             </nav>
 
 
-  
+            
+            
             <!-- Modal -->
             <div class="modal fade" id="ModalMisDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -284,21 +285,20 @@
                 </div>
             </div>
 
-
-
-            
+            @yield('modales') <!-- Para los modales de otras vistas -->
 
             <!-- TARJETA DE LAS SECCIONES DEL CONTENIDO DE LA WEB-->
             <main id="contenidoPrincipal" class="content px-3 py-2">
-                    <!-- En esta parte se mandaran a llamar las vista induvidules que se hagan, en este caso se usa la notacion 
-                        "yield" para poder llamar las vistas idividuales que se hagan. En este caso yield permite buscar una seccion con el nombre específo que
-                        definamos, en este caso utilizaremos la palabra "contenido" que hará referencia a todo lo que queremos mostrar en el centro del dasboard cunado se 
-                        seleccione una opcion de las que están en el menú
-                    -->
-                    @yield('contenido')
-                    
+                <!-- En esta parte se mandaran a llamar las vista induvidules que se hagan, en este caso se usa la notacion 
+                    "yield" para poder llamar las vistas idividuales que se hagan. En este caso yield permite buscar una seccion con el nombre específo que
+                    definamos, en este caso utilizaremos la palabra "contenido" que hará referencia a todo lo que queremos mostrar en el centro del dasboard cunado se 
+                    seleccione una opcion de las que están en el menú
+                -->
+                @yield('contenido')
                 
             </main>
+
+            
             
             <a href="#" class="theme-toggle">
                 <i class="fa-solid fa-moon"></i>
