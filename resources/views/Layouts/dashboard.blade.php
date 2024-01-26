@@ -52,7 +52,7 @@
                 <ul class="sidebar-nav">
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#GesUser" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
+                            <i class="fa-solid fa-circle-user pe-2"></i>
                             Gestión de Usuarios
                         </a>
                         <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -83,7 +83,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
+                            <i class="fa-solid fa-graduation-cap pe-2"></i>
                             Planes de Estudio
                         </a>
                         <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -103,7 +103,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#calendarios" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
+                            <i class="fa-solid fa-calendar pe-2"></i>
                             Calendrio Oficial
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -119,7 +119,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#Anuncios" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
+                            <i class="fa-solid fa-newspaper pe-2"></i>
                             Anuncios Académicos
                         </a>
                         <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -132,7 +132,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectContact" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
+                            <i class="fa-solid fa-address-book pe-2"></i>
                             Directorio de Contactos
                         </a>
                         <ul id="DirectContact" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -163,7 +163,7 @@
                                 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-user"></i> @auth {{Auth::user()->name}} @endauth
+                                        <i class="fa-solid fa-circle-user"></i> @auth {{Auth::user()->name}} @endauth
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
