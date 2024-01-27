@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->text('tramitesAsignado');
             $table->string('correo', 150);
-            $table->string('contacto', 10);
+            $table->string('contacto', 10)->nullable();
             $table->timestamps();
         });
     }
