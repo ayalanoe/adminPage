@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\CalendarioClase;
+use App\Models\Contacto;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -166,13 +167,63 @@ class VistasAdminController extends Controller
             return back()->with('resCalendarioAcademico', 'Archivo subido correctamente');
         }
 
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+    
     //----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ----------------------------------------------------------------------------------------------------------
-    public function gestionDirectorio()
-    {
-        $usuarios = User::all();
-        return view('VistasAdministrador/gestionDirectorio', ['usuarios' => $usuarios]);
-    }
+        public function verDatosDirectorios()
+        {
+            $contactos = Contacto::all();
+            return view('VistasAdministrador/gestionDirectorio', ['directorio' => $contactos]);
+        }
+
+        public function insertarDatosDirectorio(Request $request)
+        {
+            $contancto = new Contacto(); // Se crea una nueva instacia
+            
+            $contancto->nombre = $request->nombreContacto;
+            $contancto->correo = $request->correoContacto;
+            $contancto->contacto = $request->numeroContacto;
+            $contancto->tramitesAsignado = $request->tramitesAcargo;
+
+            $contancto->save();
+            return back()->with('respuestaContactoCrear', 'Contacto creado correctamente');
+
+        }
+        public function eliminarContactoDirectorio($id)
+        {
+            $contacto = Contacto::find($id);
+
+            if (!$contacto) {
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorContacto', 'Contacto no encontrado');
+            }
+
+            $contacto->delete();
+            return back()->with('contactoEliminarRespuesta', 'Contacto eliminado correctamente');
+        }
+
+        public function editarDatosContacto(Request $request, $id){
+            
+            $contacto = Contacto::find($id);
+
+            if (!$contacto) {
+               // Manejar el caso donde el usuario no existe
+               return back()->with('errorContacto', 'Contacto no encontrado');
+            }
+
+            $contacto->nombre = $request->editarNombreContacto;
+            $contacto->correo = $request->editarCorreoContacto;
+            $contacto->contacto = $request->editarNumeroContacto;
+            $contacto->tramitesAsignado = $request->editarTramitesAcargo;
+
+
+            $contacto->save();
+            return back()->with('respuestaEditarContacto', 'Contacto actualizado correctamente');
+        }
+
+        
+
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

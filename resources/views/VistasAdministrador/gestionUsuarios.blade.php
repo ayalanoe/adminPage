@@ -14,31 +14,35 @@
             </thead>
             <tbody>
               @php
-                 $numero = 1 
+                $numero = 1 
               @endphp
               @foreach ($usuarios as $usuario)
-                <tr>
-                  <th scope="row">{{$numero}}</th>  
-                  <td>{{$usuario->name}}</td>
-                  <td>{{$usuario->email}}</td>
-                  <td>
 
-                    <form class="formEliminarUsuario" action="{{route('usuarios.destroy', $usuario->id) }}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                    </form> 
-                    
-                    <form class="formResetPassUsuario" action="{{ route('resetPass', $usuario->id)}}" method="POST">
-                      @csrf
-                      <button type="submit" class="btn btn-secondary">Reestablecer Contraseña</button>
-                    </form>
-                    
-                  </td>
-                </tr>
-                @php
-                    $numero++
-                @endphp
+                @if ($usuario->id !== Auth::user()->id)
+                  <tr>
+                    <th scope="row">{{$numero}}</th>  
+                    <td>{{$usuario->name}}</td>
+                    <td>{{$usuario->email}}</td>
+                    <td class="d-flex">
+
+                      <form class="formEliminarUsuario" action="{{route('usuarios.destroy', $usuario->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                      </form> 
+                      
+                      <form class="formResetPassUsuario" action="{{ route('resetPass', $usuario->id)}}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary mx-1">Restablecer contraseña</button>
+                      </form>
+                      
+                    </td>
+                  </tr>
+                  @php
+                      $numero++
+                  @endphp
+                @endif
+
               @endforeach
             </tbody>
       </table>
