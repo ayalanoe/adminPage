@@ -121,7 +121,7 @@ class VistasAdminController extends Controller
             } 
                 
             $archivo->delete();
-            return redirect()->route('subirHorarioClases')->with('error', 'Archivo no encontrado');
+            return back()->with('resEliminarCalendarioAcademico', 'Horario eliminado correctamente');
             
         }
 

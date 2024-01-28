@@ -31,7 +31,7 @@
                     <td>
 
                         @if ($horarioClase->rutaArchivo)
-                            <form class="fluid" action="{{route('eliminarHorarioAcademico', $horarioClase->id) }}" method="POST">
+                            <form id="formEliminarCalendarioAcademico" class="fluid" action="{{route('eliminarHorarioAcademico', $horarioClase->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
@@ -121,5 +121,40 @@
         </div>
     </div>
 
+    @if (Session::has('resEliminarCalendarioAcademico'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarCalendarioAcademico') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+@endsection
+
+@section('jsVistasAdmin')
+
+    <script>
+
+        $('#formEliminarCalendarioAcademico').on('submit', function(e){
+            
+            e.preventDefault();
+            Swal.fire({
+                title: "¿Está seguro?",
+                text: "Se eliminará el calendario",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                this.submit()
+                } 
+            });
+        })
+
+    </script>
 @endsection
 
