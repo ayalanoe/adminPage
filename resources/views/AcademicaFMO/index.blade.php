@@ -14,7 +14,17 @@
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
 </head>
 <body>
-
+    <div class="prueba">
+        <a href="#" class="iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalMisDatos" id="abrirModal">
+            <i class="fa-solid fa-clock"></i>
+        </a>
+    </div>
+    
+        <div class="prueba2">
+            <a href="#" class="iconoOpciones">
+                <i class="fa-solid fa-circle-question"></i>
+            </a>
+            </div>
     <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Trámites Académicos</h5>
@@ -81,6 +91,7 @@
 
         </div>
     </div>
+    
     <header id="header">
         <div class="container__header">
             <div class="logo">
@@ -107,7 +118,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="#">DIRECTORIO</a></li>
+                        <li><a href="{{ route('directorio') }}">DIRECTORIO</a></li>
                         <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item dropend">
@@ -133,7 +144,63 @@
 
         </div>
     </header>
+    
+ 
 
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalMisDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Mis Datos de Perfil</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+
+                <form id="formActulizarDatos" action="{{route('actulizarDatosUsuario', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
+                    @csrf
+
+                    <div class="col-md-12">
+                    <label for="validationCustomUser" class="form-label">Usuario</label>
+                    <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
+                    <input name="Nombre" type="text" class="form-control" id="validaUser" required value="{{Auth::user()->name}}">
+                    <div class="valid-feedback">
+                        Usuario Válido!
+                    </div>
+                    </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label for="validationCustomCorreo" class="form-label">Correo Electrónico</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
+                            <input name="Correo" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required value="{{Auth::user()->email}}">
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelPerfil">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="ActualizaPerfil">Actualizar Datos</button>
+                    </div>
+
+                </form>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+  
     <div class="container__all" id="container_all">
 
         <div class="cover">
@@ -194,8 +261,15 @@
 
 </div>
 
+<script>
+    document.getElementById('abrirModal').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('ModalMisDatos'));
+        myModal.show();
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/principalWave.js"></script>
+
 </body>
 </html>
