@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
-
+use App\Http\Controllers\VistasPublicasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,16 @@ use App\Http\Controllers\VistasAdminController;
 Route::get('/', function () {
     return view('AcademicaFMO/index');
 });
+
+
+/*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
+Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
+
+
+
+
+
+
 
 
 /*//---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
