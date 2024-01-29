@@ -151,58 +151,9 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="ModalMisDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mis Datos de Perfil</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-
-                <form id="formActulizarDatos" action="{{route('actulizarDatosUsuario', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
-                    @csrf
-
-                    <div class="col-md-12">
-                    <label for="validationCustomUser" class="form-label">Usuario</label>
-                    <div class="input-group has-validation">
-                    <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
-                    <input name="Nombre" type="text" class="form-control" id="validaUser" required value="{{Auth::user()->name}}">
-                    <div class="valid-feedback">
-                        Usuario Válido!
-                    </div>
-                    </div>
-                    </div>
-                    
-                    <div class="col-md-12">
-                        <label for="validationCustomCorreo" class="form-label">Correo Electrónico</label>
-                        <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
-                            <input name="Correo" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required value="{{Auth::user()->email}}">
-                            <div class="invalid-feedback">
-                                Please choose a username.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelPerfil">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="ActualizaPerfil">Actualizar Datos</button>
-                    </div>
-
-                </form>
-
-            </div>
-            
-        </div>
-    </div>
-</div>
 
   
     <div class="container__all" id="container_all">
-
         <div class="cover">
 
             <div class="container__cover">
@@ -225,6 +176,8 @@
             </div>
 
         </div>
+        
+    
         <Footer>
             <div class="container__footer">
 
@@ -258,8 +211,8 @@
                 <p>Todos los derechos reservados © 2024 - 2024<b>Académica FMO</b></p>
             </div>
         </Footer>
+    </div>
 
-</div>
 
 <script>
     document.getElementById('abrirModal').addEventListener('click', function() {
