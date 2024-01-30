@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_calendarioadmincx', function (Blueprint $table) {
+        Schema::create('tbl_calendarioadmincp', function (Blueprint $table) {
             $table->id();
-            $table->text('actividad');
-            $table->date('fechaInicio');
-            $table->date('fechaFinal');
-            $table->char('duracion', 50);
+            $table->string('nombreArchivo',100);
+            $table->text('rutaArchivo');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_calendarioadmincx');
+        Schema::dropIfExists('tbl_calendarioadmincp');
     }
 };

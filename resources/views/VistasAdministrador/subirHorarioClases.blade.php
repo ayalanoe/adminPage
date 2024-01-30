@@ -28,16 +28,16 @@
                 <tr>
                     <th scope="row">{{$numero}}</th>  
                     <td>{{$horarioClase->nombreArchivo}}</td>
-                    <td>
+                    <td class="d-flex">
 
                         @if ($horarioClase->rutaArchivo)
                             <form id="formEliminarCalendarioAcademico" class="fluid" action="{{route('eliminarHorarioAcademico', $horarioClase->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                             </form>
                                 
-                            <a href="{{ route('contenidoCalendarioAcademico', $horarioClase->id) }}" class="btn btn-secondary" target="_blank"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{{ route('contenidoCalendarioAcademico', $horarioClase->id) }}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
                         @endif
                         
                     </td>
@@ -64,6 +64,16 @@
             Swal.fire({
                 title: "Informacion",
                 text: "{{ session('resCalendarioAcademico') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+    @if (Session::has('resEliminarCalendarioAcademico'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarCalendarioAcademico') }}",
                 icon: "success"
             });
         </script>
@@ -121,15 +131,6 @@
         </div>
     </div>
 
-    @if (Session::has('resEliminarCalendarioAcademico'))
-        <script>
-            Swal.fire({
-                title: "Informacion",
-                text: "{{ session('resEliminarCalendarioAcademico') }}",
-                icon: "success"
-            });
-        </script>
-    @endif
 
 @endsection
 

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
 use App\Http\Controllers\VistasPublicasController;
+use Faker\Guesser\Name;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,7 +64,16 @@ Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, '
     Route::get('/calendario-clases', [VistasAdminController::class, 'formularioSubirArchivo'])->name('subirHorarioClases');
     Route::post('/calendario-clases', [VistasAdminController::class, 'subirArchivo'])->name('guardar-archivo');
     Route::delete('/eliminar/{id}-calendario-clases', [VistasAdminController::class, 'eliminarHorarioAcademico'])->name('eliminarHorarioAcademico');
-    Route::get('/mostrar-calendario-clases/{id}', [VistasAdminController::class, 'verHorarioClases'])->name('contenidoCalendarioAcademico')->middleware('auth');
+    Route::get('/calendario-academico/{id}', [VistasAdminController::class, 'verHorarioClases'])->name('contenidoCalendarioAcademico')->middleware('auth');
+
+
+    Route::get('/gestion-cal-administrativo', [VistasAdminController::class, 'mostrarVistaCalendarioAdmin'])->name('mosrarCalendarios');
+    Route::post('/subir-calendarioA-cx', [VistasAdminController::class, 'subirArchivoCalAdminCx'])->name('subirCalAdminCx');
+    Route::post('/subir-calendarioA-cp', [VistasAdminController::class, 'subirArchivoCalAdminCp'])->name('subirCalAdminCp');
+    Route::delete('/eliminar-calendarioA-cx/{id}', [VistasAdminController::class, 'eliminarCalAdminCx'])->name('eliminarCalAdminCx');
+    Route::delete('/eliminar-calendarioA-cp/{id}', [VistasAdminController::class, 'eliminarCalAdminCp'])->name('eliminarCalAdminCp');
+    Route::get('/calendario-admin-cx/{id}', [VistasAdminController::class, 'verCalAdminCx'])->name('mostrarCalAdminCx');
+    Route::get('/calendario-admin-cp/{id}', [VistasAdminController::class, 'verCalAdminCp'])->name('mostrarCalAdmindCp');
 
 
     Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
@@ -73,6 +84,8 @@ Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, '
     Route::post('ingresar-contacto', [VistasAdminController::class, 'insertarDatosDirectorio'])->name('insertarContacto');
     Route::delete('eliminar-contacto/{id}', [VistasAdminController::class, 'eliminarContactoDirectorio'])->name('eliminarContacto');
     Route::post('/editar-contacto/{id}',[VistasAdminController::class, 'editarDatosContacto'])->name('editarContacto');
+
+    Route::view('/crear-anuncio', 'VistasAdministrador/crearAnuncios')->name('crearAnuncio');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
