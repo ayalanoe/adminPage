@@ -171,10 +171,10 @@
                         <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item dropend">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link" href="#">
                                         ADMINISTRATIVO
-                                    </a>        
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    </a>   
+                                    <a class="nav-link" href="#">
                                         ACADÉMICO
                                     </a>        
                                 </li>
