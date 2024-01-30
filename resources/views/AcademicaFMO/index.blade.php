@@ -14,10 +14,71 @@
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
 </head>
 <body>
+    
+    
+    <!-- Modal DEL HORARIO DE ATENCIÓN-->
+    <div class="modal fade" id="ModalHorario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">HORARIO DE ATENCIÓN</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped">
+                <thead>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">LUNES A VIERNES</th>
+                    <td>De 8:00 a.m. a 4:00 p.m.</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="row">SÁBADO</th>
+                    <td>De 8:00 a.m. a 12:00 m.d.</td>
+                    
+                  </tr>
+                  <tr>
+                    <th><strong>*Cerrado al mediodía</strong></th>
+                    
+                  </tr>
+                </tbody>
+                
+              </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal DE LAS PREGUNTAS PRECUENTES-->
+    <div class="modal fade" id="ModalPreguntas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div class="prueba">
-        <a href="#" class="iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalMisDatos" id="abrirModal">
+        <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalHorario">
             <i class="fa-solid fa-clock"></i>
-        </a>
+          </button>
     </div>
     
         <div class="prueba2">
@@ -25,27 +86,15 @@
                 <i class="fa-solid fa-circle-question"></i>
             </a>
             </div>
+
+            
     <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Trámites Académicos</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">¿Qué trámite deseas realizar?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
         
-            <div class="dropdown mt-3">
-                <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
-                    <i class="fa-solid fa-list pe-2"></i>
-                    Trámites Académicos
-                </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-
-
-
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
@@ -100,10 +149,10 @@
             <div class="container__nav">
                 <nav id="nav">
                     <ul>
-                        <li><a href="#" class="select">INICIO</a></li>
+                        <li><a href="/" class="select">INICIO</a></li>
                         <li><a href="https://eel.ues.edu.sv/ingreso" target="_blank">NUEVO INGRESO</a></li>
 
-                        <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
+                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item dropend">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -151,58 +200,8 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="ModalMisDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Mis Datos de Perfil</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-
-                <form id="formActulizarDatos" action="{{route('actulizarDatosUsuario', Auth::user()->id) }}" method="POST" class="row g-3 needs-validation" novalidate>
-                    @csrf
-
-                    <div class="col-md-12">
-                    <label for="validationCustomUser" class="form-label">Usuario</label>
-                    <div class="input-group has-validation">
-                    <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
-                    <input name="Nombre" type="text" class="form-control" id="validaUser" required value="{{Auth::user()->name}}">
-                    <div class="valid-feedback">
-                        Usuario Válido!
-                    </div>
-                    </div>
-                    </div>
-                    
-                    <div class="col-md-12">
-                        <label for="validationCustomCorreo" class="form-label">Correo Electrónico</label>
-                        <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
-                            <input name="Correo" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required value="{{Auth::user()->email}}">
-                            <div class="invalid-feedback">
-                                Please choose a username.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelPerfil">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="ActualizaPerfil">Actualizar Datos</button>
-                    </div>
-
-                </form>
-
-            </div>
-            
-        </div>
-    </div>
-</div>
-
   
-    <div class="container__all" id="container_all">
-
+    
         <div class="cover">
 
             <div class="container__cover">
@@ -218,6 +217,10 @@
                             Ver Trámites Académicos
                             </a>
 
+                            <a class="btn btn-primary btn-tramites" href="{{ route('anuncios') }}">
+                                Anuncios Oficiales
+                                </a>
+
                 </div>
                 <div class="container__vector" >
                     <img src="images/nueva.png" alt="" >
@@ -225,11 +228,14 @@
             </div>
 
         </div>
+        
+  
+    
         <Footer>
             <div class="container__footer">
 
                 <div class="box__footer">
-                    <h2>SITIOS DE INTERÉS</h2>
+                    <h2>Sitios de Interés</h2>
                     <a href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a>
                     <a href="https://www.ues.edu.sv/" target="_blank">UES-SITIO PRINCIPAL</a>
                     <a href="https://www.uese.ues.edu.sv/" target="_blank"><i class="fa-solid fa-scale-balanced"></i> UES-SOCIOECONÓMICO</a>
@@ -239,34 +245,39 @@
 
                 <div class="box__footer">
                     <h2>Plataformas</h2>
-                    <a href="#">Aula Virtual UES</a>
-                    <a href="#">Expediente en Línea</a>
-                    <a href="#">Expediente Móvil</a>
+                    <a href="https://virtual.fmoues.edu.sv/" target="_blank"><i class="fa-solid fa-landmark pe-2"></i>Aula Virtual UES</a>
+                    <a href="https://eel.ues.edu.sv/session/index" target="_blank">
+                        <i class="fa-solid fa-file pe-3"></i>Expediente en Línea</a>
+
+                    <div class="dropdown mt-3">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Expediente Móvil
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://play.google.com/store/apps/details?id=meel.ganimedes" target="_blank">Google Play</a></li>
+                        <li><a class="dropdown-item" href="https://appgallery.huawei.com/#/app/C102387785" target="_blank">App Galery</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="box__footer">
                     <h2>Medios de contacto</h2>
-                    <a href="#"><i class="fab fa-facebook-square"></i> Facebook</a>
-                    <a href="#"><i class="fa-solid fa-envelope"></i> academicafmo@ues.edu.sv</a>
+                    <a href="https://www.facebook.com/oficial.fmo" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a>
                     <a href="#"><i class="fa-solid fa-phone"></i> 2664 - 0000</a>
-                    <a href="#" class="ubicado"><i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
+                    <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado"><i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
                 </div>
             </div>
 
             <div class="box__copyright">
                 <hr>
-                <p>Todos los derechos reservados © 2024 - 2024<b>Académica FMO</b></p>
+                <p>Todos los derechos reservados © 2024 <b>| Académica FMO</b></p>
             </div>
         </Footer>
+    
 
-</div>
 
-<script>
-    document.getElementById('abrirModal').addEventListener('click', function() {
-        var myModal = new bootstrap.Modal(document.getElementById('ModalMisDatos'));
-        myModal.show();
-    });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/principalWave.js"></script>

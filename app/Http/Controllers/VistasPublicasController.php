@@ -23,5 +23,22 @@ class VistasPublicasController extends Controller
 
 
 
+
+
+        //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+        public function verAnuncios()
+        {
+            $contactos = Contacto::all();
+            return view('AcademicaFMO/anunciosAAFMO', ['anuncios' => $contactos]);
+        }
+
+
+        //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO ----------------------------------------------------------------------------------------------------------
+        public function verPlanes()
+        {
+            $contactos = Contacto::all();
+            return view('AcademicaFMO/planesFMO', ['planes' => $contactos]);
+        }
+
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
