@@ -23,15 +23,18 @@ Route::get('/', function () {
 
 
 /*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
-Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
+    Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
 
-Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
+    Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
 
-Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, 'verPlanes'])->name('planes');
+    Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, 'verPlanes'])->name('planes');
 
+    Route::get('/AcademicaFMO/calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
+    Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -48,7 +51,7 @@ Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, '
     //Rutas para el inicio de sesion y poder ingresar al dashboard
     Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
     Route::view('password', 'VistasAdministrador.passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
-    Route::view('dasboard-admin', 'VistasAdministrador.indexAdmin')->name('privada')->middleware('auth'); //Ruta protegida
+    Route::view('dashboard-admin', 'VistasAdministrador.indexAdmin')->name('privada')->middleware('auth'); //Ruta protegida
     Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
     Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');

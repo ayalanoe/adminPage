@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
+
+
+    <!-- CDN de sweetAlert para las alertas de confirmaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- CDN de JQUERY para poder usar algunas funciones antes de enviar el formulario de la contraseña ---------------------------------------------------------- -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 </head>
 <body>
     
@@ -165,10 +174,13 @@
                         <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item dropend">
-                                    <a class="nav-link" href="#">
+                                    
+
+                                    <a class="nav-link" href="{{route('publicVerCalAdmin')}}">
                                         ADMINISTRATIVO
-                                    </a>   
-                                    <a class="nav-link" href="#">
+                                    </a>
+                                    
+                                    <a class="nav-link" href="{{ route('publicVerCalAcademico') }}">
                                         ACADÉMICO
                                     </a>        
                                 </li>
@@ -273,8 +285,28 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/principalWave.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/principalWave.js"></script>
+
+    @if (Session::has('errorPublicCalAdmin'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('errorPublicCalAdmin') }}",
+                icon: "error"
+            });
+        </script>   
+    @endif
+
+    @if (Session::has('errorPublicCalAcademico'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('errorPublicCalAcademico') }}",
+                icon: "error"
+            });
+        </script>   
+    @endif
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalendarioAdminCx;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,20 +21,22 @@ class VistasPublicasController extends Controller
             $contactos = Contacto::all();
             return view('AcademicaFMO/directorio', ['directorio' => $contactos]);
         }
+    //---------------------------------------------------------------------------------------------------
 
 
 
 
 
-        //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
         public function verAnuncios()
         {
             $contactos = Contacto::all();
             return view('AcademicaFMO/anunciosAAFMO', ['anuncios' => $contactos]);
         }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO ----------------------------------------------------------------------------------------------------------
         public function verPlanes()
         {
             $contactos = Contacto::all();
@@ -41,4 +44,46 @@ class VistasPublicasController extends Controller
         }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    // ----------------------------- FUNCIONES PARA LOS CALENDARIOS ----------------------------------------------------------------------------------------------------------------
+
+        public function verPublicCalendarioAdministrativo(){
+            
+            $calAdminCx = CalendarioAdminCx::first();
+
+            
+            if (!$calAdminCx) {
+
+                return back()->with('errorPublicCalAdmin','Aún no se ha subido calendario administrativo');
+            }
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($calAdminCx->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        
+        }
+
+        public function verPublicCalendarioAcademico(){
+            
+            $calendarioAcademico = CalendarioClase::first();
+
+            
+            if (!$calendarioAcademico) {
+
+                return back()->with('errorPublicCalAcademico','Aún no se ha subido calendario academico');
+            }
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($calendarioAcademico->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        
+        }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 }
