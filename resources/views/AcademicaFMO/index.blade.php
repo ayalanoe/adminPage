@@ -47,10 +47,7 @@
                 
               </table>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -61,16 +58,13 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">PREGUNTAS FRECUENTES</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               ...
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -78,14 +72,14 @@
     <div class="prueba">
         <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalHorario">
             <i class="fa-solid fa-clock"></i>
-          </button>
+        </button>
     </div>
     
-        <div class="prueba2">
-            <a href="#" class="iconoOpciones">
-                <i class="fa-solid fa-circle-question"></i>
-            </a>
-            </div>
+        <div class="prueba2">            
+                <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalPreguntas">
+                    <i class="fa-solid fa-circle-question"></i>
+                </button>
+        </div>
 
             
     <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -155,13 +149,13 @@
                         <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item dropend">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link" href="{{ route('planes') }}">
                                             Carreras de Pregrado
                                     </a>        
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link" href="#">
                                         Carreras de Posgrado
                                     </a>        
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link" href="#">
                                         Carreras Técnicas
                                     </a>
                                 </li>

@@ -109,7 +109,7 @@
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('mosrarCalendarios') }}" class="sidebar-link">Calendario Administrativo</a>
+                                <a href="#" class="sidebar-link">Calendario Administrativo</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
@@ -125,14 +125,7 @@
                         </a>
                         <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('crearAnuncio') }}" class="sidebar-link">Crear Anuncio</a>
-                            </li>
-                            
-                        </ul>
-
-                        <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Ver Anuncios</a>
+                                <a href="#" class="sidebar-link">Equivalencias</a>
                             </li>
                             
                         </ul>
@@ -156,8 +149,8 @@
         </aside>
         <div class="main">
             <nav class="navbar">
-                <button class="btn" id="sidebar-toggle">        <!--BOTON DE HERRAMIENTAS DEL SIDEBAR-->
-                    <span class="navbar-toggler-icon"></span>
+                <button class="btn hola" id="sidebar-toggle">        <!--BOTON DE HERRAMIENTAS DEL SIDEBAR-->
+                    <i class="fa-solid fa-bars fonIcon"></i>
                 </button>
                
                 <div class="navbar navbar-expand-lg bg-body-tertiary menuNav">
