@@ -90,7 +90,7 @@
             <div class="col-md-12">
               <label for="validationCustomCorreo" class="form-label">Contacto</label>
               <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
+                <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
                 <input name="numeroContacto" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
                   Correo no valido!
@@ -161,7 +161,7 @@
               <div class="col-md-12">
                 <label for="validationCustomCorreo" class="form-label">Contacto</label>
                 <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
+                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
                   <input value="{{$contactoId->contacto}}" name="editarNumeroContacto" type="text" class="form-control" id="txtEditarContacto" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Correo no valido!

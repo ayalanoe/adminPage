@@ -109,7 +109,7 @@
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Calendario Administrativo</a>
+                                <a href="{{ route('mosrarCalendarios') }}" class="sidebar-link">Calendario Administrativo</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
@@ -125,7 +125,14 @@
                         </a>
                         <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="{{ route('crearAnuncio') }}" class="sidebar-link">Crear Anuncio</a>
+                            </li>
+                            
+                        </ul>
+
+                        <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Ver Anuncios</a>
                             </li>
                             
                         </ul>
