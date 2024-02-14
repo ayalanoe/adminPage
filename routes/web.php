@@ -89,6 +89,12 @@ Route::get('/', function () {
     Route::post('/editar-contacto/{id}',[VistasAdminController::class, 'editarDatosContacto'])->name('editarContacto');
 
     Route::view('/crear-anuncio', 'VistasAdministrador/crearAnuncios')->name('crearAnuncio');
+
+
+
+    
+    Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
+    Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

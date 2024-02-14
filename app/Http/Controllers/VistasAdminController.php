@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\CalendarioClase;
 use App\Models\Contacto;
+use App\Models\Facultad;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -301,8 +302,7 @@ class VistasAdminController extends Controller
             
         }
 
-        public function eliminarCalAdminCp($id)
-        {
+        public function eliminarCalAdminCp($id){
             $archivoCp = CalendarioAdminCp::find($id);
 
             if (!$archivoCp) {
@@ -348,6 +348,29 @@ class VistasAdminController extends Controller
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
 
         }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ------------------------------------------------------------------------------------
+        public function verDatosFacultad()
+        {
+            $facultadnacional = Facultad::all();
+            return view('VistasAdministrador/gestionFacultades', ['directorio' => $facultadnacional]);
+        }
+
+
+        public function insertarFacultades(Request $request)
+        {
+            $contFacultad = new Facultad(); // Se crea una nueva instacia
+            
+            $contFacultad->facultad = $request->nombreFacultad;
+            $contFacultad->correo = $request->correoFacultad;
+            $contFacultad->contacto = $request->numeroFacultad;
+
+            $contFacultad->save();
+            return back()->with('respuestaContactoCrear', 'Facultad creada correctamente');
+
+        }
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

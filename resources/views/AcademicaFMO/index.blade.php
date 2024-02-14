@@ -188,7 +188,7 @@
                         </li>
                         
                         <li><a href="#">EDUCACIÓN A DISTANCIA</a></li>
-                        <li><a href="#">FACULTADES</a></li>
+                        <li><a href="{{ route('directorio') }}">FACULTADES</a></li>
                     </ul>
                 </nav>
 

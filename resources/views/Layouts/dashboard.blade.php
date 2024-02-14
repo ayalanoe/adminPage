@@ -143,6 +143,19 @@
                             
                         </ul>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectFacultad" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fas fa-university pe-2"></i>
+                            Facultades
+                        </a>
+                        <ul id="DirectFacultad" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('gestionFacultades') }}" class="sidebar-link">Ver Directorio</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>
