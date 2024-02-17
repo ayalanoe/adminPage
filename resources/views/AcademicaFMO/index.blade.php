@@ -176,11 +176,11 @@
                                 <li class="nav-item dropend">
                                     
 
-                                    <a class="nav-link" href="{{route('publicVerCalAdmin')}}">
+                                    <a class="nav-link" href="{{route('publicVerCalAdmin')}}" target="_blank">
                                         ADMINISTRATIVO
                                     </a>
                                     
-                                    <a class="nav-link" href="{{ route('publicVerCalAcademico') }}">
+                                    <a class="nav-link" href="{{ route('publicVerCalAcademico') }}" target="_blank">
                                         ACADÉMICO
                                     </a>        
                                 </li>
