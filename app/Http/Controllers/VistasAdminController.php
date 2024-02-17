@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\CalendarioAdminCp;
 use App\Models\CalendarioAdminCx;
+use App\Models\CalendarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\CalendarioClase;
+use App\Models\Carrera;
 use App\Models\Contacto;
 use App\Models\Facultad;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+
+
 
 class VistasAdminController extends Controller
 {
@@ -102,7 +105,7 @@ class VistasAdminController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     
-    //--------------------------- FUNCIONES PARA EL HORARIO DE CLASES --------------------------------------------------------------------------------------------------------------
+    //--------------------------- FUNCIONES PARA EL CALENDARIO DE CLASES --------------------------------------------------------------------------------------------------------------
         
         public function formularioSubirArchivo()
         {
@@ -122,6 +125,9 @@ class VistasAdminController extends Controller
             } 
                 
             $archivo->delete();
+            
+            //La clase storage contiene el metodo delete, el cual recibe la ruta guardada en el objeto y elimina el archivo
+            Storage::delete($archivo->rutaArchivo);
             return back()->with('resEliminarCalendarioAcademico', 'Horario eliminado correctamente');
             
         }
@@ -207,8 +213,8 @@ class VistasAdminController extends Controller
             $contacto = Contacto::find($id);
 
             if (!$contacto) {
-               // Manejar el caso donde el usuario no existe
-               return back()->with('errorContacto', 'Contacto no encontrado');
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorContacto', 'Contacto no encontrado');
             }
 
             $contacto->nombre = $request->editarNombreContacto;
@@ -229,18 +235,16 @@ class VistasAdminController extends Controller
 
         public function mostrarVistaCalendarioAdmin()
         {
-            $calendarioAdminCp = CalendarioAdminCp::all();
-            $calendarioAdminCx = CalendarioAdminCx::all();
+            $calendarioAdmin = CalendarioAdministrativo::all();
 
             return view('VistasAdministrador/gestionCalendarioAdministrativo', [
 
-                'calAdminCp' => $calendarioAdminCp,
-                'calAdminCx' => $calendarioAdminCx
+                'calAdmin' => $calendarioAdmin 
             ]);
 
         }
 
-        public function subirArchivoCalAdminCx(Request $request)
+        public function subirArchivoCalAdmin(Request $request)
         {
             $request->validate([
                 'archivo' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
@@ -249,103 +253,89 @@ class VistasAdminController extends Controller
             /*  El formato es definir una variable en php no se especifica el tipo. Con on objeto request se accede y se especifica 
                 el tipo de input el cual va recibir un parametro que es el nombre del input en el html
             */
-            $nombreCalAdminCx = $request->input('nombreArchivo');
+            $nombreCalAdmin = $request->input('nombreArchivo');
             $archivo = $request->file('archivo');
-            $ruta = Storage::disk('local')->put('calendarioAdminCiclo1', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('local')->put('Calendario_Administrativo', $archivo); //---> Se establece la ruta
 
             
             //Insersion en la base de datos usando el modelo de la tabala para almacenar el archivo
-            CalendarioAdminCx::create([
-                'nombreArchivo' => $nombreCalAdminCx, 
+            CalendarioAdministrativo::create([
+                'nombreArchivo' => $nombreCalAdmin, 
                 'rutaArchivo' => $ruta,
             ]);
             
-            return back()->with('resCalAdminCx', 'Calenedario ciclo 1 subido correctamente');
+            return back()->with('resSubirCalAdmin', 'Se ha subido el archivo correctamente');
+
+        }
+        
+        public function eliminarCalAdmin($id)
+        {
+            $archivo = CalendarioAdministrativo::find($id);
+
+            if (!$archivo) {
+
+                return back('eliminarCalendarioCx')->with('error', 'Archivo no encontrado');
+            } 
+                
+            $archivo->delete();
+
+            Storage::delete($archivo->rutaArchivo);
+
+            return back()->with('resEliminarCalAdmin', 'Calendario administrativo eliminado correctamente');
+            
+        }
+
+
+
+        public function verCalAdmin($id){
+            
+
+            $calAdmin = CalendarioAdministrativo::find($id);
+
+            if (!$calAdmin) {
+                return redirect()->route('subirHorarioClases')->with('error', 'Horario académico no encontrado');
+            }
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($calAdmin->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
 
         }
 
-        public function subirArchivoCalAdminCp(Request $request)
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    //----------------------------- FUCIONES PARA LOS PLANES DE ESTUDIO -------------------------------------------------------------------------------------------------------------
+        
+        public function gestionCarrerasPregrado()
         {
+            return view("VistasAdministrador/gestionCarrerasPregrado");
+        }
+
+        public function registrarCarreraPregrado(Request $request)
+        {
+
+            $carrera = new Carrera();
+
+            $carrera->tipoCarrera = $request->tipoCarreraPregrado;
+            $carrera->carrera = $request->namePregradoCarrera;
+            $carrera->codigoCarrera = $request->codigoCarreraPregrado;
+            $carrera->departamento = $request->departamentoCarreraPregrado;
+
             $request->validate([
-                'archivo' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+                'archivoPregradoCarrera' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
             ]);
-            
-            /*  El formato es definir una variable en php no se especifica el tipo. Con on objeto request se accede y se especifica 
-                el tipo de input el cual va recibir un parametro que es el nombre del input en el html
-            */
-            $nombreCalAdminCp = $request->input('nombreArchivo');
-            $archivo = $request->file('archivo');
-            $ruta = Storage::disk('local')->put('calendarioAdminCiclo2', $archivo); //---> Se establece la ruta
 
-            
-            //Insersion en la base de datos usando el modelo de la tabala para almacenar el archivo
-            CalendarioAdminCp::create([
-                'nombreArchivo' => $nombreCalAdminCp, 
-                'rutaArchivo' => $ruta,
-            ]);
-            
-            return back()->with('resCalAdminCp', 'Calenedario ciclo 2 subido correctamente');
+            $archivo = $request->file('archivoPregradoCarrera');
+            $ruta = Storage::disk('local')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
 
-        }
+            $carrera->rutaArchivo = $ruta;
+            $carrera->estadoArchivo = true;
 
-        public function eliminarCalAdminCx($id)
-        {
-            $archivoCx = CalendarioAdminCx::find($id);
-
-            if (!$archivoCx) {
-
-                return back('eliminarCalendarioCx')->with('error', 'Archivo no encontrado');
-            } 
-                
-            $archivoCx->delete();
-            return back()->with('resEliminarCalAdminCx', 'Calendario eliminado correctamente');
-            
-        }
-
-        public function eliminarCalAdminCp($id){
-            $archivoCp = CalendarioAdminCp::find($id);
-
-            if (!$archivoCp) {
-
-                return back('eliminarCalendarioCx')->with('error', 'Archivo no encontrado');
-            } 
-                
-            $archivoCp->delete();
-            return back()->with('resEliminarCalAdminCp', 'Calendario eliminado correctamente');
-            
-        }
-
-        public function verCalAdminCx($id){
-            
-
-            $calAdminCx = CalendarioAdminCx::find($id);
-
-            if (!$calAdminCx) {
-                return redirect()->route('subirHorarioClases')->with('error', 'Horario académico no encontrado');
-            }
-
-            // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calAdminCx->rutaArchivo);
-
-            // Devolver la respuesta con el contenido del archivo
-            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
-
-        }
-
-        public function verCalAdminCp($id){
-            
-
-            $calAdminCp = CalendarioAdminCp::find($id);
-
-            if (!$calAdminCp) {
-                return redirect()->route('subirHorarioClases')->with('error', 'Horario académico no encontrado');
-            }
-
-            // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calAdminCp->rutaArchivo);
-
-            // Devolver la respuesta con el contenido del archivo
-            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+            $carrera->save();
+            return back()->with("resCarreraPregrado", "Carrera registrada con exito");
 
         }
 
@@ -371,6 +361,5 @@ class VistasAdminController extends Controller
             return back()->with('respuestaContactoCrear', 'Facultad creada correctamente');
 
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

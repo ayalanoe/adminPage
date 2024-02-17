@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalendarioAdminCx;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Models\CalendarioAdministrativo;
 
-use App\Models\User;
 use App\Models\CalendarioClase;
 use App\Models\Contacto;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+
 
 class VistasPublicasController extends Controller
 {
@@ -22,9 +19,6 @@ class VistasPublicasController extends Controller
             return view('AcademicaFMO/directorio', ['directorio' => $contactos]);
         }
     //---------------------------------------------------------------------------------------------------
-
-
-
 
 
     //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
@@ -49,16 +43,16 @@ class VistasPublicasController extends Controller
 
         public function verPublicCalendarioAdministrativo(){
             
-            $calAdminCx = CalendarioAdminCx::first();
+            $calAdmin = CalendarioAdministrativo::first();
 
             
-            if (!$calAdminCx) {
+            if (!$calAdmin) {
 
                 return back()->with('errorPublicCalAdmin','Aún no se ha subido calendario administrativo');
             }
 
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calAdminCx->rutaArchivo);
+            $contenidoArchivo = Storage::get($calAdmin->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');

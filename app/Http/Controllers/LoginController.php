@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -76,6 +75,7 @@ class LoginController extends Controller
         //Resetear la sesion para evitar que quede algo abierto 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        
         
         return redirect(route('login'));
 

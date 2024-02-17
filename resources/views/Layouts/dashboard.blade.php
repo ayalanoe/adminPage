@@ -89,7 +89,7 @@
                         </a>
                         <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Carreras de Pregrado</a>
+                                <a href="{{ route('carrerasPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Carreras de Posgrado</a>
@@ -109,7 +109,7 @@
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Calendario Administrativo</a>
+                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link">Calendario Administrativo</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>

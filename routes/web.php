@@ -37,16 +37,14 @@ Route::get('/', function () {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-/*//---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
-
-    - La estructura de la primer ruta consiste en: get es la peticion http, y recibe 2 parametros. El primero es la ruta que se pasará 
-    la cual se escribe entre comillas y el otro parametro es un arreglo el cual contine la clase controladora y la funcion dentro de esa clase.
-    ->name que lo que hace es asignar un nombre a la ruta que 
-    hemos establcido para poder llamar a esa ruta en el codigo, sale mejor llamar la ruta por el nombre en lugar de pasar toda la ruta 
-    en una varible o en un lugar donde se necesite.
-*/
+//---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
+    /*
+        - La estructura de la primer ruta consiste en: get es la peticion http, y recibe 2 parametros. El primero es la ruta que se pasará 
+        la cual se escribe entre comillas y el otro parametro es un arreglo el cual contine la clase controladora y la funcion dentro de esa clase.
+        ->name que lo que hace es asignar un nombre a la ruta que 
+        hemos establcido para poder llamar a esa ruta en el codigo, sale mejor llamar la ruta por el nombre en lugar de pasar toda la ruta 
+        en una varible o en un lugar donde se necesite.
+    */
 
     //Rutas para el inicio de sesion y poder ingresar al dashboard
     Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
@@ -70,14 +68,11 @@ Route::get('/', function () {
     Route::get('/calendario-academico/{id}', [VistasAdminController::class, 'verHorarioClases'])->name('contenidoCalendarioAcademico')->middleware('auth');
 
 
-    Route::get('/gestion-cal-administrativo', [VistasAdminController::class, 'mostrarVistaCalendarioAdmin'])->name('mosrarCalendarios');
-    Route::post('/subir-calendarioA-cx', [VistasAdminController::class, 'subirArchivoCalAdminCx'])->name('subirCalAdminCx');
-    Route::post('/subir-calendarioA-cp', [VistasAdminController::class, 'subirArchivoCalAdminCp'])->name('subirCalAdminCp');
-    Route::delete('/eliminar-calendarioA-cx/{id}', [VistasAdminController::class, 'eliminarCalAdminCx'])->name('eliminarCalAdminCx');
-    Route::delete('/eliminar-calendarioA-cp/{id}', [VistasAdminController::class, 'eliminarCalAdminCp'])->name('eliminarCalAdminCp');
-    Route::get('/calendario-admin-cx/{id}', [VistasAdminController::class, 'verCalAdminCx'])->name('mostrarCalAdminCx');
-    Route::get('/calendario-admin-cp/{id}', [VistasAdminController::class, 'verCalAdminCp'])->name('mostrarCalAdmindCp');
-
+    Route::get('/gestion-cal-administrativo', [VistasAdminController::class, 'mostrarVistaCalendarioAdmin'])->name('mostrarCalendarioAdmin');
+    Route::post('/subir-calendarioAdmin', [VistasAdminController::class, 'subirArchivoCalAdmin'])->name('subirCalAdmin');
+    Route::delete('/eliminar-calendarioAdmin/{id}', [VistasAdminController::class, 'eliminarCalAdmin'])->name('eliminarCalAdmin');
+    Route::get('/calendario-admin/{id}', [VistasAdminController::class, 'verCalAdmin'])->name('mostrarCalAdmin');
+    
 
     Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
     Route::delete('/usuarios/{id}', [VistasAdminController::class, 'destroy'])->name('usuarios.destroy');
@@ -90,11 +85,8 @@ Route::get('/', function () {
 
     Route::view('/crear-anuncio', 'VistasAdministrador/crearAnuncios')->name('crearAnuncio');
 
-
-
-    
-    Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
-    Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
+    Route::get('/gestion-carrerasPregrado', [VistasAdminController::class, 'gestionCarrerasPregrado'])->name('carrerasPregrado');
+    Route::post('/registrar-carrera-pregrado', [VistasAdminController::class, 'registrarCarreraPregrado'])->name('carreraPregradoIngresar');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
