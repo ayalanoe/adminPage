@@ -93,8 +93,8 @@ Route::get('/', function () {
 
 
     
-    Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
-    Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
+   // Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
+    //Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
