@@ -87,11 +87,10 @@ Route::get('/', function () {
 
 
 
-    
+
+    //Este es un comentario para el push
     Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
     Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
-
-
     Route::get('/gestion-carrerasPregrado', [VistasAdminController::class, 'gestionCarrerasPregrado'])->name('carrerasPregrado');
     Route::post('/registrar-carrera-pregrado', [VistasAdminController::class, 'registrarCarreraPregrado'])->name('carreraPregradoIngresar');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
