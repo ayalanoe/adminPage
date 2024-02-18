@@ -125,7 +125,7 @@
                         </a>
                         <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="{{ route('gestionAnuncios') }}" class="sidebar-link">Registro de Anuncios</a>
                             </li>
                             
                         </ul>
@@ -157,13 +157,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectFacultad" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#GaleriaAcademica" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-image pe-2"></i>
                             Galería Institucional
                         </a>
-                        <ul id="DirectFacultad" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="GaleriaAcademica" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionFacultades') }}" class="sidebar-link">Ver Directorio</a>
+                                <a href="{{ route('gestionGaleria') }}" class="sidebar-link">Gestionar Galería</a>
                             </li>
                             
                         </ul>

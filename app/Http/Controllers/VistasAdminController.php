@@ -13,6 +13,8 @@ use App\Models\CalendarioClase;
 use App\Models\Carrera;
 use App\Models\Contacto;
 use App\Models\Facultad;
+use App\Models\Galeria;
+use App\Models\Anuncios;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -362,4 +364,23 @@ class VistasAdminController extends Controller
 
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ------------------------------------------------------------------------------------
+        public function verGaleria()
+        {
+            $galeria = Galeria::all();
+            return view('VistasAdministrador/gestionGaleria', ['directorio' => $galeria]);
+        }
+
+
+        //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
+        public function verAnuncios()
+        {
+            $anuncios = Anuncios::all();
+            return view('VistasAdministrador/gestionAnuncios', ['directorio' => $anuncios]);
+        }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 }
