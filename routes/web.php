@@ -91,8 +91,17 @@ Route::get('/', function () {
     //Este es un comentario para el push
     Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
     Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
+
+
     Route::get('/gestion-carrerasPregrado', [VistasAdminController::class, 'gestionCarrerasPregrado'])->name('carrerasPregrado');
     Route::post('/registrar-carrera-pregrado', [VistasAdminController::class, 'registrarCarreraPregrado'])->name('carreraPregradoIngresar');
+    Route::delete('/eliminar-carrera-pregrado/{id}', [VistasAdminController::class, 'eliminarCarreraPregado'])->name('eliminarCarreraDePregrado');
+    Route::get('/editar-carrera-pregrado/{id}',[VistasAdminController::class, 'editarCarreraPregrado'])->name("editarCarreraDePregrado");
+    Route::delete('/eliminarPdf-carreraPregado/{id}', [VistasAdminController::class, 'eliminarPlanCarreraPregrado'])->name("eliminarPdfCarreraPregrado");
+    Route::post('/new-plan-carreraPregrado/{id}', [VistasAdminController::class, 'subirNuevoPlanCarrPregrado'])->name('nuevoPlanCarrPregado');
+    Route::post('/new-datos-carreraPregrado/{id}', [VistasAdminController::class, 'guardarNewDatosCarreraPregrado'])->name('guardarNuevosDatosCarrPre');
+    Route::get('/cancelar-update-carreraPregrado', [VistasAdminController::class, 'cancelarActulizarCarreraPregrado'])->name('cancelarCarrPre');
+    Route::get('/ver-plan-carrerPregrado/{id}', [VistasAdminController::class, 'verPlanCarreraPregrado'])->name('verPlanCarrPre');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
