@@ -197,6 +197,7 @@ class VistasAdminController extends Controller
             return back()->with('respuestaContactoCrear', 'Contacto creado correctamente');
 
         }
+
         public function eliminarContactoDirectorio($id)
         {
             $contacto = Contacto::find($id);
@@ -313,7 +314,12 @@ class VistasAdminController extends Controller
         
         public function gestionCarrerasPregrado()
         {
-            return view("VistasAdministrador/gestionCarrerasPregrado");
+            $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+
+            return view("VistasAdministrador/gestionCarrerasPregrado", [
+
+                'carrerasPregrado' => $carrerasDePregrado
+            ]);
         }
 
         public function registrarCarreraPregrado(Request $request)
@@ -341,9 +347,125 @@ class VistasAdminController extends Controller
 
         }
 
+        public function eliminarCarreraPregado($id)
+        {
+            $carrera = Carrera::find($id);
+
+            if (!$carrera) {
+                return back()->with('error', 'Carrera no encontrada');
+            }
+        
+            $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            // Eliminar el archivo utilizando el sistema de archivos de Laravel
+            if (Storage::disk('local')->exists($rutaArchivo)) {
+                Storage::disk('local')->delete($rutaArchivo);
+            }
+        
+            // Eliminar el registro de la base de datos
+            $carrera->delete();
+        
+            return back()->with('resEliminarCarreraPregrado', 'Carrera eliminada correctamente');
+        }
+
+        public function editarCarreraPregrado($id)
+        {
+            $carrera = Carrera::find($id);
+
+            return view("VistasAdministrador/editarCarreraPregrado", [
+
+                'carreraPregradoEdit' => $carrera
+            ]);
+        }
+
+        public function eliminarPlanCarreraPregrado($id)
+        {
+            $carreraEliminar = Carrera::find($id);
+            $rutaEliminar = $carreraEliminar->rutaArchivo;
+
+            if (Storage::exists($rutaEliminar)) {
+                
+                Storage::delete($rutaEliminar);
+            }
+
+            // Actualizar el modelo
+            $carreraEliminar->rutaArchivo = "-"; // O puedes asignar una cadena vacía: ''
+            $carreraEliminar->estadoArchivo = false;
+            $carreraEliminar->save();
+
+            return back()->with("resEliminarPdfCarPre", "Archivo eliminado correctamente");
+
+        }
+        
+        public function subirNuevoPlanCarrPregrado(Request $datos, $id)
+        {
+            $carreraNewPlan = Carrera::find($id);
+
+            $datos->validate([
+                'editNewPlanCarPre' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $datos->file('editNewPlanCarPre');
+            $ruta = Storage::disk('local')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
+
+            $carreraNewPlan->rutaArchivo = $ruta;
+            $carreraNewPlan->estadoArchivo = true;
+
+            $carreraNewPlan->save();
+            
+            return back()->with("resSubirNewPlanCarrPre", "Archivo subido con exito !!");
+            
+        }
+
+        public function guardarNewDatosCarreraPregrado(Request $nuevosDatos, $id)
+        {
+            $carreNewDatos = Carrera::find($id);
+
+            if ($carreNewDatos->estadoArchivo) {
+
+                $carreNewDatos->carrera = $nuevosDatos->editarNombreCarreraPre;
+                $carreNewDatos->codigoCarrera = $nuevosDatos->editarCodigoCarreraPre;
+                $carreNewDatos->departamento = $nuevosDatos->editarDeptoCarreraPre;
+
+                $carreNewDatos->save();
 
 
-//----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ------------------------------------------------------------------------------------
+                return redirect(route('carrerasPregrado'))->with("resUpdateCarrPre", 'Carrera de pregrado actulizada');
+            }
+            else{
+
+                return back()->with("resSinArchivoCarrePre", 'Tiene que subir un plan de estudios');
+            }
+
+        }
+
+        public function verPlanCarreraPregrado($id)
+        {
+            $plan = Carrera::find($id);
+            
+            /*
+            if (!$plan) {
+                return redirect()->route('subirHorarioClases')->with('error', 'Horario académico no encontrado');
+            }*/
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+
+        }
+
+        public function cancelarActulizarCarreraPregrado()
+        {
+            return redirect(route('carrerasPregrado'));
+            
+        }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    //----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ------------------------------------------------------------------------------------
         public function verDatosFacultad()
         {
             $facultadnacional = Facultad::all();

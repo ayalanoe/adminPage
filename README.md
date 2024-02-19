@@ -1,3 +1,16 @@
+## Acerca de los programadores:
+    José Noé Ayala con una basta experiencia en el front y que su delicadeza en cada diseño hace que el tabajo parezca 
+    apetecible y llamativo al usuario.
+
+    José David Del Cid experto en el back con un amplio conocimiento en como se debe desarrollar la logica y funcionamiento de un sitio web
+
+    Estudiantes de la Universidad del El Salvador
+    Facultad Multidisciplinaria Oriental
+
+    Hacia la libertad por la cultura ...
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

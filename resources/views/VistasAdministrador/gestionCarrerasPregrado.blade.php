@@ -5,9 +5,57 @@
 
     <div class="container">
         <h2>Carreras de Pregrado</h2>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Codigo_Carrera</th>
+                <th scope="col">Tipo_Carrera</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                $numero = 1 
+                @endphp
+        
+                @foreach ($carrerasPregrado as $carrera)
+                <tr>
+                    <th scope="row">{{$numero}}</th>  
+                    <td>{{$carrera->carrera}}</td>
+                    <td>{{$carrera->codigoCarrera}}</td>
+                    <td>{{$carrera->tipoCarrera}}</td>
+                    <td>{{$carrera->departamento}}</td><!--Actualizar agregando campo tramites-->
+                    <td class="d-flex">
+        
+                        <form class="formEliminarCarreraPergrado" action="{{ route('eliminarCarreraDePregrado', $carrera->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                        </form> 
+                        
+                        <a href="{{ route('editarCarreraDePregrado', $carrera->id) }}" class="btn btn-primary mx-1">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        
+                        
+                    </td>
 
+                </tr>
+                @php
+                    $numero++
+                @endphp
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
+
+
+    <!-- Bton para poder insertar una carrera de pregrado -->
     <div class="container">
         <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPregrado"><i class="fa-solid fa-plus"></i> Agregar Carrera PreGrado</button>
     </div>
@@ -101,14 +149,58 @@
 
 @section('jsVistasAdmin')
 
-@if (Session::has('resCarreraPregrado'))
+    <!-- Para preguntar si está de acuerdo con eliminar la carrera -->
+    <script>
+        $('.formEliminarCarreraPergrado').on('submit', function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: "¿Está seguro?",
+                text: "Se eliminará la carrera",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit()
+                } 
+            });
+
+        })
+    </script>
+
+    @if (Session::has('resCarreraPregrado'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resCarreraPregrado') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('resEliminarCarreraPregrado'))
     <script>
         Swal.fire({
             title: "Informacion",
-            text: "{{ session('resCarreraPregrado') }}",
+            text: "{{ session('resEliminarCarreraPregrado') }}",
+            icon: "success"
+        });
+    </script>  
+    @endif
+
+    @if (Session::has('resUpdateCarrPre'))
+    <script>
+        Swal.fire({
+            title: "Informacion",
+            text: "{{ session('resUpdateCarrPre') }}",
             icon: "success"
         });
     </script>  
 @endif
-    
+
+
+        
 @endsection
