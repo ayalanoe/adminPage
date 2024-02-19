@@ -233,10 +233,10 @@ nav ul li a:hover{
 }
 
 .container__vector img{
-    position: absolute;
     bottom: -80px;
     right: 0px;
     width: 500px;
+    height: 300px;
     animation: move_vector 6s ease-in-out infinite;
     transition: all 300ms;
 }
