@@ -5,7 +5,10 @@
 
     <div class="container">
         <h2>Carreras de Pregrado</h2>
-        
+        <a href="{{ route('regresarA_Departamentos') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Ver Departementos</a>
+        <br>
+        <br>
+    
         <table class="table table-hover">
             <thead>
                 <tr>

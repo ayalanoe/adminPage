@@ -42,7 +42,7 @@
             </tbody>
         </table>
 
-        <form class="formEnviarNewPlan" action="{{ route('guardarNuevosDatosCarrPre', $carreraPregradoEdit->id) }}" method="POST">
+        <form class="formEnviarNewPlan" action="{{ route('guardarNuevosDatosCarrPre', ['id' => $carreraPregradoEdit->id, 'depto' => $carreraPregradoEdit->departamento]) }}" method="POST">
             @csrf
             
             <div class="col-md-12">
@@ -98,7 +98,7 @@
 
             <br>
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('cancelarCarrPre') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('cancelarCarrPre', ['depto' => $carreraPregradoEdit->departamento]) }}" class="btn btn-secondary">Cancelar</a>
             
         </form>
 

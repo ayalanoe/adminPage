@@ -310,9 +310,9 @@ class VistasAdminController extends Controller
     
     //----------------------------- FUCIONES PARA LOS PLANES DE ESTUDIO DE PREGRADO -------------------------------------------------------------------------------------------------------------
         
-        public function gestionCarrerasPregrado()
+        public function gestionCarrerasPregrado(string $departamento)
         {
-            $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->where('departamento', $departamento)->get();
 
             return view("VistasAdministrador/gestionCarrerasPregrado", [
 
@@ -415,7 +415,7 @@ class VistasAdminController extends Controller
             
         }
 
-        public function guardarNewDatosCarreraPregrado(Request $nuevosDatos, $id)
+        public function guardarNewDatosCarreraPregrado(Request $nuevosDatos, $id, string $depto)
         {
             $carreNewDatos = Carrera::find($id);
 
@@ -428,7 +428,7 @@ class VistasAdminController extends Controller
                 $carreNewDatos->save();
 
 
-                return redirect(route('carrerasPregrado'))->with("resUpdateCarrPre", 'Carrera de pregrado actulizada');
+                return redirect(route('carrerasPregrado', ['departamento' => $depto]))->with("resUpdateCarrPre", 'Carrera de pregrado actulizada');
             }
             else{
 
@@ -454,10 +454,9 @@ class VistasAdminController extends Controller
 
         }
 
-        public function cancelarActulizarCarreraPregrado()
+        public function cancelarActulizarCarreraPregrado(string $depto)
         {
-            return redirect(route('carrerasPregrado'));
-            
+            return redirect()->route('carrerasPregrado', ['departamento' => $depto]);
         }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -755,15 +754,25 @@ class VistasAdminController extends Controller
             
         }
 
-
-        
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ------------------------------------------------------------------------------------
+    //----------------------------------------- FILTRO POR DEPARTAMENTO PARA LA GESTION DE CARRERAS --------------------------------------------------------------------------------
+        public function filtrarDepartamento()
+        {
+            return view('VistasAdministrador/departamentosPregrado');
+        }
+
+        public function regresarAdepartementos()
+        {
+            return redirect()->route('departamentosPregrado');
+        }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES ------------------------------------------------------------------------------------
         public function verDatosFacultad()
         {
-            $facultadnacional = Facultad::all();
-            return view('VistasAdministrador/gestionFacultades', ['directorio' => $facultadnacional]);
+            $facultades = Facultad::all();
+            return view('VistasAdministrador/gestionFacultades', ['facultad' => $facultades]);
         }
 
 
@@ -776,9 +785,42 @@ class VistasAdminController extends Controller
             $contFacultad->contacto = $request->numeroFacultad;
 
             $contFacultad->save();
-            return back()->with('respuestaContactoCrear', 'Facultad creada correctamente');
+            return back()->with('respuestaFacultadCrear', 'Facultad creada correctamente');
 
         }
+
+        public function eliminarFacultad($id)
+        {
+            $facultad = Facultad::find($id);
+
+            if (!$facultad) {
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorFacultad', 'Facultad no encontrado');
+            }
+
+            $facultad->delete();
+            return back()->with('facultadEliminarRespuesta', 'Facultad eliminado correctamente');
+        }
+
+        public function editarDatosFacultad(Request $request, $id){
+            
+            $facultad = Facultad::find($id);
+
+            if (!$facultad) {
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorFacultad', 'Facultad no encontrado');
+            }
+
+            $facultad->facultad = $request->editarNombreFacultad;
+            $facultad->correo = $request->editarCorreoFacultad;
+            $facultad->contacto = $request->editarNumeroFacultad;
+
+
+            $facultad->save();
+            return back()->with('respuestaEditarFacultad', 'Facultad actualizada correctamente');
+        }
+
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
