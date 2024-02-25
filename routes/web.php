@@ -115,6 +115,13 @@ Route::get('/', function () {
 
     Route::get('gestion-anuncios', [VistasAdminController::class, 'verAnuncios'])->name('gestionAnuncios');
 
+
+
+
+
+
+    Route::get('gestion-horario-atencion', [VistasAdminController::class, 'verHorarioAtencion'])->name('gestionHorario');
+
 //---------------------------------- OTRAS RUTAS QUE PUEDAS OCUPAR --------------------------------------
 
 // -----------------------------------------------------------------------------------------------------

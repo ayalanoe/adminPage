@@ -168,6 +168,19 @@
                             
                         </ul>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#HorarioAdministrativo" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-clock pe-2"></i>
+                            Horario de Atención
+                        </a>
+                        <ul id="HorarioAdministrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('gestionHorario') }}" class="sidebar-link">Horario Actual</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>

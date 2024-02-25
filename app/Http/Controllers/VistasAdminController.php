@@ -15,6 +15,7 @@ use App\Models\Contacto;
 use App\Models\Facultad;
 use App\Models\Galeria;
 use App\Models\Anuncios;
+use App\Models\HorarioAtencion;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -504,5 +505,10 @@ class VistasAdminController extends Controller
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+    //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
+    public function verHorarioAtencion()
+    {
+        $horarioA = HorarioAtencion::all();
+        return view('VistasAdministrador/gestionHorario', ['directorio' => $horarioA]);
+    }
 }
