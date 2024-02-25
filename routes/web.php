@@ -25,6 +25,8 @@ Route::get('/', function () {
 /*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
     Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
+    Route::get('/AcademicaFMO/contacto-facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
+
     Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
     Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, 'verPlanes'])->name('planes');

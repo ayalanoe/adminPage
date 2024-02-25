@@ -6,6 +6,7 @@ use App\Models\CalendarioAdministrativo;
 
 use App\Models\CalendarioClase;
 use App\Models\Contacto;
+use App\Models\Facultad;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -83,8 +84,8 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ----------------------------------------------------------------------------------------------------------
     public function verFacultadesNacional()
     {
-        $contactos = Facultad::all();
-        return view('AcademicaFMO/facultades', ['directorio' => $contactos]);
+        $facultades = Facultad::all();
+        return view('AcademicaFMO/facultades', ['facultad' => $facultades]);
     }
 //---------------------------------------------------------------------------------------------------
 

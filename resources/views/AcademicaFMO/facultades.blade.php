@@ -13,8 +13,8 @@
     <div class="card border-0">
         <div class="card-header">
             <div class="container">
-                <h2>DIRECTORIO</h2>
-                <p>CONTACTOS DE ACADEMICA...</p>
+                <h2>CONTACTOS</h2>
+                <p>LISTA DE FACULTADES</p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -29,10 +29,10 @@
                         $numero = 1 
                         @endphp
                     
-                        @foreach ($directorio as $facultadC)
+                        @foreach ($facultad as $facultadC)
                         <tr>
                             <th scope="row">{{$numero}}</th>  
-                            <td>{{$facultadC->nombre}}</td>
+                            <td>{{$facultadC->facultad}}</td>
                             <td>{{$facultadC->correo}}</td>
                             <td>{{$facultadC->contacto}}</td>
                         </tr>
