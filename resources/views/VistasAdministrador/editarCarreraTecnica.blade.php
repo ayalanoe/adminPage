@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Editar Carrera de pregrado</h2>
+        <h2>Editar Carrera Tecnica</h2>
 
         <br>
         <table class="table table-hover">
@@ -22,34 +22,34 @@
                 @endphp
 
                 <th scope="row">{{$numero}}</th>  
-                @if ($carreraPregradoEdit->estadoArchivo)
+                @if ($carreraTecnicaEdit->estadoArchivo)
                     <td>Archivo_Cargado</td>
                     <td class="d-flex">
-                        <form class="formEliminarPdfCarPre" action="{{ route('eliminarPdfCarreraPregrado', $carreraPregradoEdit->id) }}" method="POST">
+                        <form action="{{ route('eliminarPdfCarreraTecnica', $carreraTecnicaEdit->id) }}" class="formEliminarPdfCarTecnica" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
-                        <a href="{{ route('verPlanCarrPre', $carreraPregradoEdit->id) }}" class="btn btn-primary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{{ route('verPlanCarrTecnica', $carreraTecnicaEdit->id)}}" class="btn btn-primary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 @else
                     <td>Favor subir el plan de estudio</td>
                     <td class="d-flex">  
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAddNuevoPlanCarPre"><i class="fa-sharp fa-solid fa-upload"></i></button>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAddNuevoPlanCarTecnica"><i class="fa-sharp fa-solid fa-upload"></i></button>
                     </td>
                 @endif
             
             </tbody>
         </table>
 
-        <form class="formEnviarNewPlan" action="{{ route('guardarNuevosDatosCarrPre', ['id' => $carreraPregradoEdit->id, 'depto' => $carreraPregradoEdit->departamento]) }}" method="POST">
+        <form action="{{ route('guardarNuevosDatosCarrTecnica', $carreraTecnicaEdit->id) }}" class="formEnviarNewPlanPosgrado" method="POST">
             @csrf
             
             <div class="col-md-12">
                 <label for="validationCustomUser" class="form-label">Tipo de Carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
-                    <input name="editarTipoCarreraPre" type="text" class="form-control" id="validaUser" value="Carrera_Pregrado" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
+                    <input name="editarTipoCarreraTecnica" type="text" class="form-control" id="validaUser" value="Carrera_Tecnica" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                 <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
-                    <input value="{{$carreraPregradoEdit->carrera}}" name="editarNombreCarreraPre" type="text" class="form-control" id="validaUser" required>
+                    <input value="{{$carreraTecnicaEdit->carrera}}" name="editarNombreCarreraTecnica" type="text" class="form-control" id="validaUser" required>
                     <div class="valid-feedback">
                         Carrera invalida!
                     </div>
@@ -71,7 +71,7 @@
                 <label for="validationCustomCorreo" class="form-label">Codigo de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-file-lines"></i></span>
-                    <input value="{{$carreraPregradoEdit->codigoCarrera}}" name="editarCodigoCarreraPre" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
+                    <input value="{{$carreraTecnicaEdit->codigoCarrera}}" name="editarCodigoCarreraTecnica" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
                         Codigo no valido!
                     </div>
@@ -81,7 +81,7 @@
             <br>
             <div class="col-md-12">
                 <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                <input value="{{$carreraPregradoEdit->departamento}}" name="editarDeptoCarreraPre" class="form-control" list="datalistOptions" id="exampleDataList">
+                <input value="{{$carreraTecnicaEdit->departamento}}" name="editarDeptoCarreraTecnica" class="form-control" list="datalistOptions" id="exampleDataList">
                 <datalist id="datalistOptions">
                     <option value="Ingeniería y Arquitectura">
                     <option value="Medicina">
@@ -97,33 +97,33 @@
             </div>
 
             <br>
+            <a href="{{route('cancelarCarrTecnica')}}" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('cancelarCarrPre', ['depto' => $carreraPregradoEdit->departamento]) }}" class="btn btn-secondary">Cancelar</a>
-            
         </form>
-
+        
     </div>
 
 
     <!------------- Modal para subir el archivo pdf nuevamente el pdf del plan de estudio de la carrera de pregrado -->
-    <div class="modal fade" id="modalAddNuevoPlanCarPre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalAddNuevoPlanCarTecnica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
     
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Subir pdf del plna de estudio</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Subir pdf del plan de estudio</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('nuevoPlanCarrPregado', $carreraPregradoEdit->id) }}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
+
+                    <form action="{{ route('nuevoPlanCarrTecnica', $carreraTecnicaEdit->id)}}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
                         @csrf
 
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="editNewPlanCarPre" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="editNewPlanCarTecnica" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>
@@ -148,7 +148,7 @@
 
 <script>
 
-    $('.formEliminarPdfCarPre').on('submit', function(e){
+    $('.formEliminarPdfCarTecnica').on('submit', function(e){
         e.preventDefault();
 
         Swal.fire({
@@ -168,34 +168,35 @@
     })
 </script>
 
-    @if (Session::has('resEliminarPdfCarPre'))
+    @if (Session::has('resEliminarPdfCarTecnica'))
         <script>
             Swal.fire({
                 title: "Información",
-                text: "{{ session('resEliminarPdfCarPre') }}",
+                text: "{{ session('resEliminarPdfCarTecnica') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resSubirNewPlanCarrPre'))
+    @if (Session::has('resSubirNewPlanCarrTecnica'))
         <script>
             Swal.fire({
                 title: "Información",
-                text: "{{ session('resSubirNewPlanCarrPre') }}",
+                text: "{{ session('resSubirNewPlanCarrTecnica') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resSinArchivoCarrePre'))
+    @if (Session::has('resSinArchivoCarreTecnica'))
         <script>
             Swal.fire({
                 title: "Información",
-                text: "{{ session('resSinArchivoCarrePre') }}",
+                text: "{{ session('resSinArchivoCarreTecnica') }}",
                 icon: "error"
             });
         </script>  
     @endif
+
     
 @endsection

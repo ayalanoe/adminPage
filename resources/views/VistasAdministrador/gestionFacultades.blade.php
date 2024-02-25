@@ -19,7 +19,7 @@
           $numero = 1 
         @endphp
 
-        @foreach ($directorio as $facultadC)
+        @foreach ($facultad as $facultadC)
           <tr>
             <th scope="row">{{$numero}}</th>  
             <td>{{$facultadC->facultad}}</td>
@@ -27,13 +27,13 @@
             <td>{{$facultadC->contacto}}</td>
             <td class="d-flex">
 
-              <form class="formEliminarContacto" action="{{route('eliminarContacto', $facultadC->id) }}" method="POST">
+              <form action="{{ route('eliminarFacultad', $facultadC->id) }}" class="formEliminarFacultad" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
               </form> 
 
-              <button type="button" class="btn btn-primary mx-1 btnAbrirModalEditarContacto" data-bs-toggle="modal" data-bs-target="#modalEditarContacto{{$facultadC->id}}"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button type="button" class="btn btn-primary mx-1 btnAbrirModalEditarContacto" data-bs-toggle="modal" data-bs-target="#modalEditarFacultad{{$facultadC->id}}"><i class="fa-solid fa-pen-to-square"></i></button>
             </td>
           </tr>
           @php
@@ -108,26 +108,26 @@
     </div>
   </div>
 
-  @foreach ($directorio as $contactoId)
+  @foreach ($facultad as $facultadId)
 
-    <div role="" class="modal fade" id="modalEditarContacto{{$contactoId->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div role="" class="modal fade" id="modalEditarFacultad{{$facultadId->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar contacto</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Facultad</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
 
-            <form action="{{ route('editarContacto', $contactoId->id) }}" id="formEditarContacto" method="POST" class="row g-3 needs-validation" novalidate>
+            <form action="{{ route('editarFacultad', $facultadId->id) }}" id="formEditarContacto" method="POST" class="row g-3 needs-validation" novalidate>
               @csrf
 
               <div class="col-md-12">
-                <label for="validationCustomUser" class="form-label">Nombre Completo</label>
+                <label for="validationCustomUser" class="form-label">Nombre Facultad</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
-                  <input value="{{$contactoId->nombre}}" name="editarNombreContacto" type="text" class="form-control" id="txtEditarNombreContacto" required>
+                  <input value="{{$facultadId->facultad}}" name="editarNombreFacultad" type="text" class="form-control" id="txtEditarNombreContacto" required>
                   <div class="valid-feedback">
                     Nombre invalido!
                   </div>
@@ -138,7 +138,7 @@
                 <label for="validationCustomCorreo" class="form-label">Correo Electrónico</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
-                  <input value="{{$contactoId->correo}}" name="editarCorreoContacto" type="text" class="form-control" id="txtEditarCorreoContacto" aria-describedby="inputGroupPrepend" required>
+                  <input value="{{$facultadId->correo}}" name="editarCorreoFacultad" type="text" class="form-control" id="txtEditarCorreoContacto" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Correo no valido!
                   </div>
@@ -149,23 +149,13 @@
                 <label for="validationCustomCorreo" class="form-label">Contacto</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
-                  <input value="{{$contactoId->contacto}}" name="editarNumeroContacto" type="text" class="form-control" id="txtEditarContacto" aria-describedby="inputGroupPrepend" required>
+                  <input value="{{$facultadId->contacto}}" name="editarNumeroFacultad" type="text" class="form-control" id="txtEditarContacto" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Correo no valido!
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-12">
-                <label for="validationCustomCorreo" class="form-label">Trámites a cargo</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-list"></i></span>
-                  <textarea name="editarTramitesAcargo" type="text" class="form-control" id="txtEditarTramiteContacto" aria-describedby="inputGroupPrepend" required>{{$contactoId->tramitesAsignado}}</textarea>
-                  <div class="invalid-feedback">
-                    Ingrese un texto valido.
-                  </div>
-                </div>
-              </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelEditarContacto">Cancelar</button>
@@ -185,7 +175,7 @@
 
 @section('jsVistasAdmin')
   <script>
-    $('.formEliminarContacto').on('submit', function(e){
+    $('.formEliminarFacultad').on('submit', function(e){
       e.preventDefault();
       Swal.fire({
         title: "¿Está seguro?",
@@ -204,41 +194,41 @@
   </script>
 
 
-  @if (Session::has('respuestaContactoCrear'))
+  @if (Session::has('respuestaFacultadCrear'))
     <script>
       Swal.fire({
           title: "Informacion",
-          text: "{{ session('respuestaContactoCrear') }}",
+          text: "{{ session('respuestaFacultadCrear') }}",
           icon: "success"
       });
     </script>  
   @endif
 
-  @if (Session::has('contactoEliminarRespuesta'))
+  @if (Session::has('facultadEliminarRespuesta'))
     <script>
       Swal.fire({
         title: "Informacion",
-        text: "{{ session('contactoEliminarRespuesta') }}",
+        text: "{{ session('facultadEliminarRespuesta') }}",
         icon: "success"
       });
     </script>  
   @endif
 
-  @if (Session::has('respuestaEditarContacto'))
+  @if (Session::has('respuestaEditarFacultad'))
     <script>
       Swal.fire({
         title: "Informacion",
-        text: "{{ session('respuestaEditarContacto') }}",
+        text: "{{ session('respuestaEditarFacultad') }}",
         icon: "success"
       });
     </script>  
   @endif
 
-  @if (Session::has('errorContacto'))
+  @if (Session::has('errorFacultad'))
     <script>
       Swal.fire({
         title: "Informacion",
-        text: "{{ session('errorContacto') }}",
+        text: "{{ session('errorFacultad') }}",
         icon: "error"
       });
     </script>  

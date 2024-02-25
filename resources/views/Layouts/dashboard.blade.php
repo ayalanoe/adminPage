@@ -89,13 +89,13 @@
                         </a>
                         <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
+                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Carreras de Posgrado</a>
+                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Carreras Técnicas</a>
+                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
                             </li>
                         </ul>
                     </li>

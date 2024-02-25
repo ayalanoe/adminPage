@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalendarioAdminCp;
-use App\Models\CalendarioAdminCx;
 use App\Models\CalendarioAdministrativo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -311,11 +309,11 @@ class VistasAdminController extends Controller
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-    //----------------------------- FUCIONES PARA LOS PLANES DE ESTUDIO -------------------------------------------------------------------------------------------------------------
+    //----------------------------- FUCIONES PARA LOS PLANES DE ESTUDIO DE PREGRADO -------------------------------------------------------------------------------------------------------------
         
-        public function gestionCarrerasPregrado()
+        public function gestionCarrerasPregrado(string $departamento)
         {
-            $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->where('departamento', $departamento)->get();
 
             return view("VistasAdministrador/gestionCarrerasPregrado", [
 
@@ -418,7 +416,7 @@ class VistasAdminController extends Controller
             
         }
 
-        public function guardarNewDatosCarreraPregrado(Request $nuevosDatos, $id)
+        public function guardarNewDatosCarreraPregrado(Request $nuevosDatos, $id, string $depto)
         {
             $carreNewDatos = Carrera::find($id);
 
@@ -431,7 +429,7 @@ class VistasAdminController extends Controller
                 $carreNewDatos->save();
 
 
-                return redirect(route('carrerasPregrado'))->with("resUpdateCarrPre", 'Carrera de pregrado actulizada');
+                return redirect(route('carrerasPregrado', ['departamento' => $depto]))->with("resUpdateCarrPre", 'Carrera de pregrado actulizada');
             }
             else{
 
@@ -457,20 +455,325 @@ class VistasAdminController extends Controller
 
         }
 
-        public function cancelarActulizarCarreraPregrado()
+        public function cancelarActulizarCarreraPregrado(string $depto)
         {
-            return redirect(route('carrerasPregrado'));
+            return redirect()->route('carrerasPregrado', ['departamento' => $depto]);
+        }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    //----------------------------- FUNCIONES PARA LAS CARRERAS DE POSTGRADO -------------------------------------------------------------------------------------------------------
+        
+        public function gestionCarrerasPosgrado()
+        {
+            $carrerasPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->get();
+
+            return view("VistasAdministrador/gestionCarrerasPosgrado", [
+
+                'carrerasPosgrado' => $carrerasPosgrado
+            ]);
+        }
+
+        public function registrarCarreraPosgrado(Request $request)
+        {
+
+            $carrera = new Carrera();
+
+            $carrera->tipoCarrera = $request->tipoCarreraPosgrado;
+            $carrera->carrera = $request->namePosgradoCarrera;
+            $carrera->codigoCarrera = $request->codigoCarreraPosgrado;
+            $carrera->departamento = $request->departamentoCarreraPosgrado;
+
+            $request->validate([
+                'archivoPosgradoCarrera' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $request->file('archivoPosgradoCarrera');
+            $ruta = Storage::disk('local')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
+
+            $carrera->rutaArchivo = $ruta;
+            $carrera->estadoArchivo = true;
+
+            $carrera->save();
+            return back()->with("resCarreraPosgrado", "Carrera registrada con exito");
+
+        }
+
+        public function editarCarreraPosgrado($id)
+        {
+            $carrera = Carrera::find($id);
+
+            return view("VistasAdministrador/editarCarreraPosgrado", [
+
+                'carreraPosgradoEdit' => $carrera
+            ]);
+        }
+        
+        public function guardarNewDatosCarreraPosgrado(Request $nuevosDatos, $id)
+        {
+            $carreNewDatos = Carrera::find($id);
+
+            if ($carreNewDatos->estadoArchivo) {
+
+                $carreNewDatos->carrera = $nuevosDatos->editarNombreCarreraPos;
+                $carreNewDatos->codigoCarrera = $nuevosDatos->editarCodigoCarreraPos;
+                $carreNewDatos->departamento = $nuevosDatos->editarDeptoCarreraPos;
+
+                $carreNewDatos->save();
+
+                //Se redireige a la vista donde estan todas la carreras de pos grado
+                return redirect(route('carrerasPosgrado'))->with("resUpdateCarrPos", 'Carrera de posgrado actulizada');
+            }
+            else{
+                return back()->with("resSinArchivoCarrePos", 'Tiene que subir un plan de estudios');
+            }
+
+        }
+
+        public function eliminarPlanCarreraPosgrado($id)
+        {
+            $carreraEliminar = Carrera::find($id);
+            $rutaEliminar = $carreraEliminar->rutaArchivo;
+
+            if (Storage::exists($rutaEliminar)) {
+                
+                Storage::delete($rutaEliminar);
+            }
+
+            // Actualizar el modelo
+            $carreraEliminar->rutaArchivo = "-"; // O puedes asignar una cadena vacía: ''
+            $carreraEliminar->estadoArchivo = false;
+            $carreraEliminar->save();
+
+            return back()->with("resEliminarPdfCarPos", "Archivo eliminado correctamente");
+
+        }
+
+        public function subirNuevoPlanCarrPosgrado(Request $datos, $id)
+        {
+            $carreraNewPlan = Carrera::find($id);
+
+            $datos->validate([
+                'editNewPlanCarPos' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $datos->file('editNewPlanCarPos');
+            $ruta = Storage::disk('local')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
+
+            $carreraNewPlan->rutaArchivo = $ruta;
+            $carreraNewPlan->estadoArchivo = true;
+
+            $carreraNewPlan->save();
             
+            return back()->with("resSubirNewPlanCarrPos", "Archivo subido con exito !!");
+            
+        }
+
+        public function verPlanCarreraPosgrado($id)
+        {
+            $plan = Carrera::find($id);
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+
+        }
+
+        public function eliminarCarreraPosgrado($id)
+        {
+            $carrera = Carrera::find($id);
+
+            if (!$carrera) {
+                return back()->with('error', 'Carrera no encontrada');
+            }
+        
+            $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            // Eliminar el archivo utilizando el sistema de archivos de Laravel
+            if (Storage::disk('local')->exists($rutaArchivo)) {
+                Storage::disk('local')->delete($rutaArchivo);
+            }
+        
+            // Eliminar el registro de la base de datos
+            $carrera->delete();
+        
+            return back()->with('resEliminarCarreraPosgrado', 'Carrera eliminada correctamente');
+        }
+
+        public function cancelarActulizarCarreraPosgrado()
+        {
+            return redirect(route('carrerasPosgrado'));
+            
+        }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    //------------------------------- FUNCIONES PARA LAS CARRERAS TECNICAS ---------------------------------------------------------------------------------------------------------
+        
+        public function gestionCarrerasTecnicas()
+        {
+            $carrerasTecnicas = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->get();
+
+            return view("VistasAdministrador/gestionCarrerasTecnicas", [
+
+                'carrerasTecnicas' => $carrerasTecnicas
+            ]);
+        }
+
+        public function registrarCarreraTecnica(Request $request)
+        {
+
+            $carrera = new Carrera();
+
+            $carrera->tipoCarrera = $request->tipoCarreraTecnica;
+            $carrera->carrera = $request->nameCarreraTecnica;
+            $carrera->codigoCarrera = $request->codigoCarreraTecnica;
+            $carrera->departamento = $request->departamentoCarreraTecnica;
+
+            $request->validate([
+                'archivoCarreraTecnica' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $request->file('archivoCarreraTecnica');
+            $ruta = Storage::disk('local')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
+
+            $carrera->rutaArchivo = $ruta;
+            $carrera->estadoArchivo = true;
+
+            $carrera->save();
+            return back()->with("resCarreraTecnica", "Carrera registrada con exito");
+
+        }
+
+        public function editarCarreraTecnica($id)
+        {
+            $carrera = Carrera::find($id);
+
+            return view("VistasAdministrador/editarCarreraTecnica", [
+
+                'carreraTecnicaEdit' => $carrera
+            ]);
+        }
+
+        public function guardarNewDatosCarreraTecnica(Request $nuevosDatos, $id)
+        {
+            $carreNewDatos = Carrera::find($id);
+
+            if ($carreNewDatos->estadoArchivo) {
+
+                $carreNewDatos->carrera = $nuevosDatos->editarNombreCarreraTecnica;
+                $carreNewDatos->codigoCarrera = $nuevosDatos->editarCodigoCarreraTecnica;
+                $carreNewDatos->departamento = $nuevosDatos->editarDeptoCarreraTecnica;
+
+                $carreNewDatos->save();
+
+                //Se redireige a la vista donde estan todas la carreras de pos grado
+                return redirect(route('carrerasTecnicas'))->with("resUpdateCarrTecnica", 'Carrera tecnica actulizada');
+            }
+            else{
+                return back()->with("resSinArchivoCarreTecnica", 'Tiene que subir un plan de estudios');
+            }
+
+        }
+
+        public function eliminarPlanCarreraTecnica($id)
+        {
+            $carreraEliminar = Carrera::find($id);
+            $rutaEliminar = $carreraEliminar->rutaArchivo;
+
+            if (Storage::exists($rutaEliminar)) {
+                
+                Storage::delete($rutaEliminar);
+            }
+
+            // Actualizar el modelo
+            $carreraEliminar->rutaArchivo = "-"; // O puedes asignar una cadena vacía: ''
+            $carreraEliminar->estadoArchivo = false;
+            $carreraEliminar->save();
+
+            return back()->with("resEliminarPdfCarTecnica", "Archivo eliminado correctamente");
+
+        }
+
+        public function subirNuevoPlanCarrTecnica(Request $datos, $id)
+        {
+            $carreraNewPlan = Carrera::find($id);
+
+            $datos->validate([
+                'editNewPlanCarTecnica' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $datos->file('editNewPlanCarTecnica');
+            $ruta = Storage::disk('local')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
+
+            $carreraNewPlan->rutaArchivo = $ruta;
+            $carreraNewPlan->estadoArchivo = true;
+
+            $carreraNewPlan->save();
+            
+            return back()->with("resSubirNewPlanCarrTecnica", "Archivo subido con exito !!");
+            
+        }
+
+        public function verPlanCarreraTecnica($id)
+        {
+            $plan = Carrera::find($id);
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+
+        }
+
+        public function eliminarCarreraTecnica($id)
+        {
+            $carrera = Carrera::find($id);
+
+            if (!$carrera) {
+                return back()->with('error', 'Carrera no encontrada');
+            }
+        
+            $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            // Eliminar el archivo utilizando el sistema de archivos de Laravel
+            if (Storage::disk('local')->exists($rutaArchivo)) {
+                Storage::disk('local')->delete($rutaArchivo);
+            }
+        
+            // Eliminar el registro de la base de datos
+            $carrera->delete();
+        
+            return back()->with('resEliminarCarreraTecnica', 'Carrera eliminada correctamente');
+        }
+
+        public function cancelarActulizarCarreraTecnica()
+        {
+            return redirect(route('carrerasTecnicas'));
+            
+        }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //----------------------------------------- FILTRO POR DEPARTAMENTO PARA LA GESTION DE CARRERAS --------------------------------------------------------------------------------
+        public function filtrarDepartamento()
+        {
+            return view('VistasAdministrador/departamentosPregrado');
+        }
+
+        public function regresarAdepartementos()
+        {
+            return redirect()->route('departamentosPregrado');
         }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-    //----------------------------- FUNCIONES PARA LA GESTION DEL DIRECTORIO PERSONAL ACADÉMICO ------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES ------------------------------------------------------------------------------------
         public function verDatosFacultad()
         {
-            $facultadnacional = Facultad::all();
-            return view('VistasAdministrador/gestionFacultades', ['directorio' => $facultadnacional]);
+            $facultades = Facultad::all();
+            return view('VistasAdministrador/gestionFacultades', ['facultad' => $facultades]);
         }
 
 
@@ -483,12 +786,47 @@ class VistasAdminController extends Controller
             $contFacultad->contacto = $request->numeroFacultad;
 
             $contFacultad->save();
-            return back()->with('respuestaContactoCrear', 'Facultad creada correctamente');
+            return back()->with('respuestaFacultadCrear', 'Facultad creada correctamente');
 
         }
+
+        public function eliminarFacultad($id)
+        {
+            $facultad = Facultad::find($id);
+
+            if (!$facultad) {
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorFacultad', 'Facultad no encontrado');
+            }
+
+            $facultad->delete();
+            return back()->with('facultadEliminarRespuesta', 'Facultad eliminado correctamente');
+        }
+
+        public function editarDatosFacultad(Request $request, $id){
+            
+            $facultad = Facultad::find($id);
+
+            if (!$facultad) {
+                // Manejar el caso donde el usuario no existe
+                return back()->with('errorFacultad', 'Facultad no encontrado');
+            }
+
+            $facultad->facultad = $request->editarNombreFacultad;
+            $facultad->correo = $request->editarCorreoFacultad;
+            $facultad->contacto = $request->editarNumeroFacultad;
+
+
+            $facultad->save();
+            return back()->with('respuestaEditarFacultad', 'Facultad actualizada correctamente');
+        }
+
+
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ------------------------------------------------------------------------------------
+       
         public function verGaleria()
         {
             $galeria = Galeria::all();
@@ -496,14 +834,14 @@ class VistasAdminController extends Controller
         }
 
 
-        //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
-        public function verAnuncios()
-        {
-            $anuncios = Anuncios::all();
-            return view('VistasAdministrador/gestionAnuncios', ['directorio' => $anuncios]);
-        }
+            //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
+            public function verAnuncios()
+            {
+                $anuncios = Anuncios::all();
+                return view('VistasAdministrador/gestionAnuncios', ['directorio' => $anuncios]);
+            }
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
     public function verHorarioAtencion()
