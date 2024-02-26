@@ -16,6 +16,7 @@ class Anuncios extends Model
     protected $fillable = [
         'titulo',
         'cuerpo',
+        'rutaArchivo',
         'fechaPublicacion',
         'fechaExpiracion',
     ];

@@ -122,14 +122,22 @@ Route::get('/', function () {
         Route::delete('/eliminar-facultad/{id}', [VistasAdminController::class, 'eliminarFacultad'])->name('eliminarFacultad');
         Route::post('/editar-facultad/{id}', [VistasAdminController::class, 'editarDatosFacultad'])->name('editarFacultad');
 
+        // Rutas sin terminar (falta revision)
+        Route::get('/crear-anuncioAcademico', [VistasAdminController::class, 'vistaCrarAnuncio'])->name('vistaCrearAnuncio');
+        Route::get('gestion-anuncios', [VistasAdminController::class, 'verAnuncios'])->name('gestionAnuncios');
+        Route::post('/crear-anuncio', [VistasAdminController::class, 'crearAnuncio'])->name('crearAnuncio');    
+        Route::delete('/eliminar-anuncio/{id}',[VistasAdminController::class, 'eliminarAnucio'])->name('eliminarAnuncio');
+        Route::get('/editar-anuncio/{id}', [VistasAdminController::class, 'editarAnuncio'])->name('vistaEditarAnuncio');
+        Route::post('/nuevos-datos-anuncio/{id}', [VistasAdminController::class, 'guardarNuevosDatosAnuncios'])->name('nuevosDatosAnuncio');
+        Route::post('/nueva-imagen-anuncio/{id}', [VistasAdminController::class, 'subirNuevoArchivoAnuncio'])->name('nuevaImagenAnuncio');
+        Route::delete('/eliminar-archivo-anuncio/{id}', [VistasAdminController::class, 'eliminarArchivoAnuncio'])->name('eliminarArchivoAnuncio');
+        Route::get('/ver-archivo-anuncio/{id}', [VistasAdminController::class, 'verArchivoAnuncios'])->name('verArchivoAnuncio');
+        Route::get('/cancelar-editar-anuncio', [VistasAdminController::class, 'cancelarEditarAnuncio'])->name('cancelarEditAnuncio');
+        Route::get('/cancelar-crear-anuncio', [VistasAdminController::class, 'cancelarCrearAnuncio'])->name('cancelarCrearAnuncio');
+
     });
 
-    // Rutas sin terminar (falta revision)
-    Route::view('/crear-anuncio', 'VistasAdministrador/crearAnuncios')->name('crearAnuncio');
-
-    Route::get('gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
-
-    Route::get('gestion-anuncios', [VistasAdminController::class, 'verAnuncios'])->name('gestionAnuncios');
+    Route::get('/gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
 
 //-------------------------------------------------------------------------------------------------------------------------
 

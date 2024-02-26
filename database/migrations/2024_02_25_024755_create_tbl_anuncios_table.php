@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_administrador', function (Blueprint $table) {
+        Schema::create('tbl_anuncios', function (Blueprint $table) {
             $table->id();
-            $table->string('usuario')->unique();
-            $table->text('password');
+            $table->string('titulo', 500);
+            $table->text('cuerpo')->nullable();
+            $table->text('rutaArchivo')->nullable();
+            $table->date('fechaPublicacion');
+            $table->date('fechaExpiracion')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_administrador');
+        Schema::dropIfExists('tbl_anuncios');
     }
 };
