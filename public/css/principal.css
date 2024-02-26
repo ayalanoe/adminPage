@@ -82,13 +82,19 @@ nav ul{
 }
 
 nav ul li{
-    margin: 0px 15px;
+    margin: 0px 10px;
     list-style: none;
+
 }
 
 nav ul li a{
+    background-color: white;
     color: #373737;
     font-size: 14px;
+    text-decoration: none;
+    padding: 10px;
+    white-space: nowrap;
+    border-radius: 12px;
 }
 
 .prueba {
@@ -127,21 +133,41 @@ nav ul li a{
 nav ul li a:hover{
     background-color: #690605;
     color: white;
-    border-radius: 16px;
-    height: 40px;
+    padding: 10px;
+    white-space: nowrap;
+    border-radius: 12px;
 }
 
 .select{
     background: #690605;
-    padding: 10px 30px;
+    padding: 10px;
     color: white;
-    border-radius: 20px;
+    border-radius: 12px;
 }
 
 .nav_mod{
     height: 70px;
     box-shadow: 1px 1px 10px 0px #00000010;
     background: white;
+}
+/*Estilos aplicados en las opciones de cada menu desplegable en principal*/
+.dropdown-menu.show li a {
+   
+    padding: 10px 15px;
+    color: #373737;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-menu.show li a:hover {
+    background-color: #690605;
+    color: white;
+}
+.dropdown-menu.calendario{
+    min-height: 100px; 
+}
+.dropdown-menu.planes{
+    min-height: 180px; 
 }
 
 .btn__menu{
@@ -382,6 +408,7 @@ footer{
     margin-top: 10px;
     color: #690605;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .box__footer a:hover{

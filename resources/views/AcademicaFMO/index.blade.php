@@ -93,20 +93,20 @@
             
     <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">¿Qué trámite deseas realizar?</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">¿SOBRE CUÁL TRÁMITE NECESITAS INFORMACIÓN?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
         
             <ul class="sidebar-nav">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
-                        <i class="fa-solid fa-list pe-2"></i>
-                        Trámites Académicos
-                    </a>
-                    <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">CERTIFICACIONES DE NOTAS</a>
+                        </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Equivalencias</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">EXPEDIENTES DE GRADUACIÓN</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Cambio de Carrera</a>
@@ -135,9 +135,6 @@
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Otros</a>
                         </li>
-                    </ul>
-                </li>
-               
             </ul>
 
 
@@ -156,23 +153,26 @@
                         <li><a href="https://eel.ues.edu.sv/ingreso" target="_blank">NUEVO INGRESO</a></li>
 
                         <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu planes">
                                 <li class="nav-item dropend">
                                     <a class="nav-link" href="{{ route('planes') }}">
-                                            Carreras de Pregrado
+                                            CARRERAS DE PREGRADO
                                     </a>        
                                     <a class="nav-link" href="#">
-                                        Carreras de Posgrado
+                                        CARRERAS DE POSGRADO
                                     </a>        
                                     <a class="nav-link" href="#">
-                                        Carreras Técnicas
+                                        CARRERAS TÉCNICAS
+                                    </a>
+                                    <a class="nav-link" href="#">
+                                        PLANES COMPLEMENTARIOS
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li><a href="{{ route('directorio') }}">DIRECTORIO</a></li>
                         <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu calendario">
                                 <li class="nav-item dropend">
                                     
 
@@ -228,6 +228,13 @@
                                 </a>
 
                 </div>
+               
+                
+            </div>
+
+            <div class="container__cover">
+
+                
                 <div class="container__vector">
                     <div id="carouselExampleFade" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
@@ -249,7 +256,7 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
-                      </div>
+                    </div>
                 </div>
                 
             </div>

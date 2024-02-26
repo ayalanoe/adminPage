@@ -19,10 +19,17 @@
     text-align: center;
   }
 
+ul li a{
 
-  nav a:hover {
-    color: yellow;
-  }
+    text-decoration: none;
+
+}
+ul li a:hover{
+  background-color: white;
+  color: #690605;
+  white-space: nowrap;
+  border-radius: 12px;
+}
 
 
 
