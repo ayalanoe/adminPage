@@ -105,7 +105,6 @@ class VistasAdminController extends Controller
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    
     //--------------------------- FUNCIONES PARA EL CALENDARIO DE CLASES --------------------------------------------------------------------------------------------------------------
         
         public function formularioSubirArchivo()
@@ -769,7 +768,7 @@ class VistasAdminController extends Controller
         }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES ------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES --------------------------------------------------------------------------------------------------------
         public function verDatosFacultad()
         {
             $facultades = Facultad::all();
@@ -825,23 +824,196 @@ class VistasAdminController extends Controller
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ------------------------------------------------------------------------------------
-       
+    //------------------------------ FUNCIONES PARA LA GESTION DE ANUNCIOS -----------------------------------------------------------------------------------------------------------
+    
+        public function verAnuncios()
+        {
+            $listaAnuncios = Anuncios::all();
+            return view('VistasAdministrador/gestionAnunciosAcademicos', ['anuncios' => $listaAnuncios]);
+        }
+
+        public function vistaCrarAnuncio(){
+
+            return view('VistasAdministrador/crearAnuncioAcademico');
+        }
+
+        public function crearAnuncio(Request $datosAnucio)
+        {
+            $anuncio = new Anuncios();
+
+            $anuncio->titulo = $datosAnucio->tituloAnuncio;
+            $anuncio->fechaExpiracion = $datosAnucio->fechaExpiracionAnuncio;
+
+            $datosAnucio->validate([
+                'archivoAnuncio' => 'file|nullable',
+            ]);
+            
+            if ($datosAnucio->hasFile('archivoAnuncio')) {
+
+                $archivo = $datosAnucio->file('archivoAnuncio');
+                $ruta = Storage::disk('local')->put('Archivos_Anunucios', $archivo);
+
+                $anuncio->rutaArchivo = $ruta;
+            } 
+            $anuncio->cuerpo = $datosAnucio->cuerpoAnuncio;
+            
+            //Obtener la fecha actual
+            $fechaActual = date('Y-m-d');
+            $anuncio->fechaPublicacion = $fechaActual;
+
+            $anuncio->save();
+            return redirect()->route('gestionAnuncios')->with('resCrearAnuncio', 'Anuncio creado correctamente');
+            
+        }
+
+
+        public function eliminarAnucio($id)
+        {
+            $anuncio = Anuncios::find($id);
+            
+            if (!$anuncio) {
+
+                return back()->with('anucioEncontrado', 'Anuncio no encontrada');
+            }
+        
+            $rutaArchivo = $anuncio->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            if ($rutaArchivo !== null) {
+    
+                if (Storage::disk('local')->exists($rutaArchivo)) {
+                    Storage::disk('local')->delete($rutaArchivo);
+                }
+            }
+        
+            // Eliminar el registro de la base de datos
+            $anuncio->delete();
+        
+            return back()->with('resEliminarAnuncio', 'Anuncio eliminado correctamente');
+        }
+    
+        public function editarAnuncio($id)
+        {
+            $anuncio = Anuncios::find($id);
+            if (!$anuncio) {
+
+                return back()->with('anucioEncontrado', 'Anuncio no encontrada');
+            }
+
+            return view('VistasAdministrador/editarAnuncioAcademico', [
+
+                'anuncioEditar' => $anuncio
+            ]);
+
+
+        }
+
+        public function guardarNuevosDatosAnuncios(Request $newDatosAnuncio, $id)
+        {
+            $anuncio = Anuncios::find($id);
+            if (!$anuncio) {
+
+                return back()->with('anucioEncontrado', 'Anuncio no encontrada');
+            }
+
+            $anuncio->titulo = $newDatosAnuncio->editarTituloAnuncio;
+            $anuncio->fechaExpiracion = $newDatosAnuncio->editarFechaExpiracion;
+            $anuncio->cuerpo = $newDatosAnuncio->editarCuerpoAnuncio;
+
+            $anuncio->save();
+            return redirect()->route('gestionAnuncios')->with('resEditarAnuncio', 'El anuncio se ha editado correctamente');
+        }
+
+        public function subirNuevoArchivoAnuncio(Request $nuevoArchivo, $id)
+        {
+            $newArchivo = Anuncios::find($id);
+
+            if (!$newArchivo) {
+
+                return back()->with('anucioEncontrado', 'Anuncio no encontrada');
+            }
+
+            $nuevoArchivo->validate([
+                'editarArchivoAnuncio' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+    
+            $archivo = $nuevoArchivo->file('editarArchivoAnuncio');
+            $ruta = Storage::disk('local')->put('Archivos_Anunucios', $archivo); //---> Se establece la ruta
+
+            $newArchivo->rutaArchivo = $ruta;
+
+            $newArchivo->save();
+            
+            return back()->with("resSubirArchivoAnuncio", "Archivo subido con exito !!");
+        }
+
+        public function eliminarArchivoAnuncio($id)
+        {
+            $anuncio = Anuncios::find($id);
+            if (!$anuncio) {
+
+                return back()->with('anucioEncontrado', 'Anuncio no encontrada');
+            }
+
+            $rutaArchivoEliminar = $anuncio->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            // Eliminar el archivo utilizando el sistema de archivos de Laravel
+            if (Storage::disk('local')->exists($rutaArchivoEliminar)) {
+                Storage::disk('local')->delete($rutaArchivoEliminar);
+            }
+
+            $anuncio->rutaArchivo = null;
+            $anuncio->save();
+        
+            return back()->with('resEliminarArchivoAnuncio', 'Archivo del anuncio eliminado correctamente');
+        }
+
+        public function verArchivoAnuncios($id)
+        {
+            $archivo = Anuncios::find($id);
+
+            // Obtener la extensión del archivo
+            $extension = pathinfo($archivo->rutaArchivo, PATHINFO_EXTENSION);
+
+            // Se accede al storage de Laravel para obtener el contenido del archivo
+            $contenidoArchivo = Storage::get($archivo->rutaArchivo);
+
+            // Verificar si la extensión es de un PDF
+            if (strtolower($extension) === 'pdf') {
+                // Devolver la respuesta con el contenido del archivo como PDF
+                return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+                
+            } elseif (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) {
+                // Si es una imagen, devolver la respuesta con el contenido de la imagen
+                return response($contenidoArchivo, 200)->header('Content-Type', 'image/' . $extension);
+            } else {
+                // Si no es ni PDF ni imagen, puedes manejarlo según tus necesidades
+                return response()->json(['error' => 'El archivo no es un PDF o una imagen'], 400);
+            }
+
+        }
+
+        public function cancelarEditarAnuncio()
+        {
+            return redirect()->route('gestionAnuncios');
+        }
+
+        public function cancelarCrearAnuncio()
+        {
+            return redirect()->route('gestionAnuncios');
+        }
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ----------------------------------------------------------------------------------------------------------
         public function verGaleria()
         {
             $galeria = Galeria::all();
             return view('VistasAdministrador/gestionGaleria', ['directorio' => $galeria]);
         }
-
-
-            //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
-            public function verAnuncios()
-            {
-                $anuncios = Anuncios::all();
-                return view('VistasAdministrador/gestionAnuncios', ['directorio' => $anuncios]);
-            }
-
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 
     //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
     public function verHorarioAtencion()
