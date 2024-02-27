@@ -3,7 +3,7 @@
 @section('contenido')
   <div class="container">
     <h2>DIRECTORIO</h2>
-    <p>cONTACTOS DE ACADEMICA...</p>
+    <h2>Holaaaaaaaaaaaaaa</h2>
     <table class="table table-hover">
       <thead>
         <tr>

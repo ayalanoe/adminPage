@@ -316,7 +316,8 @@ class VistasAdminController extends Controller
 
             return view("VistasAdministrador/gestionCarrerasPregrado", [
 
-                'carrerasPregrado' => $carrerasDePregrado
+                'carrerasPregrado' => $carrerasDePregrado,
+                'departamento' => $departamento //Se manda el parametro departamento que se recibe por url para poder mostrar el nombre del depto en la vista
             ]);
         }
 

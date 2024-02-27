@@ -79,6 +79,14 @@
                 </td>
             </tr>
 
+            <tr>
+                <th>9</th>
+                <td>Planes complementarios</td>
+                <td>
+                    <a href="{{ route('carrerasPregrado', ['departamento' => 'Planes Complementarios']) }}" class="btn btn-primary mx-1">Ver Carreras <i class="fa-solid fa-circle-arrow-right"></i></a>
+                </td>
+            </tr>
+
         </tbody>
     </table>
 </div>

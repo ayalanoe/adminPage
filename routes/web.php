@@ -122,7 +122,6 @@ Route::get('/', function () {
         Route::delete('/eliminar-facultad/{id}', [VistasAdminController::class, 'eliminarFacultad'])->name('eliminarFacultad');
         Route::post('/editar-facultad/{id}', [VistasAdminController::class, 'editarDatosFacultad'])->name('editarFacultad');
 
-        // Rutas sin terminar (falta revision)
         Route::get('/crear-anuncioAcademico', [VistasAdminController::class, 'vistaCrarAnuncio'])->name('vistaCrearAnuncio');
         Route::get('gestion-anuncios', [VistasAdminController::class, 'verAnuncios'])->name('gestionAnuncios');
         Route::post('/crear-anuncio', [VistasAdminController::class, 'crearAnuncio'])->name('crearAnuncio');    

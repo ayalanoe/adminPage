@@ -4,7 +4,8 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Carreras de Pregrado</h2>
+        <h2>Departamento: {{$departamento}} </h2>
+        <br>
         <a href="{{ route('regresarA_Departamentos') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Ver Departementos</a>
         <br>
         <br>
@@ -60,7 +61,7 @@
 
     <!-- Bton para poder insertar una carrera de pregrado -->
     <div class="container">
-        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPregrado"><i class="fa-solid fa-plus"></i> Agregar Carrera PreGrado</button>
+        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPregrado"><i class="fa-solid fa-plus"></i> Agregar Carrera Pre_Grado</button>
     </div>
     
 
@@ -122,6 +123,7 @@
                                 <option value="Química y Farmacia">
                                 <option value="Posgrado">
                                 <option value="Carreras Técnicas">
+                                <option value="Planes Complementarios">
                             </datalist>
                         </div>
             

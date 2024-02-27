@@ -93,6 +93,7 @@
                     <option value="Química y Farmacia">
                     <option value="Posgrado">
                     <option value="Carreras Técnicas">
+                    <option value="Planes Complementarios">
                 </datalist>
             </div>
 
