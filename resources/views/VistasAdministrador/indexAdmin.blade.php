@@ -15,6 +15,6 @@
             $mensaje = "Buenas noches";
         }
     ?>
-
-    <h1>{{ $mensaje }}, Bienvenido</h1>
+    <h1> {{$mensaje}} </h1>
+    <h1>Bienvenido, @auth {{Auth::user()->name}} @endauth</h1>
 @endsection
