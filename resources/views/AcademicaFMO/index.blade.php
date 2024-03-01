@@ -228,13 +228,7 @@
                                 </a>
 
                 </div>
-               
-                
-            </div>
 
-            <div class="container__cover">
-
-                
                 <div class="container__vector">
                     <div id="carouselExampleFade" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
@@ -258,6 +252,7 @@
                         </button>
                     </div>
                 </div>
+               
                 
             </div>
 

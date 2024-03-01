@@ -186,6 +186,19 @@
                             
                         </ul>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#PreguntasFrecuentes" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-circle-question pe-2"></i>
+                            Preguntas Frecuentes
+                        </a>
+                        <ul id="PreguntasFrecuentes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Listado de Preguntas</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>
