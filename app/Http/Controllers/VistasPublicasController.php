@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AtencionHorario;
 use App\Models\CalendarioAdministrativo;
 
 use App\Models\CalendarioClase;
@@ -12,6 +13,17 @@ use Illuminate\Support\Facades\Storage;
 
 class VistasPublicasController extends Controller
 {
+    //------------------------ PARA LA VISTA PRINCIPAL ES DECIR LA VISTA PUBLICA ------------------------------------------------------------------------------------------------------------
+        public function vistaPrincipal(){
+
+            $horarioAtencion = AtencionHorario::all();
+
+            return view('AcademicaFMO/index', [
+
+                'horarioLaboral' => $horarioAtencion
+            ]);
+        }
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA EL DIRECTORIO PERSONAL ACADÉMICO ----------------------------------------------------------------------------------------------------------
         public function verDatosDirectorios()
@@ -69,10 +81,8 @@ class VistasPublicasController extends Controller
 
                 return back()->with('errorPublicCalAcademico','Aún no se ha subido calendario academico');
             }
-
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::get($calendarioAcademico->rutaArchivo);
-
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
         
@@ -82,12 +92,12 @@ class VistasPublicasController extends Controller
 
 
     //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ----------------------------------------------------------------------------------------------------------
-    public function verFacultadesNacional()
-    {
-        $facultades = Facultad::all();
-        return view('AcademicaFMO/facultades', ['facultad' => $facultades]);
-    }
-//---------------------------------------------------------------------------------------------------
+        public function verFacultadesNacional()
+        {
+            $facultades = Facultad::all();
+            return view('AcademicaFMO/facultades', ['facultad' => $facultades]);
+        }
+    //---------------------------------------------------------------------------------------------------
 
 
 }

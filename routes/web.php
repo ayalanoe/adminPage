@@ -17,9 +17,16 @@ use App\Http\Controllers\VistasPublicasController;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('AcademicaFMO/index');
 });
+*/
+
+//Para la pagina principal 
+Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
+
+
 
 
 /*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
@@ -134,6 +141,11 @@ Route::get('/', function () {
         Route::get('/cancelar-editar-anuncio', [VistasAdminController::class, 'cancelarEditarAnuncio'])->name('cancelarEditAnuncio');
         Route::get('/cancelar-crear-anuncio', [VistasAdminController::class, 'cancelarCrearAnuncio'])->name('cancelarCrearAnuncio');
 
+        
+        Route::get('gestion-horario-atencion', [VistasAdminController::class, 'verHorarioAtencion'])->name('gestionHorario');
+        Route::post('/registar-horario-atencion', [VistasAdminController::class, 'guardarHorarioAtencion'])->name('registrarHorarioAtencion');
+        Route::delete('/eliminar-horario-atencion/{id}', [VistasAdminController::class, 'eliminarHorarioAtencion'])->name('eliminarHorarioAtencion');
+
     });
 
     Route::get('/gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
@@ -143,7 +155,6 @@ Route::get('/', function () {
 
 
 
-    Route::get('gestion-horario-atencion', [VistasAdminController::class, 'verHorarioAtencion'])->name('gestionHorario');
 
 //---------------------------------- OTRAS RUTAS QUE PUEDAS OCUPAR --------------------------------------
 
