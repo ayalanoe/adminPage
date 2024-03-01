@@ -13,7 +13,8 @@ use App\Models\Contacto;
 use App\Models\Facultad;
 use App\Models\Galeria;
 use App\Models\Anuncios;
-use App\Models\HorarioAtencion;
+use App\Models\AtencionHorario;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -23,8 +24,13 @@ class VistasAdminController extends Controller
     //----------------------------- FUNCIONES PARA LA GESTION DE USUARIOS ----------------------------------------------------------------------------------------------------------
         public function gestionUsuarios()
         {
-            $usuarios = User::all();
-            return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
+            if (Auth::check()) {
+                $usuarios = User::all();
+                return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
+            }
+            else{
+                return redirect()->route('login');
+            }
         }
 
         public function editarDatosUsuario(Request $request, $id){
@@ -1005,6 +1011,45 @@ class VistasAdminController extends Controller
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    //----------------------------- FUNCIONES PARA LA GESTION DE HORARIO DE ATENCION ------------------------------------------------------------------------------------
+        public function verHorarioAtencion()
+        {
+            $horarioA = AtencionHorario::all();
+            return view('VistasAdministrador/gestionHorario', ['horarioAtencion' => $horarioA]);
+        }
+
+        public function guardarHorarioAtencion(Request $datosAtencionHorario)
+        {
+            $horarioAtencion = new AtencionHorario();
+            
+            $horarioAtencion->dias = $datosAtencionHorario->diasAtecion;
+            $horarioAtencion->horaInicio = $datosAtencionHorario->horaInicio;
+            $horarioAtencion->horaCierre = $datosAtencionHorario->horaCierre;
+            $horarioAtencion->estadoMediodia = $datosAtencionHorario->estadoMediodia;
+            $horarioAtencion->otrosDias = $datosAtencionHorario->otrosDias;
+            $horarioAtencion->horaInicioOtro = $datosAtencionHorario->otroHoraInicio;
+            $horarioAtencion->horaCierreOtro = $datosAtencionHorario->OtroHoraCierre;
+
+            $horarioAtencion->save();
+
+            return back()->with('resHorarioAtencion', 'El horario de atencion se ha registrado con éxito');
+
+        }
+
+        public function eliminarHorarioAtencion($id)
+        {
+            $horarioElimnar = AtencionHorario::find($id);
+            if (!$horarioElimnar) {
+
+                return back()->with('horarioNoEncontrado', 'Horario no encontrado');
+            }
+
+            $horarioElimnar->delete();
+
+            return back()->with('resEliminarHorarioAtencion', 'Se ha eliminado con exito');
+        }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 
 
     //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ----------------------------------------------------------------------------------------------------------
@@ -1016,10 +1061,5 @@ class VistasAdminController extends Controller
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 
-    //----------------------------- FUNCIONES PARA LA GESTION DE ANUNCIOS ------------------------------------------------------------------------------------
-    public function verHorarioAtencion()
-    {
-        $horarioA = HorarioAtencion::all();
-        return view('VistasAdministrador/gestionHorario', ['directorio' => $horarioA]);
-    }
+    
 }

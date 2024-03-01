@@ -27,38 +27,48 @@
     
     <!-- Modal DEL HORARIO DE ATENCIÓN-->
     <div class="modal fade" id="ModalHorario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">HORARIO DE ATENCIÓN</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <table class="table table-striped">
-                <thead>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">LUNES A VIERNES</th>
-                    <td>De 8:00 a.m. a 4:00 p.m.</td>
-                    
-                  </tr>
-                  <tr>
-                    <th scope="row">SÁBADO</th>
-                    <td>De 8:00 a.m. a 12:00 m.d.</td>
-                    
-                  </tr>
-                  <tr>
-                    <th><strong>*Cerrado al mediodía</strong></th>
-                    
-                  </tr>
-                </tbody>
-                
-              </table>
-          </div>
-          
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">HORARIO DE ATENCIÓN</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            
+                            @foreach ($horarioLaboral as $item)
+
+                            <tr>
+                                <th scope="row"> {{$item->dias}} </th>
+                                <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
+                            </tr>
+                        
+                            <tr>
+                                <th scope="row"> {{$item->otrosDias}} </th>
+                                <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicioOtro)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierreOtro)->format('h:i a') }} </td>
+                            </tr>
+
+                                <tr>
+                                    @if ($item->estadoMediodia == "abierto")
+                                        <th><strong>*Abierto al mediodía</strong></th>
+                                    @else
+                                        <th><strong>*Cerrado al mediodía</strong></th>
+                                    @endif
+                                    
+                                </tr>
+                                
+                            @endforeach
+                            
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
 
