@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+@extends('Layouts.index') 
+
+@section('titulo-publico', '- Directorio Académica')
+
+@section('css-publico')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/directorioPublic.css') }}">
-</head>
-<body>
+@endsection
+
+@section('contenido-publico')
     <!--TABLA DE ELEMENTOS-->
     <div class="card border-0">
         <div class="card-header">
@@ -55,5 +54,5 @@
         </div>
         
     </div>
-</body>
-</html>
+
+@endsection

@@ -18,7 +18,7 @@ class VistasPublicasController extends Controller
 
             $horarioAtencion = AtencionHorario::all();
 
-            return view('AcademicaFMO/index', [
+            return view('AcademicaFMO/cover', [
 
                 'horarioLaboral' => $horarioAtencion
             ]);
@@ -99,5 +99,12 @@ class VistasPublicasController extends Controller
         }
     //---------------------------------------------------------------------------------------------------
 
+    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+        public function verInfoEduDistancia()
+        {
+            $contactos = Contacto::all();
+            return view('AcademicaFMO/eduDistancia', ['educDistancia' => $contactos]);
+        }
+    //
 
 }

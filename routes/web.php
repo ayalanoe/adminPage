@@ -32,6 +32,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 /*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
     Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
+    Route::get('/AcademicaFMO/educación-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+
     Route::get('/AcademicaFMO/contacto-facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
 
     Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
@@ -60,7 +62,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
     Route::post('/validar-password', [LoginController::class, 'verificarPassword'])->name('validar-password');
-    
+
     Route::middleware(['auth'])->group(function(){
 
         //Ruta principal
