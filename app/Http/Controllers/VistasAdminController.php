@@ -14,10 +14,11 @@ use App\Models\Facultad;
 use App\Models\Galeria;
 use App\Models\Anuncios;
 use App\Models\AtencionHorario;
+use App\Models\PreguntaFrecuente;
+use App\Models\Tramite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
-
+use PhpParser\Node\Expr\FuncCall;
 
 class VistasAdminController extends Controller
 {
@@ -1049,8 +1050,6 @@ class VistasAdminController extends Controller
             return back()->with('resEliminarHorarioAtencion', 'Se ha eliminado con exito');
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-
 
     //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ----------------------------------------------------------------------------------------------------------
         public function verGaleria()
@@ -1060,6 +1059,259 @@ class VistasAdminController extends Controller
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
+    //---------------------------------- FUNCIONES PARA LOS TRAMITES ACADEMICOS --------------------------------------------------------------------------------------------------------
+        public function mostrarTramites(){
 
+            $tramites = Tramite::all();
+
+            return view('VistasAdministrador/gestionTramitesAcademicos', [
+
+                'datosTramites' => $tramites
+            ]);
+            
+        }
+
+        public function guardarTramite(Request $datosTramite)
+        {
+            $nuevoTramite = new Tramite();
+
+            $nuevoTramite->tramite = $datosTramite->tituloTramite;
+            $nuevoTramite->contenido = $datosTramite->contenidoTramite;
+
+            $datosTramite->validate([
+                'archivoTramite' => 'file|nullable',
+            ]);
+            
+            if ($datosTramite->hasFile('archivoTramite')) {
+
+                $archivo = $datosTramite->file('archivoTramite');
+                $ruta = Storage::disk('local')->put('Archivos_TramitesAcademicos', $archivo);
+
+                $nuevoTramite->rutaFormato = $ruta;
+            } 
+
+            $nuevoTramite->save();
+
+            return redirect()->route('verTramitesAcademicos')->with('resCrearTramite', 'Tramite creado con exito');
+
+        }
+
+        public function eliminarTramite($id)
+        {
+            $tramiteEliminar = Tramite::find($id);
+
+            if (!$tramiteEliminar) {
+                
+                return back()->with('tramiteNoEncontrado', 'Tramite no encontrado !!');
+            }
+
+            $rutaEliminar = $tramiteEliminar->rutaFormato;
+
+            //Se verifica que la ruta no sea null antes de elimanr el tramite para que no de error el server
+            if ($rutaEliminar !== null ) {
+                
+                if (Storage::disk('local')->exists($rutaEliminar)) {
+                    Storage::disk('local')->delete($rutaEliminar);
+                }
+            }
+
+            $tramiteEliminar->delete();
+
+            return back()->with('resEliminarTramite', 'El tramite se ha eliminado correctamente');
+            
+        }
+
+        public function vistaEditarTramite($id)
+        {
+            $tramiteEditar = Tramite::find($id);
+
+            if (!$tramiteEditar) {
+                
+                return back()->with('tramiteNoEncontrado', 'Tramite no encontrado !!');
+            }
+
+            return view('VistasAdministrador/editarTramite', [
+
+                'datosTramiteEditar' => $tramiteEditar
+            ]);
+
+        }
+        
+        public function editarTramiteAcademico(Request $newDatosTramite, $id){
+
+            $tramiteEditarDatos = Tramite::find($id);
+
+            if (!$tramiteEditarDatos) {
+                return back()->with('tramiteNoEncontrado', 'Tramite no encontrado !!');
+            }
+
+            $tramiteEditarDatos->tramite = $newDatosTramite->editarTramite;
+            $tramiteEditarDatos->contenido = $newDatosTramite->editarContenidoTramite;
+
+            $tramiteEditarDatos->save();
+
+            return redirect()->route('verTramitesAcademicos')->with('resEditarTramite', 'Se ha editado el tramite correctamente');
+
+        }
+
+        public function subirNuevoFormatoTramite(Request $newTramiteArchivo, $id)
+        {
+            $nuevoArchivoTramite = Tramite::find($id);
+
+            $archivo = $newTramiteArchivo->file('editarNuevoFormatoTramite');
+            $ruta = Storage::disk('local')->put('Archivos_TramitesAcademicos', $archivo); //---> Se establece la ruta
+            $nuevoArchivoTramite->rutaFormato = $ruta;
+            $nuevoArchivoTramite->save();
+
+            return back()->with('resSubirArchivoTramite', 'Formato subido con exito !!');
+
+        }
+
+        public function eliminarFormatoTramite($id)
+        {
+            $archivoTramiteEliminar = Tramite::find($id);
+            $rutaEliminar = $archivoTramiteEliminar->rutaFormato;
+
+            if (Storage::disk('local')->exists($rutaEliminar)) {
+
+                Storage::disk('local')->delete($rutaEliminar);
+            }
+
+            $archivoTramiteEliminar->rutaFormato = null;
+            $archivoTramiteEliminar->save();
+
+            return back()->with('resEliminarArchivoTramite', 'Se ha eliminado el formato con exito');
+
+        }
+
+        public function verArchivoTramite($id)
+        {
+            $archivo = Tramite::find($id);
+
+            // Obtener la extensión del archivo
+            $extension = pathinfo($archivo->rutaFormato, PATHINFO_EXTENSION);
+            $contenidoArchivo = Storage::get($archivo->rutaFormato);
+
+            // Verificar si la extensión es de un PDF
+            if (strtolower($extension) === 'pdf') {
+                // Devolver la respuesta con el contenido del archivo como PDF
+                return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+                
+            } elseif (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) {
+                // Si es una imagen, devolver la respuesta con el contenido de la imagen
+                return response($contenidoArchivo, 200)->header('Content-Type', 'image/' . $extension);
+            } else {
+                // Si no es ni PDF ni imagen, puedes manejarlo según tus necesidades
+                return response()->json(['error' => 'El archivo no es un PDF o una imagen'], 400);
+            }
+
+        }
+
+        public function descargarFormatoTramite($id)
+        {
+            //Esta funcion es por el echo de que no se puede ver el archivo word en el navegador
+            // Para ello y sabe rque se ha subido tendra que descargar el archivo y veridicarlo su maquina 
+
+            $tramite = Tramite::find($id);
+
+            if (!$tramite) {
+                abort(404); // Manejar el caso en el que no se encuentre el tramite
+            }
+        
+            // Verificar que la ruta del formato existe y tiene la extensión correcta
+            $extension = strtolower(pathinfo($tramite->rutaFormato, PATHINFO_EXTENSION));
+            if (!in_array($extension, ['doc', 'docx'])) {
+                abort(400, 'El archivo no es un documento de Word.');
+            }
+        
+            // Obtener el contenido del archivo
+            $contenidoArchivo = Storage::get($tramite->rutaFormato);
+        
+            // Devolver la respuesta para descargar el archivo
+            return response()->download(storage_path('app/' . $tramite->rutaFormato), 'formatoSubido.docx');
+        }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ------------------------------------------------------------------------------------------------------
+
+        public function mostrarPreguntas(){
+
+            $preguntas = PreguntaFrecuente::all();
+
+            return view('VistasAdministrador/gestionPreguntasFrecuentes', [
+
+                'preguntasFrecuentes' => $preguntas
+            ]);
+            
+        }
+
+        public function guardarPregunta(Request $pregunta)
+        {
+            $nuevaPregunta = new PreguntaFrecuente();
+
+            $nuevaPregunta->pregunta = $pregunta->tituloPregunta;
+            $nuevaPregunta->respuesta = $pregunta->respuestaPreguntaFrecuente;
+
+            $nuevaPregunta->save();
+
+            return redirect()->route('verPreguntasFrecuentes')->with('resCrearPregunta', 'Se ha agregado la pregunta correctamente');
+
+        }
+
+        public function eliminarPregunta($id)
+        {
+            $eliminarPregunta = PreguntaFrecuente::find($id);
+
+            if (!$eliminarPregunta) {
+                
+                return back()->with('preguntaNoEncontrada', 'Pregunta no encontrada');
+            }
+
+        
+            $eliminarPregunta->delete();
+
+            return back()->with('resEliminarPregunta', 'La pregunta se ha eliminado correctamente');
+            
+        }
+
+        public function vistaEditarPregunta($id)
+        {
+            $editarPregunta = PreguntaFrecuente::find($id);
+
+            if (!$editarPregunta) {
+                
+                return back()->with('preguntaNoEncontrada', 'Pregunta no encontrada');
+            }
+
+            return view('VistasAdministrador/editarPregunta', [
+
+                'datosEditarPregunta' => $editarPregunta
+            ]);
+
+        }
+        
+        public function editarPreguntaFrecuente(Request $nuevosDatosPregunta, $id){
+
+            $pregunta = PreguntaFrecuente::find($id);
+
+            if (!$pregunta) {
+                return back()->with('tramiteNoEncontrado', 'Tramite no encontrado !!');
+            }
+
+            $pregunta->pregunta = $nuevosDatosPregunta->editarPregunta;
+            $pregunta->respuesta = $nuevosDatosPregunta->editarRespuestaPregunta;
+
+            $pregunta->save();
+
+            return redirect()->route('verPreguntasFrecuentes')->with('resEditarPregunta', 'Se ha editado la pregunta correctamente');
+
+        }
+
+        public function cancelarPregunta()
+        {
+            return redirect()->route('verPreguntasFrecuentes');
+        }
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 }
