@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
 use App\Http\Controllers\VistasPublicasController;
-
+use League\Flysystem\Visibility;
+use PhpParser\NodeVisitorAbstract;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,13 +141,32 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/ver-archivo-anuncio/{id}', [VistasAdminController::class, 'verArchivoAnuncios'])->name('verArchivoAnuncio');
         Route::get('/cancelar-editar-anuncio', [VistasAdminController::class, 'cancelarEditarAnuncio'])->name('cancelarEditAnuncio');
         Route::get('/cancelar-crear-anuncio', [VistasAdminController::class, 'cancelarCrearAnuncio'])->name('cancelarCrearAnuncio');
-
         
         Route::get('gestion-horario-atencion', [VistasAdminController::class, 'verHorarioAtencion'])->name('gestionHorario');
         Route::post('/registar-horario-atencion', [VistasAdminController::class, 'guardarHorarioAtencion'])->name('registrarHorarioAtencion');
         Route::delete('/eliminar-horario-atencion/{id}', [VistasAdminController::class, 'eliminarHorarioAtencion'])->name('eliminarHorarioAtencion');
 
+        Route::get('/tramites-academicos', [VistasAdminController::class, 'mostrarTramites'])->name("verTramitesAcademicos");
+        Route::view('/vista-crear-tramite', 'VistasAdministrador/crearTramiteAcademico')->name("crearTramiteAcademico");
+        Route::post('/guardar-tramite', [VistasAdminController::class, 'guardarTramite'])->name('crearTramite');
+        Route::delete('/eliminar-tramite/{id}', [VistasAdminController::class, 'eliminarTramite'])->name('eliminarTramite');
+        Route::get('/editar-tramite/{id}', [VistasAdminController::class, 'vistaEditarTramite'])->name('editarTramite');
+        Route::post('/guardar-nuevos-datos-tramite/{id}', [VistasAdminController::class, 'editarTramiteAcademico'])->name('guardarNuevosDatosTramite');
+        Route::post('/subir-new-formato-tramite/{id}', [VistasAdminController::class, 'subirNuevoFormatoTramite'])->name('nuevoArchivoTramite');
+        Route::delete('/eliminar-archivo-tramite/{id}', [VistasAdminController::class, 'eliminarFormatoTramite'])->name('eliminarArchivoTramite');
+        Route::get('/ver-archivo-tramite/{id}', [VistasAdminController::class, 'verArchivoTramite'])->name('verArchivoTramite');
+        Route::get('/descargar-formato/{id}', [VistasAdminController::class, 'descargarFormatoTramite'])->name('descargarFormatoTramite');
+
+        Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
+        Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');
+        Route::post('/guardar-pregunta', [VistasAdminController::class, 'guardarPregunta'])->name('guardarPregunta');
+        Route::delete('/eliminar-pregunta/{id}', [VistasAdminController::class, 'eliminarPregunta'])->name('eliminarPreguntaFrecuente');
+        Route::get('editar-pregunta/{id}', [VistasAdminController::class, 'vistaEditarPregunta'])->name('editarPreguntaVista');
+        Route::post('editar-pregunta-guardar/{id}', [VistasAdminController::class, 'editarPreguntaFrecuente'])->name('guardarNewDatosPregunta');
+        Route::get('/cancelar-pregunta', [VistasAdminController::class, 'cancelarPregunta'])->name('regrersarPregunta');
+
     });
+
 
     Route::get('/gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
 
