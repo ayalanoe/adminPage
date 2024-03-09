@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
-
+    @yield('css-publico')
 
     <!-- CDN de sweetAlert para las alertas de confirmaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -24,13 +24,10 @@
 </head>
 <body>
     
-    
-   
-    
     <header id="header">
         <div class="container__header">
             <div class="logo">
-                <img src="images/logoues.png" alt="" class="imgLogo">
+                <img src="images/logoues.png" alt="logo de la universidad de El Salvador" class="imgLogo">
             </div>
             <div class="container__nav">
                 <nav id="nav">

@@ -1,7 +1,5 @@
 @extends('Layouts.index') 
 
-
-
 @section('contenido-publico')
 
  <!-- Modal DEL HORARIO DE ATENCIÓN-->

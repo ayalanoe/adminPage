@@ -8,13 +8,10 @@
 @endsection
 
 @section('contenido-publico')
+   
+    <div class="container__cover">
     <!--TABLA DE ELEMENTOS-->
-    <div class="card border-0">
-        <div class="card-header">
-            <h5 class="card-tittle">
-                BIENVENIDO AL DIRECTORIO
-            </h5>
-                
+
             <div class="container">
                 <h2>DIRECTORIO</h2>
                 <p>CONTACTOS DE ACADEMICA...</p>
@@ -48,11 +45,5 @@
                         </tbody>
                 </table>
             </div>
-        </div>
-
-        <div class="card-body">
-        </div>
-        
     </div>
-
 @endsection
