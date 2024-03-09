@@ -80,7 +80,7 @@
                         </a>
                         <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Equivalencias</a>
+                                <a href="{{ route('verTramitesAcademicos') }}" class="sidebar-link">Gestion de Trámites</a>
                             </li>
                             
                         </ul>
@@ -194,7 +194,7 @@
                         </a>
                         <ul id="PreguntasFrecuentes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Listado de Preguntas</a>
+                                <a href="{{ route('verPreguntasFrecuentes') }}" class="sidebar-link">Listado de Preguntas</a>
                             </li>
                             
                         </ul>
