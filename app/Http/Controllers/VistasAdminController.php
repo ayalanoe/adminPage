@@ -1314,4 +1314,19 @@ class VistasAdminController extends Controller
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
+
+
+        //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES --------------------------------------------------------------------------------------------------------
+        public function verInformeConstancias()
+        {
+            $facultades = Facultad::all();
+            return view('VistasAdministrador/gestionConstancias', ['facultad' => $facultades]);
+        }
+
+
+        public function crearRegistroConstancias()
+        {
+            $facultades = Facultad::all();
+            return view('VistasAdministrador/registrarConstancia', ['facultad' => $facultades]);
+        }
 }

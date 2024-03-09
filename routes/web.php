@@ -167,6 +167,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::post('editar-pregunta-guardar/{id}', [VistasAdminController::class, 'editarPreguntaFrecuente'])->name('guardarNewDatosPregunta');
         Route::get('/cancelar-pregunta', [VistasAdminController::class, 'cancelarPregunta'])->name('regrersarPregunta');
 
+
+        Route::get('/registro-constancias', [VistasAdminController::class, 'crearRegistroConstancias'])->name('registrosConstancias');
+
     });
 
 

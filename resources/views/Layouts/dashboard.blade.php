@@ -199,6 +199,21 @@
                             
                         </ul>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#constanciasFMO" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-folder pe-2"></i>
+                            Constancias
+                        </a>
+                        <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link">Registrar Constancia</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('verPreguntasFrecuentes') }}" class="sidebar-link">Generar Informe</a>
+                            </li>
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>
