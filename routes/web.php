@@ -169,6 +169,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
         Route::get('/registro-constancias', [VistasAdminController::class, 'crearRegistroConstancias'])->name('registrosConstancias');
+        Route::get('/informe-constancias', [VistasAdminController::class, 'verInformeConstancias'])->name('informeConstancias');
 
     });
 

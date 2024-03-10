@@ -16,6 +16,7 @@ use App\Models\Anuncios;
 use App\Models\AtencionHorario;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
+use App\Models\Constancias;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\FuncCall;

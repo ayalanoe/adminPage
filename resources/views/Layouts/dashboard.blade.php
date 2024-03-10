@@ -210,7 +210,7 @@
                                 <a href="{{ route('registrosConstancias') }}" class="sidebar-link">Registrar Constancia</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('verPreguntasFrecuentes') }}" class="sidebar-link">Generar Informe</a>
+                                <a href="{{ route('informeConstancias') }}" class="sidebar-link">Generar Informe</a>
                             </li>
                         </ul>
                     </li>
