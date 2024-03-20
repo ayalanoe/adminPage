@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
 use App\Http\Controllers\VistasPublicasController;
-use League\Flysystem\Visibility;
-use PhpParser\NodeVisitorAbstract;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -168,9 +167,10 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/cancelar-pregunta', [VistasAdminController::class, 'cancelarPregunta'])->name('regrersarPregunta');
 
 
-        Route::get('/registro-constancias', [VistasAdminController::class, 'crearRegistroConstancias'])->name('registrosConstancias');
+        Route::get('/registro-constancias', [VistasAdminController::class, 'vistaCrearConstancia'])->name('registrosConstancias');
         Route::get('/informe-constancias', [VistasAdminController::class, 'verInformeConstancias'])->name('informeConstancias');
-
+        Route::post('/registrar-constancias', [VistasAdminController::class, 'guardarConstancias'])->name('registrarConstancias');
+        Route::post('/estadisticas-constancias', [VistasAdminController::class, 'totalConstancias'])->name('totalConstancias');
     });
 
 

@@ -11,7 +11,7 @@
 
 @section('contenido')
 
-<h2>INFORME DE CONSTANCIAS EMITIDAS</h2>
+<h2>FILTRAR INFORME DE CONSTANCIAS</h2>
 
     <div class="col-12">
       <div class="p-3 m-1"> <!--Padding y margin del texto-->           
@@ -23,139 +23,47 @@
               <th scope="col">Acción</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><input name="fechaExpiracionAnuncio" type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="width: 200px;">
-              </th>
-              <td><input name="fechaExpiracionAnuncio" type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="width: 200px;">
-              </td>
-              <td><button type="button" class="btn btn-secondary" id="btnCancelFacultad">Generar Informe</button></div>
-              </td>
-            </tr>
-          </tbody>
+          <form method="post" action="{{ route('totalConstancias') }}" onsubmit="return validarFechas()">
+            @csrf
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <input name="fechaInicialConstancia" type="date" class="form-control" placeholder="Fecha Inicial" style="width: 200px;">
+                    </th>
+                    <td>
+                        <input name="fechaFinalConstancia" type="date" class="form-control" placeholder="Fecha Final" style="width: 200px;">
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-secondary" id="btnGenerarInforme">Generar Informe</button>
+                    </td>
+                </tr>
+            </tbody>
+        </form>
         </table>
       </div>
     </div>  
 
-
-<div class="row g-0 w-100">
-  <div class="col-12 col-md-12 d-flex">       
-    
-      <div class="col-6">
-          <div class="p-3 m-1"> <!--Padding y margin del texto-->
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Tipo de Constancia</th>
-                  <th scope="col">Cantidad</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><label class="form-check-label" for="flexChecksocialService">Servicio Social 60%</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckISSS">ISSS</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckINPEP">INPEP</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckISBM">ISBM</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckAFPCrecer">AFP Crecer</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckAFPConfía">AFP Confía</label></td>
-                  <td>  </td>
-                </tr>
-                <tr>
-                  <td><label class="form-check-label" for="flexCheckEmbassy">Embajada</label></td>
-                  <td>  </td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-
-
-      </div>                                               
-      
-      <div class="col-6">
-        <div class="p-3 m-1"> <!--Padding y margin del texto-->
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Tipo de Constancia</th>
-                <th scope="col">Cantidad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckPartialNotes">Record de notas Parciales</label></td>
-                <td>  </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckGlobalNotesE">Record de notas Globales egresado</label></td>
-                <td>  </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckGlobalNotesG">Record de notas Globales graduado</label></td>
-                <td>  </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckSubjects">Comprobante de Inscripción Materias</label></td>
-                <td>  </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="fCGraduationProcess">Comprobante de Inscripción Proceso de Graduación</label></td>
-                <td><input class="form-check-input" type="checkbox" value="recordGraduation" id="fCGraduationProcess"></td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckEgress">Reposición de carta de egreso</label></td>
-                <td>  </td>
-              </tr>
-              <tr>
-                <td><label class="form-check-label" for="flexCheckGraduationDate">Comprobante de fecha de graduación</label></td>
-                <td>  </td>
-              </tr>
-            </tbody>
-          </table>  
-        </div>
-      </div>
-
-    
-  </div>
-</div>
-
-
-<div class="row g-0 w-100">
-  <div class="col-12 col-md-12 d-flex">       
-    
-      <div class="col-5">
-          <div class="p-3 m-1"> <!--Padding y margin del texto-->
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Total de Constancias Emitidas: </th>
-                  <th scope="col">  </th>
-                </tr>
-              </thead>
-            </table>  
-          </div>
-        </div>
-  
-      
-    </div>
-  </div>
 @endsection
 
 @section('jsVistasAdmin')
+
+  <script>
+    function validarFechas() {
+        var fechaInicial = document.getElementsByName('fechaInicialConstancia')[0].value;
+        var fechaFinal = document.getElementsByName('fechaFinalConstancia')[0].value;
+
+        if (fechaInicial === "" || fechaFinal === "") {
+          Swal.fire({
+            title: "Informacion",
+            text: "No se han ingresado las fechas",
+            icon: "error"
+          });
+            return false;
+        }
+
+        return true;
+    }
+  </script>
 
 @endsection
 

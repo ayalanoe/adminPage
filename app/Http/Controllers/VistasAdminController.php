@@ -18,8 +18,8 @@ use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Expr\FuncCall;
 
 class VistasAdminController extends Controller
 {
@@ -1317,17 +1317,65 @@ class VistasAdminController extends Controller
     
 
 
-        //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES --------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LA GESTION DE CONSTANCIAS --------------------------------------------------------------------------------------------------------
         public function verInformeConstancias()
         {
-            $facultades = Facultad::all();
-            return view('VistasAdministrador/gestionConstancias', ['facultad' => $facultades]);
+            return view('VistasAdministrador/gestionConstancias');
         }
 
 
-        public function crearRegistroConstancias()
+        public function vistaCrearConstancia()
         {
-            $facultades = Facultad::all();
-            return view('VistasAdministrador/registrarConstancia', ['facultad' => $facultades]);
+            return view('VistasAdministrador/registrarConstancia');
         }
+
+        public function guardarConstancias(Request $datosConstancias)
+        {
+            $datosSeleccionados = $datosConstancias->input('checkboxDatos');
+
+            $fechaActual = date('Y-m-d');
+
+            // Verificar si hay datos seleccionados
+            if (!empty($datosSeleccionados)) {
+
+                foreach ($datosSeleccionados as $dato) {
+                    // Crear un nuevo objeto Constancias y asignar el valor del checkbox
+                    $constancia = new Constancias();
+                    $constancia->tipoConstancia = $dato;  // Asigna el valor que corresponde a tu modelo
+                    $constancia->fechaRegistro = $fechaActual;
+
+                    // Guardar el nuevo registro en la base de datos
+                    $constancia->save();
+                }
+
+                return back()->with('resGuardarConstancias', 'Las constancias se han guradado correctamente');
+                
+            } else {
+                
+                return back()->with('resNoGuardarConstancias', 'Las constancias no se registraron');
+            }
+        }
+
+        public function totalConstancias(Request $fechasFiltro){
+
+
+            // Obtén los totales agrupados por tipo de constancia, filtrando por rango de fechas
+            $totalesPorTipo = Constancias::select('tipoConstancia', DB::raw('count(*) as total'))
+            ->whereBetween('fechaRegistro', [$fechasFiltro->fechaInicialConstancia, $fechasFiltro->fechaFinalConstancia])
+            ->groupBy('tipoConstancia')
+            ->get();
+
+            // Calcula el total general
+            $totalGeneralConstancias = $totalesPorTipo->sum('total');
+
+            return view('VistasAdministrador/estadisticasConstancias', [
+                'totalConstancias' => $totalesPorTipo,
+                'fechaInicial' => $fechasFiltro->fechaInicialConstancia,
+                'fechaFinal' => $fechasFiltro->fechaFinalConstancia,
+                'totalGeneral' => $totalGeneralConstancias
+            ]);
+
+        }
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

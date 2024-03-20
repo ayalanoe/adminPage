@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tbl_constancias', function (Blueprint $table) {
             $table->id();
             $table->string('tipoConstancia', 100);
-            $table->time("fechaRegistro");
+            $table->date("fechaRegistro");
             $table->timestamps();
         });
     }
