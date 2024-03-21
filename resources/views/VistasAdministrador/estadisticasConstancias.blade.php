@@ -11,7 +11,7 @@
 @section('contenido')
 
     
-    <h5>INFORME DE CONSTANCIAS EMITIDAS DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h5>
+    <h2>INFORME DE CONSTANCIAS EMITIDAS DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h2>
     
 
     <table class="table table-hover">

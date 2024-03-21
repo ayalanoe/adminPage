@@ -121,12 +121,16 @@
         </div>
       </div>
 
-
-      <button type="submit" class="btn btn-primary">Guardar Registro</button>
+    </div>
+      <div class="col-12">
+        <div class="p-3 m-1">
+          <button type="submit" class="btn btn-primary">Guardar Registro</button>
+      </div>
+    </div>
       
     </form>
     
-  </div>
+
 </div>
 
 
