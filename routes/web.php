@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VistasAdminController;
+use App\Http\Controllers\VistasAsistenteController;
 use App\Http\Controllers\VistasPublicasController;
 
 
@@ -45,6 +46,32 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//--------------------- RUTAS PUBLICAS QUE NO LLEVAN MIDDLEWARE, ES DECIR LAS QUE SE OCUPAN PARA INICIAR SESION ----------------------------------------------
+    Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
+    Route::view('password', 'VistasAdministrador.passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
+    Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
+
+    Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
+    Route::post('/validar-password', [LoginController::class, 'verificarPassword'])->name('validar-password');
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//--------------------- RUTAS DEL ASISTENTE CON ROL 2 -------------------------------------------------------------------------------------------------------
+    Route::middleware(['auth', 'rol:2'])->group(function(){
+
+        Route::view('dashboard-asistente', 'VistasAsistente.indexAsistente')->name('vistaPrincipalAsistente');
+        Route::view('acceso-denegado', 'VistasAsistente.accesoDenegado')->name('accesoDenegado');
+
+        Route::get('/asistente-registro-constancias', [VistasAsistenteController::class, 'vistaCrearConstancia'])->name('registrosConstanciasAsis');
+        Route::post('/asistente-registrar-constancias', [VistasAsistenteController::class, 'guardarConstancias'])->name('registrarConstanciasAsis');
+        Route::get('/asistente-informe-constancias', [VistasAsistenteController::class, 'verInformeConstancias'])->name('informeConstanciasAsis');
+        Route::post('/asistente-estadisticas-constancias', [VistasAsistenteController::class, 'totalConstancias'])->name('totalConstanciasAsis');
+
+        Route::post('/actualizar/{id}/datos-asistente', [VistasAsistenteController::class, 'editarDatosUsuario'])->name('actulizarDatosUsuarioAsis');
+        Route::post('/actualizar/{id}/password-asistente', [VistasAsistenteController::class, 'cambiarPassword'])->name('actulizarPasswordAsis');
+
+    });
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
     /*
@@ -55,15 +82,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         en una varible o en un lugar donde se necesite.
     */
 
-    //------------- Rutas para el inicio de sesion y poder ingresar al dashboard ----------------------------------------------------------------
-    Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
-    Route::view('password', 'VistasAdministrador.passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
-    Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
-
-    Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
-    Route::post('/validar-password', [LoginController::class, 'verificarPassword'])->name('validar-password');
-
-    Route::middleware(['auth'])->group(function(){
+    Route::middleware(['auth', 'rol:1'])->group(function(){
 
         //Ruta principal
         Route::view('dashboard-admin', 'VistasAdministrador.indexAdmin')->name('privada'); //Ruta protegida
@@ -178,10 +197,6 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
 
-
-
-
-
-//---------------------------------- OTRAS RUTAS QUE PUEDAS OCUPAR --------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

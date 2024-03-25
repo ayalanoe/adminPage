@@ -106,6 +106,7 @@ class VistasAdminController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
+            $user->rol = $request->rolUsuario;
 
             $user->save(); //Insersion en la base de datos
             return back()->with('crearUsuarioRespuesta', "Usuario creado correctamente");

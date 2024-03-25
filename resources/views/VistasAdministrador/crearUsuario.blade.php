@@ -22,6 +22,13 @@
             <input type="email" id="emailNuevoUser" name="email" required>
             <label for="password">Contraseña:</label>
             <input type="password" id="passwordNuser" name="password" required>
+            <label for="rol">Rol de usuario:</label>
+
+            <select name="rolUsuario" class="form-select" aria-label="Default select example">
+                <option selected>Selccione una opcion</option>
+                <option value="1">Administrador</option>
+                <option value="2">Asistente</option>
+            </select>
 
             <button type="submit">Registrar</button>
         </form>

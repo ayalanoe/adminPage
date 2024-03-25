@@ -57,13 +57,29 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($credenciales, true)) { 
-            $request->session()->regenerate(); //Se creae la sesion y se redirige a la sesion, en este caso al dashboard.blade
-            return redirect()->intended(route('privada'));
+        if ($usuario->rol == 1) {
+            
+            if (Auth::attempt($credenciales, true)) { 
+                $request->session()->regenerate(); //Se creae la sesion y se redirige a la sesion, en este caso al dashboard.blade
+                return redirect()->intended(route('privada'));
+    
+            } else {
+                return redirect(route('password'))->with('error', 'Contraseña incorrecta.');
+            }
 
-        } else {
-            return redirect(route('password'))->with('error', 'Contraseña incorrecta.');
         }
+        elseif($usuario->rol == 2)
+        {
+            if (Auth::attempt($credenciales, true)) { 
+                $request->session()->regenerate(); //Se creae la sesion y se redirige a la sesion, en este caso al dashboard.blade
+                return redirect()->intended(route('vistaPrincipalAsistente'));
+    
+            } else {
+                return redirect(route('password'))->with('error', 'Contraseña incorrecta.');
+            }
+        }
+
+        
         
     }
 

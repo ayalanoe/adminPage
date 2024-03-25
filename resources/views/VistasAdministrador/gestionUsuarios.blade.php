@@ -1,14 +1,15 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Gestión de Usuarios') 
 @section('contenido')
-    <h2>Otra Vista</h2>
-    <p>Contenido de otra vista...</p>
+    <h2>Gestion de usuarios del sistema</h2>
+    <p>Contenido de la tabla</p>
     <table class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Correo Electrónico</th>
+                <th scope="col">Rol de usuario</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -23,6 +24,13 @@
                     <th scope="row">{{$numero}}</th>  
                     <td>{{$usuario->name}}</td>
                     <td>{{$usuario->email}}</td>
+                    <td>
+                      @if($usuario->rol == 1)
+                          Admin
+                      @elseif($usuario->rol == 2)
+                          Asistente
+                      @endif
+                  </td>
                     <td class="d-flex">
 
                       <form class="formEliminarUsuario" action="{{route('usuarios.destroy', $usuario->id) }}" method="POST">
