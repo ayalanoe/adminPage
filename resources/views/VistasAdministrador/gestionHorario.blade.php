@@ -3,7 +3,7 @@
 @section('titulo', '- Horario De Atención')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}">   
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionHorario.css')}}">   
 @endsection
 
 @section('contenido')

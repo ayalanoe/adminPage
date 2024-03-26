@@ -3,7 +3,7 @@
 @section('contenido')
     <?php
         date_default_timezone_set('America/Mexico_City');
-        $horaActual = date('G'); // Obtén la hora actual en formato de 24 horas
+        $horaActual = date('G'); // Obtenemos la hora actual en formato de 24 horas
         $hora2 = $horaActual;
         
 

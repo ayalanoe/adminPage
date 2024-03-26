@@ -6,7 +6,7 @@
 @section('titulo', '- Registro de Constancias') 
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registroUsuarios.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registrarConstancia.css') }}">
 @endsection
 
 @section('contenido')

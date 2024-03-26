@@ -5,7 +5,7 @@
 -->
 @section('titulo', '- Estadisticas de Constancias') 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registroUsuarios.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/estadisticasConstancias.css') }}">
 @endsection
 
 @section('contenido')

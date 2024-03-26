@@ -11,7 +11,6 @@
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bienvenida.css') }}">
     @yield('css-publico')
 
     <!-- CDN de sweetAlert para las alertas de confirmaciones -->
