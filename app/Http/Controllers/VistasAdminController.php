@@ -17,6 +17,7 @@ use App\Models\AtencionHorario;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -1023,43 +1024,45 @@ class VistasAdminController extends Controller
 
         public function guardarHorarioAtencion(Request $datosAtencionHorario)
         {
-            $horarioAtencion = new AtencionHorario();
-            
-            $horarioAtencion->dias = $datosAtencionHorario->diasAtecion;
-            $horarioAtencion->horaInicio = $datosAtencionHorario->horaInicio;
-            $horarioAtencion->horaCierre = $datosAtencionHorario->horaCierre;
-            $horarioAtencion->estadoMediodia = $datosAtencionHorario->estadoMediodia;
-            $horarioAtencion->otrosDias = $datosAtencionHorario->otrosDias;
-            $horarioAtencion->horaInicioOtro = $datosAtencionHorario->otroHoraInicio;
-            $horarioAtencion->horaCierreOtro = $datosAtencionHorario->OtroHoraCierre;
+            /*
+                En Este caso se usan dos objetos de la misma clase para asignar el horario de los dias 
+                normales de atencion y el dia sabado si se quiere registrar. En todo caso el sabado por lo
+                general se trabaja hasta medio dia, por eso de seja un valor por defecto al campo 
+                En todo casi habrá solo dos registro en la tabla de horario de atencion
+            */
 
-            $horarioAtencion->save();
+            $horarioDiasNormal = new AtencionHorario();
+            $horarioOtroDia = new AtencionHorario();
+
+            $horarioDiasNormal->diasLaborales = $datosAtencionHorario->diasNormalAtencion;
+            $horarioDiasNormal->horaInicio = $datosAtencionHorario->normalHoraInicio;
+            $horarioDiasNormal->horaCierre = $datosAtencionHorario->normalHoraCierre;
+            $horarioDiasNormal->estadoMedioDia = $datosAtencionHorario->estadoMediodia;
+
+            $horarioOtroDia->diasLaborales = $datosAtencionHorario->otroDiaAtencion;
+            $horarioOtroDia->horaInicio = $datosAtencionHorario->otroDiaHoraInicio;
+            $horarioOtroDia->horaCierre = $datosAtencionHorario->otroDiaHoraCierre;
+            $horarioOtroDia->estadoMedioDia = 'No Asignado';
+
+            $horarioDiasNormal->save();
+            $horarioOtroDia->save();
 
             return back()->with('resHorarioAtencion', 'El horario de atencion se ha registrado con éxito');
 
         }
 
-        public function eliminarHorarioAtencion($id)
+        public function eliminarHorarioAtencion()
         {
-            $horarioElimnar = AtencionHorario::find($id);
-            if (!$horarioElimnar) {
+            try {
+                AtencionHorario::truncate();
+                return back()->with('resEliminarHorarioAtencion', 'Se ha eliminado con exito');
 
+            } catch (\Exception $e) {
                 return back()->with('horarioNoEncontrado', 'Horario no encontrado');
             }
-
-            $horarioElimnar->delete();
-
-            return back()->with('resEliminarHorarioAtencion', 'Se ha eliminado con exito');
+            
         }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ----------------------------------------------------------------------------------------------------------
-        public function verGaleria()
-        {
-            $galeria = Galeria::all();
-            return view('VistasAdministrador/gestionGaleria', ['directorio' => $galeria]);
-        }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //---------------------------------- FUNCIONES PARA LOS TRAMITES ACADEMICOS --------------------------------------------------------------------------------------------------------
         public function mostrarTramites(){
@@ -1315,8 +1318,6 @@ class VistasAdminController extends Controller
             return redirect()->route('verPreguntasFrecuentes');
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-
 
     //----------------------------- FUNCIONES PARA LA GESTION DE CONSTANCIAS --------------------------------------------------------------------------------------------------------
         public function verInformeConstancias()
@@ -1379,4 +1380,85 @@ class VistasAdminController extends Controller
         }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //----------------------------- FUNCIONES PARA LA GESTION DE LA GALERIA ----------------------------------------------------------------------------------------------------------
+        public function verGaleria()
+        {
+            $galeria = Galeria::all();
+            return view('VistasAdministrador/gestionGaleriaInstitucional', ['galeriaFotos' => $galeria]);
+        }
+
+        public function guardarFotoGaleria(Request $datosGaleria)
+        {
+            $nuevaFoto = new Galeria();
+
+            $nuevaFoto->nombreFoto = $datosGaleria->nombreGaleria;
+            $nuevaFoto->fechaPublicacion = Carbon::now()->toDateString();
+
+            $datosGaleria->validate([
+                'fotoGaleria' => 'file|nullable',
+            ]);
+            
+            if ($datosGaleria->hasFile('fotoGaleria')) {
+
+                $archivo = $datosGaleria->file('fotoGaleria');
+                $ruta = Storage::disk('local')->put('Galeria', $archivo);
+
+                $nuevaFoto->rutaArchivo = $ruta;
+            } 
+
+            $nuevaFoto->save();
+
+            return back()->with('resCrarGaleria', 'Foto publicada con exito !!');
+
+        }
+
+        public function eliminarFotoGaleria($id)
+        {
+            $fotoEliminar = Galeria::find($id);
+            
+            if (!$fotoEliminar) {
+
+                return back()->with('fotoNoEncontrada', 'Foto no encontrada');
+            }
+        
+            $rutaArchivo = $fotoEliminar->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+        
+            if ($rutaArchivo !== null) {
+    
+                if (Storage::disk('local')->exists($rutaArchivo)) {
+
+                    Storage::disk('local')->delete($rutaArchivo);
+                }
+            }
+        
+            // Eliminar el registro de la base de datos
+            $fotoEliminar->delete();
+        
+            return back()->with('resEliminarFotoGaleria', 'Foto eliminada correctamente');
+        }
+
+        public function verFotoGaleria($id)
+        {
+            $verFotoGaleria = Galeria::find($id);
+
+            // Obtener la extensión del archivo
+            $extension = pathinfo($verFotoGaleria->rutaArchivo, PATHINFO_EXTENSION);
+
+            // Se accede al storage de Laravel para obtener el contenido del archivo
+            $contenidoArchivo = Storage::get($verFotoGaleria->rutaArchivo);
+
+            if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) {
+                
+                return response($contenidoArchivo, 200)->header('Content-Type', 'image/' . $extension);
+    
+            }
+            else {
+                return response()->json(['error' => 'El archivo no tiene un formato admitido'], 400);
+            }
+
+        }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

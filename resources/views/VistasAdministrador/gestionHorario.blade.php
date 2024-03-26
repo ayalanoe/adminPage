@@ -19,33 +19,30 @@
                 <th scope="col">Hora de Apertura</th>
                 <th scope="col">Hora de Cierre</th>
                 <th scope="col">Estado Mediodía</th>
-                <th scope="col">Otros dias</th>
-                <th scope="col">Hora Apertura</th>
-                <th scope="col">Hora Cierre</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Accion</th>
+                
             </tr>
         </thead>
 
         <tbody>
 
+            @php
+                $numero = 1
+            @endphp
+
             @forelse ($horarioAtencion as $horario)
                 <tr>
-                    <th>1</th>
-                    <td> {{$horario->dias}} </td>
+                    <th>{{$numero}}</th>
+                    <td> {{$horario->diasLaborales}} </td>
                     <td> {{$horario->horaInicio}} </td>
                     <td> {{$horario->horaCierre}} </td>
-                    <td> {{$horario->estadoMediodia}} </td>
-                    <td> {{$horario->otrosDias}} </td>
-                    <td> {{$horario->horaInicioOtro}} </td>
-                    <td> {{$horario->horaCierreOtro}} </td>
-                    <td colspan="3">
-                        <form action="{{ route('eliminarHorarioAtencion', $horario->id) }}" class="formEliminarHorarioAtencion" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                        </form>
-                    </td>
+                    <td> {{$horario->estadoMedioDia}} </td>
+                    <td>-</td>
                 </tr>
+
+                @php
+                    $numero++
+                @endphp
                 
             @empty
                 
@@ -55,20 +52,22 @@
                 <td>--</td>
                 <td>--</td>
                 <td>--</td>
-                <td>--</td>
-                <td>--</td>
-                <td>--</td>
                 <td colspan="3">
                     <a class="btn btn-secondary" href="calendarioAcademico" data-bs-toggle="modal" data-bs-target="#asignarHorarioA"><i class="fa-solid fa-plus"></i> Asignar Horario</a>
                 </td>
             </tr>                
             @endforelse
 
-        
-                
-
         </tbody>
     </table>
+
+    <div class="container">
+        <form action="{{ route('eliminarHorarioAtencion')}}" class="formEliminarHorarioAtencion" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i> Eliminar Horario</button>
+        </form>
+    </div>
 
 @endsection
 
@@ -138,7 +137,7 @@
                             <label for="validationCustomUser" class="form-label">Días de Atención</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-calendar-days"></i></span>
-                                <input name="diasAtecion" type="text" class="form-control" required>
+                                <input name="diasNormalAtencion" type="text" class="form-control" required>
                                 <div class="valid-feedback">
                                     Dia valido!
                                 </div>
@@ -149,7 +148,7 @@
                             <label for="validationCustomUser" class="form-label">Apertura</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
-                                <input name="horaInicio" type="time" class="form-control" required>
+                                <input name="normalHoraInicio" type="time" class="form-control" required>
                                 <div class="valid-feedback">
                                     Hora válida!
                                 </div>
@@ -160,7 +159,7 @@
                             <label for="validationCustomUser" class="form-label">Cierre</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
-                                <input name="horaCierre" type="time" class="form-control" id="horaCierre" required>
+                                <input name="normalHoraCierre" type="time" class="form-control" id="horaCierre" required>
                                 <div class="valid-feedback">
                                     Hora válida!
                                 </div>
@@ -183,10 +182,10 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="validationCustomUser" class="form-label">Otros dias de atencion</label>
+                            <label for="validationCustomUser" class="form-label">Otro dia de atencion</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-calendar-days"></i></span>
-                                <input name="otrosDias" type="text" class="form-control" required>
+                                <input name="otroDiaAtencion" type="text" class="form-control" required>
                                 <div class="valid-feedback">
                                     Dia valido!
                                 </div>
@@ -197,7 +196,7 @@
                             <label for="validationCustomUser" class="form-label">Apertura</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
-                                <input name="otroHoraInicio" type="time" class="form-control" required>
+                                <input name="otroDiaHoraInicio" type="time" class="form-control" required>
                                 <div class="valid-feedback">
                                     Hora válida!
                                 </div>
@@ -208,7 +207,7 @@
                             <label for="validationCustomUser" class="form-label">Cierre</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
-                                <input name="OtroHoraCierre" type="time" class="form-control" id="horaCierre" required>
+                                <input name="otroDiaHoraCierre" type="time" class="form-control" id="horaCierre" required>
                                 <div class="valid-feedback">
                                     Hora válida!
                                 </div>

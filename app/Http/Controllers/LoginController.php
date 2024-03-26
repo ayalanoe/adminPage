@@ -25,7 +25,22 @@ class LoginController extends Controller
                 y se guarda en la varible usuarioId para poder guardarlo en la sesion 
             */
             $usuarioId = $usuario->id;
-            session(['usuarioId' => $usuarioId]);
+            $nombreUsuario = $usuario->name;
+
+            /*
+                Se obtiene el nombre del usuario luego se hace un array segun el nombre del usuario 
+                para obtener solo el primer nombre, ya que en la base de datos el campo name 
+                contiene el nombre completo del usuario, por ejemplo Juan Peréz Pérez, por lo tanto
+                solo queremos bostrar en la vista Bievenido, Juan. No se desea mostrar todo el nombre del 
+                usuario. Entonces cuando ya se tiene el nombre en eun array se accede a la posicion 
+                cero que es donde está el primer nombre y luego se guarda ese datos en la sesion
+            */
+            $nombrePartes = explode(' ', $nombreUsuario);
+            $primerNombre = $nombrePartes[0];
+            session([
+                'usuarioId' => $usuarioId,
+                'userName' => $primerNombre,
+            ]);
             return redirect(route('password')); //Si el correo es correcto se regirige la password
 
         }else{

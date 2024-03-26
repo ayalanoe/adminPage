@@ -18,21 +18,22 @@
                         
                         @foreach ($horarioLaboral as $item)
 
-                        <tr>
-                            <th scope="row"> {{$item->dias}} </th>
-                            <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
-                        </tr>
-                    
-                        <tr>
-                            <th scope="row"> {{$item->otrosDias}} </th>
-                            <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicioOtro)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierreOtro)->format('h:i a') }} </td>
-                        </tr>
+                            <tr>
+                                <th scope="row"> {{$item->diasLaborales}} </th>
+                                <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
+                            </tr>
+
 
                             <tr>
-                                @if ($item->estadoMediodia == "abierto")
+
+                                @if ($item->estadoMedioDia == "abierto")
                                     <th><strong>*Abierto al mediodía</strong></th>
-                                @else
+                    
+                                @elseif ($item->estadoMedioDia == "cerrado")
                                     <th><strong>*Cerrado al mediodía</strong></th>
+
+                                @else
+                                    <th></th>
                                 @endif
                                 
                             </tr>

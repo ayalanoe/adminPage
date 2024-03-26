@@ -54,7 +54,7 @@
 
     <div class="login-container">
         <img src="{{ asset('imagesAdmin/pass.png') }}" alt="Logo">
-        <h2>Bienvenido, nombre</h2>
+        <h2>Bienvenido, {{Session::get('userName')}} </h2>
 
         <form action="{{ route('validar-password') }}" method="post">
             @csrf

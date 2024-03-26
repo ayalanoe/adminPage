@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('tbl_horario_atencion', function (Blueprint $table) {
             $table->id();
-            $table->string("dias");
-            $table->time("horaInicio");
-            $table->time("horaCierre");
-            $table->string("otrosDias");
-            $table->time("horaInicioOtro");
-            $table->time("horaCierreOtro");
-            $table->string("estadoMediodia");
+            $table->string('diasLaborales');
+            $table->time('horaInicio');
+            $table->time('horaCierre');
+            $table->string('estadoMedioDia')->nullable();
             $table->timestamps();
         });
     }

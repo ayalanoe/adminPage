@@ -15,12 +15,9 @@ class AtencionHorario extends Model
     //MOdelo que sirve como plantilla al controlador para poder insertar los datos
     //ojo tinee que tener el nombre de las columnas que se quieren afectar
     protected $fillable = [
-        'dias',
+        'diasLaborales',
         'horaInicio',
         'horaCierre',
-        'otrosDias',
-        'horaInicioOtro',
-        'horaCierreOtro',
-        'estadoMediodia'
+        'estadoMedioDia',
     ];
 }

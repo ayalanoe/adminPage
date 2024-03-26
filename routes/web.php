@@ -164,7 +164,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         
         Route::get('gestion-horario-atencion', [VistasAdminController::class, 'verHorarioAtencion'])->name('gestionHorario');
         Route::post('/registar-horario-atencion', [VistasAdminController::class, 'guardarHorarioAtencion'])->name('registrarHorarioAtencion');
-        Route::delete('/eliminar-horario-atencion/{id}', [VistasAdminController::class, 'eliminarHorarioAtencion'])->name('eliminarHorarioAtencion');
+        Route::delete('/eliminar-horario-atencion', [VistasAdminController::class, 'eliminarHorarioAtencion'])->name('eliminarHorarioAtencion');
 
         Route::get('/tramites-academicos', [VistasAdminController::class, 'mostrarTramites'])->name("verTramitesAcademicos");
         Route::view('/vista-crear-tramite', 'VistasAdministrador/crearTramiteAcademico')->name("crearTramiteAcademico");
@@ -190,10 +190,15 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/informe-constancias', [VistasAdminController::class, 'verInformeConstancias'])->name('informeConstancias');
         Route::post('/registrar-constancias', [VistasAdminController::class, 'guardarConstancias'])->name('registrarConstancias');
         Route::post('/estadisticas-constancias', [VistasAdminController::class, 'totalConstancias'])->name('totalConstancias');
+
+        Route::get('/gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
+        Route::post('/resgistrar-foto-galeria', [VistasAdminController::class, 'guardarFotoGaleria'])->name('guardarGaleria');
+        Route::delete('/elimar-foto-galeria/{id}', [VistasAdminController::class, 'eliminarFotoGaleria'])->name('eliminarFotoGaleria');
+        Route::get('/ver-foto-galeria/{id}', [VistasAdminController::class, 'verFotoGaleria'])->name('verFotoGaleriaAdmin');
     });
 
 
-    Route::get('/gestion-galeria', [VistasAdminController::class, 'verGaleria'])->name('gestionGaleria');
+    
 
 
 
