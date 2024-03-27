@@ -4,13 +4,14 @@
 
 @section('css-publico')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/directorioPublic.css') }}">
 @endsection
 
 @section('contenido-publico')
-   
-    <div class="container__cover">
-    <!--TABLA DE ELEMENTOS-->
+
+    <div class="container_table">
+        <!--TABLA DE ELEMENTOS-->
 
             <div class="container">
                 <h2>DIRECTORIO</h2>

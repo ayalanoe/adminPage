@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
+
     @yield('css-publico')
 
     <!-- CDN de sweetAlert para las alertas de confirmaciones -->
@@ -26,7 +27,7 @@
     <header id="header">
         <div class="container__header">
             <div class="logo">
-                <img src="images/logoues.png" alt="logo de la universidad de El Salvador" class="imgLogo">
+                <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
             </div>
             <div class="container__nav">
                 <nav id="nav">
@@ -82,22 +83,12 @@
         </div>
     </header>
     
- 
-
-
-
-
-
-  
-    
         <div class="cover">
 
             @yield('contenido-publico')
 
         </div>
-        
-  
-    
+
         <Footer>
             <div class="container__footer">
 

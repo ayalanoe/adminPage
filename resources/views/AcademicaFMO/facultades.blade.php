@@ -8,8 +8,9 @@
 @endsection
 
 @section('contenido-publico')
-
+<div class="container_table">
     <!--TABLA DE ELEMENTOS-->
+
     <div class="card border-0">
         <div class="card-header">
             <div class="container">
@@ -49,5 +50,6 @@
         </div>
         
     </div>
+</div>
 
 @endsection
