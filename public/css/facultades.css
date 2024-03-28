@@ -125,6 +125,17 @@ nav ul li a:hover{
     padding: 10px; /* Espacio interno para el texto */
     margin-bottom: 10px; /* Espacio entre elementos */
 }
+
+.faq-section-titlee {
+    background-color: #690605; /* Fondo azul */
+    color: white;
+    height: 80px; /* Alto de 150px */
+    display: flex; /* Activar el modelo de caja flexible */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center; /* Alinear el texto al centro */
+    border-radius: 16px;
+}
 /* Estilo para el botón del acordeón */
 .faq-section-title button {
     background-color: transparent; /* Fondo transparente */
