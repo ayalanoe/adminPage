@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('tbl_facultades', function (Blueprint $table) {
             $table->id();
-            $table->string('facultad', 100);
-            $table->string('correo', 150);
+            $table->string('oficina');
+            $table->string('facultad', 150);
+            $table->string('correo', 150)->nullable();
             $table->string('contacto', 12)->nullable();
             $table->timestamps();
         });

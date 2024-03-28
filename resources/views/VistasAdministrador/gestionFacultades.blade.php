@@ -3,12 +3,17 @@
 @section('contenido')
   <div class="container">
     <h2>FACULTADES</h2>
-    <p>DIRECTORIO DE TODAS LAS FACULTADES DE LA UES...</p>
+
+    <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a contactos</a>
+    <br>
+    <br>
+
     <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Facultad</th>
+          <th scope="col">Oficina</th>
           <th scope="col">Correo Institucional</th>
           <th scope="col">Contacto</th>
           <th scope="col">Acciones</th>
@@ -23,6 +28,7 @@
           <tr>
             <th scope="row">{{$numero}}</th>  
             <td>{{$facultadC->facultad}}</td>
+            <td>{{$facultadC->oficina}}</td>
             <td>{{$facultadC->correo}}</td>
             <td>{{$facultadC->contacto}}</td>
             <td class="d-flex">
@@ -66,8 +72,16 @@
             <div class="col-md-12">
               <label for="validationCustomUser" class="form-label">Facultad</label>
               <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
+                  <input name="facultadOrigen" type="text" class="form-control" id="validaUser" value="{{$facultadPertenece}}" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
+              </div>
+          </div>
+
+            <div class="col-md-12">
+              <label for="validationCustomUser" class="form-label">Oficina</label>
+              <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-university"></i></span>
-                <input name="nombreFacultad" type="text" class="form-control" id="validaFacultad" required>
+                <input name="nombreOficina" type="text" class="form-control" id="validaFacultad" required>
                 <div class="valid-feedback">
                   Nombre invalido!
                 </div>
@@ -78,7 +92,7 @@
               <label for="validationCustomCorreo" class="form-label">Correo Electrónico</label>
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
-                <input name="correoFacultad" type="text" class="form-control" id="validaCorreoFac" aria-describedby="inputGroupPrepend" required>
+                <input name="correoOficina" type="text" class="form-control" id="validaCorreoFac" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
                   Correo no valido!
                 </div>
@@ -89,7 +103,7 @@
               <label for="validationCustomCorreo" class="form-label">Contacto</label>
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
-                <input name="numeroFacultad" type="text" class="form-control" id="validaContactoFac" aria-describedby="inputGroupPrepend" required>
+                <input name="contactoOficina" type="text" class="form-control" id="validaContactoFac" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
                   Correo no valido!
                 </div>
@@ -124,10 +138,10 @@
               @csrf
 
               <div class="col-md-12">
-                <label for="validationCustomUser" class="form-label">Nombre Facultad</label>
+                <label for="validationCustomUser" class="form-label">Oficina</label>
                 <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
-                  <input value="{{$facultadId->facultad}}" name="editarNombreFacultad" type="text" class="form-control" id="txtEditarNombreContacto" required>
+                  <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-building-circle-check"></i></span>
+                  <input value="{{$facultadId->oficina}}" name="editarNombreFacultad" type="text" class="form-control" id="txtEditarNombreContacto" required>
                   <div class="valid-feedback">
                     Nombre invalido!
                   </div>

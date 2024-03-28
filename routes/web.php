@@ -126,6 +126,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/cancelar-update-carreraPregrado/{depto}', [VistasAdminController::class, 'cancelarActulizarCarreraPregrado'])->name('cancelarCarrPre');
         Route::get('/ver-plan-carreraPregrado/{id}', [VistasAdminController::class, 'verPlanCarreraPregrado'])->name('verPlanCarrPre');
 
+        Route::get('/departamentos-pregrado', [VistasAdminController::class, 'filtrarDepartamento'])->name('departamentosPregrado');
+        Route::get('/volver-a-departamentos', [VistasAdminController::class, 'regresarAdepartementos'])->name('regresarA_Departamentos');
+
         Route::get('/gestion-carrerasPosgrado', [VistasAdminController::class, 'gestionCarrerasPosgrado'])->name('carrerasPosgrado');
         Route::post('/registrar-carrera-posgrado', [VistasAdminController::class, 'registrarCarreraPosgrado'])->name('carreraPosgradoIngresar');
         Route::get('/editar-carrera-posgrado/{id}',[VistasAdminController::class, 'editarCarreraPosgrado'])->name("editarCarreraPosgrado");
@@ -146,13 +149,12 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/cancelar-update-carreraTecnica', [VistasAdminController::class, 'cancelarActulizarCarreraTecnica'])->name('cancelarCarrTecnica');
         Route::delete('/eliminar-carrera-tecnica/{id}', [VistasAdminController::class, 'eliminarCarreraTecnica'])->name('eliminarCarreraTecnica');
 
-        Route::get('/departamentos-pregrado', [VistasAdminController::class, 'filtrarDepartamento'])->name('departamentosPregrado');
-        Route::get('/volver-a-departamentos', [VistasAdminController::class, 'regresarAdepartementos'])->name('regresarA_Departamentos');
-
-        Route::get('gestion-facultades', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
-        Route::post('ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
+        Route::get('/gestion-facultades/{facultad}', [VistasAdminController::class, 'verDatosFacultad'])->name('gestionFacultades');
+        Route::post('/ingresar-contacto-facultad', [VistasAdminController::class, 'insertarFacultades'])->name('insertarContactoFacultad');
         Route::delete('/eliminar-facultad/{id}', [VistasAdminController::class, 'eliminarFacultad'])->name('eliminarFacultad');
         Route::post('/editar-facultad/{id}', [VistasAdminController::class, 'editarDatosFacultad'])->name('editarFacultad');
+        Route::get('/filtro-contacto-facultades', [VistasAdminController::class, 'filtrarFacultades'])->name('filtroContactosFacultades');
+        Route::get('/volver-a-contactosFacultad', [VistasAdminController::class, 'regresarAcontactosFacu'])->name('volverAContactosFacultad');
 
         Route::get('/crear-anuncioAcademico', [VistasAdminController::class, 'vistaCrarAnuncio'])->name('vistaCrearAnuncio');
         Route::get('gestion-anuncios', [VistasAdminController::class, 'verAnuncios'])->name('gestionAnuncios');

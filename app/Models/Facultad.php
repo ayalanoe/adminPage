@@ -12,6 +12,7 @@ class Facultad extends Model
     protected $table = 'tbl_facultades';
 
     protected $fillable = [
+        'oficina',
         'facultad',
         'correo',
         'contacto'

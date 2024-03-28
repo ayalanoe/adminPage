@@ -8,6 +8,8 @@ use App\Models\CalendarioAdministrativo;
 use App\Models\CalendarioClase;
 use App\Models\Contacto;
 use App\Models\Facultad;
+use App\Models\PreguntaFrecuente;
+use App\Models\Tramite;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -17,10 +19,14 @@ class VistasPublicasController extends Controller
         public function vistaPrincipal(){
 
             $horarioAtencion = AtencionHorario::all();
+            $tramites = Tramite::all();
+            $preguntas = PreguntaFrecuente::all();
 
             return view('AcademicaFMO/cover', [
 
-                'horarioLaboral' => $horarioAtencion
+                'horarioLaboral' => $horarioAtencion,
+                'tramitesAcademicos' => $tramites,
+                'preguntaFrecuente' => $preguntas,
             ]);
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

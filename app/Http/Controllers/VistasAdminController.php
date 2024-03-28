@@ -320,6 +320,16 @@ class VistasAdminController extends Controller
     
     //----------------------------- FUCIONES PARA LOS PLANES DE ESTUDIO DE PREGRADO -------------------------------------------------------------------------------------------------------------
         
+        public function filtrarDepartamento()
+        {
+            return view('VistasAdministrador/departamentosPregrado');
+        }
+
+        public function regresarAdepartementos()
+        {
+            return redirect()->route('departamentosPregrado');
+        }
+
         public function gestionCarrerasPregrado(string $departamento)
         {
             $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->where('departamento', $departamento)->get();
@@ -767,23 +777,33 @@ class VistasAdminController extends Controller
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------------------- FILTRO POR DEPARTAMENTO PARA LA GESTION DE CARRERAS --------------------------------------------------------------------------------
-        public function filtrarDepartamento()
+    //----------------------------- FUNCIONES PARA LA GESTION DE LOS CONTACTOS DE LA FACULTADES --------------------------------------------------------------------------------------------------------
+        public function filtrarFacultades()
         {
-            return view('VistasAdministrador/departamentosPregrado');
+            return view('VistasAdministrador/contactosFacultades');
         }
 
-        public function regresarAdepartementos()
+        public function regresarAcontactosFacu()
         {
-            return redirect()->route('departamentosPregrado');
+            return redirect()->route('filtroContactosFacultades');
         }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LA GESTION DE FACULTADES --------------------------------------------------------------------------------------------------------
-        public function verDatosFacultad()
+    
+        public function verDatosFacultad($pertenceFacultad)
         {
-            $facultades = Facultad::all();
-            return view('VistasAdministrador/gestionFacultades', ['facultad' => $facultades]);
+            $facultades = Facultad::where('facultad', $pertenceFacultad)->get();
+            return view('VistasAdministrador/gestionFacultades', [
+
+                /*
+                    El primer parametro contiene todos los resultados de la consulta anterior es decir 
+                    los contactos según la facultad
+
+                    El suguendo parametro contiene el nombre de la facultada para que poder ponerlo en la vista 
+                    por defecto cuando se vaya a registrar la oficina o infraescrito de una facultad
+                */
+                'facultad' => $facultades,
+                'facultadPertenece' => $pertenceFacultad
+            ]);
         }
 
 
@@ -791,9 +811,10 @@ class VistasAdminController extends Controller
         {
             $contFacultad = new Facultad(); // Se crea una nueva instacia
             
-            $contFacultad->facultad = $request->nombreFacultad;
-            $contFacultad->correo = $request->correoFacultad;
-            $contFacultad->contacto = $request->numeroFacultad;
+            $contFacultad->facultad = $request->facultadOrigen;
+            $contFacultad->oficina = $request->nombreOficina;
+            $contFacultad->correo = $request->correoOficina;
+            $contFacultad->contacto = $request->contactoOficina;
 
             $contFacultad->save();
             return back()->with('respuestaFacultadCrear', 'Facultad creada correctamente');
