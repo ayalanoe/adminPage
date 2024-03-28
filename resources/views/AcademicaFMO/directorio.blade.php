@@ -14,8 +14,8 @@
         <!--TABLA DE ELEMENTOS-->
 
             <div class="container">
-                <h2>DIRECTORIO</h2>
-                <p>CONTACTOS DE ACADEMICA...</p>
+                <h3>DIRECTORIO DE ADMINISTRACIÓN ACADÉMICA</h3>
+                
                 <table class="table table-hover">
                     <thead>
                         <tr>

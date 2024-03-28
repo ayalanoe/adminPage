@@ -70,7 +70,7 @@
                             </ul>
                         </li>
                         
-                        <li><a href="#">EDUCACIÓN A DISTANCIA</a></li>
+                        <li><a href="{{ route('educDistancia') }}">EDUCACIÓN A DISTANCIA</a></li>
                         <li><a href="{{ route('verContactosFacultad') }}">FACULTADES</a></li>
                     </ul>
                 </nav>

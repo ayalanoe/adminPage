@@ -88,10 +88,13 @@
     
         <ul class="sidebar-nav">
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">CERTIFICACIONES DE NOTAS</a>
+                        <a href="{{ route('tramiteAcademico') }}" class="sidebar-link">CERTIFICACIONES DE NOTAS</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">Equivalencias</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">ESTUDIO DE CUM HONORIFÍCO</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">EXPEDIENTES DE GRADUACIÓN</a>
