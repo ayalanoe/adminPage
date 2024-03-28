@@ -155,7 +155,7 @@
                         </a>
                         <ul id="DirectFacultad" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionFacultades') }}" class="sidebar-link">Ver Directorio</a>
+                                <a href="{{ route('filtroContactosFacultades') }}" class="sidebar-link">Ver Directorio</a>
                             </li>
                             
                         </ul>
