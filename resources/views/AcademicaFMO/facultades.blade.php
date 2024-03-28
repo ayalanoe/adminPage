@@ -13,37 +13,47 @@
 
     <div class="card border-0">
         <div class="card-header">
-            <div class="container">
-                
-                <p>LISTA DE FACULTADES</p>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Facultad</th>
-                            <th scope="col">Correo Institucional</th>
-                            <th scope="col">Contacto</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                        $numero = 1 
-                        @endphp
-                    
-                        @foreach ($facultad as $facultadC)
-                        <tr>
-                            <th scope="row">{{$numero}}</th>  
-                            <td>{{$facultadC->facultad}}</td>
-                            <td>{{$facultadC->correo}}</td>
-                            <td>{{$facultadC->contacto}}</td>
-                        </tr>
-                        @php
-                            $numero++
-                        @endphp
-                        @endforeach
-                        </tbody>
-                </table>
-            </div>
+                <div class="container text-center">
+                    <div class="row g-2">
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee"><i class="fa-solid fa-stethoscope"></i> Facultad de Medicina</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee"><i class="fa-solid fa-gavel"></i> Facultad de Jurisprudencia y Ciencias Sociales</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee"> <i class="fa-solid fa-building-wheat"></i>Facultad de Ciencias Agronómicas</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee">Facultad de Ciencias y Humanidades</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee">Facultad de Ingenieía y Arquitectura</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 mb-2 faq-section-titlee">Facultad de Química y Farmacia</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad de Odontología</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad de Ciencias Económicas</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad de Ciencias Naturales y Matemática</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad Multidisciplinaria de Occidente</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad Multidisciplinaria Oriente</div>
+                      </div>
+                      <div class="col-4">
+                        <div class="p-3 faq-section-titlee">Facultad Multidisciplinaria Paracentral</div>
+                      </div>
+                    </div>
+                  </div>
+            
         </div>
 
         <div class="card-body">
