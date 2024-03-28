@@ -121,7 +121,7 @@
 
                 <div class="box__footer">
                     <h2>Medios de contacto</h2>
-                    <a href="https://www.facebook.com/oficial.fmo" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <a href="https://www.facebook.com/fmoues.oficial" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
                     <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a>
                     <a href="#"><i class="fa-solid fa-phone"></i> 2664 - 0000</a>
                     <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado"><i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>

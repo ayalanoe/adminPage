@@ -78,6 +78,12 @@
             </button>
     </div>
 
+    <div class="prueba2">            
+        <a href="{{ route('preguntas') }}" class="btn iconoOpciones">
+            <i class="fa-solid fa-circle-question"></i>
+        </a>
+    </div>
+
         
 <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
@@ -143,12 +149,16 @@
             entre otros asuntos importantes.</p>
 
                 <a class="btn btn-primary btn-tramites" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                Ver Trámites Académicos
+                Trámites
                 </a>
 
                 <a class="btn btn-primary btn-tramites" href="{{ route('anuncios') }}">
                     Anuncios Oficiales
                     </a>
+
+                    <a class="btn btn-primary btn-tramites" href="{{ route('preguntas') }}">
+                        Preguntas Frecuentes
+                        </a>
 
     </div>
 

@@ -107,11 +107,19 @@ class VistasPublicasController extends Controller
         }
     //
 
-    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------
     public function verTramites()
     {
         $contactos = Contacto::all();
         return view('AcademicaFMO/tramites', ['tramiteAcademico' => $contactos]);
+    }
+
+
+    //----------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ----------------------------------------------------------------------------------------------------------
+    public function verPreguntas()
+    {
+        $contactos = Contacto::all();
+        return view('AcademicaFMO/preguntasFrecuentes', ['preguntas' => $contactos]);
     }
 //
 

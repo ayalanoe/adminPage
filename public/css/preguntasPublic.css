@@ -113,14 +113,47 @@ nav ul li a:hover{
     background-color: white;
 }
 
+.accordion-css {
+    background-color: #690605; /* Fondo azul */
+   
+    color: white; /* Texto blanco */
+    padding: 10px; /* Espacio interno para el texto */
+    margin-bottom: 10px; /* Espacio entre elementos */
+}
+/* Estilo para el botón del acordeón */
+.accordion-css button {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    width: 100%; /* Ancho del botón */
+    height: 100%; /* Alto del botón */
+    text-align: left; /* Alinear texto a la izquierda */
+    color: inherit; /* Heredar color del texto */
+    font-size: inherit; /* Heredar tamaño de fuente */
+    cursor: pointer; /* Cursor de tipo puntero */
+}
+
+.accordion-button::after {
+    background-image: none;
+    content: "\002B";
+    font-family: fontawesome;
+    float: right; 
+}
+/* Icono cuando el acordeón está abierto */
+.accordion-button:not(.collapsed)::after {
+    background-image: none;
+    content: "\2212";
+    font-family: fontawesome;
+    float: right; 
+}
 
 
 
-/* Estilo para el acordeón */
+
+
 .faq-section-title {
     background-color: #690605; /* Fondo azul */
-    width: 500px; /* Ancho de 100px */
-    height: 50px; /* Alto de 150px */
+    width: 200px; /* Ancho de 100px */
+    height: 90px; /* Alto de 150px */
     color: white; /* Texto blanco */
     padding: 10px; /* Espacio interno para el texto */
     margin-bottom: 10px; /* Espacio entre elementos */

@@ -47,6 +47,23 @@
         </div>
 
         <div class="card-body">
+            <div id="accordion">
+                <div class="faq-section-title">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        Comercios
+                    </button>
+                </div>
+                <div class="faq-section-title">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        Comercios
+                    </button>
+                </div>
+                <div class="faq-section-title">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                        Comercios
+                    </button>
+                </div>
+            </div>
         </div>
         
     </div>
