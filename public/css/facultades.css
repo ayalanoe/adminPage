@@ -113,6 +113,10 @@ nav ul li a:hover{
     background-color: white;
 }
 
+.btncursor{
+    cursor: pointer;
+}
+
 
 
 

@@ -103,6 +103,12 @@ class VistasPublicasController extends Controller
             $facultades = Facultad::all();
             return view('AcademicaFMO/facultades', ['facultad' => $facultades]);
         }
+
+        public function verDirectorioFacultades()
+        {
+            $facultades = Facultad::all();
+            return view('AcademicaFMO/facultadesInfo', ['facultadDirectorio' => $facultades]);
+        }
     //---------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------

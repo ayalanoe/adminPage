@@ -37,7 +37,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     Route::get('/AcademicaFMO/educación-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
 
-    Route::get('/AcademicaFMO/contacto-facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
+    Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
+
+    Route::get('/AcademicaFMO/facultades/directorio', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
 
     Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
