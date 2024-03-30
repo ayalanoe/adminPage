@@ -61,13 +61,16 @@
         </tbody>
     </table>
 
-    <div class="container">
-        <form action="{{ route('eliminarHorarioAtencion')}}" class="formEliminarHorarioAtencion" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i> Eliminar Horario</button>
-        </form>
-    </div>
+    @if (!$horarioAtencion->isEmpty())
+        <div class="container">
+            <form action="{{ route('eliminarHorarioAtencion')}}" class="formEliminarHorarioAtencion" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i> Eliminar Horario</button>
+            </form>
+        </div>
+    @endif
+    
 
 @endsection
 
@@ -119,7 +122,7 @@
 
 @section('modales')
 
-    <!-- Modal para subir el calendario administrativo ciclo-1 -->
+    <!-- MOdal para ingresar el horario de atencion de la Administracion Academica -->
     <div class="modal fade" id="asignarHorarioA" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -138,8 +141,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-calendar-days"></i></span>
                                 <input name="diasNormalAtencion" type="text" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Dia valido!
+                                <div class="invalid-feedback">
+                                    Campo vacío!
                                 </div>
                             </div>
                         </div>
@@ -149,8 +152,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
                                 <input name="normalHoraInicio" type="time" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Hora válida!
+                                <div class="invalid-feedback">
+                                    Campo vacío !
                                 </div>
                             </div>
                         </div>
@@ -160,8 +163,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
                                 <input name="normalHoraCierre" type="time" class="form-control" id="horaCierre" required>
-                                <div class="valid-feedback">
-                                    Hora válida!
+                                <div class="invalid-feedback">
+                                    Campo vacío !
                                 </div>
                             </div>
                         </div>
@@ -186,8 +189,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-calendar-days"></i></span>
                                 <input name="otroDiaAtencion" type="text" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Dia valido!
+                                <div class="invalid-feedback">
+                                    Campo vacío !
                                 </div>
                             </div>
                         </div>
@@ -197,8 +200,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
                                 <input name="otroDiaHoraInicio" type="time" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Hora válida!
+                                <div class="invalid-feedback">
+                                    Campo vacío !
                                 </div>
                             </div>
                         </div>
@@ -208,8 +211,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-door-closed"></i></span>
                                 <input name="otroDiaHoraCierre" type="time" class="form-control" id="horaCierre" required>
-                                <div class="valid-feedback">
-                                    Hora válida!
+                                <div class="invalid-feedback">
+                                    Campo vacío!
                                 </div>
                             </div>
                         </div>

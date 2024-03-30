@@ -51,14 +51,14 @@
 
 
         <!-- Parte del form para editar los datos --> 
-        <form action="{{ route('guardarNuevosDatosTramite', $datosTramiteEditar->id)}}" method="POST">
+        <form class="formEditarTramite" action="{{ route('guardarNuevosDatosTramite', $datosTramiteEditar->id)}}" method="POST">
             @csrf
             
             <div class="col-md-12">
                 <label for="validationCustomUser" class="form-label">Trámite</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
-                    <input name="editarTramite" type="text" class="form-control" value="{{$datosTramiteEditar->tramite}}"> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
+                    <input id="nombreTramite" name="editarTramite" type="text" class="form-control" value="{{$datosTramiteEditar->tramite}}"> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
                 </div>
             </div>
 
@@ -78,7 +78,6 @@
             </div>
 
             <br>
-           
             <a href="{{ route('verTramitesAcademicos') }}" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
 
@@ -169,5 +168,23 @@
         });
     </script>  
     @endif
+
+    <script>
+        $('.formEditarTramite').on('submit', function(e) {
+
+            var tramiteNombreEdit = $('#nombreTramite').val().trim();
+            var tramiteContenidoEdit = $('#editor').val().trim();
+
+            if (tramiteNombreEdit === "" || tramiteContenidoEdit === "") {
+                e.preventDefault(); // evita el envío del formulario si hay campos vacíos
+
+                Swal.fire({
+                    title: "Campos vacíos",
+                    text: "Rellene todos los campos",
+                    icon: "error"
+                });
+            }
+        });
+    </script>
     
 @endsection

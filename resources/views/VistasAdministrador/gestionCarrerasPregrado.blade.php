@@ -92,8 +92,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
                                 <input name="namePregradoCarrera" type="text" class="form-control" id="validaUser" required>
-                                <div class="valid-feedback">
-                                    Carrera invalida!
+                                <div class="invalid-feedback">
+                                    Ingrese una carrera!
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento...">
+                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento..." required>
                             <datalist id="datalistOptions">
                                 <option value="Ingeniería y Arquitectura">
                                 <option value="Medicina">

@@ -2,7 +2,7 @@
 @section('titulo', '- Facultades') 
 @section('contenido')
   <div class="container">
-    <h2>FACULTADES</h2>
+    <h2>Contactos: {{$facultadPertenece}}</h2>
 
     <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a contactos</a>
     <br>
@@ -12,8 +12,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Facultad</th>
           <th scope="col">Oficina</th>
+          <th scope="col">Facultad</th>
           <th scope="col">Correo Institucional</th>
           <th scope="col">Contacto</th>
           <th scope="col">Acciones</th>
@@ -27,8 +27,8 @@
         @foreach ($facultad as $facultadC)
           <tr>
             <th scope="row">{{$numero}}</th>  
-            <td>{{$facultadC->facultad}}</td>
             <td>{{$facultadC->oficina}}</td>
+            <td>{{$facultadC->facultad}}</td>
             <td>{{$facultadC->correo}}</td>
             <td>{{$facultadC->contacto}}</td>
             <td class="d-flex">

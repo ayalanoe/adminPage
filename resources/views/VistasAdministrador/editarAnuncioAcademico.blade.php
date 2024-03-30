@@ -48,12 +48,12 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo del anuncio</label>
-                <input value="{{$anuncioEditar->titulo}}" name="editarTituloAnuncio" type="text" class="form-control" id="exampleFormControlInput1">
+                <input value="{{$anuncioEditar->titulo}}" name="editarTituloAnuncio" type="text" class="form-control" id="exampleFormControlInput1" required>
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Fecha de expiración</label>
-                <input value="{{$anuncioEditar->fechaExpiracion}}" name="editarFechaExpiracion" type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="width: 200px;">
+                <input value="{{$anuncioEditar->fechaExpiracion}}" name="editarFechaExpiracion" type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" style="width: 200px;" required>
             </div>        
 
             <div class="mb-3">
@@ -65,7 +65,7 @@
                         .create( document.querySelector( '#editor' ) )
                         .catch( error => {
                             console.error( error );
-                        } );
+                        });
                 </script>
                 
             </div>

@@ -70,8 +70,8 @@
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
                 <input name="nombreContacto" type="text" class="form-control" id="validaUser" required>
-                <div class="valid-feedback">
-                  Nombre invalido!
+                <div class="invalid-feedback">
+                  Ingrese un nombre!
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
                 <input name="correoContacto" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
-                  Correo no valido!
+                  Ingrese un correo!
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
                 <input name="numeroContacto" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
-                  Correo no valido!
+                  Ingrese un numero telefónico!
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-list"></i></span>
                 <textarea name="tramitesAcargo" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required></textarea>
                 <div class="invalid-feedback">
-                  Ingrese un texto valido.
+                  Ingrese un texto.
                 </div>
               </div>
             </div>
@@ -141,8 +141,8 @@
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
                   <input value="{{$contactoId->nombre}}" name="editarNombreContacto" type="text" class="form-control" id="txtEditarNombreContacto" required>
-                  <div class="valid-feedback">
-                    Nombre invalido!
+                  <div class="invalid-feedback">
+                    Ingrese un nombre !
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
                   <input value="{{$contactoId->correo}}" name="editarCorreoContacto" type="text" class="form-control" id="txtEditarCorreoContacto" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
-                    Correo no valido!
+                    Ingrese un correo !
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
                   <input value="{{$contactoId->contacto}}" name="editarNumeroContacto" type="text" class="form-control" id="txtEditarContacto" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
-                    Correo no valido!
+                    Ingrese un numero telefónico !
                   </div>
                 </div>
               </div>
@@ -175,7 +175,7 @@
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-list"></i></span>
                   <textarea name="editarTramitesAcargo" type="text" class="form-control" id="txtEditarTramiteContacto" aria-describedby="inputGroupPrepend" required>{{$contactoId->tramitesAsignado}}</textarea>
                   <div class="invalid-feedback">
-                    Ingrese un texto valido.
+                    Ingrese un texto !
                   </div>
                 </div>
               </div>

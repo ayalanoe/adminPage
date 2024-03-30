@@ -93,45 +93,12 @@
     <div class="offcanvas-body">
     
         <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a href="{{ route('tramiteAcademico') }}" class="sidebar-link">CERTIFICACIONES DE NOTAS</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Equivalencias</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">ESTUDIO DE CUM HONORIFÍCO</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">EXPEDIENTES DE GRADUACIÓN</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Cambio de Carrera</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Traslado</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Retiro Oficial</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Activación</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Reingreso</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Modificar/Actualizar Nombre</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Recuperar contraseña del EEL</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Confrontación de documentos</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Otros</a>
-                    </li>
+                    @foreach ($tramitesAcademicos as $item)
+                        <li class="sidebar-item">
+                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{$item->tramite}} </a>
+                        </li>
+                    @endforeach
+                    
         </ul>
 
 

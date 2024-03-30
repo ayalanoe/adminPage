@@ -12,7 +12,11 @@
     <!--TABLA DE ELEMENTOS-->
 
         <div class="container">
-            <h3>AQUI EL TÍTULO DEL TRÁMITE</h3>
+            <h3> {{$tramiteAcademico->tramite}} </h3>
+            <hr>
+            <p>
+                {!! $tramiteAcademico->contenido !!}
+            </p>
             
         </div>
 </div>

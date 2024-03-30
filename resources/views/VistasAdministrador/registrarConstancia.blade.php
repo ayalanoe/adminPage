@@ -138,26 +138,40 @@
 
 @section('jsVistasAdmin')
 
-<script>
-  $('.formRegistrarConstancias').on('submit', function(e){
-      e.preventDefault();
 
-      Swal.fire({
-          title: "Seguro de registrar",
-          text: "¿Seguro que ha seleccionado las constancias correctas?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Si"
-      }).then((result) => {
-          if (result.isConfirmed) {
-              this.submit()
-          } 
-      });
+  <script>
+    $('.formRegistrarConstancias').on('submit', function(e){
 
-  })
-</script>
+      var checkboxes = $("input[name='checkboxDatos[]']:checked");
+        
+      if (checkboxes.length === 0) {
+        e.preventDefault(); // Evita el envío del formulario si ningún checkbox está seleccionado
+        Swal.fire({
+          title: "Seleccione al menos un elemento",
+          text: "Por favor, seleccione al menos un elemento antes de enviar el formulario",
+          icon: "error"
+        });
+      }
+      else{
+        
+        e.preventDefault();
+        Swal.fire({
+            title: "Seguro de registrar",
+            text: "¿Seguro que ha seleccionado las constancias correctas?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Registrar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit()
+            } 
+        });
+
+      }
+    })
+  </script>
 
   @if (Session::has('resGuardarConstancias'))
   <script>
