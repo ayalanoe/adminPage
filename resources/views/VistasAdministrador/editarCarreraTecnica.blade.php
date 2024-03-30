@@ -58,7 +58,7 @@
                 <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
-                    <input value="{{$carreraTecnicaEdit->carrera}}" name="editarNombreCarreraTecnica" type="text" class="form-control" id="validaUser" required>
+                    <input value="{{$carreraTecnicaEdit->carrera}}" name="editarNombreCarreraTecnica" type="text" class="form-control" id="nombreCarreraTecnica">
                     <div class="valid-feedback">
                         Carrera invalida!
                     </div>
@@ -71,7 +71,7 @@
                 <label for="validationCustomCorreo" class="form-label">Codigo de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-file-lines"></i></span>
-                    <input value="{{$carreraTecnicaEdit->codigoCarrera}}" name="editarCodigoCarreraTecnica" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
+                    <input value="{{$carreraTecnicaEdit->codigoCarrera}}" name="editarCodigoCarreraTecnica" type="text" class="form-control" id="codigoCarreraTecnica" aria-describedby="inputGroupPrepend">
                     <div class="invalid-feedback">
                         Codigo no valido!
                     </div>
@@ -81,7 +81,7 @@
             <br>
             <div class="col-md-12">
                 <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                <input value="{{$carreraTecnicaEdit->departamento}}" name="editarDeptoCarreraTecnica" class="form-control" list="datalistOptions" id="exampleDataList">
+                <input value="{{$carreraTecnicaEdit->departamento}}" name="editarDeptoCarreraTecnica" class="form-control" list="datalistOptions" id="deptoCarreraTecnica">
                 <datalist id="datalistOptions">
                     <option value="Ingeniería y Arquitectura">
                     <option value="Medicina">
@@ -147,26 +147,46 @@
 @section('jsVistasAdmin')
 
 <script>
+    //Validacion de que los campos no estén vacios
+    $('.formEnviarNewPlanPosgrado').on('submit', function(e) {
 
-    $('.formEliminarPdfCarTecnica').on('submit', function(e){
-        e.preventDefault();
+        var tecnicaCarNombre = $('#nombreCarreraTecnica').val().trim();
+        var tecnicaCarCodigo = $('#codigoCarreraTecnica').val().trim();
+        var tecnicaCarDepto = $('#deptoCarreraTecnica').val().trim();
 
-        Swal.fire({
-            title: "¿Está seguro?",
-            text: "Se eliminará la el pdf",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, eliminar"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit()
-            } 
-        });
+        if (tecnicaCarNombre === "" || tecnicaCarCodigo === "" || tecnicaCarDepto === "") {
+            e.preventDefault(); // evita el envío del formulario si hay campos vacíos
 
-    })
+            Swal.fire({
+                title: "Campos vacíos",
+                text: "Rellene todos los campos",
+                icon: "error"
+            });
+        }
+    });
 </script>
+
+    <script>
+
+        $('.formEliminarPdfCarTecnica').on('submit', function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: "¿Está seguro?",
+                text: "Se eliminará la el pdf",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit()
+                } 
+            });
+
+        })
+    </script>
 
     @if (Session::has('resEliminarPdfCarTecnica'))
         <script>

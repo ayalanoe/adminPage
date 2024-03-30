@@ -13,8 +13,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Fecha Publición</th>
-                <th scope="col">Foto</th>
+                <th scope="col">Fecha de Publición</th>
+                <th scope="col">Nombre Foto</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -56,10 +56,10 @@
     </table>
 
 
-
     <div class="container">
         <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearGaleria"><i class="fa-regular fa-image"></i>+ Agregar Foto</button>
     </div>
+
 
     <!-- Modal Para ingresar un foto para la galeria-->
     <div class="modal fade" id="ModalCrearGaleria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,8 +80,8 @@
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-t"></i></span>
                         <input name="nombreGaleria" type="text" class="form-control" id="nombreCalendarioAcademico" required>
-                        <div class="valid-feedback">
-                            Nombre valido!
+                        <div class="invalid-feedback">
+                            Campo vacío!
                         </div>
                     </div>
                 </div>

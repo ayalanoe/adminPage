@@ -11,7 +11,7 @@ use App\Models\Facultad;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use Illuminate\Support\Facades\Storage;
-
+use Spatie\Backtrace\Backtrace;
 
 class VistasPublicasController extends Controller
 {
@@ -120,19 +120,20 @@ class VistasPublicasController extends Controller
     //
 
     //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------
-    public function verTramites()
-    {
-        $contactos = Contacto::all();
-        return view('AcademicaFMO/tramites', ['tramiteAcademico' => $contactos]);
-    }
+        public function verTramite($id)
+        {
+            $tramite = Tramite::find($id);
+            return view('AcademicaFMO/tramites', ['tramiteAcademico' => $tramite]);
+        }
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
     //----------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ----------------------------------------------------------------------------------------------------------
-    public function verPreguntas()
-    {
-        $contactos = Contacto::all();
-        return view('AcademicaFMO/preguntasFrecuentes', ['preguntas' => $contactos]);
-    }
-//
+        public function verPreguntas()
+        {
+            $contactos = Contacto::all();
+            return view('AcademicaFMO/preguntasFrecuentes', ['preguntas' => $contactos]);
+        }
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

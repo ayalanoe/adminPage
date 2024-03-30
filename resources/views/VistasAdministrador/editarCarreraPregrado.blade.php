@@ -49,7 +49,7 @@
                 <label for="validationCustomUser" class="form-label">Tipo de Carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
-                    <input name="editarTipoCarreraPre" type="text" class="form-control" id="validaUser" value="Carrera_Pregrado" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
+                    <input name="editarTipoCarreraPre" type="text" class="form-control" id="tipoCarreraPregrado" value="Carrera_Pregrado" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                 <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
-                    <input value="{{$carreraPregradoEdit->carrera}}" name="editarNombreCarreraPre" type="text" class="form-control" id="validaUser" required>
+                    <input value="{{$carreraPregradoEdit->carrera}}" name="editarNombreCarreraPre" type="text" class="form-control" id="nombreCarreraPregrado">
                     <div class="valid-feedback">
                         Carrera invalida!
                     </div>
@@ -71,7 +71,7 @@
                 <label for="validationCustomCorreo" class="form-label">Codigo de la carrera</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-file-lines"></i></span>
-                    <input value="{{$carreraPregradoEdit->codigoCarrera}}" name="editarCodigoCarreraPre" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
+                    <input value="{{$carreraPregradoEdit->codigoCarrera}}" name="editarCodigoCarreraPre" type="text" class="form-control" id="codigoCarreraPregrado" aria-describedby="inputGroupPrepend">
                     <div class="invalid-feedback">
                         Codigo no valido!
                     </div>
@@ -81,7 +81,7 @@
             <br>
             <div class="col-md-12">
                 <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                <input value="{{$carreraPregradoEdit->departamento}}" name="editarDeptoCarreraPre" class="form-control" list="datalistOptions" id="exampleDataList">
+                <input value="{{$carreraPregradoEdit->departamento}}" name="editarDeptoCarreraPre" class="form-control" list="datalistOptions" id="deptoCarreraPregrado">
                 <datalist id="datalistOptions">
                     <option value="Ingeniería y Arquitectura">
                     <option value="Medicina">
@@ -147,27 +147,47 @@
 
 @section('jsVistasAdmin')
 
-<script>
+    <script>
+        //Validacion de que los campos no estén vacios
+        $('.formEnviarNewPlan').on('submit', function(e) {
 
-    $('.formEliminarPdfCarPre').on('submit', function(e){
-        e.preventDefault();
+            var pregradoCarNombre = $('#nombreCarreraPregrado').val().trim();
+            var pregradoCarCodigo = $('#codigoCarreraPregrado').val().trim();
+            var pregradoCarDepto = $('#deptoCarreraPregrado').val().trim();
 
-        Swal.fire({
-            title: "¿Está seguro?",
-            text: "Se eliminará la el pdf",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, eliminar"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.submit()
-            } 
+            if (pregradoCarNombre === "" || pregradoCarCodigo === "" || pregradoCarDepto === "") {
+                e.preventDefault(); // evita el envío del formulario si hay campos vacíos
+
+                Swal.fire({
+                    title: "Campos vacíos",
+                    text: "Rellene todos los campos",
+                    icon: "error"
+                });
+            }
         });
+    </script>
 
-    })
-</script>
+    <script>
+
+        $('.formEliminarPdfCarPre').on('submit', function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: "¿Está seguro?",
+                text: "Se eliminará la el pdf",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit()
+                } 
+            });
+
+        })
+    </script>
 
     @if (Session::has('resEliminarPdfCarPre'))
         <script>

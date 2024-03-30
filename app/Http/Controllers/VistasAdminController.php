@@ -860,7 +860,32 @@ class VistasAdminController extends Controller
     
         public function verAnuncios()
         {
+            
             $listaAnuncios = Anuncios::all();
+            $fechaActual = now();
+
+            // Filtrar los anuncios cuya fecha de expiración ha pasado
+            $anunciosExpirados = $listaAnuncios->filter(function ($anuncio) use ($fechaActual) {
+                return $anuncio->fechaExpiracion < $fechaActual;
+            });
+
+            // Eliminar los anuncios expirados
+            foreach ($anunciosExpirados as $anuncioEliminar) {
+
+                if ($anuncioEliminar->rutaArchivo !== null) {
+    
+                    if (Storage::disk('local')->exists($anuncioEliminar->rutaArchivo)) {
+                        Storage::disk('local')->delete($anuncioEliminar->rutaArchivo);
+                    }
+                }
+
+                $anuncioEliminar->delete();
+            }
+
+            // Volver a cargar la lista de anuncios para reflejar los cambios
+            $listaAnuncios = Anuncios::all();
+
+            // Retornar la vista con la lista actualizada de anuncios
             return view('VistasAdministrador/gestionAnunciosAcademicos', ['anuncios' => $listaAnuncios]);
         }
 
@@ -1086,7 +1111,8 @@ class VistasAdminController extends Controller
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //---------------------------------- FUNCIONES PARA LOS TRAMITES ACADEMICOS --------------------------------------------------------------------------------------------------------
-        public function mostrarTramites(){
+        public function mostrarTramites()
+        {
 
             $tramites = Tramite::all();
 

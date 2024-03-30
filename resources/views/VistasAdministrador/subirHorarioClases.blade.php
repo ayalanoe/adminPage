@@ -102,8 +102,8 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-t"></i></span>
                                 <input name="nombreArchivo" type="text" class="form-control" id="nombreCalendarioAcademico" required>
-                                <div class="valid-feedback">
-                                    Nombre valido!
+                                <div class="invalid-feedback">
+                                    Ingrese un nombre!
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivo" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivo" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>
