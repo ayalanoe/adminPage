@@ -86,7 +86,6 @@
         <div class="cover">
 
             @yield('contenido-publico')
-
         </div>
 
         <Footer>

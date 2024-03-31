@@ -17,6 +17,7 @@ use App\Models\AtencionHorario;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
+use App\Models\EducacionDistancia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -1284,6 +1285,24 @@ class VistasAdminController extends Controller
         }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    //---------------------------------- FUNCIONES PARA LOS TRAMITES ACADEMICOS --------------------------------------------------------------------------------------------------------
+        public function mostrarCarrerasDistancia()
+        {
+
+            $tramites = Tramite::all();
+
+            return view('VistasAdministrador/gestionEducacionDistancia', [
+
+                'datosTramites' => $tramites
+            ]);
+            
+        }
+
+
+
+
 
     //---------------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ------------------------------------------------------------------------------------------------------
 

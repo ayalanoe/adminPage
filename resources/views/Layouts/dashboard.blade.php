@@ -213,6 +213,17 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#eduDistancia" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-folder pe-2"></i>
+                            Educación a Distancia
+                        </a>
+                        <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Gestión de Carreras</a>
+                            </li>
+                        </ul>
+                    </li>
                    
                 </ul>
             </div>

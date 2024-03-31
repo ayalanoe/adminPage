@@ -1,0 +1,61 @@
+h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    color: #690605;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    color: #690605;
+}
+.fa-chevron-down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #690605;
+}
+
+.fa-chevron-down {
+    transition: transform 0.2s ease; /* Transición suave de 0.2 segundos */
+}
+
+.fa-chevron-down:hover {
+    transform: translateY(4px); /* Desplazar 2px hacia abajo al pasar el cursor */
+}
+
+
+
+
+
+.card{
+    box-shadow: 0 0 .875rem 0 rgba(5, 46, 60);
+    margin-bottom: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #690605;
+}
+
+.illustration{
+    background-color: white;
+   
+}
+
+.illustration-img{
+    max-width: 150px;
+    width: 100%;
+}
+
+.btn{
+    background-color: #690605;
+}
+
+.card-img-top{
+    height: 150px;
+}
+
+
+

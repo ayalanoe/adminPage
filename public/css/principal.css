@@ -436,3 +436,18 @@ footer{
     height: 1px;
     background-color: #7a7a7a;
 }
+
+.fa-chevron-down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #690605;
+}
+
+.fa-chevron-down {
+    transition: transform 0.2s ease; /* Transición suave de 0.2 segundos */
+}
+
+.fa-chevron-down:hover {
+    transform: translateY(5px); /* Desplazar 2px hacia abajo al pasar el cursor */
+}

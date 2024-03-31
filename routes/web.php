@@ -185,6 +185,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/ver-archivo-tramite/{id}', [VistasAdminController::class, 'verArchivoTramite'])->name('verArchivoTramite');
         Route::get('/descargar-formato/{id}', [VistasAdminController::class, 'descargarFormatoTramite'])->name('descargarFormatoTramite');
 
+        Route::get('/educacion-a-distancia', [VistasAdminController::class, 'mostrarCarrerasDistancia'])->name("carrerasDistancia");
+        Route::view('/agregar-carreras-a-distancia', 'VistasAdministrador/crearCarreraDistancia')->name("crearCarreraDistancia");
+
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
         Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');
         Route::post('/guardar-pregunta', [VistasAdminController::class, 'guardarPregunta'])->name('guardarPregunta');
