@@ -13,27 +13,41 @@
     <div class="container_table">
         <!--TABLA DE ELEMENTOS-->
 
-            <div class="container">
-                <h3>DIRECTORIO ADMINISTRATIVO DE "NOMBRE FACULTAD AQUI"</h3>
+        <div class="container">
+            <h3>Directorio administrativo: {{$tituloFacultad}}</h3>
                 
-                <table class="table table-hover">
-                    <thead>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Oficina</th>
+                        <th scope="col">Correo Electrónico</th>
+                        <th scope="col">Contacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @php
+                        $numero = 1 
+                    @endphp
+
+                    @foreach ($facultadDirectorio as $contactoFacu)
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Oficina</th>
-                            <th scope="col">Correo Electrónico</th>
-                            <th scope="col">Contacto</th>
+                            <th scope="row"> {{$numero}} </th>  
+                            <td> {{$contactoFacu->oficina}} </td>
+                            <td> {{$contactoFacu->correo}} </td>
+                            <td> {{$contactoFacu->contacto}} </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>  
-                            <td>ss</td>
-                            <td>ss</td>
-                            <td>ss</td>
-                        </tr>
-                        </tbody>
+
+                        @php
+                            $numero++
+                        @endphp
+
+                    @endforeach
+                </tbody>
                 </table>
-            </div>
+                
+                
+        </div>
     </div>
 @endsection

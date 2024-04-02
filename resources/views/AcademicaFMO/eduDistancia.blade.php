@@ -18,59 +18,27 @@
 
 <div class="container">
     <!-- contenedor de tarjetas de plataformas-->
+    <!-- Como lo intentabamos <img src="#asset($carDistancia->rutaBanner)}}" class="card-img-top" alt="..."> -->
     <div class="row">
-        <div class="col-12 col-md-6 d-flex">
-        
-                <div class="card flex-fill border-0 illustration" style="width: 18rem;">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_vufqfaRZkbH_boi2ENFy9pCLcXq3l_T0xY5RH_p&s" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Licenciatura en Informática Educativa</h5>
-                    <p class="card-text">Se les invita a descargar:</p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            
-        </div>
-        
+
+        @foreach ($educDistancia as $carDistancia)
 
         <div class="col-12 col-md-6 d-flex">
-        
+            
             <div class="card flex-fill border-0 illustration">
-                <img src="{{ asset('images/vacation.jpg') }}" class="card-img-top" alt="...">
+    
+                <img src="{{Storage::get($carDistancia->rutaBanner)}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">Licenciatura en enseñanza de las Ciencias Naturales</h5>
+                <h5 class="card-title"> {{$carDistancia->carrera}} </h5>
                 <p class="card-text">Se les invita a descargar:</p>
                 <a href="#" class="btn btn-primary">Leer más</a>
                 </div>
             </div>
         
         </div>
-
-
-        <div class="col-12 col-md-6 d-flex">
         
-                <div class="card flex-fill border-0 illustration" style="width: 18rem;">
-                    <img src="{{ asset('images/fmo.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Licenciatura en enseñanza del Inglés</h5>
-                    <p class="card-text">Se les invita a descargar:</p>
-                    <a href="#" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-            
-        </div>
-        <div class="col-12 col-md-6 d-flex">
+        @endforeach
         
-            <div class="card flex-fill border-0 illustration" style="width: 18rem;">
-                <img src="{{ asset('images/fmo.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">Licenciatura en enseñanza de la Matemática</h5>
-                <p class="card-text">Se les invita a descargar::</p>
-                <a href="#" class="btn btn-primary">Leer más</a>
-                </div>
-            </div>
-        
-    </div>
     </div>
 
 </div>

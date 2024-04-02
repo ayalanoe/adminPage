@@ -14,10 +14,10 @@ use App\Models\Facultad;
 use App\Models\Galeria;
 use App\Models\Anuncios;
 use App\Models\AtencionHorario;
+use App\Models\CarreraDistancia;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
-use App\Models\EducacionDistancia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -353,7 +353,7 @@ class VistasAdminController extends Controller
             $carrera->departamento = $request->departamentoCarreraPregrado;
 
             $request->validate([
-                'archivoPregradoCarrera' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+                'archivoPregradoCarrera' => 'required|mimes:pdf|max:2048',
             ]);
 
             $archivo = $request->file('archivoPregradoCarrera');
@@ -1286,24 +1286,6 @@ class VistasAdminController extends Controller
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    //---------------------------------- FUNCIONES PARA LOS TRAMITES ACADEMICOS --------------------------------------------------------------------------------------------------------
-        public function mostrarCarrerasDistancia()
-        {
-
-            $tramites = Tramite::all();
-
-            return view('VistasAdministrador/gestionEducacionDistancia', [
-
-                'datosTramites' => $tramites
-            ]);
-            
-        }
-
-
-
-
-
     //---------------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ------------------------------------------------------------------------------------------------------
 
         public function mostrarPreguntas(){
@@ -1471,11 +1453,17 @@ class VistasAdminController extends Controller
                 $ruta = Storage::disk('local')->put('Galeria', $archivo);
 
                 $nuevaFoto->rutaArchivo = $ruta;
+
+                $nuevaFoto->save();
+
+                return back()->with('resCrarGaleria', 'Foto publicada con exito !!');
             } 
+            else {
+                #Colocar un mensaje si no se completa la accion
+                #Borrar estos comentarios cuandon se ponga el mensaje correspondienrte
+            }
 
-            $nuevaFoto->save();
-
-            return back()->with('resCrarGaleria', 'Foto publicada con exito !!');
+            
 
         }
 
@@ -1526,5 +1514,38 @@ class VistasAdminController extends Controller
         }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //---------------------------------- FUNCIONES PARA LAS CARRERAS A DISTANCIA --------------------------------------------------------------------------------------------------------
+        public function mostrarCarrerasDistancia()
+        {
+            $carrerasDistancia = CarreraDistancia::all();
+
+            return view('VistasAdministrador/gestionEducacionDistancia', [
+
+                'educacionDistancia' => $carrerasDistancia
+            ]);
+            
+        }
+
+        public function guardarCarreraDistancia(Request $datosCarDistancia)
+        {
+            $carDistancia = new CarreraDistancia();
+
+            $carDistancia->carrera = $datosCarDistancia->nombreCarDistancia;
+
+            $banner = $datosCarDistancia->file('bannerCarDistancia');
+            $planPdf = $datosCarDistancia->file('planCarDistancia');
+
+            $bannerRuta = Storage::disk('local')->put('CarrerasDistancia', $banner);
+            $planRuta = Storage::disk('local')->put('CarrerasDistancia', $planPdf);
+
+            $carDistancia->rutaBanner = $bannerRuta;
+            $carDistancia->rutaArchivo = $planRuta;
+
+            $carDistancia->save();
+            return back()->with('resGuardarCarDistancia', 'Carrera registrada con exito !!');
+
+        }
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

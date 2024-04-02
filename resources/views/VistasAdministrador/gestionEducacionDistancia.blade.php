@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tramite Académico</th>
+                    <th scope="col">Carrera</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -19,20 +19,20 @@
                     $numero = 1 
                 @endphp
         
-                @foreach ($datosTramites as $tramite)
+                @foreach ($educacionDistancia as $carreraDistancia)
                 <tr>
                     <th scope="row">{{$numero}}</th>  
-                    <td>{{$tramite->tramite}}</td>
+                    <td>{{$carreraDistancia->carrera}}</td>
 
                     <td class="d-flex">
         
-                        <form action="{{ route('eliminarTramite', $tramite->id) }}" class="formEliminarTramite" method="POST">
+                        <form class="formEliminarCarDistancia" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
                         
-                        <a href="{{ route('editarTramite', $tramite->id)}}" class="btn btn-primary mx-1">
+                        <a href="#" class="btn btn-primary mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
@@ -48,9 +48,72 @@
         </table>
     </div>
 
+
     <!-- Bton para poder insertar una carrera de pregrado -->
     <div class="container">
-        <a href="{{ route('crearCarreraDistancia') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Tramite Academico</a>
+        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalCarreraDistancia"><i class="fa-solid fa-plus"></i> Agregar Carrea A Distancia</button>
+    </div>
+    
+
+    <div class="modal fade" id="modalCarreraDistancia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de carrera de pregrado</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+    
+                    <form action="{{ route('guardarCarDistancia') }}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
+                        @csrf
+
+
+                        <div class="col-md-12">
+                            <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <input name="nombreCarDistancia" type="text" class="form-control" id="validaUser" required>
+                                <div class="invalid-feedback">
+                                    Ingrese una carrera!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="validationCustomCorreo" class="form-label">Banner de la carrera</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
+                                <input name="bannerCarDistancia" accept=".jpg, .png, .jpeg" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <div class="invalid-feedback">
+                                    Seleccione un archivo
+                                </div>
+                            </div>
+                        </div>
+
+            
+                        <div class="col-md-12">
+                            <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio pdf</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
+                                <input name="planCarDistancia" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <div class="invalid-feedback">
+                                    Seleccione un archivo
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar carrera</button>
+                        </div>
+        
+                    </form>
+    
+                </div> 
+            </div>
+        </div>
     </div>
     
 @endsection
@@ -58,12 +121,12 @@
 @section('jsVistasAdmin')
 
     <script>
-        $('.formEliminarTramite').on('submit', function(e){
+        $('.formEliminarCarDistancia').on('submit', function(e){
             e.preventDefault();
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará el tramite",
+                text: "Se eliminará la carrera",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -78,34 +141,16 @@
         })
     </script>
 
-    @if (Session::has('resCrearTramite'))
+    @if (Session::has('resGuardarCarDistancia'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resCrearTramite') }}",
+                text: "{{ session('resGuardarCarDistancia') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEliminarTramite'))
-        <script>
-            Swal.fire({
-                title: "Informacion",
-                text: "{{ session('resEliminarTramite') }}",
-                icon: "success"
-            });
-        </script>  
-    @endif
-
-    @if (Session::has('resEditarTramite'))
-        <script>
-            Swal.fire({
-                title: "Informacion",
-                text: "{{ session('resEditarTramite') }}",
-                icon: "success"
-            });
-        </script>  
-    @endif
+    
     
 @endsection

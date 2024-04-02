@@ -15,41 +15,41 @@
                 <div class="container text-center">
                     <div class="row">
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'"><i class="fa-solid fa-stethoscope"></i> Facultad de Medicina</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Medicina']) }}'"><i class="fa-solid fa-stethoscope"></i> Facultad de Medicina</div>
                       </div>
 
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'"><i class="fa-solid fa-gavel"></i> Facultad de Jurisprudencia y Ciencias Sociales</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Jurisprudencia y Ciencias Sociales']) }}'"><i class="fa-solid fa-gavel"></i> Facultad de Jurisprudencia y Ciencias Sociales</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'"> <i class="fa-solid fa-building-wheat"></i>Facultad de Ciencias Agronómicas</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Ciencias Agronómicas']) }}'"> <i class="fa-solid fa-building-wheat"></i>Facultad de Ciencias Agronómicas</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Ciencias y Humanidades</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Ciencias y Humanidades']) }}'">Facultad de Ciencias y Humanidades</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Ingenieía y Arquitectura</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Ingeniería y Arquitectura']) }}'">Facultad de Ingenieía y Arquitectura</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Química y Farmacia</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Química y Farmacia']) }}'">Facultad de Química y Farmacia</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Odontología</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Odontología']) }}'">Facultad de Odontología</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Ciencias Económicas</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Ciencias Económicas']) }}'">Facultad de Ciencias Económicas</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad de Ciencias Naturales y Matemática</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad de Ciencias Naturales y Matemática']) }}'">Facultad de Ciencias Naturales y Matemática</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad Multidisciplinaria de Occidente</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad Multidisciplinaria de Occidente']) }}'">Facultad Multidisciplinaria de Occidente</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad Multidisciplinaria Oriente</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad Multidisciplinaria Oriente']) }}'">Facultad Multidisciplinaria Oriente</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio') }}'">Facultad Multidisciplinaria Paracentral</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'Facultad Multidisciplinaria Paracentral']) }}'">Facultad Multidisciplinaria Paracentral</div>
                       </div>
                       
                     

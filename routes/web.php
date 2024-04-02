@@ -38,8 +38,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     Route::get('/AcademicaFMO/educación-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
 
     Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
-
-    Route::get('/AcademicaFMO/facultades/directorio', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
+    Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
 
     Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
@@ -186,7 +185,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/descargar-formato/{id}', [VistasAdminController::class, 'descargarFormatoTramite'])->name('descargarFormatoTramite');
 
         Route::get('/educacion-a-distancia', [VistasAdminController::class, 'mostrarCarrerasDistancia'])->name("carrerasDistancia");
-        Route::view('/agregar-carreras-a-distancia', 'VistasAdministrador/crearCarreraDistancia')->name("crearCarreraDistancia");
+        Route::post('registrar-car-distancia', [VistasAdminController::class, 'guardarCarreraDistancia'])->name('guardarCarDistancia');
 
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
         Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');

@@ -19,30 +19,34 @@
                     <a href="#it0" class="faq-btn scroll">Registro</a>
                 </button>
             </div>
+
             <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="it0">
-                    <div class="accordion-css"> 
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Accordion Item #1
-                            <span class="accordion-icon"></span>
-                        </button>
+
+                @php
+                    $contador = 1
+                @endphp
+                
+                @foreach ($preguntasFrecuntes as $pregunta)
+                    <div class="accordion-item">
+                        <div class="accordion-css"> 
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-{{$contador}}" aria-expanded="false" aria-controls="flush-{{$contador}}">
+                                {{$pregunta->pregunta}}
+                                <span class="accordion-icon"></span>
+                            </button>
+                        </div>
+                        <div id="flush-{{$contador}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                {!!$pregunta->respuesta !!}
+                            </div>
+                        </div>
                     </div>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                    </div>
-                </div>
-                <div class="accordion-item" id="it2">
-                    <div class="accordion-css">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </div>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                    </div>
-                </div>
+
+                    @php
+                        $contador++
+                    @endphp
+                @endforeach
+                
             </div>
-            
         </div>
 
         <div id="scrollUp" title="Scroll To Top" style="display: block;">

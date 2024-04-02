@@ -6,6 +6,7 @@ use App\Models\AtencionHorario;
 use App\Models\CalendarioAdministrativo;
 
 use App\Models\CalendarioClase;
+use App\Models\CarreraDistancia;
 use App\Models\Contacto;
 use App\Models\Facultad;
 use App\Models\PreguntaFrecuente;
@@ -37,28 +38,26 @@ class VistasPublicasController extends Controller
             $contactos = Contacto::all();
             return view('AcademicaFMO/directorio', ['directorio' => $contactos]);
         }
-    //---------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ------------------------------------------------------------------------------------------------------------------
         public function verAnuncios()
         {
             $contactos = Contacto::all();
             return view('AcademicaFMO/anunciosAAFMO', ['anuncios' => $contactos]);
         }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO -------------------------------------------------------------------------------------------------------------------
         public function verPlanes()
         {
             $contactos = Contacto::all();
             return view('AcademicaFMO/planesFMO', ['planes' => $contactos]);
         }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-    // ----------------------------- FUNCIONES PARA LOS CALENDARIOS ----------------------------------------------------------------------------------------------------------------
+    // ----------------------------- FUNCIONES PARA LOS CALENDARIOS ------------------------------------------------------------------------------------------------------------------------
 
         public function verPublicCalendarioAdministrativo(){
             
@@ -94,45 +93,46 @@ class VistasPublicasController extends Controller
         
         }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-    //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ---------------------------------------------------------------------------------------------------------
         public function verFacultadesNacional()
         {
-            $facultades = Facultad::all();
-            return view('AcademicaFMO/facultades', ['facultad' => $facultades]);
+            return view('AcademicaFMO/facultades');
         }
 
-        public function verDirectorioFacultades()
+        public function verDirectorioFacultades($facultadContactos)
         {
-            $facultades = Facultad::all();
-            return view('AcademicaFMO/facultadesInfo', ['facultadDirectorio' => $facultades]);
+            $facultades = Facultad::where('facultad', $facultadContactos)->get();
+            return view('AcademicaFMO/facultadesInfo', [
+            
+                'facultadDirectorio' => $facultades,
+                'tituloFacultad' => $facultadContactos
+            ]);
         }
-    //---------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LAS CARRERAS A DISTANCIA ----------------------------------------------------------------------------------------------------------------
         public function verInfoEduDistancia()
         {
-            $contactos = Contacto::all();
-            return view('AcademicaFMO/eduDistancia', ['educDistancia' => $contactos]);
+            $publicCarDistancia = CarreraDistancia::all();
+            return view('AcademicaFMO/eduDistancia', ['educDistancia' => $publicCarDistancia]);
         }
-    //
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------------
         public function verTramite($id)
         {
             $tramite = Tramite::find($id);
             return view('AcademicaFMO/tramites', ['tramiteAcademico' => $tramite]);
         }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LAS PREGUNTAS FRECUENTES ----------------------------------------------------------------------------------------------------------
         public function verPreguntas()
         {
-            $contactos = Contacto::all();
-            return view('AcademicaFMO/preguntasFrecuentes', ['preguntas' => $contactos]);
+            $preguntasFre = PreguntaFrecuente::all();
+            return view('AcademicaFMO/preguntasFrecuentes', ['preguntasFrecuntes' => $preguntasFre]);
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
