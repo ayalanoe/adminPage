@@ -1546,6 +1546,116 @@ class VistasAdminController extends Controller
             return back()->with('resGuardarCarDistancia', 'Carrera registrada con exito !!');
 
         }
+
+        public function eliminarCarDistancia($id)
+        {
+            $carDistanciaEliminar = CarreraDistancia::find($id);
+
+            if (!$carDistanciaEliminar) {
+
+                return back()->with('carDisNoEncontrada', 'Carrera a distancia no encontrada');
+            }
+
+            $rutaPdfCarDistancia = $carDistanciaEliminar->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+            $rutaBannerCarDistancia = $carDistanciaEliminar->rutaBanner;
+        
+            if ($rutaPdfCarDistancia !== null ) {
+    
+                if (Storage::disk('local')->exists($rutaPdfCarDistancia)) {
+                    Storage::disk('local')->delete($rutaPdfCarDistancia);
+                }
+            }
+
+            if ($rutaBannerCarDistancia !== null ) {
+
+                if (Storage::disk('local')->exists($rutaBannerCarDistancia)) {
+                    Storage::disk('local')->delete($rutaBannerCarDistancia);
+                }
+            }
+
+            $carDistanciaEliminar->delete();
+
+            return back()->with('resEliminarCarDistancia', 'Se ha elimando la carrera a distancia');
+
+        }
+
+
+        public function vistaEditarCarDistrancia($id)
+        {
+            $carrera = CarreraDistancia::find($id);
+
+            return view("VistasAdministrador/editarCarDistancia", [
+
+                'carreraDisEdiar' => $carrera
+            ]);
+        }
+
+
+        public function eliminarPdfCarDistancia($id)
+        {
+            $carDisPdfEliminar = CarreraDistancia::find($id);
+
+            if ($carDisPdfEliminar->rutaArchivo !== null ) {
+    
+                if (Storage::disk('local')->exists($carDisPdfEliminar->rutaArchivo)) {
+                    Storage::disk('local')->delete($carDisPdfEliminar->rutaArchivo);
+                }
+            }
+
+            //No establcer un (-) ya que el campo en la vista compurba si el campo es null para mostrar el boton 
+            //de subir un pdf y si el campo no es null siginifca que existe el archivo entonces hay que mostrar
+            // los bitones de elinminar y ver el archivo pd
+            $carDisPdfEliminar->rutaArchivo = null; 
+            $carDisPdfEliminar->save();
+            return back()->with('resEliminarPdfCarDis', 'El pdf se ha eliminado correctamente');
+        }
+
+        public function subirNewPdfCarDistancia(Request $newPdfCarDis, $id)
+        {
+            $nuevoPdfCarDis = CarreraDistancia::find($id);
+
+            $archivo = $newPdfCarDis->file('editNuevoPlanCarDis');
+            $ruta = Storage::disk('local')->put('CarrerasDistancia', $archivo); //---> Se establece la ruta
+
+            $nuevoPdfCarDis->rutaArchivo = $ruta;
+            $nuevoPdfCarDis->save();
+
+            return back()->with('resNewPdfCarDis', 'Se ha subido el nuevo pdf correctamente');
+
+        }
+
+        public function editarNombreCarDis(Request $nuevoNombreCarDis,$id)
+        {
+            $newNameCarDis = CarreraDistancia::find($id);
+
+            if (!$newNameCarDis) {
+
+                return back()->with('carDisNoEncontrada', 'Carrera a distancia no encontrada');
+            }
+
+            if (!$newNameCarDis->rutaArchivo) {
+
+                return back()->with('errorNewNameCarDis', 'Tiene que subir un archivo pdf de informacion o pensum');
+            }
+            else{
+                $newNameCarDis->carrera = $nuevoNombreCarDis->nombreCarDistancia;
+                $newNameCarDis->save();
+
+                return redirect()->route('carrerasDistancia')->with('resNewNameCarDis', 'Se actulizado correctamente');
+            }
+        }
+
+        public function verPdfCarDis($id)
+        {
+            $pdfCarDis = CarreraDistancia::find($id);
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoPdf = Storage::get($pdfCarDis->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoPdf, 200)->header('Content-Type', 'application/pdf');
+
+        }
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

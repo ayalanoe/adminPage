@@ -35,7 +35,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
 
-    Route::get('/AcademicaFMO/educación-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+    Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+    Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
     Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
     Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
@@ -186,6 +187,11 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
         Route::get('/educacion-a-distancia', [VistasAdminController::class, 'mostrarCarrerasDistancia'])->name("carrerasDistancia");
         Route::post('registrar-car-distancia', [VistasAdminController::class, 'guardarCarreraDistancia'])->name('guardarCarDistancia');
+        Route::delete('/eliminar-carrera-distancia/{id}', [VistasAdminController::class, 'eliminarCarDistancia'])->name('eliminarCarDistancia');
+        Route::get('/editar-carrera-distancia/{id}', [VistasAdminController::class, 'vistaEditarCarDistrancia'])->name('vistaEditarCarDistancia');
+        Route::delete('eliminar-pdf-car-dis/{id}', [VistasAdminController::class, 'eliminarPdfCarDistancia'])->name('elimarPdfCarDistancia');
+        Route::post('/nuevo-pdf-car-distancia/{id}', [VistasAdminController::class, 'subirNewPdfCarDistancia'])->name('nuevoPdfCarDis');
+        Route::post('/nuevo-name-car-distancia/{id}', [VistasAdminController::class, 'editarNombreCarDis'])->name('nuevoNombreCarDis');
 
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
         Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');

@@ -26,13 +26,13 @@
 
                     <td class="d-flex">
         
-                        <form class="formEliminarCarDistancia" method="POST">
+                        <form action="{{ route('eliminarCarDistancia', $carreraDistancia->id)}}" class="formEliminarCarDistancia" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
                         
-                        <a href="#" class="btn btn-primary mx-1">
+                        <a href="{{ route('vistaEditarCarDistancia', $carreraDistancia->id) }}" class="btn btn-primary mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
@@ -126,7 +126,7 @@
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará la carrera",
+                text: "Se eliminará la carrera a distancia",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -146,6 +146,26 @@
             Swal.fire({
                 title: "Informacion",
                 text: "{{ session('resGuardarCarDistancia') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('carDisNoEncontrada'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('carDisNoEncontrada') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('resEliminarCarDistancia'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarCarDistancia') }}",
                 icon: "success"
             });
         </script>  

@@ -118,6 +118,16 @@ class VistasPublicasController extends Controller
             $publicCarDistancia = CarreraDistancia::all();
             return view('AcademicaFMO/eduDistancia', ['educDistancia' => $publicCarDistancia]);
         }
+
+        public function mostrarPdfCarDistancia($id)
+        {
+            $pdfCarDis = CarreraDistancia::find($id);
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoPdfCarDis = Storage::get($pdfCarDis->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoPdfCarDis, 200)->header('Content-Type', 'application/pdf');
+        }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------------

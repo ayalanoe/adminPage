@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_educacion_distancia', function (Blueprint $table) {
+        Schema::create('tbl_edu_distancia', function (Blueprint $table) {
             $table->id();
             $table->string('carrera',100);
-            $table->text('rutaBanner');
-            $table->text('rutaArchivo');
+            $table->text('rutaBanner')->nullable();
+            $table->text('rutaArchivo')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_educacion_distancia');
+        Schema::dropIfExists('tbl_edu_distancia');
     }
 };
