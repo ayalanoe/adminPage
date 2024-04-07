@@ -192,6 +192,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::delete('eliminar-pdf-car-dis/{id}', [VistasAdminController::class, 'eliminarPdfCarDistancia'])->name('elimarPdfCarDistancia');
         Route::post('/nuevo-pdf-car-distancia/{id}', [VistasAdminController::class, 'subirNewPdfCarDistancia'])->name('nuevoPdfCarDis');
         Route::post('/nuevo-name-car-distancia/{id}', [VistasAdminController::class, 'editarNombreCarDis'])->name('nuevoNombreCarDis');
+        Route::get('/ver-pdf-car-distancia/{id}', [VistasAdminController::class, 'verPdfCarDis'])->name('verPdfCarDistancia');
 
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
         Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');
