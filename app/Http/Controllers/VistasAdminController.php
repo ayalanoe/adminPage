@@ -844,7 +844,7 @@ class VistasAdminController extends Controller
                 return back()->with('errorFacultad', 'Facultad no encontrado');
             }
 
-            $facultad->facultad = $request->editarNombreFacultad;
+            $facultad->oficina = $request->editarNombreFacultad;
             $facultad->correo = $request->editarCorreoFacultad;
             $facultad->contacto = $request->editarNumeroFacultad;
 
