@@ -5,7 +5,8 @@
 
     <div class="container">
 
-        <h2>Editar Carrera de pregrado</h2>
+        <h3>Editar Carrera de pregrado</h3>
+        <h4>Carrera: {{$carreraPregradoEdit->carrera}}</h4>
 
         <br>
         <table class="table table-hover">
@@ -83,23 +84,23 @@
                 <label for="validationCustomCorreo" class="form-label">Departamento</label>
                 <input value="{{$carreraPregradoEdit->departamento}}" name="editarDeptoCarreraPre" class="form-control" list="datalistOptions" id="deptoCarreraPregrado">
                 <datalist id="datalistOptions">
-                    <option value="Ingeniería y Arquitectura">
-                    <option value="Medicina">
-                    <option value="Ciencias y Humanidades">
-                    <option value="Jurisprudencia y Ciencias Sociales">
-                    <option value="Ciencias Económicas">
-                    <option value="Ciencias Naturales y Matemáticas">
-                    <option value="Ciencias Agronómicas">
-                    <option value="Química y Farmacia">
-                    <option value="Posgrado">
-                    <option value="Carreras Técnicas">
-                    <option value="Planes Complementarios">
+                    <option value="INGA" label="Ingeniería y Arquitectura"></option>
+                    <option value="MED" label="Medicina"></option>
+                    <option value="CCHH" label="Ciencias y Humanidades"></option>
+                    <option value="JCCSS" label="Jurisprudencia y Ciencias Sociales"></option>
+                    <option value="CCEE" label="Ciencias Económicas"></option>
+                    <option value="CCNN" label="Ciencias Naturales y Matemáticas"></option>
+                    <option value="CCAA" label="Ciencias Agronómicas"></option>
+                    <option value="QQFF" label="Química y Farmacia"></option>
+                    <option value="EPOS" label="Posgrado"></option>
+                    <option value="ECTM" label="Carreras Técnicas"></option>
+                    <option value="PLCOM" label="Planes Complementarios"></option>
                 </datalist>
             </div>
 
             <br>
-            <button type="submit" class="btn btn-primary">Guardar</button>
             <a href="{{ route('cancelarCarrPre', ['depto' => $carreraPregradoEdit->departamento]) }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
             
         </form>
 

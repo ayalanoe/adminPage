@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anuncios;
 use App\Models\AtencionHorario;
 use App\Models\CalendarioAdministrativo;
 
 use App\Models\CalendarioClase;
+use App\Models\Carrera;
 use App\Models\CarreraDistancia;
 use App\Models\Contacto;
 use App\Models\Facultad;
@@ -27,7 +29,6 @@ class VistasPublicasController extends Controller
 
                 'horarioLaboral' => $horarioAtencion,
                 'tramitesAcademicos' => $tramites,
-                'preguntaFrecuente' => $preguntas,
             ]);
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,16 +44,16 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ------------------------------------------------------------------------------------------------------------------
         public function verAnuncios()
         {
-            $contactos = Contacto::all();
-            return view('AcademicaFMO/anunciosAAFMO', ['anuncios' => $contactos]);
+            $anuncios = Anuncios::all();
+            return view('AcademicaFMO/anunciosAAFMO', ['anunciosAcademicos' => $anuncios]);
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO -------------------------------------------------------------------------------------------------------------------
-        public function verPlanes()
+        public function verPlanesPregrado()
         {
-            $contactos = Contacto::all();
-            return view('AcademicaFMO/planesFMO', ['planes' => $contactos]);
+            $planesPregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            return view('AcademicaFMO/planesFMO', ['planesPregrado' => $planesPregrado]);
         }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

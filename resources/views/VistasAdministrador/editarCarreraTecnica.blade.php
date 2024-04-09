@@ -81,18 +81,9 @@
             <br>
             <div class="col-md-12">
                 <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                <input value="{{$carreraTecnicaEdit->departamento}}" name="editarDeptoCarreraTecnica" class="form-control" list="datalistOptions" id="deptoCarreraTecnica">
+                <input value="{{$carreraTecnicaEdit->departamento}}" name="editarDeptoCarreraTecnica" class="form-control" list="datalistOptions" id="deptoCarreraTecnica" readonly>
                 <datalist id="datalistOptions">
-                    <option value="Ingeniería y Arquitectura">
-                    <option value="Medicina">
-                    <option value="Ciencias y Humanidades">
-                    <option value="Jurisprudencia y Ciencias Sociales">
-                    <option value="Ciencias Económicas">
-                    <option value="Ciencias Naturales y Matemáticas">
-                    <option value="Ciencias Agronómicas">
-                    <option value="Química y Farmacia">
-                    <option value="Posgrado">
-                    <option value="Carreras Técnicas">
+                    <option value="ECTM" label="Carreras Técnicas"></option>
                 </datalist>
             </div>
 

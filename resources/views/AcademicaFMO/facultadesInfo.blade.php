@@ -13,8 +13,27 @@
     <div class="container_table">
         <!--TABLA DE ELEMENTOS-->
 
+        @php
+        $facultades = [
+            "FM" => "Facultad de Medicina",
+            "FJJCCSS" => "Facultad de Jurisprudencia y Ciencias Sociales",
+            "FCCAA" => "Facultad de Ciencias Agronómicas",
+            "FCCHH" => "Facultad de Ciencias y Humanidades",
+            "FIA" => "Facultad de Ingeniería y Arquitectura",
+            "FQF" => "Facultad de Química y Farmacia",
+            "FOUES" => "Facultad de Odontología",
+            "FCCEE" => "Facultad de Ciencias Económicas",
+            "FCIMAT" => "Facultad de Ciencias Naturales y Matemática",
+            "FMOCC" => "Facultad Multidisciplinaria de Occidente",
+            "FMO" => "Facultad Multidisciplinaria Oriente",
+            "FMP" => "Facultad Multidisciplinaria Paracentral"
+        ];
+
+        $nombreFacultad = $facultades[$tituloFacultad] ?? "No encontrado";
+        @endphp
+
         <div class="container">
-            <h3>Directorio administrativo: {{$tituloFacultad}}</h3>
+            <h3>Directorio administrativo: {{$nombreFacultad}}</h3>
                 
             <table class="table table-hover">
                 <thead>

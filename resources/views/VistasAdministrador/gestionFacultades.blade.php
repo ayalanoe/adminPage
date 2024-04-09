@@ -2,9 +2,29 @@
 @section('titulo', '- Facultades') 
 @section('contenido')
   <div class="container">
-    <h2>Contactos: {{$facultadPertenece}}</h2>
 
-    <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a contactos</a>
+    @php
+      $facultades = [
+          "FM" => "Facultad de Medicina",
+          "FJJCCSS" => "Facultad de Jurisprudencia y Ciencias Sociales",
+          "FCCAA" => "Facultad de Ciencias Agronómicas",
+          "FCCHH" => "Facultad de Ciencias y Humanidades",
+          "FIA" => "Facultad de Ingeniería y Arquitectura",
+          "FQF" => "Facultad de Química y Farmacia",
+          "FOUES" => "Facultad de Odontología",
+          "FCCEE" => "Facultad de Ciencias Económicas",
+          "FCIMAT" => "Facultad de Ciencias Naturales y Matemática",
+          "FMOCC" => "Facultad Multidisciplinaria de Occidente",
+          "FMO" => "Facultad Multidisciplinaria Oriente",
+          "FMP" => "Facultad Multidisciplinaria Paracentral"
+      ];
+
+      $facuNombre = $facultades[$facultadPertenece] ?? "No encontrado";
+      @endphp
+
+    <h2>Contactos: {{$facuNombre}} </h2>
+
+    <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a las facultades</a>
     <br>
     <br>
 
@@ -28,7 +48,7 @@
           <tr>
             <th scope="row">{{$numero}}</th>  
             <td>{{$facultadC->oficina}}</td>
-            <td>{{$facultadC->facultad}}</td>
+            <td>{{$facuNombre}}</td>
             <td>{{$facultadC->correo}}</td>
             <td>{{$facultadC->contacto}}</td>
             <td class="d-flex">
@@ -51,7 +71,7 @@
   </div>
 
   <div class="container">
-    <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearFacultades"><i class="fa-solid fa-user-plus"></i> Agregar Facultad</button>
+    <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearFacultades"><i class="fa-solid fa-user-plus"></i> Agregar Oficina</button>
   </div>
 
 
@@ -61,7 +81,7 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Facultades UES</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de oficina de: {{$facuNombre}}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -70,7 +90,7 @@
             @csrf
 
             <div class="col-md-12">
-              <label for="validationCustomUser" class="form-label">Facultad</label>
+              <label for="validationCustomUser" class="form-label">Facultad: {{$facuNombre}}</label>
               <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
                   <input name="facultadOrigen" type="text" class="form-control" id="validaUser" value="{{$facultadPertenece}}" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
@@ -129,7 +149,7 @@
         <div class="modal-content">
 
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Facultad</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar oficina</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

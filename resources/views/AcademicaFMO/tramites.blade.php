@@ -17,8 +17,13 @@
             <p>
                 {!! $tramiteAcademico->contenido !!}
             </p>
+
+            @if ($tramiteAcademico->rutaFormato)
+                <p>Descargar el formato del tramite</p>
+                <a href="#" class="btn btn-success mx-1"><i class="fa-solid fa-file-arrow-down"></i></a>
+            @endif
             
         </div>
 </div>
 
-@endsection
+@endsection 

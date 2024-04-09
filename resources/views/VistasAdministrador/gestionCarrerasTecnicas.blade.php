@@ -106,16 +106,7 @@
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
                             <input name="departamentoCarreraTecnica" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento...">
                             <datalist id="datalistOptions">
-                                <option value="Ingeniería y Arquitectura">
-                                <option value="Medicina">
-                                <option value="Ciencias y Humanidades">
-                                <option value="Jurisprudencia y Ciencias Sociales">
-                                <option value="Ciencias Económicas">
-                                <option value="Ciencias Naturales y Matemáticas">
-                                <option value="Ciencias Agronómicas">
-                                <option value="Química y Farmacia">
-                                <option value="Posgrado">
-                                <option value="Carreras Técnicas">
+                                <option value="ECTM" label="Carreras Técnicas"></option>
                             </datalist>
                         </div>
             

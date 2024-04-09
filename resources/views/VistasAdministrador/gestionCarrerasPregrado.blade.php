@@ -4,7 +4,25 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Departamento: {{$departamento}} </h2>
+        @php
+            $nombresDeptos = [
+                "INGA" => "Ingeniería y Arquitectura",
+                "MED" => "Medicina",
+                "CCHH" => "Ciencias y Humanidades",
+                "JCCSS" => "Jurisprudencia y Ciencias Sociales",
+                "CCEE" => "Ciencias Económicas",
+                "CCNN" => "Ciencias Naturales y Matemáticas",
+                "CCAA" => "Ciencias Agronómicas",
+                "QQFF" => "Química y Farmacia",
+                "EPOS" => "Posgrado",
+                "ECTM" => "Carreras Técnicas",
+                "PLCOM" => "Planes Complementarios"
+            ];
+
+            $nombreDepto = $nombresDeptos[$departamento] ?? "No encontrado";
+        @endphp
+
+        <h2>Departamento: {{$nombreDepto}}</h2>
         <br>
         <a href="{{ route('regresarA_Departamentos') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Ver Departementos</a>
         <br>
@@ -32,7 +50,7 @@
                     <td>{{$carrera->carrera}}</td>
                     <td>{{$carrera->codigoCarrera}}</td>
                     <td>{{$carrera->tipoCarrera}}</td>
-                    <td>{{$carrera->departamento}}</td><!--Actualizar agregando campo tramites-->
+                    <td>{{$nombreDepto}}</td><!--Actualizar agregando campo tramites-->
                     <td class="d-flex">
         
                         <form class="formEliminarCarreraPergrado" action="{{ route('eliminarCarreraDePregrado', $carrera->id) }}" method="POST">
@@ -111,22 +129,12 @@
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento..." required>
+                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departamento..." required>
                             <datalist id="datalistOptions">
-                                <option value="Ingeniería y Arquitectura">
-                                <option value="Medicina">
-                                <option value="Ciencias y Humanidades">
-                                <option value="Jurisprudencia y Ciencias Sociales">
-                                <option value="Ciencias Económicas">
-                                <option value="Ciencias Naturales y Matemáticas">
-                                <option value="Ciencias Agronómicas">
-                                <option value="Química y Farmacia">
-                                <option value="Posgrado">
-                                <option value="Carreras Técnicas">
-                                <option value="Planes Complementarios">
+                                <option value="{{$departamento}}" label="{{$nombreDepto}}"></option>
                             </datalist>
                         </div>
-            
+                        
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
