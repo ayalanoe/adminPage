@@ -31,19 +31,37 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
 /*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
+    
+    /*----------------------------------- RUTAS PUBLICAS DE NUEVO INGRESO ------------------------------------------------------------*/
+    
+    /*--------------------------------------------------------------------------------------------------------------------------------*/
+
     Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
     Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
 
+    /*RUTAS PÚBLICAS DE EDUCACIÓN A DISTANCIA ***************************************************************************************/
     Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
     Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
+
+    Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
+    /*---------------------------------------------------------------------------------------------------------------------*/
 
     Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
     Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
 
     Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
-    Route::get('AcademicaFMO/planes-de-estudio', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planes');
+
+    /*RUTAS PÚBLICAS DE PLANES DE ESTUDIO ***************************************************************************************/
+
+    Route::get('Planes-de-estudio/Carreras-Pregrado', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planesPre');
+
+    Route::get('Planes-de-estudio/Carreras-Posgrado', [VistasPublicasController::class, 'verPlanesPosgrado'])->name('planesPos');
+    Route::get('Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
+    Route::get('Planes-de-estudio/Carreras-Técnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
+    Route::get('Planes-de-estudio/Complementarios', [VistasPublicasController::class, 'verPlanesComplementarios'])->name('complementarios');
+    /*---------------------------------------------------------------------------------------------------------------------*/
 
     Route::get('/AcademicaFMO/preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
 

@@ -33,21 +33,45 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="/" class="select">INICIO</a></li>
-                        <li><a href="https://eel.ues.edu.sv/ingreso" target="_blank">NUEVO INGRESO</a></li>
+
+                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO INGRESO</a>
+                            <ul class="dropdown-menu ingreso">
+                                <li class="nav-item dropend">
+                                    <a class="nav-link" href="#">
+                                        TIPOS DE INGRESO
+                                    </a>        
+                                    <a class="nav-link" href="#">
+                                        REQUISITOS Y FECHAS
+                                    </a>        
+                                    <a class="nav-link" href="#">
+                                        APLICAR EN LÍNEA
+                                    </a>
+                                    <a class="nav-link" href="#">
+                                        OFERTA ACADÉMICA
+                                    </a>
+                                    <a class="nav-link" href="#">
+                                        CATÁLOGO ACADÉMICO
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
                             <ul class="dropdown-menu planes">
                                 <li class="nav-item dropend">
-                                    <a class="nav-link" href="{{ route('planes') }}">
+                                    <a class="nav-link" href="{{ route('planesPre') }}">
                                             CARRERAS DE PREGRADO
                                     </a>        
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('planesPos') }}">
                                         CARRERAS DE POSGRADO
+                                    </a>
+                                    <a class="nav-link" href="{{ route('diplomados') }}">
+                                        DIPLOMADOS
                                     </a>        
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('tecnicos') }}">
                                         CARRERAS TÉCNICAS
                                     </a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('complementarios') }}">
                                         PLANES COMPLEMENTARIOS
                                     </a>
                                 </li>
@@ -70,7 +94,19 @@
                             </ul>
                         </li>
                         
-                        <li><a href="{{ route('educDistancia') }}">EDUCACIÓN A DISTANCIA</a></li>
+                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">EDUCACIÓN A DISTANCIA</a>
+                            <ul class="dropdown-menu eduDistancia">
+                                <li class="nav-item dropend">
+                                    <a class="nav-link" href="{{ route('distanciaFMO') }}">
+                                        FMO
+                                    </a>        
+                                    <a class="nav-link" href="{{ route('educDistancia') }}">
+                                        OTRAS FACULTADES
+                                    </a>        
+                                </li>
+                            </ul>
+                        </li>
+                        
                         <li><a href="{{ route('verContactosFacultad') }}">FACULTADES</a></li>
                     </ul>
                 </nav>

@@ -1,135 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.container__header{
-    max-width: 1200px;
-    height: 100%;  
-    display: flex;
-    justify-content: space-between; 
-    margin: auto;
-    padding: 0px 20px;
-}
-
-header .logo{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo img{
-    width: 150px;
-}
-
-nav ul li{
-    margin: 0px 10px;
-    list-style: none;
-
-}
-
-nav ul li a{
-    background-color: white;
-    color: #373737;
-    font-size: 14px;
-    text-decoration: none;
-    padding: 10px;
-    white-space: nowrap;
-    border-radius: 12px;
-}
-
-.prueba {
-    background-color: #690605;
-    height: 50px;
-    width: 50px;
-    position: fixed;
-    top: 45%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.prueba2 {
-    background-color: #690605;
-    position: fixed;
-    height: 50px;
-    width: 50px;
-    top: 55%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.iconoOpciones{
-    color: white;
-    font-size: 24px;
-}
-
-nav ul li a:hover{
-    background-color: #690605;
-    color: white;
-    padding: 10px;
-    white-space: nowrap;
-    border-radius: 12px;
-}
-
-.select{
-    background: #690605;
-    padding: 10px;
-    color: white;
-    border-radius: 12px;
-}
-
-.nav_mod{
-    height: 70px;
-    box-shadow: 1px 1px 10px 0px #00000010;
-    background: white;
-}
-
-.cover{
-    width: 100%;
-    padding-bottom: 60px;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 100px;
-}
-
-.container_table{
-    max-width: 86%;
-  
-    margin: auto;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    background-size: cover;
-    background-position: bottom;
-    overflow: hidden;
-}
 .container{
     background-color: white;
 }
 
 .accordion-css {
-    background-color: #690605; /* Fondo azul */
+    background-color: #690605; 
    
-    color: white; /* Texto blanco */
-    padding: 10px; /* Espacio interno para el texto */
-    margin-bottom: 10px; /* Espacio entre elementos */
+    color: white; 
+    padding: 10px; 
+    margin-bottom: 10px; 
 }
 /* Estilo para el botón del acordeón */
-.accordion-css button {
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    width: 100%; /* Ancho del botón */
-    height: 100%; /* Alto del botón */
-    text-align: left; /* Alinear texto a la izquierda */
-    color: inherit; /* Heredar color del texto */
-    font-size: inherit; /* Heredar tamaño de fuente */
-    cursor: pointer; /* Cursor de tipo puntero */
+.hols {
+    background-color: transparent; 
+    border: none; 
+    width: 100%; 
+    height: 100%; 
+    text-align: left; 
+    color: inherit; 
+    font-size: inherit; 
+    cursor: pointer; 
 }
 
 .accordion-button::after {
@@ -147,25 +38,13 @@ nav ul li a:hover{
 }
 
 
-
-
-
-.faq-section-title {
-    background-color: #690605; /* Fondo azul */
-    width: 200px; /* Ancho de 100px */
-    height: 90px; /* Alto de 150px */
-    color: white; /* Texto blanco */
-    padding: 10px; /* Espacio interno para el texto */
-    margin-bottom: 10px; /* Espacio entre elementos */
+.faq-section-titleeee {
+    background-color: #690605; 
+    width: 200px; 
+    height: 90px; 
+    color: white; 
+    padding: 10px; 
+    margin-bottom: 10px;
+    text-decoration: none;
 }
 /* Estilo para el botón del acordeón */
-.faq-section-title button {
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    width: 100%; /* Ancho del botón */
-    height: 100%; /* Alto del botón */
-    text-align: left; /* Alinear texto a la izquierda */
-    color: inherit; /* Heredar color del texto */
-    font-size: inherit; /* Heredar tamaño de fuente */
-    cursor: pointer; /* Cursor de tipo puntero */
-}

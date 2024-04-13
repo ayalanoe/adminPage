@@ -55,72 +55,6 @@
 
                 </div>
                 <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#GesUser" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-circle-user pe-2"></i>
-                            Gestión de Usuarios
-                        </a>
-                        <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link">Ver usuarios</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('registro') }}" class="sidebar-link">Crear Usuario</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-list pe-2"></i>
-                            Trámites Académicos
-                        </a>
-                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('verTramitesAcademicos') }}" class="sidebar-link">Gestion de Trámites</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-graduation-cap pe-2"></i>
-                            Planes de Estudio
-                        </a>
-                        <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#calendarios" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-calendar pe-2"></i>
-                            Calendrio Oficial
-                        </a>
-                        <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link">Calendario Administrativo</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
-                            </li>
-                        </ul>
-                    </li>
-
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#Anuncios" data-bs-toggle="collapse" aria-expanded="false">
@@ -132,6 +66,36 @@
                                 <a href="{{ route('gestionAnuncios') }}" class="sidebar-link">Registro de Anuncios</a>
                             </li>
                             
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#calendarios" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-calendar pe-2"></i>
+                            Calendario Oficial
+                        </a>
+                        <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link">Calendario Administrativo</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#constanciasFMO" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-folder pe-2"></i>
+                            Constancias
+                        </a>
+                        <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link">Registrar Constancia</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('informeConstancias') }}" class="sidebar-link">Generar Informe</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -149,6 +113,18 @@
                     </li>
 
                     <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#eduDistancia" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-folder pe-2"></i>
+                            Educación a Distancia
+                        </a>
+                        <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Gestión de Carreras</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectFacultad" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fas fa-university pe-2"></i>
                             Facultades
@@ -160,6 +136,7 @@
                             
                         </ul>
                     </li>
+
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#GaleriaAcademica" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-image pe-2"></i>
@@ -168,6 +145,22 @@
                         <ul id="GaleriaAcademica" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="{{ route('gestionGaleria') }}" class="sidebar-link">Gestionar Galería</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#GesUser" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-circle-user pe-2"></i>
+                            Gestión de Usuarios
+                        </a>
+                        <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link">Ver usuarios</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('registro') }}" class="sidebar-link">Crear Usuario</a>
                             </li>
                             
                         </ul>
@@ -187,6 +180,42 @@
                     </li>
 
                     <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-graduation-cap pe-2"></i>
+                            Nuevo Ingreso
+                        </a>
+                        <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-graduation-cap pe-2"></i>
+                            Planes de Estudio
+                        </a>
+                        <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#PreguntasFrecuentes" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-circle-question pe-2"></i>
                             Preguntas Frecuentes
@@ -200,31 +229,17 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#constanciasFMO" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-folder pe-2"></i>
-                            Constancias
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#paginas" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Trámites Académicos
                         </a>
-                        <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link">Registrar Constancia</a>
+                                <a href="{{ route('verTramitesAcademicos') }}" class="sidebar-link">Gestion de Trámites</a>
                             </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('informeConstancias') }}" class="sidebar-link">Generar Informe</a>
-                            </li>
+                            
                         </ul>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#eduDistancia" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-folder pe-2"></i>
-                            Educación a Distancia
-                        </a>
-                        <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Gestión de Carreras</a>
-                            </li>
-                        </ul>
-                    </li>
-                   
                 </ul>
             </div>
         </aside>

@@ -1,60 +1,57 @@
 @extends('Layouts.index') 
 
-@section('titulo-publico', '- Planes de Estudio')
+@section('titulo-publico', '- Pregrado')
 
 @section('css-publico')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/planPre.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 @endsection
 
 @section('contenido-publico')
+<h3>CARRERAS DE PREGRADO</h3>
 <div class="container_table">
 
     <div class="row">
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_INGA_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_INGA" aria-expanded="false" aria-controls="flush_INGA">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_INGA" aria-expanded="false" aria-controls="#flush_INGA">
                         Ingeniería y Arquitectura
                     </button>
-                    
-                    <div id="flush_INGA" class="accordion-collapse collapse" aria-labelledby="flush_INGA_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
+                </div>
+                <div id="flush_INGA" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
                                 @if ($carreraPregrado->departamento == "INGA")
                                     <a class="nav-link" href="#">
                                         {{$carreraPregrado->carrera}}
                                     </a> 
                                 @endif
                             @endforeach
-                            
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_MED_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_MED" aria-expanded="false" aria-controls="flush_MED">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_MED" aria-expanded="false" aria-controls="#flush_MED">
                         Medicina
                     </button>
-                    
-                    <div id="flush_MED" class="accordion-collapse collapse" aria-labelledby="flush_MED_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "MED")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_MED" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "MED")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -63,7 +60,7 @@
         <div class="col-12 col-md-4 d-flex">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item" id="flush_CCHH_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCHH" aria-expanded="false" aria-controls="flush_CCHH">
+                    <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCHH" aria-expanded="false" aria-controls="flush_CCHH">
                         Ciencias y Humanidades
                     </button>
                     
@@ -85,128 +82,109 @@
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_JCCSS_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_JCCSS" aria-expanded="false" aria-controls="flush_JCCSS">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_JCCSS" aria-expanded="false" aria-controls="#flush_JCCSS">
                         Jurisprudencia y Ciencias Sociales
                     </button>
-                    
-                    <div id="flush_JCCSS" class="accordion-collapse collapse" aria-labelledby="flush_JCCSS_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "JCCSS")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_JCCSS" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "JCCSS")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_CCEE_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCEE" aria-expanded="false" aria-controls="flush_CCEE">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCEE" aria-expanded="false" aria-controls="#flush_CCEE">
                         Ciencias Económicas
                     </button>
-                    
-                    <div id="flush_CCEE" class="accordion-collapse collapse" aria-labelledby="flush_CCEE_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "CCEE")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_CCEE" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "CCEE")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_CCNN_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCNN" aria-expanded="false" aria-controls="flush_CCNN">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCNN" aria-expanded="false" aria-controls="#flush_CCNN">
                         Ciencias Naturales y Matemáticas
                     </button>
-                    
-                    <div id="flush_CCNN" class="accordion-collapse collapse" aria-labelledby="flush_CCNN_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "CCNN")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_CCNN" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "CCNN")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_CCAA_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCAA" aria-expanded="false" aria-controls="flush_CCAA">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCAA" aria-expanded="false" aria-controls="#flush_CCAA">
                         Ciencias Agronómicas
                     </button>
-                    
-                    <div id="flush_CCAA" class="accordion-collapse collapse" aria-labelledby="flush_CCAA_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "CCAA")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_CCAA" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "CCAA")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_QQFF_header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_QQFF" aria-expanded="false" aria-controls="flush_QQFF">
+            <div class="accordion-item">
+                <div class="accordion-css"> 
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_QQFF" aria-expanded="false" aria-controls="#flush_QQFF">
                         Química y Farmacia
                     </button>
-                    
-                    <div id="flush_QQFF" class="accordion-collapse collapse" aria-labelledby="flush_QQFF_header" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-
-                            @foreach ($planesPregrado as $carreraPregrado)
-                                @if ($carreraPregrado->departamento == "QQFF")
-                                    <a class="nav-link" href="#">
-                                        {{$carreraPregrado->carrera}}
-                                    </a> 
-                                @endif
-                            @endforeach
-                            
-                        </div>
+                </div>
+                <div id="flush_QQFF" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @foreach ($planesPregrado as $carreraPregrado)
+                            @if ($carreraPregrado->departamento == "QQFF")
+                                <a class="nav-link" href="#">
+                                    {{$carreraPregrado->carrera}}
+                                </a> 
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        
-
-        
-    
     </div>
 
 </div>

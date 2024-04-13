@@ -118,36 +118,28 @@ nav ul li a:hover{
 }
 
 
-
-
-/* Estilo para el acordeón */
-.faq-section-title {
-    background-color: #690605; /* Fondo azul */
-    width: 500px; /* Ancho de 100px */
-    height: 50px; /* Alto de 150px */
-    color: white; /* Texto blanco */
-    padding: 10px; /* Espacio interno para el texto */
-    margin-bottom: 10px; /* Espacio entre elementos */
+.faq-section-titlee {
+    background-color: #690605; 
+    color: white;
+    height: 80px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    border-radius: 16px;
 }
 
-.faq-section-titlee {
-    background-color: #690605; /* Fondo azul */
-    color: white;
-    height: 80px; /* Alto de 150px */
-    display: flex; /* Activar el modelo de caja flexible */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    text-align: center; /* Alinear el texto al centro */
-    border-radius: 16px;
+.faq-section-titlee:hover {
+    background-color: #470100; 
 }
 /* Estilo para el botón del acordeón */
 .faq-section-title button {
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    width: 100%; /* Ancho del botón */
-    height: 100%; /* Alto del botón */
-    text-align: left; /* Alinear texto a la izquierda */
-    color: inherit; /* Heredar color del texto */
-    font-size: inherit; /* Heredar tamaño de fuente */
-    cursor: pointer; /* Cursor de tipo puntero */
+    background-color: transparent; 
+    border: none; 
+    width: 100%; 
+    height: 100%; 
+    text-align: left; 
+    color: inherit; 
+    font-size: inherit; 
+    cursor: pointer; 
 }

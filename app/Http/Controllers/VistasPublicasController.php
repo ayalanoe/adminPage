@@ -56,6 +56,32 @@ class VistasPublicasController extends Controller
             return view('AcademicaFMO/planesFMO', ['planesPregrado' => $planesPregrado]);
         }
 
+        public function verPlanesPosgrado()
+        {
+            $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            return view('AcademicaFMO/planesPos', ['planesPosgrado' => $planesPosgrado]);
+        }
+
+        public function verDiplomados()
+        {
+            $planesDiplomados = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            return view('AcademicaFMO/planesDiplomados', ['planesDiplomados' => $planesDiplomados]);
+        }
+
+        public function verPlanesTecnicos()
+        {
+            $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            return view('AcademicaFMO/planesTecnicos', ['planesTecnicos' => $planesTecnicos]);
+        }
+
+        public function verPlanesComplementarios()
+        {
+            $planComplementario = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            return view('AcademicaFMO/planesComplementarios', ['planComplementario' => $planComplementario]);
+        }
+
+        
+        
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     // ----------------------------- FUNCIONES PARA LOS CALENDARIOS ------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +143,7 @@ class VistasPublicasController extends Controller
         public function verInfoEduDistancia()
         {
             $publicCarDistancia = CarreraDistancia::all();
-            return view('AcademicaFMO/eduDistancia', ['educDistancia' => $publicCarDistancia]);
+            return view('AcademicaFMO/EducacionDistancia/eduDistancia', ['educDistancia' => $publicCarDistancia]);
         }
 
         public function mostrarPdfCarDistancia($id)
@@ -128,6 +154,13 @@ class VistasPublicasController extends Controller
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoPdfCarDis, 200)->header('Content-Type', 'application/pdf');
+        }
+
+
+        public function verEduDistanciaFMO()
+        {
+            $publicCarDistanciaFMO = CarreraDistancia::all();
+            return view('AcademicaFMO/EducacionDistancia/eduDistanciaFMO', ['distanciaFMO' => $publicCarDistanciaFMO]);
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
