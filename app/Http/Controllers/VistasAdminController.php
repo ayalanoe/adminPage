@@ -138,7 +138,7 @@ class VistasAdminController extends Controller
             $archivo->delete();
             
             //La clase storage contiene el metodo delete, el cual recibe la ruta guardada en el objeto y elimina el archivo
-            Storage::delete($archivo->rutaArchivo);
+            Storage::disk('public')->delete($archivo->rutaArchivo);
             return back()->with('resEliminarCalendarioAcademico', 'Horario eliminado correctamente');
             
         }
@@ -153,7 +153,7 @@ class VistasAdminController extends Controller
             }
 
             // Puedes usar el facade Storage para obtener el contenido del archivo
-            $contenidoArchivo = Storage::get($horarioClase->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($horarioClase->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -172,7 +172,7 @@ class VistasAdminController extends Controller
             */
             $nombreArchivo = $request->input('nombreArchivo');
             $archivo = $request->file('archivo');
-            $ruta = Storage::disk('local')->put('calendarioAcademico', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('calendarioAcademico', $archivo); //---> Se establece la ruta
 
             
             //Insersion en la base de datos usando el modelo de la tabala para almacenar el archivo
@@ -267,7 +267,7 @@ class VistasAdminController extends Controller
             */
             $nombreCalAdmin = $request->input('nombreArchivo');
             $archivo = $request->file('archivo');
-            $ruta = Storage::disk('local')->put('Calendario_Administrativo', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Calendario_Administrativo', $archivo); //---> Se establece la ruta
 
             
             //Insersion en la base de datos usando el modelo de la tabala para almacenar el archivo
@@ -291,7 +291,7 @@ class VistasAdminController extends Controller
                 
             $archivo->delete();
 
-            Storage::delete($archivo->rutaArchivo);
+            Storage::disk('public')->delete($archivo->rutaArchivo);
 
             return back()->with('resEliminarCalAdmin', 'Calendario administrativo eliminado correctamente');
             
@@ -309,7 +309,7 @@ class VistasAdminController extends Controller
             }
 
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calAdmin->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($calAdmin->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -357,7 +357,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $request->file('archivoPregradoCarrera');
-            $ruta = Storage::disk('local')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
 
             $carrera->rutaArchivo = $ruta;
             $carrera->estadoArchivo = true;
@@ -378,8 +378,8 @@ class VistasAdminController extends Controller
             $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
         
             // Eliminar el archivo utilizando el sistema de archivos de Laravel
-            if (Storage::disk('local')->exists($rutaArchivo)) {
-                Storage::disk('local')->delete($rutaArchivo);
+            if (Storage::disk('public')->exists($rutaArchivo)) {
+                Storage::disk('public')->delete($rutaArchivo);
             }
         
             // Eliminar el registro de la base de datos
@@ -403,9 +403,9 @@ class VistasAdminController extends Controller
             $carreraEliminar = Carrera::find($id);
             $rutaEliminar = $carreraEliminar->rutaArchivo;
 
-            if (Storage::exists($rutaEliminar)) {
+            if (Storage::disk('public')->exists($rutaEliminar)) {
                 
-                Storage::delete($rutaEliminar);
+                Storage::disk('public')->delete($rutaEliminar);
             }
 
             // Actualizar el modelo
@@ -426,7 +426,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $datos->file('editNewPlanCarPre');
-            $ruta = Storage::disk('local')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_PreGrado', $archivo); //---> Se establece la ruta
 
             $carreraNewPlan->rutaArchivo = $ruta;
             $carreraNewPlan->estadoArchivo = true;
@@ -469,7 +469,7 @@ class VistasAdminController extends Controller
             }*/
 
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($plan->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -509,7 +509,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $request->file('archivoPosgradoCarrera');
-            $ruta = Storage::disk('local')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
 
             $carrera->rutaArchivo = $ruta;
             $carrera->estadoArchivo = true;
@@ -555,9 +555,9 @@ class VistasAdminController extends Controller
             $carreraEliminar = Carrera::find($id);
             $rutaEliminar = $carreraEliminar->rutaArchivo;
 
-            if (Storage::exists($rutaEliminar)) {
+            if (Storage::disk('public')->exists($rutaEliminar)) {
                 
-                Storage::delete($rutaEliminar);
+                Storage::disk('public')->delete($rutaEliminar);
             }
 
             // Actualizar el modelo
@@ -578,7 +578,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $datos->file('editNewPlanCarPos');
-            $ruta = Storage::disk('local')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_PosGrado', $archivo); //---> Se establece la ruta
 
             $carreraNewPlan->rutaArchivo = $ruta;
             $carreraNewPlan->estadoArchivo = true;
@@ -594,7 +594,7 @@ class VistasAdminController extends Controller
             $plan = Carrera::find($id);
             
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($plan->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -612,8 +612,8 @@ class VistasAdminController extends Controller
             $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
         
             // Eliminar el archivo utilizando el sistema de archivos de Laravel
-            if (Storage::disk('local')->exists($rutaArchivo)) {
-                Storage::disk('local')->delete($rutaArchivo);
+            if (Storage::disk('public')->exists($rutaArchivo)) {
+                Storage::disk('public')->delete($rutaArchivo);
             }
         
             // Eliminar el registro de la base de datos
@@ -657,7 +657,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $request->file('archivoCarreraTecnica');
-            $ruta = Storage::disk('local')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
 
             $carrera->rutaArchivo = $ruta;
             $carrera->estadoArchivo = true;
@@ -703,9 +703,9 @@ class VistasAdminController extends Controller
             $carreraEliminar = Carrera::find($id);
             $rutaEliminar = $carreraEliminar->rutaArchivo;
 
-            if (Storage::exists($rutaEliminar)) {
+            if (Storage::disk('public')->exists($rutaEliminar)) {
                 
-                Storage::delete($rutaEliminar);
+                Storage::disk('public')->delete($rutaEliminar);
             }
 
             // Actualizar el modelo
@@ -726,7 +726,7 @@ class VistasAdminController extends Controller
             ]);
 
             $archivo = $datos->file('editNewPlanCarTecnica');
-            $ruta = Storage::disk('local')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Carreras_Tecnicas', $archivo); //---> Se establece la ruta
 
             $carreraNewPlan->rutaArchivo = $ruta;
             $carreraNewPlan->estadoArchivo = true;
@@ -742,7 +742,7 @@ class VistasAdminController extends Controller
             $plan = Carrera::find($id);
             
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($plan->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($plan->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -760,8 +760,8 @@ class VistasAdminController extends Controller
             $rutaArchivo = $carrera->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
         
             // Eliminar el archivo utilizando el sistema de archivos de Laravel
-            if (Storage::disk('local')->exists($rutaArchivo)) {
-                Storage::disk('local')->delete($rutaArchivo);
+            if (Storage::disk('public')->exists($rutaArchivo)) {
+                Storage::disk('public')->delete($rutaArchivo);
             }
         
             // Eliminar el registro de la base de datos
@@ -875,8 +875,8 @@ class VistasAdminController extends Controller
 
                 if ($anuncioEliminar->rutaArchivo !== null) {
     
-                    if (Storage::disk('local')->exists($anuncioEliminar->rutaArchivo)) {
-                        Storage::disk('local')->delete($anuncioEliminar->rutaArchivo);
+                    if (Storage::disk('public')->exists($anuncioEliminar->rutaArchivo)) {
+                        Storage::disk('public')->delete($anuncioEliminar->rutaArchivo);
                     }
                 }
 
@@ -909,7 +909,7 @@ class VistasAdminController extends Controller
             if ($datosAnucio->hasFile('archivoAnuncio')) {
 
                 $archivo = $datosAnucio->file('archivoAnuncio');
-                $ruta = Storage::disk('local')->put('Archivos_Anunucios', $archivo);
+                $ruta = Storage::disk('public')->put('Archivos_Anunucios', $archivo);
 
                 $anuncio->rutaArchivo = $ruta;
             } 
@@ -938,8 +938,8 @@ class VistasAdminController extends Controller
         
             if ($rutaArchivo !== null) {
     
-                if (Storage::disk('local')->exists($rutaArchivo)) {
-                    Storage::disk('local')->delete($rutaArchivo);
+                if (Storage::disk('public')->exists($rutaArchivo)) {
+                    Storage::disk('public')->delete($rutaArchivo);
                 }
             }
         
@@ -996,7 +996,7 @@ class VistasAdminController extends Controller
 
     
             $archivo = $nuevoArchivo->file('editarArchivoAnuncio');
-            $ruta = Storage::disk('local')->put('Archivos_Anunucios', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Archivos_Anunucios', $archivo); //---> Se establece la ruta
 
             $newArchivo->rutaArchivo = $ruta;
 
@@ -1016,8 +1016,8 @@ class VistasAdminController extends Controller
             $rutaArchivoEliminar = $anuncio->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
         
             // Eliminar el archivo utilizando el sistema de archivos de Laravel
-            if (Storage::disk('local')->exists($rutaArchivoEliminar)) {
-                Storage::disk('local')->delete($rutaArchivoEliminar);
+            if (Storage::disk('public')->exists($rutaArchivoEliminar)) {
+                Storage::disk('public')->delete($rutaArchivoEliminar);
             }
 
             $anuncio->rutaArchivo = null;
@@ -1034,7 +1034,7 @@ class VistasAdminController extends Controller
             $extension = pathinfo($archivo->rutaArchivo, PATHINFO_EXTENSION);
 
             // Se accede al storage de Laravel para obtener el contenido del archivo
-            $contenidoArchivo = Storage::get($archivo->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($archivo->rutaArchivo);
 
             // Verificar si la extensión es de un PDF
             if (strtolower($extension) === 'pdf') {
@@ -1138,7 +1138,7 @@ class VistasAdminController extends Controller
             if ($datosTramite->hasFile('archivoTramite')) {
 
                 $archivo = $datosTramite->file('archivoTramite');
-                $ruta = Storage::disk('local')->put('Archivos_TramitesAcademicos', $archivo);
+                $ruta = Storage::disk('public')->put('Archivos_TramitesAcademicos', $archivo);
 
                 $nuevoTramite->rutaFormato = $ruta;
             } 
@@ -1163,8 +1163,8 @@ class VistasAdminController extends Controller
             //Se verifica que la ruta no sea null antes de elimanr el tramite para que no de error el server
             if ($rutaEliminar !== null ) {
                 
-                if (Storage::disk('local')->exists($rutaEliminar)) {
-                    Storage::disk('local')->delete($rutaEliminar);
+                if (Storage::disk('public')->exists($rutaEliminar)) {
+                    Storage::disk('public')->delete($rutaEliminar);
                 }
             }
 
@@ -1212,7 +1212,7 @@ class VistasAdminController extends Controller
             $nuevoArchivoTramite = Tramite::find($id);
 
             $archivo = $newTramiteArchivo->file('editarNuevoFormatoTramite');
-            $ruta = Storage::disk('local')->put('Archivos_TramitesAcademicos', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('Archivos_TramitesAcademicos', $archivo); //---> Se establece la ruta
             $nuevoArchivoTramite->rutaFormato = $ruta;
             $nuevoArchivoTramite->save();
 
@@ -1225,9 +1225,9 @@ class VistasAdminController extends Controller
             $archivoTramiteEliminar = Tramite::find($id);
             $rutaEliminar = $archivoTramiteEliminar->rutaFormato;
 
-            if (Storage::disk('local')->exists($rutaEliminar)) {
+            if (Storage::disk('public')->exists($rutaEliminar)) {
 
-                Storage::disk('local')->delete($rutaEliminar);
+                Storage::disk('public')->delete($rutaEliminar);
             }
 
             $archivoTramiteEliminar->rutaFormato = null;
@@ -1243,7 +1243,7 @@ class VistasAdminController extends Controller
 
             // Obtener la extensión del archivo
             $extension = pathinfo($archivo->rutaFormato, PATHINFO_EXTENSION);
-            $contenidoArchivo = Storage::get($archivo->rutaFormato);
+            $contenidoArchivo = Storage::disk('public')->get($archivo->rutaFormato);
 
             // Verificar si la extensión es de un PDF
             if (strtolower($extension) === 'pdf') {
@@ -1278,10 +1278,10 @@ class VistasAdminController extends Controller
             }
         
             // Obtener el contenido del archivo
-            $contenidoArchivo = Storage::get($tramite->rutaFormato);
+            $contenidoArchivo = Storage::disk('public')->get($tramite->rutaFormato);
         
             // Devolver la respuesta para descargar el archivo
-            return response()->download(storage_path('app/' . $tramite->rutaFormato), 'formatoSubido.docx');
+            return response()->download(storage_path('app/public/' . $tramite->rutaFormato), 'formatoTramite.docx');
         }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1450,7 +1450,7 @@ class VistasAdminController extends Controller
             if ($datosGaleria->hasFile('fotoGaleria')) {
 
                 $archivo = $datosGaleria->file('fotoGaleria');
-                $ruta = Storage::disk('local')->put('Galeria', $archivo);
+                $ruta = Storage::disk('public')->put('Galeria', $archivo);
 
                 $nuevaFoto->rutaArchivo = $ruta;
 
@@ -1480,9 +1480,9 @@ class VistasAdminController extends Controller
         
             if ($rutaArchivo !== null) {
     
-                if (Storage::disk('local')->exists($rutaArchivo)) {
+                if (Storage::disk('public')->exists($rutaArchivo)) {
 
-                    Storage::disk('local')->delete($rutaArchivo);
+                    Storage::disk('public')->delete($rutaArchivo);
                 }
             }
         
@@ -1500,7 +1500,7 @@ class VistasAdminController extends Controller
             $extension = pathinfo($verFotoGaleria->rutaArchivo, PATHINFO_EXTENSION);
 
             // Se accede al storage de Laravel para obtener el contenido del archivo
-            $contenidoArchivo = Storage::get($verFotoGaleria->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($verFotoGaleria->rutaArchivo);
 
             if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) {
                 
@@ -1536,8 +1536,8 @@ class VistasAdminController extends Controller
             $banner = $datosCarDistancia->file('bannerCarDistancia');
             $planPdf = $datosCarDistancia->file('planCarDistancia');
 
-            $bannerRuta = Storage::disk('local')->put('CarrerasDistancia', $banner);
-            $planRuta = Storage::disk('local')->put('CarrerasDistancia', $planPdf);
+            $bannerRuta = Storage::disk('public')->put('CarrerasDistancia', $banner);
+            $planRuta = Storage::disk('public')->put('CarrerasDistancia', $planPdf);
 
             $carDistancia->rutaBanner = $bannerRuta;
             $carDistancia->rutaArchivo = $planRuta;
@@ -1561,15 +1561,15 @@ class VistasAdminController extends Controller
         
             if ($rutaPdfCarDistancia !== null ) {
     
-                if (Storage::disk('local')->exists($rutaPdfCarDistancia)) {
-                    Storage::disk('local')->delete($rutaPdfCarDistancia);
+                if (Storage::disk('public')->exists($rutaPdfCarDistancia)) {
+                    Storage::disk('public')->delete($rutaPdfCarDistancia);
                 }
             }
 
             if ($rutaBannerCarDistancia !== null ) {
 
-                if (Storage::disk('local')->exists($rutaBannerCarDistancia)) {
-                    Storage::disk('local')->delete($rutaBannerCarDistancia);
+                if (Storage::disk('public')->exists($rutaBannerCarDistancia)) {
+                    Storage::disk('public')->delete($rutaBannerCarDistancia);
                 }
             }
 
@@ -1597,8 +1597,8 @@ class VistasAdminController extends Controller
 
             if ($carDisPdfEliminar->rutaArchivo !== null ) {
     
-                if (Storage::disk('local')->exists($carDisPdfEliminar->rutaArchivo)) {
-                    Storage::disk('local')->delete($carDisPdfEliminar->rutaArchivo);
+                if (Storage::disk('public')->exists($carDisPdfEliminar->rutaArchivo)) {
+                    Storage::disk('public')->delete($carDisPdfEliminar->rutaArchivo);
                 }
             }
 
@@ -1615,7 +1615,7 @@ class VistasAdminController extends Controller
             $nuevoPdfCarDis = CarreraDistancia::find($id);
 
             $archivo = $newPdfCarDis->file('editNuevoPlanCarDis');
-            $ruta = Storage::disk('local')->put('CarrerasDistancia', $archivo); //---> Se establece la ruta
+            $ruta = Storage::disk('public')->put('CarrerasDistancia', $archivo); //---> Se establece la ruta
 
             $nuevoPdfCarDis->rutaArchivo = $ruta;
             $nuevoPdfCarDis->save();
@@ -1650,7 +1650,7 @@ class VistasAdminController extends Controller
             $pdfCarDis = CarreraDistancia::find($id);
 
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoPdf = Storage::get($pdfCarDis->rutaArchivo);
+            $contenidoPdf = Storage::disk('public')->get($pdfCarDis->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoPdf, 200)->header('Content-Type', 'application/pdf');

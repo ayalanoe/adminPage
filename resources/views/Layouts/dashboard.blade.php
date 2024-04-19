@@ -180,19 +180,19 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#planesEstudio" data-bs-toggle="collapse" aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#nuevoIngreso" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-graduation-cap pe-2"></i>
                             Nuevo Ingreso
                         </a>
-                        <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
+                                <a href="#" class="sidebar-link">Funcion 1</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
+                                <a href="#" class="sidebar-link">Funcion 2</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
+                                <a href="#" class="sidebar-link">Fucnion 3</a>
                             </li>
                         </ul>
                     </li>
@@ -208,6 +208,9 @@
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Diplomados Impartidos</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
