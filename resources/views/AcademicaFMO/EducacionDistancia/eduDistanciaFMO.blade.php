@@ -23,8 +23,25 @@
         <!-- Como lo intentabamos <img src="#asset($carDistancia->rutaBanner)}}" class="card-img-top" alt="..."> -->
         <div class="row">
 
+            @foreach ($distanciaFMO as $carDistancia)
+
+            <div class="col-12 col-md-6 d-flex">
+                
+                <div class="card flex-fill border-0 illustration">
+                
+                    <img src="{{ asset('storage/'.$carDistancia->rutaBanner) }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title"> {{$carDistancia->carrera}} </h5>
+                    <p class="card-text">Se les invita a descargar:</p>
+                    <a href="{{ route('publicVerPdfCarDis', $carDistancia->id)}}" target="_blank" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
             
+            </div>
+            
+            @endforeach
             
         </div>
     </div>
+
 @endsection

@@ -14,7 +14,6 @@ use App\Models\Facultad;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Backtrace\Backtrace;
 
 class VistasPublicasController extends Controller
 {
@@ -23,10 +22,7 @@ class VistasPublicasController extends Controller
 
             $horarioAtencion = AtencionHorario::all();
             $tramites = Tramite::all();
-            $preguntas = PreguntaFrecuente::all();
-
             return view('AcademicaFMO/cover', [
-
                 'horarioLaboral' => $horarioAtencion,
                 'tramitesAcademicos' => $tramites,
             ]);
@@ -54,6 +50,17 @@ class VistasPublicasController extends Controller
         {
             $planesPregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
             return view('AcademicaFMO/planesFMO', ['planesPregrado' => $planesPregrado]);
+        }
+
+        public function verArchivoPdfPregrado($id)
+        {
+            $archivoPregrado = Carrera::find($id);
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoPregrado->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
         }
 
         public function verPlanesPosgrado()
@@ -97,7 +104,7 @@ class VistasPublicasController extends Controller
             }
 
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calAdmin->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($calAdmin->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
@@ -114,7 +121,7 @@ class VistasPublicasController extends Controller
                 return back()->with('errorPublicCalAcademico','Aún no se ha subido calendario academico');
             }
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::get($calendarioAcademico->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($calendarioAcademico->rutaArchivo);
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
         
@@ -142,15 +149,15 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA LAS CARRERAS A DISTANCIA ----------------------------------------------------------------------------------------------------------------
         public function verInfoEduDistancia()
         {
-            $publicCarDistancia = CarreraDistancia::all();
-            return view('AcademicaFMO/EducacionDistancia/eduDistancia', ['educDistancia' => $publicCarDistancia]);
+            $carDistanciaOtraFacultad = CarreraDistancia::where('facultad', 'OTRA_FACULTAD')->get();
+            return view('AcademicaFMO/EducacionDistancia/eduDistancia', ['eduDisOtraFacultad' => $carDistanciaOtraFacultad]);
         }
 
         public function mostrarPdfCarDistancia($id)
         {
             $pdfCarDis = CarreraDistancia::find($id);
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoPdfCarDis = Storage::get($pdfCarDis->rutaArchivo);
+            $contenidoPdfCarDis = Storage::disk('public')->get($pdfCarDis->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoPdfCarDis, 200)->header('Content-Type', 'application/pdf');
@@ -159,12 +166,12 @@ class VistasPublicasController extends Controller
 
         public function verEduDistanciaFMO()
         {
-            $publicCarDistanciaFMO = CarreraDistancia::all();
-            return view('AcademicaFMO/EducacionDistancia/eduDistanciaFMO', ['distanciaFMO' => $publicCarDistanciaFMO]);
+            $carDistaciaFMO = CarreraDistancia::where('facultad', 'FMO')->get();
+            return view('AcademicaFMO/EducacionDistancia/eduDistanciaFMO', ['distanciaFMO' => $carDistaciaFMO]);
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LOS TRÀMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LOS TRÁMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------------
         public function verTramite($id)
         {
             $tramite = Tramite::find($id);

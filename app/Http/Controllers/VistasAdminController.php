@@ -422,7 +422,7 @@ class VistasAdminController extends Controller
             $carreraNewPlan = Carrera::find($id);
 
             $datos->validate([
-                'editNewPlanCarPre' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+                'editNewPlanCarPre' => 'required|mimes:pdf',
             ]);
 
             $archivo = $datos->file('editNewPlanCarPre');
@@ -463,11 +463,6 @@ class VistasAdminController extends Controller
         {
             $plan = Carrera::find($id);
             
-            /*
-            if (!$plan) {
-                return redirect()->route('subirHorarioClases')->with('error', 'Horario académico no encontrado');
-            }*/
-
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::disk('public')->get($plan->rutaArchivo);
 
@@ -630,6 +625,100 @@ class VistasAdminController extends Controller
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
+    //------------------------------ FUNCIONES PARA LOS DIPLOMADOS ----------------------------------------------------------------------------------------------------------------
+    
+        public function gestionDiplomados()
+        {
+            $listaDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->get();
+
+            return view("VistasAdministrador/gestionDiplomados", [
+
+                'listadoDiplomados' => $listaDiplomados
+            ]);
+        }
+
+        public function registrarDiplomado(Request $request)
+        {
+
+            $diplomado = new Carrera();
+
+            $diplomado->tipoCarrera = $request->tipoCarreraDiplomado;
+            $diplomado->carrera = $request->nombreDiplomado;
+            $diplomado->codigoCarrera = $request->codigoDiplomado;
+            $diplomado->departamento = $request->deptoDiplomado;
+
+            $request->validate([
+                'archivoDiplomado' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+
+            $archivo = $request->file('archivoDiplomado');
+            $ruta = Storage::disk('public')->put('Diplomados', $archivo); //---> Se establece la ruta
+
+            $diplomado->rutaArchivo = $ruta;
+            $diplomado->estadoArchivo = true;
+
+            $diplomado->save();
+            return back()->with("resDiplomado", "Diplomado registrado con exito");
+
+        }
+
+        public function eliminarDiplomado($id)
+        {
+            $diplomadoEliminar = Carrera::find($id);
+            $rutaEliminar = $diplomadoEliminar->rutaArchivo;
+
+            if (Storage::disk('public')->exists($rutaEliminar)) {
+                
+                Storage::disk('public')->delete($rutaEliminar);
+            }
+
+            $diplomadoEliminar->delete();
+
+            return back()->with("resDelDiplomado", "Diplomado eliminado correctamente");
+
+        }
+
+        public function vistaEditDiplomado($id)
+        {
+            $diplomadoEdit = Carrera::find($id);
+
+            return view("VistasAdministrador/editarDiplomado", [
+
+                'diplomadoEditar' => $diplomadoEdit
+            ]);
+        }
+
+        public function guardarNewDatosDiploomado(Request $newDataDiplomado, $id)
+        {
+            $diplomadoEdit = Carrera::find($id);
+
+            $diplomadoEdit->carrera = $newDataDiplomado->editDiploNombre;
+            $diplomadoEdit->codigoCarrera = $newDataDiplomado->editDiploCodigo;
+            $diplomadoEdit->departamento = $newDataDiplomado->editDiploDepto;
+
+            $diplomadoEdit->save();
+
+            //Se redireige a la vista donde estan todas la carreras de pos grado
+            return redirect(route('verListaDiplomados'))->with("resEditDiplomado", 'Diplomado actualizado con exito');
+            
+
+        }
+
+        public function verPdfDiplomados($id)
+        {
+            $pdfDiplomado = Carrera::find($id);
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoPdf = Storage::disk('public')->get($pdfDiplomado->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoPdf, 200)->header('Content-Type', 'application/pdf');
+
+        }
+        
+        
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     //------------------------------- FUNCIONES PARA LAS CARRERAS TECNICAS ---------------------------------------------------------------------------------------------------------
         
         public function gestionCarrerasTecnicas()
@@ -1518,7 +1607,7 @@ class VistasAdminController extends Controller
     //---------------------------------- FUNCIONES PARA LAS CARRERAS A DISTANCIA --------------------------------------------------------------------------------------------------------
         public function mostrarCarrerasDistancia()
         {
-            $carrerasDistancia = CarreraDistancia::all();
+            $carrerasDistancia = CarreraDistancia::where('facultad', 'OTRA_FACULTAD')->get();
 
             return view('VistasAdministrador/gestionEducacionDistancia', [
 
@@ -1532,6 +1621,7 @@ class VistasAdminController extends Controller
             $carDistancia = new CarreraDistancia();
 
             $carDistancia->carrera = $datosCarDistancia->nombreCarDistancia;
+            $carDistancia->facultad = "OTRA_FACULTAD";
 
             $banner = $datosCarDistancia->file('bannerCarDistancia');
             $planPdf = $datosCarDistancia->file('planCarDistancia');
@@ -1658,4 +1748,107 @@ class VistasAdminController extends Controller
         }
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    //--------------- FUNCIONES PARA LAS CARRERAS A DISTANCIAS DE LA FMO-----------------------------------------------------------------------------------------------------------------
+
+        public function gestioCarDistanciaFmo()
+        {
+            $carDisFMO = CarreraDistancia::where('facultad', 'FMO')->get();
+
+            return view('VistasAdministrador/gestionEduDistanciaFmo', [
+
+                'carrerasDisFMO' => $carDisFMO
+                
+            ]);
+        }
+
+        public function crearCarDisFmo()
+        {
+            return view('VistasAdministrador/crearCarDistanciaFmo');
+        }
+
+        public function guardarCarDisFmo(Request $datosCarDisFMO)
+        {
+            $carDistanciaFMO = new CarreraDistancia();
+
+            $carDistanciaFMO->carrera = $datosCarDisFMO->nombreCarDisFMO;
+            $carDistanciaFMO->facultad = $datosCarDisFMO->facultadCarDisFMO;
+            $carDistanciaFMO->contenido = $datosCarDisFMO->contenidoCarDisFMO;
+
+            $banner = $datosCarDisFMO->file('bannerCarDisFMO');
+            $planPdf = $datosCarDisFMO->file('archivoCarDisFMO');
+
+            $bannerRuta = Storage::disk('public')->put('CarrerasDistancia', $banner);
+            $planRuta = Storage::disk('public')->put('CarrerasDistancia', $planPdf);
+
+            $carDistanciaFMO->rutaBanner = $bannerRuta;
+            $carDistanciaFMO->rutaArchivo = $planRuta;
+
+            $carDistanciaFMO->save();
+            return redirect()->route('carrerasDistanciaFmo')->with('resGuardarCarDisFMO', 'Carrera a distancia de la fmo guardada');
+
+        }
+
+        public function vistaEditCarDisFmo($id)
+        {
+            $carDisFmoEdit = CarreraDistancia::find($id);
+
+            return view("VistasAdministrador/editarCarDisFmo", [
+
+                'carreraDisFmoEdit' => $carDisFmoEdit
+            ]);
+        }
+
+        public function newDatosCarDisFMO(Request $datosCarDisFMO, $id)
+        {
+            $newCarDisFMO = CarreraDistancia::find($id);
+
+            $newCarDisFMO->carrera = $datosCarDisFMO->editCarDisFMO;
+            $newCarDisFMO->contenido = $datosCarDisFMO->editContenidoCarDisFMO;
+
+            $newCarDisFMO->save();
+
+            return redirect()->route('carrerasDistanciaFmo')->with('resNewDatosCarDisFMO', 'Se actulizado la carrera a distancia de la fmo');
+            
+        }
+
+        public function eliminarCarDisFMO($id)
+        {
+            $EliminarCarDisFMO = CarreraDistancia::find($id);
+
+            $rutaPdfCarDistancia = $EliminarCarDisFMO->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+            $rutaBannerCarDistancia = $EliminarCarDisFMO->rutaBanner;
+        
+            if ($rutaPdfCarDistancia !== null ) {
+    
+                if (Storage::disk('public')->exists($rutaPdfCarDistancia)) {
+                    Storage::disk('public')->delete($rutaPdfCarDistancia);
+                }
+            }
+
+            if ($rutaBannerCarDistancia !== null ) {
+
+                if (Storage::disk('public')->exists($rutaBannerCarDistancia)) {
+                    Storage::disk('public')->delete($rutaBannerCarDistancia);
+                }
+            }
+
+            $EliminarCarDisFMO->delete();
+
+            return back()->with('resEliminarCarDistanciaFMO', 'Se ha elimando la carrera a distancia de la fmo');
+
+        }
+
+        public function verPdfCarDisFMO($id)
+        {
+            $pdfCarDis = CarreraDistancia::find($id);
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoPdf = Storage::disk('public')->get($pdfCarDis->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoPdf, 200)->header('Content-Type', 'application/pdf');
+
+        }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

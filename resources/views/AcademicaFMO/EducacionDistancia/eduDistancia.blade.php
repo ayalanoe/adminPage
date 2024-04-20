@@ -22,7 +22,7 @@
         <!-- Como lo intentabamos <img src="#asset($carDistancia->rutaBanner)}}" class="card-img-top" alt="..."> -->
         <div class="row">
 
-            @foreach ($educDistancia as $carDistancia)
+            @foreach ($eduDisOtraFacultad as $carDistancia)
 
             <div class="col-12 col-md-6 d-flex">
                 

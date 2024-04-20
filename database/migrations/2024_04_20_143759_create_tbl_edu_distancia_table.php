@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('tbl_edu_distancia', function (Blueprint $table) {
             $table->id();
             $table->string('carrera',100);
+            $table->string('facultad',50);
+            $table->text('contenido')->nullable();
             $table->text('rutaBanner')->nullable();
             $table->text('rutaArchivo')->nullable();
             $table->timestamps();

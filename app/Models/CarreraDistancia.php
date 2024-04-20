@@ -15,6 +15,8 @@ class CarreraDistancia extends Model
     //ojo tinee que tener el nombre de las columnas que se quieren afectar
     protected $fillable = [
         'carrera',
+        'facultad',
+        'contenido',
         'rutaBanner',
         'rutaArchivo',
     ];

@@ -26,7 +26,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                                 @if ($carreraPregrado->departamento == "INGA")
-                                    <a class="nav-link" href="#">
+                                    <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                         {{$carreraPregrado->carrera}}
                                     </a> 
                                 @endif
@@ -47,7 +47,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "MED")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -69,7 +69,7 @@
 
                             @foreach ($planesPregrado as $carreraPregrado)
                                 @if ($carreraPregrado->departamento == "CCHH")
-                                    <a class="nav-link" href="#">
+                                    <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                         {{$carreraPregrado->carrera}}
                                     </a> 
                                 @endif
@@ -92,7 +92,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "JCCSS")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -113,7 +113,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCEE")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -134,7 +134,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCNN")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -155,7 +155,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCAA")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -176,7 +176,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "QQFF")
-                                <a class="nav-link" href="#">
+                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif

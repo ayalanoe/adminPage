@@ -119,7 +119,10 @@
                         </a>
                         <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Gestión de Carreras</a>
+                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Otras Facultades</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('carrerasDistanciaFmo') }}" class="sidebar-link">Facultad Oriente - FMO</a>
                             </li>
                         </ul>
                     </li>
@@ -210,7 +213,7 @@
                                 <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Diplomados Impartidos</a>
+                                <a href="{{ route('verListaDiplomados') }}" class="sidebar-link">Diplomados Impartidos</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>

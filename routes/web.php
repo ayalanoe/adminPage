@@ -30,45 +30,58 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
 
-/*//---------------------------------- RUTAS DEL USUARIO ---------------------------------------------------------------------------------------------------*/
+/*//-------------------- RUTAS DEL PUBLICAS PARA LA PARTE PUBLICA DE LA WEB ---------------------------------------------------------------------------------------------------*/
     
-    /*----------------------------------- RUTAS PUBLICAS DE NUEVO INGRESO ------------------------------------------------------------*/
+    //------------------------------ OTRAS RUTAS PUBLICAS --------------------------------------------------------------------------------------------------------------------
+        Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
+
+        Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
+
+        Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
+
+        Route::get('/AcademicaFMO/preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-    /*--------------------------------------------------------------------------------------------------------------------------------*/
 
-    Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
+    /*------------------------------ RUTAS PUBLICAS DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------*/
+        //Aquí y jando siempre la identacion desgraciado
+    /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-    Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
+    
+    //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
+        Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+        Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
-    /*RUTAS PÚBLICAS DE EDUCACIÓN A DISTANCIA ***************************************************************************************/
-    Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
-    Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
-
-    Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
-    /*---------------------------------------------------------------------------------------------------------------------*/
-
-    Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
-    Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
-
-    Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
+        Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    /*RUTAS PÚBLICAS DE PLANES DE ESTUDIO ***************************************************************************************/
+    //------------------------------RUTAS PUBLICAS DE LAS FACULTADES ---------------------------------------------------------------------------------------------------------
+        Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
+        Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 
-    Route::get('Planes-de-estudio/Carreras-Pregrado', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planesPre');
+    //------------------------------RUTAS PÚBLICAS DE PLANES DE ESTUDIO ---------------------------------------------------------------------------------------------------/
+        Route::get('Planes-de-estudio/Carreras-Pregrado', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planesPre');
+        Route::get('/AcademicaFMO/plan-carrera-pregrado/{id}', [VistasPublicasController::class, 'verArchivoPdfPregrado'])->name('publicArchivoPregrado');
 
-    Route::get('Planes-de-estudio/Carreras-Posgrado', [VistasPublicasController::class, 'verPlanesPosgrado'])->name('planesPos');
-    Route::get('Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
-    Route::get('Planes-de-estudio/Carreras-Técnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
-    Route::get('Planes-de-estudio/Complementarios', [VistasPublicasController::class, 'verPlanesComplementarios'])->name('complementarios');
-    /*---------------------------------------------------------------------------------------------------------------------*/
+        Route::get('Planes-de-estudio/Carreras-Posgrado', [VistasPublicasController::class, 'verPlanesPosgrado'])->name('planesPos');
+        Route::get('Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
+        Route::get('Planes-de-estudio/Carreras-Técnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
+        Route::get('Planes-de-estudio/Complementarios', [VistasPublicasController::class, 'verPlanesComplementarios'])->name('complementarios');
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    Route::get('/AcademicaFMO/preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
+    //-------------------------------RUTAS PUBLICAS CALENDARIO ADMIN Y ACADEMICO --------------------------------------------------------------------------------------------
+        Route::get('/AcademicaFMO/calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
+        Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    Route::get('/AcademicaFMO/calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
-    Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 //--------------------- RUTAS PUBLICAS QUE NO LLEVAN MIDDLEWARE, ES DECIR LAS QUE SE OCUPAN PARA INICIAR SESION ----------------------------------------------
     Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
@@ -78,6 +91,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
     Route::post('/validar-password', [LoginController::class, 'verificarPassword'])->name('validar-password');
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 //--------------------- RUTAS DEL ASISTENTE CON ROL 2 -------------------------------------------------------------------------------------------------------
     Route::middleware(['auth', 'rol:2'])->group(function(){
@@ -96,6 +112,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     });
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 //---------------------------------- RUTAS DEL ADMINISTRADOR ---------------------------------------------------------------------------------------------------
     /*
@@ -159,6 +178,13 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/cancelar-update-carreraPosgrado', [VistasAdminController::class, 'cancelarActulizarCarreraPosgrado'])->name('cancelarCarrPos');
         Route::delete('/eliminar-carrera-posgrado/{id}', [VistasAdminController::class, 'eliminarCarreraPosgrado'])->name('eliminarCarreraPosgrado');
 
+        Route::get('/gestion-diplomados', [VistasAdminController::class, 'gestionDiplomados'])->name('verListaDiplomados');
+        Route::post('/registrar-diplomado', [VistasAdminController::class, 'registrarDiplomado'])->name('ingresarDiplomado');
+        Route::delete('/eliminar-diplomado/{id}', [VistasAdminController::class, 'eliminarDiplomado'])->name('diplomadoEliminar');
+        Route::get('/editar-diplomado/{id}', [VistasAdminController::class, 'vistaEditDiplomado'])->name('vistaEditarDiplomado');
+        Route::post('/actualizar-datos-diplomado/{id}',[VistasAdminController::class, 'guardarNewDatosDiploomado'])->name('actualizarDiplomado');
+        Route::get('/ver-pdf-diplomado/{id}', [VistasAdminController::class, 'verPdfDiplomados'])->name('verPdfDiplomados');
+
         Route::get('/gestion-carrerasTecnicas', [VistasAdminController::class, 'gestionCarrerasTecnicas'])->name('carrerasTecnicas');
         Route::post('/registrar-carrera-tecnica', [VistasAdminController::class, 'registrarCarreraTecnica'])->name('carreraTecnicaIngresar');
         Route::get('/editar-carrera-tecnica/{id}', [VistasAdminController::class, 'editarCarreraTecnica'])->name('editarCarreraTecnica');
@@ -212,6 +238,14 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::post('/nuevo-name-car-distancia/{id}', [VistasAdminController::class, 'editarNombreCarDis'])->name('nuevoNombreCarDis');
         Route::get('/ver-pdf-car-distancia/{id}', [VistasAdminController::class, 'verPdfCarDis'])->name('verPdfCarDistancia');
 
+        Route::get('/carreras-distancia-fmo', [VistasAdminController::class, 'gestioCarDistanciaFmo'])->name('carrerasDistanciaFmo');
+        Route::get('/crear-carrera-distancia-fmo', [VistasAdminController::class, 'crearCarDisFmo'])->name('vistaCrearCarDisFmo');
+        Route::post('/guardar-car-dis-fmo', [VistasAdminController::class, 'guardarCarDisFmo'])->name('guardarCarDisFMO');
+        Route::get('/editar-carrera-distancia/fmo/{id}', [VistasAdminController::class, 'vistaEditCarDisFmo'])->name('vistaEditarCarDisFMO');
+        Route::post('/editar-car-dis-fmo/{id}', [VistasAdminController::class, 'newDatosCarDisFMO'])->name('guardarNewDatosCarDisFmo');
+        Route::delete('/elimar-car-dis-fmo/{id}', [VistasAdminController::class, 'eliminarCarDisFMO'])->name('elimarCarDisFmo');
+        Route::get('/ver-pdf-car-distancia/fmo/{id}', [VistasAdminController::class, 'verPdfCarDisFMO'])->name('verPDFCarreraDisFmo');
+    
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
         Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');
         Route::post('/guardar-pregunta', [VistasAdminController::class, 'guardarPregunta'])->name('guardarPregunta');
