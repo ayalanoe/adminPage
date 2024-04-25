@@ -1850,5 +1850,20 @@ class VistasAdminController extends Controller
 
         }
 
+
+
+        //----------------------------- FUNIONES PARA LA GESTION DE LOS CALENDARIOS ADMINISTRATIVOS -------------------------------------------------------------------------------------
+
+        public function mostrarCatalogoAcademico()
+        {
+            $calendarioAdmin = CalendarioAdministrativo::all();
+
+            return view('VistasAdministrador/NuevoIngreso/catalogo', [
+
+                'calAdmin' => $calendarioAdmin 
+            ]);
+
+        }
+
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

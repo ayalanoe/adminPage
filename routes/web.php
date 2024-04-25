@@ -145,6 +145,11 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::post('/subir-calendarioAdmin', [VistasAdminController::class, 'subirArchivoCalAdmin'])->name('subirCalAdmin');
         Route::delete('/eliminar-calendarioAdmin/{id}', [VistasAdminController::class, 'eliminarCalAdmin'])->name('eliminarCalAdmin');
         Route::get('/calendario-admin/{id}', [VistasAdminController::class, 'verCalAdmin'])->name('mostrarCalAdmin');
+
+
+        Route::get('/Administracion/Catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
+        
+
         
         Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
         Route::delete('/usuarios/{id}', [VistasAdminController::class, 'destroy'])->name('usuarios.destroy');

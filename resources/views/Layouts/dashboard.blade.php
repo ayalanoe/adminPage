@@ -189,13 +189,13 @@
                         </a>
                         <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Funcion 1</a>
+                                <a href="#" class="sidebar-link">Requisitos y Fechas</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Funcion 2</a>
+                                <a href="#" class="sidebar-link">Aplicar en Línea</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Fucnion 3</a>
+                                <a href="{{ route('verCatalogo') }}" class="sidebar-link">Catálogo Académico</a>
                             </li>
                         </ul>
                     </li>
