@@ -36,6 +36,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
         Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
+        Route::get('/AcademicaFMO/formato-tramite/{id}', [VistasPublicasController::class, 'descargarFormatoTramite'])-> name('publicDescargarFormato');
 
         Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 

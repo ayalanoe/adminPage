@@ -11,6 +11,7 @@ use App\Models\Carrera;
 use App\Models\CarreraDistancia;
 use App\Models\Contacto;
 use App\Models\Facultad;
+use App\Models\Galeria;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use Illuminate\Support\Facades\Storage;
@@ -22,9 +23,11 @@ class VistasPublicasController extends Controller
 
             $horarioAtencion = AtencionHorario::all();
             $tramites = Tramite::all();
+            $galeria = Galeria::all();
             return view('AcademicaFMO/cover', [
                 'horarioLaboral' => $horarioAtencion,
                 'tramitesAcademicos' => $tramites,
+                'fotosGaleria' => $galeria,
             ]);
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -176,6 +179,18 @@ class VistasPublicasController extends Controller
         {
             $tramite = Tramite::find($id);
             return view('AcademicaFMO/tramites', ['tramiteAcademico' => $tramite]);
+        }
+
+        public function descargarFormatoTramite($id)
+        {
+            $formato = Tramite::find($id);
+            $rutaTramite = storage_path('app/public/'.$formato->rutaFormato);
+
+            $nombreOriginal = basename($formato->rutaFormato);
+            $extension = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
+            $nombreArchivo = 'formatoTramite.' . $extension;
+
+            return response()->download($rutaTramite, $nombreArchivo);
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
