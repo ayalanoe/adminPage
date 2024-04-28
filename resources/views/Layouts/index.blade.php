@@ -37,19 +37,19 @@
                         <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO INGRESO</a>
                             <ul class="dropdown-menu ingreso">
                                 <li class="nav-item dropend">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('tiposIngresos') }}">
                                         TIPOS DE INGRESO
                                     </a>        
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('requisitosFechas') }}">
                                         REQUISITOS Y FECHAS
                                     </a>        
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('enLinea') }}">
                                         APLICAR EN LÍNEA
                                     </a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('oferta') }}">
                                         OFERTA ACADÉMICA
                                     </a>
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('tiposIngresos') }}">
                                         CATÁLOGO ACADÉMICO
                                     </a>
                                 </li>

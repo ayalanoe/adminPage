@@ -1852,7 +1852,7 @@ class VistasAdminController extends Controller
 
 
 
-        //----------------------------- FUNIONES PARA LA GESTION DE LOS CALENDARIOS ADMINISTRATIVOS -------------------------------------------------------------------------------------
+        //----------------------------- FUNIONES PARA LA GESTION DE NUEVO INGRESO -------------------------------------------------------------------------------------
 
         public function mostrarCatalogoAcademico()
         {
@@ -1862,6 +1862,19 @@ class VistasAdminController extends Controller
 
                 'calAdmin' => $calendarioAdmin 
             ]);
+
+        }
+
+
+        public function mostrarTiposIngreso()
+        {
+            return view('VistasAdministrador/NuevoIngreso/TiposIngreso/gestionTiposIngreso'); 
+        }
+
+        
+        public function vistaEditarTipos()
+        {
+            return view('VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso');
 
         }
 

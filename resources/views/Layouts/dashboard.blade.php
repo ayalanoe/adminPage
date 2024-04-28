@@ -189,6 +189,9 @@
                         </a>
                         <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
+                                <a href="{{ route('vertiposingreso') }}" class="sidebar-link">Tipos de Ingreso</a>
+                            </li>
+                            <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Requisitos y Fechas</a>
                             </li>
                             <li class="sidebar-item">

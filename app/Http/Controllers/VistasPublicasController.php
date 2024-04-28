@@ -202,4 +202,32 @@ class VistasPublicasController extends Controller
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+    //----------------------------- FUNCIONES PARA NUEVO INGRESO ----------------------------------------------------------------------------------------------------------
+    public function verTiposIngreso()
+    {
+        $ingresosType = PreguntaFrecuente::all();
+        return view('AcademicaFMO/NuevoIngreso/tiposIngresos', ['preguntasFrecuntes' => $ingresosType]);
+    }
+
+
+    public function verRequisitosFechas()
+    {
+        $ingresosType = PreguntaFrecuente::all();
+        return view('AcademicaFMO/NuevoIngreso/requisitosFechas', ['preguntasFrecuntes' => $ingresosType]);
+    }
+
+    public function verAplicarLinea()
+    {
+        $ingresosType = PreguntaFrecuente::all();
+        return view('AcademicaFMO/NuevoIngreso/aplicarLinea', ['preguntasFrecuntes' => $ingresosType]);
+    }
+
+    public function verOfertAcademica()
+    {
+        $ingresosType = PreguntaFrecuente::all();
+        return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['preguntasFrecuntes' => $ingresosType]);
+    }
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

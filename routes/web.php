@@ -79,6 +79,14 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+    //-------------------------------RUTAS PUBLICAS DE NUEVO INGRESO --------------------------------------------------------------------------------------------
+    Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
+    Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
+    Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
+    Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -146,12 +154,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::post('/subir-calendarioAdmin', [VistasAdminController::class, 'subirArchivoCalAdmin'])->name('subirCalAdmin');
         Route::delete('/eliminar-calendarioAdmin/{id}', [VistasAdminController::class, 'eliminarCalAdmin'])->name('eliminarCalAdmin');
         Route::get('/calendario-admin/{id}', [VistasAdminController::class, 'verCalAdmin'])->name('mostrarCalAdmin');
-
-
-        Route::get('/Administracion/Catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
-        
-
-        
+                
         Route::get('gestion-usuarios', [VistasAdminController::class, 'gestionUsuarios'])->name('gestionUsuarios');
         Route::delete('/usuarios/{id}', [VistasAdminController::class, 'destroy'])->name('usuarios.destroy');
         Route::post('/usuarios/{id}/reset-pass', [VistasAdminController::class, 'restablecerContrasenia'])->name('resetPass');
@@ -270,6 +273,13 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::post('/resgistrar-foto-galeria', [VistasAdminController::class, 'guardarFotoGaleria'])->name('guardarGaleria');
         Route::delete('/elimar-foto-galeria/{id}', [VistasAdminController::class, 'eliminarFotoGaleria'])->name('eliminarFotoGaleria');
         Route::get('/ver-foto-galeria/{id}', [VistasAdminController::class, 'verFotoGaleria'])->name('verFotoGaleriaAdmin');
+
+
+
+        Route::get('/Administracion/Catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
+        
+        Route::get('/Administracion/Tipos-de-ingreso', [VistasAdminController::class, 'mostrarTiposIngreso'])->name("vertiposingreso");
+        Route::view('/crear-tipo-de-ingreso', 'VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso')->name("crearIngreso");
     });
 
 
