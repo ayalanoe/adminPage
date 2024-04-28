@@ -100,6 +100,19 @@
                     </li>
 
                     <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#croquisFMO" data-bs-toggle="collapse" aria-expanded="false">
+                            <i class="fa-solid fa-map-location-dot pe-2"></i>
+                            Croquis FMO
+                        </a>
+                        <ul id="croquisFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{{ route('croquis') }}" class="sidebar-link">Gestionar Croquis</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+
+                    <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#DirectContact" data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-address-book pe-2"></i>
                             Directorio de Contactos
@@ -192,10 +205,10 @@
                                 <a href="{{ route('vertiposingreso') }}" class="sidebar-link">Tipos de Ingreso</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Requisitos y Fechas</a>
+                                <a href="{{ route('ReqFe') }}" class="sidebar-link">Requisitos y Fechas</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Aplicar en Línea</a>
+                                <a href="{{ route('aplicarLinea') }}" class="sidebar-link">Aplicar en Línea</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('verCatalogo') }}" class="sidebar-link">Catálogo Académico</a>

@@ -276,10 +276,24 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
 
-        Route::get('/Administracion/Catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
+        Route::get('/Administracion/catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
         
-        Route::get('/Administracion/Tipos-de-ingreso', [VistasAdminController::class, 'mostrarTiposIngreso'])->name("vertiposingreso");
+        Route::get('/Administracion/tipos-de-ingreso', [VistasAdminController::class, 'mostrarTiposIngreso'])->name("vertiposingreso");
         Route::view('/crear-tipo-de-ingreso', 'VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso')->name("crearIngreso");
+
+        Route::get('/Administracion/aplicar-en-linea', [VistasAdminController::class, 'aplicarEnLinea'])->name("aplicarLinea");
+        Route::view('/Administracion/aplicar-en-linea/agregar-informacion', 'VistasAdministrador/NuevoIngreso/AplicarLinea/crearInfoAplicar')->name("infoAplicarLinea");
+    
+        Route::get('/Administracion/requisitos-y-fechas', [VistasAdminController::class, 'requisitosFechas'])->name("ReqFe");
+        Route::view('/Administracion/requisitos-y-fechas/agregar-informacion', 'VistasAdministrador/NuevoIngreso/RequisitosFechas/infoReqFechas')->name("infoReqFe");
+    
+
+
+
+        Route::get('/gestion-croquis', [VistasAdminController::class, 'mostrarVistaCroquis'])->name('croquis');
+       
+
+
     });
 
 

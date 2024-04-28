@@ -1878,5 +1878,41 @@ class VistasAdminController extends Controller
 
         }
 
+        public function aplicarEnLinea()
+        {
+            return view('VistasAdministrador/NuevoIngreso/AplicarLinea/gestionAplicarLinea'); 
+        }
+
+        
+        public function vistaEditAplicar()
+        {
+            return view('VistasAdministrador/NuevoIngreso/AplicarLinea/crearInfoAplicar');
+
+        }
+
+        public function requisitosFechas()
+        {
+            return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/gestionReqFechas'); 
+        }
+
+        
+        public function vistaEditReqFechas()
+        {
+            return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/infoReqFechas');
+
+        }
+
+
+
+        //----------------------------- FUNIONES PARA LA GESTION DE LOS CALENDARIOS ADMINISTRATIVOS -------------------------------------------------------------------------------------
+
+        public function mostrarVistaCroquis()
+        {
+            //$calendarioAdmin = CalendarioAdministrativo::all();
+
+        return view('VistasAdministrador/Croquis/gestionCroquis'/*, ['calAdmin' => $calendarioAdmin ]*/);
+
+        }
+
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
