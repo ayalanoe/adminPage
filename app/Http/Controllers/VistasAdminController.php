@@ -18,6 +18,7 @@ use App\Models\CarreraDistancia;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
+use App\Models\Croquis;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -1852,7 +1853,7 @@ class VistasAdminController extends Controller
 
 
 
-        //----------------------------- FUNIONES PARA LA GESTION DE NUEVO INGRESO -------------------------------------------------------------------------------------
+    //----------------------------- FUNIONES PARA LA GESTION DE NUEVO INGRESO -------------------------------------------------------------------------------------
 
         public function mostrarCatalogoAcademico()
         {
@@ -1904,15 +1905,75 @@ class VistasAdminController extends Controller
 
 
 
-        //----------------------------- FUNIONES PARA LA GESTION DE LOS CALENDARIOS ADMINISTRATIVOS -------------------------------------------------------------------------------------
+    //----------------------------- FUNIONES PARA LA GESTION DEL CROQUIS -------------------------------------------------------------------------------------
 
         public function mostrarVistaCroquis()
         {
-            //$calendarioAdmin = CalendarioAdministrativo::all();
+            $croquisFacultad = Croquis::all();
 
-        return view('VistasAdministrador/Croquis/gestionCroquis'/*, ['calAdmin' => $calendarioAdmin ]*/);
+        return view('VistasAdministrador/Croquis/gestionCroquis', ['croq' => $croquisFacultad ]);
 
         }
+
+        public function subirCroquis(Request $request)
+        {
+            $request->validate([
+                'archivo' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+            ]);
+            
+            /*  El formato es definir una variable en php no se especifica el tipo. Con on objeto request se accede y se especifica 
+                el tipo de input el cual va recibir un parametro que es el nombre del input en el html
+            */
+            $nombreCroquis = $request->input('nombreArchivo');
+            $archivoCroquis = $request->file('archivo');
+            $ruta = Storage::disk('public')->put('Croquis', $archivoCroquis); //---> Se establece la ruta
+
+            
+            //Insersion en la base de datos usando el modelo de la tabla para almacenar el archivo
+            Croquis::create([
+                'nombreArchivo' => $nombreCroquis, 
+                'rutaArchivo' => $ruta,
+            ]);
+            
+            return back()->with('resSubirCroquis', 'Se ha subido el archivo correctamente!');
+
+        }
+        
+        public function eliminarCroquis($id)
+        {
+            $archivoCroquis = Croquis::find($id);
+
+            if (!$archivoCroquis) {
+
+                return back('resEliminarCroquis')->with('error', 'Archivo no encontrado');
+            } 
+                
+            $archivoCroquis->delete();
+
+            Storage::disk('public')->delete($archivoCroquis->rutaArchivo);
+
+            return back()->with('resEliminarCroquis', 'Croquis eliminado correctamente');
+            
+        }
+
+
+
+        public function verCroquis($id){
+
+            $croq = Croquis::find($id);
+
+            if (!$croq) {
+                return redirect()->route('subirHorarioClases')->with('error', 'Croquis, no encontrado!!!');
+            }
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($croq->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+
+        }
+
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

@@ -14,6 +14,7 @@ use App\Models\Facultad;
 use App\Models\Galeria;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
+use App\Models\Croquis;
 use Illuminate\Support\Facades\Storage;
 
 class VistasPublicasController extends Controller
@@ -228,6 +229,23 @@ class VistasPublicasController extends Controller
         $ingresosType = PreguntaFrecuente::all();
         return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['preguntasFrecuntes' => $ingresosType]);
     }
+
+    // ----------------------------- FUNCION PARA EL CROQUIS ------------------------------------------------------------------------------------------------------------------------
+
+        public function verPublicCroquisFMO(){      
+            $croq = Croquis::first();
+
+            if (!$croq) {
+                return back()->with('errorPublicCalAdmin','Aún no se ha subido el croquis de la FMO.');
+            }
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($croq->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        }
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

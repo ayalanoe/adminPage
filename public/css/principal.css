@@ -102,7 +102,7 @@ nav ul li a{
     height: 50px;
     width: 50px;
     position: fixed;
-    top: 45%;
+    top: 40%;
     right: 0;
     border-radius: 30px;
     transform: translateY(-50%);
@@ -116,7 +116,7 @@ nav ul li a{
     position: fixed;
     height: 50px;
     width: 50px;
-    top: 55%;
+    top: 50%;
     right: 0;
     border-radius: 30px;
     transform: translateY(-50%);
@@ -124,7 +124,19 @@ nav ul li a{
     align-items: center;
     justify-content: center;
 }
-
+.croquisIcon{
+    background-color: #690605;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    top: 60%;
+    right: 0;
+    border-radius: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .iconoOpciones{
     color: white;
     font-size: 24px;

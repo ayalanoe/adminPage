@@ -66,21 +66,21 @@
     </div>
   </div>
 
-<div class="prueba">
-    <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalHorario">
-        <i class="fa-solid fa-clock"></i>
-    </button>
-</div>
-
-    <div class="prueba2">            
-            <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalPreguntas">
-                <i class="fa-solid fa-circle-question"></i>
-            </button>
+    <div class="prueba">
+        <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalHorario">
+            <i class="fa-solid fa-clock"></i>
+        </button>
     </div>
 
     <div class="prueba2">            
         <a href="{{ route('preguntas') }}" class="btn iconoOpciones">
             <i class="fa-solid fa-circle-question"></i>
+        </a>
+    </div>
+
+    <div class="croquisIcon">            
+        <a href="{{ route('pubCroqFMO') }}" class="btn iconoOpciones" target="_blank">
+            <i class="fa-solid fa-map-location-dot"></i>
         </a>
     </div>
 

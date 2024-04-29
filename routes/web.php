@@ -44,12 +44,6 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-
-    /*------------------------------ RUTAS PUBLICAS DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------*/
-        //Aquí y jando siempre la identacion desgraciado
-    /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-    
     //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
         Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
         Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
@@ -85,6 +79,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
     Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
     Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
+
+    //-------------------------------RUTA PUBLICA DE CROQUIS--------------------------------------------------------------------------------------------
+        Route::get('/AcademicaFMO/croquis-FMO', [VistasPublicasController::class, 'verPublicCroquisFMO'])->name('pubCroqFMO');
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -137,7 +134,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     Route::middleware(['auth', 'rol:1'])->group(function(){
 
         //Ruta principal
-        Route::view('dashboard-admin', 'VistasAdministrador.indexAdmin')->name('privada'); //Ruta protegida
+        Route::view('dashboard-admin', 'VistasAdministrador.indexAdmin')->name('privada'); //Ruta protegidaf
 
         //-------------- Rutas para el manejo de las vistas en el dashboard ----------------------------------------------------------------------------------------------------------
         Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro');
@@ -291,6 +288,9 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
         Route::get('/gestion-croquis', [VistasAdminController::class, 'mostrarVistaCroquis'])->name('croquis');
+        Route::post('/subir-croquis', [VistasAdminController::class, 'subirCroquis'])->name('enviarCroquis');
+        Route::delete('/eliminar-croquis/{id}', [VistasAdminController::class, 'eliminarCroquis'])->name('deleteCroquis');
+        Route::get('/croquis/{id}', [VistasAdminController::class, 'verCroquis'])->name('mostrarCroquis');
        
 
 

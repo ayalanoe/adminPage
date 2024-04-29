@@ -80,7 +80,7 @@
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
-                            </li>
+                            </li>f
                         </ul>
                     </li>
 
