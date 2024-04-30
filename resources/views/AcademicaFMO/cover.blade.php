@@ -83,6 +83,11 @@
             <i class="fa-solid fa-map-location-dot"></i>
         </a>
     </div>
+    <div class="FacebookIcon">            
+        <a href="{{ route('pubCroqFMO') }}" class="btn iconoOpciones" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+    </div>
 
         
 <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">

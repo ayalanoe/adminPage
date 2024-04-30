@@ -57,5 +57,10 @@ h3{
     height: 150px;
 }
 
-
+.modal-content {
+    left: -70px;
+    width: 700px;
+    height: 90vh;
+    overflow-y: auto;
+}
 

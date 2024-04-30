@@ -236,6 +236,11 @@ class VistasPublicasController extends Controller
         return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['preguntasFrecuntes' => $ingresosType]);
     }
 
+
+        public function infoTiposIngreso()
+        {
+            return view('AcademicaFMO/NuevoIngreso/infoTipIngresos');
+        }
     // ----------------------------- FUNCION PARA EL CROQUIS ------------------------------------------------------------------------------------------------------------------------
 
         public function verPublicCroquisFMO(){      

@@ -77,6 +77,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     //-------------------------------RUTAS PUBLICAS DE NUEVO INGRESO --------------------------------------------------------------------------------------------
     Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
+    Route::get('/NuevoIngreso/informacion-tipos-de-ingreso', [VistasPublicasController::class, 'infoTiposIngreso'])->name('infoTipos');
     Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
     Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
     Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
