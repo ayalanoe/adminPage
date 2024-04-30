@@ -32,8 +32,8 @@
                     <img src="{{ asset('storage/'.$carDistancia->rutaBanner) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title"> {{$carDistancia->carrera}} </h5>
-                    <p class="card-text">Se les invita a descargar:</p>
-                    <a href="{{ route('publicVerPdfCarDis', $carDistancia->id)}}" target="_blank" class="btn btn-primary">Leer más</a>
+                    <p class="card-text">Para mayor información:</p>
+                    <a href="{{ route('infoDistanciaFMO')}}" class="btn btn-primary">Ver aquí</a>
                     </div>
                 </div>
             

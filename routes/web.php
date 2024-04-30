@@ -49,6 +49,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
         Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
+        Route::get('/Informacion-carreras-a-distancia-FMO', [VistasPublicasController::class, 'infoEduDistanciaFMO'])->name('infoDistanciaFMO');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

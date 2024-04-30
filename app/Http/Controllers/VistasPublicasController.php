@@ -173,6 +173,12 @@ class VistasPublicasController extends Controller
             $carDistaciaFMO = CarreraDistancia::where('facultad', 'FMO')->get();
             return view('AcademicaFMO/EducacionDistancia/eduDistanciaFMO', ['distanciaFMO' => $carDistaciaFMO]);
         }
+
+
+        public function infoEduDistanciaFMO()
+        {
+            return view('AcademicaFMO/EducacionDistancia/infoEduFMO');
+        }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA LOS TRÁMITES ACADÉMICOS ----------------------------------------------------------------------------------------------------------------
