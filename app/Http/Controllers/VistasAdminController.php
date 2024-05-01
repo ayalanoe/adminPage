@@ -18,7 +18,9 @@ use App\Models\CarreraDistancia;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Constancias;
+use App\Models\NuevoIngreso;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -1850,61 +1852,326 @@ class VistasAdminController extends Controller
 
         }
 
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-        //----------------------------- FUNIONES PARA LA GESTION DE NUEVO INGRESO -------------------------------------------------------------------------------------
-
-        public function mostrarCatalogoAcademico()
-        {
-            $calendarioAdmin = CalendarioAdministrativo::all();
-
-            return view('VistasAdministrador/NuevoIngreso/catalogo', [
-
-                'calAdmin' => $calendarioAdmin 
-            ]);
-
-        }
-
-
-        public function mostrarTiposIngreso()
-        {
-            return view('VistasAdministrador/NuevoIngreso/TiposIngreso/gestionTiposIngreso'); 
-        }
-
+    //----------------------------- FUNIONES PARA LA GESTION DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------------
         
-        public function vistaEditarTipos()
-        {
-            return view('VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso');
+        //------------ Tipos de Ingreso--------------------------------------------------------------------------------------------------------------------------------------------------
+            public function mostrarTiposIngreso()
+            {
+                $tiposDeIngreso = NuevoIngreso::where('tipoConsulta', 'Tipo_ingreso')->get();
 
-        }
+                return view('VistasAdministrador/NuevoIngreso/TiposIngreso/gestionTiposIngreso', [
+                    
+                    'newIngresoTipos' => $tiposDeIngreso
+                ]); 
+            }
 
-        public function aplicarEnLinea()
-        {
-            return view('VistasAdministrador/NuevoIngreso/AplicarLinea/gestionAplicarLinea'); 
-        }
+            public function vistaCrearTipoIngreso()
+            {
+                return view('VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso');
+            }
 
+            public function guardarTipoIngreso(Request $datosTipoIngreso)
+            {
+                $tipoIngreso = new NuevoIngreso();
+
+                try{
+
+                    $tipoIngreso->titulo = $datosTipoIngreso->tituloTipoIngreso;
+                    $tipoIngreso->tipoConsulta = $datosTipoIngreso->tipoConsultaTipoIngreso;
+                    $tipoIngreso->descripcion = $datosTipoIngreso->descripIngreso;
+                    $tipoIngreso->fechaPublicacion = date('Y-m-d');
+
+                    $datosTipoIngreso->validate([
+                        'archivoTipoIngreso' => 'file|nullable',
+                    ]);
+                    
+                    if ($datosTipoIngreso->hasFile('archivoTipoIngreso')) {
+
+                        $archivo = $datosTipoIngreso->file('archivoTipoIngreso');
+                        $ruta = Storage::disk('public')->put('Nuevo_Ingreso', $archivo);
+
+                        $tipoIngreso->rutaArchivo = $ruta;
+
+                        $tipoIngreso->save();
+
+                        return redirect()->route('vertiposingreso')->with('resGuardarTipoIngreso', 'Tipo de ingreso creado con éxito !!');
+                    } 
+
+                }catch(Exception $e)
+                {
+                    return redirect()->route('vertiposingreso')->with('resErrorTipoIngreso', 'No se pudo registrar el tipo de ingreso');
+                }
+                
+            }
+
+            public function eliminarTipoIngreso($id)
+            {
+                $tipoIngresoEliminar = NuevoIngreso::find($id);
+                $rutaArchivo = $tipoIngresoEliminar->rutaArchivo; // se accede al campo ruta del archivo para poder eliminar el pdf del storage también
+            
+                if ($rutaArchivo !== null) {
         
-        public function vistaEditAplicar()
-        {
-            return view('VistasAdministrador/NuevoIngreso/AplicarLinea/crearInfoAplicar');
+                    if (Storage::disk('public')->exists($rutaArchivo)) {
+                        Storage::disk('public')->delete($rutaArchivo);
+                    }
+                }
+            
+                // Eliminar el registro de la base de datos
+                $tipoIngresoEliminar->delete();
+            
+                return back()->with('resEliminarTipoIngreso', 'Tipo de ingreso eliminado correctamente');
+            }
 
-        }
+            public function vistaEditarTipoIngreso($id)
+            {
+                $tipoIngresoEdit = NuevoIngreso::find($id);
+                return view('VistasAdministrador/NuevoIngreso/TiposIngreso/editarTipoIngreso', [
+                    'tipoDeIngresoEditar' => $tipoIngresoEdit
+                ]);
+            }
 
-        public function requisitosFechas()
-        {
-            return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/gestionReqFechas'); 
-        }
+            public function newDatosTipoIngreso(Request $editTipoIngreso, $id)
+            {
+                $editarTipoIngreso = NuevoIngreso::find($id);
 
+                $editarTipoIngreso->titulo = $editTipoIngreso->editTituloTipoIngreso;
+                $editarTipoIngreso->descripcion = $editTipoIngreso->editDescripcion;
+
+                $editarTipoIngreso->save();
+
+                return redirect()->route('vertiposingreso')->with('resEditarTipoIngreso', 'Se ha editado el tipo de ingreso con éxito');
+
+            }
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         
-        public function vistaEditReqFechas()
-        {
-            return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/infoReqFechas');
+        //------------- Requisitos y fecha -----------------------------------------------------------------------------------------------------------------------------------------------
+            public function requisitosFechas()
+            {
+                $requisitosFechas = NuevoIngreso::where('tipoConsulta','Req_fecha')->get();
+                return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/gestionReqFechas',[
+                    'requisitosYfechas' => $requisitosFechas
+                ]); 
+            }
 
-        }
+            
+            public function crearRequisitosFechas()
+            {
+                return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/infoReqFechas');
+            }
+
+            public function guardarRequisitosFecha(Request $datosReqFecha)
+            {
+                $reqFechaIngreso = new NuevoIngreso();
+
+                try{
+
+                    $reqFechaIngreso->titulo = $datosReqFecha->titReqFechas;
+                    $reqFechaIngreso->tipoConsulta = $datosReqFecha->tipoReqFechIngreso;
+                    $reqFechaIngreso->contenido = $datosReqFecha->detallesReqFechas;
+                    $reqFechaIngreso->fechaPublicacion = date('Y-m-d');
+
+                    $reqFechaIngreso->save();
+
+                    return redirect()->route('ReqFe')->with('resReqFechaIngres', 'Los requisitos y fechas se han registrado correctamente ');
+                    
+
+                }catch(Exception)
+                {
+                    return redirect()->route('ReqFe')->with('errorReqFechaIngreso', 'No se pudo registrar los requisitos y fecha');
+                }
+                
+            }
+
+            public function eliminarReqFechas($id)
+            {
+                $eliminarReqFecha = NuevoIngreso::find($id);
+
+                try{
+                    $eliminarReqFecha->delete();
+
+                    return redirect()->route('ReqFe')->with('resEliminarReqFecha', 'Se ha eliminado el registro de requsitos y fehas');
+
+                }catch(Exception)
+                {
+                    return redirect()->route('ReqFe')->with('resErrorEliminarReqFecha', 'No se pudo eliminar el registro de requsitos y fecha');
+                }
+            }
+
+            public function vistaEditarReqFecha($id)
+            {
+                $reqFechaEdit = NuevoIngreso::find($id);
+                return view('VistasAdministrador/NuevoIngreso/RequisitosFechas/editarReqFechas',[
+                    'editarReqFecha' => $reqFechaEdit
+                ]); 
+            }
+
+            public function actulizarReqFecha(Request $newDatosReqFecha, $id)
+            {
+                $nuevosDatosReqFecha = NuevoIngreso::find($id);
+
+                $nuevosDatosReqFecha->titulo = $newDatosReqFecha->editTituloReqFecha;
+                $nuevosDatosReqFecha->contenido = $newDatosReqFecha->editContentReqFecha;
+
+                $nuevosDatosReqFecha->save();
+                
+                return redirect()->route('ReqFe')->with('resEditReqFecha', 'El registro de requisitos y fecha se ha actulizado');
+            }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //---------------- Aplicar en linea ----------------------------------------------------------------------------------------------------------------------------------------------
+
+            public function aplicarEnLinea()
+            {
+                $listaAplicarEnLinea = NuevoIngreso::where('tipoConsulta', 'Apl_linea')->get();
+                return view('VistasAdministrador/NuevoIngreso/AplicarLinea/gestionAplicarLinea',[
+                    'datosAplyEnLinea' => $listaAplicarEnLinea
+                ]); 
+            }
+
+            
+            public function vistaCrearAplicarEnLinea()
+            {
+                return view('VistasAdministrador/NuevoIngreso/AplicarLinea/crearInfoAplicar');
+
+            }
+
+            public function guardarAplicarEnLinea(Request $datosAplicarEnLinea)
+            {
+                $aplyEnLina = new NuevoIngreso();
+
+                try{
+
+                    $aplyEnLina->titulo = $datosAplicarEnLinea->titAplicar;
+                    $aplyEnLina->tipoConsulta = $datosAplicarEnLinea->tipoConsultaAplyLinea;
+                    $aplyEnLina->contenido = $datosAplicarEnLinea->detalleAplicar;
+                    $aplyEnLina->fechaPublicacion = date('Y-m-d');
+
+                    $aplyEnLina->save();
+
+                    return redirect()->route('aplicarLinea')->with('resGuardarAplyLinea', 'El registro de aplicar en línea se ha guardado correctamente');
+                    
+
+                }catch(Exception)
+                {
+                    return redirect()->route('aplicarLinea')->with('errorRegistroAplyLinea', 'No se pudo hacer el registro de aplicacion en línea');
+                }
+                
+            }
+
+            public function eliminarAplicarEnLinea($id)
+            {
+                $aplicarEliminar = NuevoIngreso::find($id);
+                $aplicarEliminar->delete();
+
+                return redirect()->route('aplicarLinea')->with('resEliminarAplicarEnLinea', 'Se ha eliminado el registro de aplicar en línea');
+            }
+
+            public function vistaEditarAplicar($id)
+            {
+                $registroEditAplicar = NuevoIngreso::find($id);
+                return view('VistasAdministrador/NuevoIngreso/AplicarLinea/editarAplicarEnLinea', [
+                    'editApliEnLinea' => $registroEditAplicar
+                ]);
+            }
+
+            public function guardarNewApliEnLinea(Request $newDatosApliLinea, $id)
+            {
+                $actulizarApliLinea = NuevoIngreso::find($id);
+
+                $actulizarApliLinea->titulo = $newDatosApliLinea->editTitAplicar;
+                $actulizarApliLinea->contenido = $newDatosApliLinea->editDetalleAplicar;
+                $actulizarApliLinea->save();
+
+                return redirect()->route('aplicarLinea')->with('resEditApliLinea', 'Se ha editado el registro de aplicar en linea correctamente');
+
+            }
+
+            
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        //----------------- Catalogo de la fmo ---------------------------------------------------------------------------------------------------------------------------------------------
+            public function mostrarCatalogoAcademico()
+            {
+                $catalogo = NuevoIngreso::where('tipoConsulta', 'Catalogo')->get();
+
+                return view('VistasAdministrador/NuevoIngreso/catalogo', [
+                    'catalogoDisponible' => $catalogo
+                ]);
+
+            }
+
+            public function subirCatalogo(Request $datosCatalogo)
+            {
+                $cargarCatalogo = new NuevoIngreso();
+                $cargarCatalogo->titulo = $datosCatalogo->tituloCatalogo;
+                $cargarCatalogo->tipoConsulta = $datosCatalogo->tipoConsultaCatalogo;
+                $cargarCatalogo->descripcion = $datosCatalogo->descripcionCatalogo;
+                $cargarCatalogo->fechaPublicacion = date('Y-m-d');
+
+                $datosCatalogo->validate([
+                    'archivoCatalogo' => 'file|nullable',
+                ]);
+                
+                if ($datosCatalogo->hasFile('archivoCatalogo')) {
+
+                    $archivo = $datosCatalogo->file('archivoCatalogo');
+                    $ruta = Storage::disk('public')->put('Catalogo', $archivo);
+
+                    $cargarCatalogo->rutaArchivo = $ruta;
+
+                    $cargarCatalogo->save();
+
+                    return back()->with('resSubirCatalogo', 'Catálogo subido correctamente');
+                } 
+                else {
+                    #Colocar un mensaje si no se completa la accion
+                    #Borrar estos comentarios cuandon se ponga el mensaje correspondienrte
+                }
+
+            }
+
+            public function eliminarCatalogo($id)
+            {
+                $catalogoEliminar = NuevoIngreso::find($id);
+                $rutaCatalogo = $catalogoEliminar->rutaArchivo;
+
+                if ($rutaCatalogo != null) {
+        
+                    if (Storage::disk('public')->exists($rutaCatalogo)) {
+                        Storage::disk('public')->delete($rutaCatalogo);
+                    }
+                }
+            
+                // Eliminar el registro de la base de datos
+                $catalogoEliminar->delete();
+            
+                return back()->with('resEliminarCatalogo', 'El catalogo académico se ha eliminado correctamente');
+
+            }
+
+            public function mostrarPdfCatalogo($id)
+            {
+                $archivoCatalogo = NuevoIngreso::find($id);
+                
+                // Se accede al storage de laravel para mostrar el archivo
+                $contenidoArchivo = Storage::disk('public')->get($archivoCatalogo->rutaArchivo);
+
+                // Devolver la respuesta con el contenido del archivo
+                return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+            }
+
+            
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-        //----------------------------- FUNIONES PARA LA GESTION DE LOS CALENDARIOS ADMINISTRATIVOS -------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
+    //----------------------------- FUNIONES PARA EL CROQUIS  -------------------------------------------------------------------------------------
 
         public function mostrarVistaCroquis()
         {

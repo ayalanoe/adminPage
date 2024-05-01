@@ -11,16 +11,30 @@
 @section('contenido-publico')
 <div class="container_table">
 
+    @if ($requisitosFecha->isEmpty())
         <div class="container">
-            <h3> REQUISITOS </h3>
-            <hr>
-            <p>
-               
-            </p>
 
-           
-            
+            <h3>REQUISITOS Y FECHAS PARA APLICAR</h3>
+            <hr>
+            <div class="alert alert-success">
+                No hay registro
+            </div>
+
         </div>
+    @else
+
+        <div class="container">
+            @foreach($requisitosFecha as $requisito)
+            
+                <h3>{{$requisito->titulo}}</h3>
+                <hr>
+                <p>{!! $requisito->contenido !!}</p>
+                
+            @endforeach
+        </div>
+        
+    @endif
+
 </div>
 
 @endsection 

@@ -49,7 +49,7 @@
                                     <a class="nav-link" href="{{ route('oferta') }}">
                                         OFERTA ACADÉMICA
                                     </a>
-                                    <a class="nav-link" href="{{ route('tiposIngresos') }}">
+                                    <a class="nav-link" href="{{ route('catalogoAcademico') }}">
                                         CATÁLOGO ACADÉMICO
                                     </a>
                                 </li>
