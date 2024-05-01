@@ -7,33 +7,32 @@
 
         <h2>Crear tipo de ingreso</h2>
 
-        <form class="formCrearTipo" action="{{ route('crearIngreso') }}" method="POST" enctype="multipart/form-data">
+        <form class="formCrearTipo" action="{{ route('guardarTipoIngreso') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo del Ingreso</label>
-                <input name="tituloTipoIngreso" type="text" class="form-control" id="tipoIngreso" placeholder="Ingreso General Universitario">
+                <label for="exampleFormControlInput1" class="form-label">Clasificacion</label>
+                <input name="tipoConsultaTipoIngreso" value="Tipo_ingreso" type="text" class="form-control" readonly>
             </div>
-   
-            
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Titulo del Ingreso</label>
+                <input name="tituloTipoIngreso" type="text" class="form-control" id="tipoIngreso" placeholder="Ingreso General Universitario" required>
+            </div>
+
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del tipo de ingreso:</label>
-                <textarea name="descripIngreso" id="editor" cols="30" rows="50"></textarea>
-
-                <script>
-                    ClassicEditor
-                        .create( document.querySelector( '#editor' ) )
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                </script>
-                
+                <div class="form-floating">
+                    <textarea name="descripIngreso" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Descripcion</label>
+                </div>
             </div>
+            
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Imagen del ingreso</label>
-                <input name="archivoIngreso" accept=".jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend">
+                <input name="archivoTipoIngreso" accept=".jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
             </div>
 
             <div class="mb-3">

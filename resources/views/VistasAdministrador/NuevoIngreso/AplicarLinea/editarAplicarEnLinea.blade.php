@@ -1,29 +1,24 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Agregar Información')
+@section('titulo', '- Editar Aplicar en Linea')
 
 @section('contenido')
 
     <div class="container">
 
-        <h2>Detalles de Requisitos y Fechas</h2>
-
-        <form class="formReqFechas" action="{{ route('guardarReqFechaIngreso') }}" method="POST">
+        <h2>Editar Aplicar en Linea</h2>
+        <br>
+        
+        <form action="{{ route('guardarNewDatosAplicar', $editApliEnLinea->id)}}" class="formEditAplicarEnLinea" method="POST">
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Clasificación</label>
-                <input name="tipoReqFechIngreso" type="text" class="form-control" value="Req_fecha" readonly>
+                <label for="exampleFormControlInput1" class="form-label">Titulo:</label>
+                <input name="editTitAplicar" value="{{$editApliEnLinea->titulo}}" type="text" class="form-control" id="editTituloAplicar" placeholder="Escriba: Aplicar en Línea">
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-                <input name="titReqFechas" type="text" class="form-control" id="ReqFechas" placeholder="Escriba: Requisitos y Fechas">
-            </div>
-
-
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Requisitos y Fechas:</label>
-                <textarea name="detallesReqFechas" id="editor" cols="30" rows="50"></textarea>
+                <label for="exampleFormControlTextarea1" class="form-label">Detalles informativos:</label>
+                <textarea name="editDetalleAplicar" id="editor" cols="30" rows="50">{{$editApliEnLinea->contenido}}</textarea>
 
                 <script>
                     ClassicEditor
@@ -36,21 +31,21 @@
             </div>
 
             <div class="mb-3">
-                <a href="{{ route('ReqFe') }}" class="btn btn-secondary">Cancelar</a>
+                <a href="{{ route('aplicarLinea') }}" class="btn btn-secondary">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
 
         </form>
 
     </div>
-
+    
 @endsection
 
 @section('jsVistasAdmin')
     <script>
-        $('.formReqFechas').on('submit', function(e) {
+        $('.formEditAplicarEnLinea').on('submit', function(e) {
 
-            var tramiteTitulo = $('#ReqFechas').val().trim();
+            var tramiteTitulo = $('#editTituloAplicar').val().trim();
             var tramiteContenido = $('#editor').val().trim();
 
             if (tramiteTitulo === "" || tramiteContenido === "") {

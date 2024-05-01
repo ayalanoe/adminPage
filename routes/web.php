@@ -44,6 +44,19 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
+
+    /*------------------------------ RUTAS PUBLICAS DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------*/
+        //Aquí y jando siempre la identacion desgraciado
+        Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
+        Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
+        Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
+        Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
+
+        Route::get('/NuevoIngreso/catalogo-academico', [VistasPublicasController::class, 'verCatalogoAcademico'])->name('catalogoAcademico');
+        Route::get('NuevoIngreso/mostrar-catalogo-academico/{id}', [VistasPublicasController::class, 'mostrarCatalogo'])->name('mostrarCatalogoPdf');
+    /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    
     //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
         Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
         Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
@@ -73,18 +86,6 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/AcademicaFMO/calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
         Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-    //-------------------------------RUTAS PUBLICAS DE NUEVO INGRESO --------------------------------------------------------------------------------------------
-    Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
-    Route::get('/NuevoIngreso/informacion-tipos-de-ingreso', [VistasPublicasController::class, 'infoTiposIngreso'])->name('infoTipos');
-    Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
-    Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
-    Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
-
-    //-------------------------------RUTA PUBLICA DE CROQUIS--------------------------------------------------------------------------------------------
-        Route::get('/AcademicaFMO/croquis-FMO', [VistasPublicasController::class, 'verPublicCroquisFMO'])->name('pubCroqFMO');
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -273,21 +274,31 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::delete('/elimar-foto-galeria/{id}', [VistasAdminController::class, 'eliminarFotoGaleria'])->name('eliminarFotoGaleria');
         Route::get('/ver-foto-galeria/{id}', [VistasAdminController::class, 'verFotoGaleria'])->name('verFotoGaleriaAdmin');
 
-
-
-        Route::get('/Administracion/catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
-        
         Route::get('/Administracion/tipos-de-ingreso', [VistasAdminController::class, 'mostrarTiposIngreso'])->name("vertiposingreso");
-        Route::view('/crear-tipo-de-ingreso', 'VistasAdministrador/NuevoIngreso/TiposIngreso/crearTiposIngreso')->name("crearIngreso");
+        Route::get('/crear-tipo-de-ingreso', [VistasAdminController::class, 'vistaCrearTipoIngreso'])->name("crearTipoIngreso");
+        Route::post('/crear-tipo-ingreso', [VistasAdminController::class, 'guardarTipoIngreso'])->name('guardarTipoIngreso');
+        Route::delete('/eliminar-tipo-ingreso/{id}', [VistasAdminController::class, 'eliminarTipoIngreso'])->name('eliminarTipoIngreso');
+        Route::get('/editar-tipo-de-ingreso/{id}', [VistasAdminController::class, 'vistaEditarTipoIngreso'])->name('vistaEditarIngresoTipo');
+        Route::post('/nuevos-datos-tipo-ingreso/{id}', [VistasAdminController::class, 'newDatosTipoIngreso'])->name('nuevosDatosTipoIngreso');
 
-        Route::get('/Administracion/aplicar-en-linea', [VistasAdminController::class, 'aplicarEnLinea'])->name("aplicarLinea");
-        Route::view('/Administracion/aplicar-en-linea/agregar-informacion', 'VistasAdministrador/NuevoIngreso/AplicarLinea/crearInfoAplicar')->name("infoAplicarLinea");
+        Route::get('/nuevo-ingreso/requisitos-y-fechas', [VistasAdminController::class, 'requisitosFechas'])->name("ReqFe");
+        Route::get('/nuevo-ingreso/requisitos-y-fechas/agregar-informacion', [VistasAdminController::class, 'crearRequisitosFechas'])->name("infoReqFe");
+        Route::post('/nuevo-ingreso/guardar-req-fecha', [VistasAdminController::class, 'guardarRequisitosFecha'])->name('guardarReqFechaIngreso');
+        Route::delete('/nuevo-ingreso/eliminar-rquisitos-y-fecha/{id}', [VistasAdminController::class, 'eliminarReqFechas'])->name('eliminarReqFechaIngreso');
+        Route::get('/nuevo-ingreso-editar-req-fecha/{id}', [VistasAdminController::class, 'vistaEditarReqFecha'])->name('vistaReqFechaEditar');
+        Route::post('/nuevo-ingreso-actulizar-req-fecha/{id}', [VistasAdminController::class, 'actulizarReqFecha'])->name('guardarNewDatosReqFecha');
+        
+        Route::get('/nuevo-ingreso/aplicar-en-linea', [VistasAdminController::class, 'aplicarEnLinea'])->name("aplicarLinea");
+        Route::get('/nuevo-ingreso/aplicar-en-linea/agregar-informacion', [VistasAdminController::class, 'vistaCrearAplicarEnLinea'])->name("infoAplicarLinea");
+        Route::post('/nuevo-ingreso/guardar/aplicar-en-linea', [VistasAdminController::class, 'guardarAplicarEnLinea'])->name('aplicarEnLineaGuardar');
+        Route::delete('/nuevo-ingreso/eliminar-aplicar-en-linea/{id}', [VistasAdminController::class, 'eliminarAplicarEnLinea'])->name('aplicarEnLineaEliminar');
+        Route::get('/nuevo-ingreso/editar-aplicar-en-linea/{id}', [VistasAdminController::class, 'vistaEditarAplicar'])->name('vistaEditarAplyLinea');
+        Route::post('/nuevo-ingreso/actulizar-aplicar-en-linea/{id}', [VistasAdminController::class, 'guardarNewApliEnLinea'])->name('guardarNewDatosAplicar');
     
-        Route::get('/Administracion/requisitos-y-fechas', [VistasAdminController::class, 'requisitosFechas'])->name("ReqFe");
-        Route::view('/Administracion/requisitos-y-fechas/agregar-informacion', 'VistasAdministrador/NuevoIngreso/RequisitosFechas/infoReqFechas')->name("infoReqFe");
-    
-
-
+        Route::get('/nuevo-ingreso/catalogo-Academico', [VistasAdminController::class, 'mostrarCatalogoAcademico'])->name('verCatalogo');
+        Route::post('/nuevo-ingreso/subir-catalogo', [VistasAdminController::class, 'subirCatalogo'])->name('subirCatalogoNuevoIngreso');
+        Route::delete('/nuevo-ingreso/eliminar-catalogo/{id}', [VistasAdminController::class, 'eliminarCatalogo'])->name('elimnarCatalogoAca');
+        Route::get('/nuevo-ingreso/archivo-catalogo/{id}', [VistasAdminController::class, 'mostrarPdfCatalogo'])->name('verPdfCatalogo');
 
         Route::get('/gestion-croquis', [VistasAdminController::class, 'mostrarVistaCroquis'])->name('croquis');
         Route::post('/subir-croquis', [VistasAdminController::class, 'subirCroquis'])->name('enviarCroquis');

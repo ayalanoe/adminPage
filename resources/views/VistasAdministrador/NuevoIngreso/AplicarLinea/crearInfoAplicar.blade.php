@@ -7,15 +7,18 @@
 
         <h2>Detalles de Aplicar en Linea</h2>
 
-        <form class="formAplicarLinea" action="{{ route('infoAplicarLinea') }}" method="POST" enctype="multipart/form-data">
+        <form class="formAplicarLinea" action="{{ route('aplicarEnLineaGuardar') }}" method="POST">
             @csrf
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Clasificación</label>
+                <input name="tipoConsultaAplyLinea" value="Apl_linea" type="text" class="form-control" readonly>
+            </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo:</label>
                 <input name="titAplicar" type="text" class="form-control" id="ApplyLine" placeholder="Escriba: Aplicar en Línea">
             </div>
-   
-            
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Detalles informativos:</label>

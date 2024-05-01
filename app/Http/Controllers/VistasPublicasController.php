@@ -12,6 +12,7 @@ use App\Models\CarreraDistancia;
 use App\Models\Contacto;
 use App\Models\Facultad;
 use App\Models\Galeria;
+use App\Models\NuevoIngreso;
 use App\Models\PreguntaFrecuente;
 use App\Models\Tramite;
 use App\Models\Croquis;
@@ -69,26 +70,26 @@ class VistasPublicasController extends Controller
 
         public function verPlanesPosgrado()
         {
-            $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->get();
             return view('AcademicaFMO/planesPos', ['planesPosgrado' => $planesPosgrado]);
         }
 
         public function verDiplomados()
         {
-            $planesDiplomados = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
-            return view('AcademicaFMO/planesDiplomados', ['planesDiplomados' => $planesDiplomados]);
+            $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->get();
+            return view('AcademicaFMO/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
         }
 
         public function verPlanesTecnicos()
         {
-            $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
-            return view('AcademicaFMO/planesTecnicos', ['planesTecnicos' => $planesTecnicos]);
+            $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->get();
+            return view('AcademicaFMO/planesTecnicos', ['carrerasTecnicas' => $planesTecnicos]);
         }
 
         public function verPlanesComplementarios()
         {
-            $planComplementario = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
-            return view('AcademicaFMO/planesComplementarios', ['planComplementario' => $planComplementario]);
+            $planComplementario = Carrera::where('departamento', 'PLCOM')->get();
+            return view('AcademicaFMO/planesComplementarios', ['planesComplementarios' => $planComplementario]);
         }
 
         
@@ -211,52 +212,51 @@ class VistasPublicasController extends Controller
 
 
     //----------------------------- FUNCIONES PARA NUEVO INGRESO ----------------------------------------------------------------------------------------------------------
-    public function verTiposIngreso()
-    {
-        $ingresosType = PreguntaFrecuente::all();
-        return view('AcademicaFMO/NuevoIngreso/tiposIngresos', ['preguntasFrecuntes' => $ingresosType]);
-    }
-
-
-    public function verRequisitosFechas()
-    {
-        $ingresosType = PreguntaFrecuente::all();
-        return view('AcademicaFMO/NuevoIngreso/requisitosFechas', ['preguntasFrecuntes' => $ingresosType]);
-    }
-
-    public function verAplicarLinea()
-    {
-        $ingresosType = PreguntaFrecuente::all();
-        return view('AcademicaFMO/NuevoIngreso/aplicarLinea', ['preguntasFrecuntes' => $ingresosType]);
-    }
-
-    public function verOfertAcademica()
-    {
-        $ingresosType = PreguntaFrecuente::all();
-        return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['preguntasFrecuntes' => $ingresosType]);
-    }
-
-
-        public function infoTiposIngreso()
+        public function verTiposIngreso()
         {
-            return view('AcademicaFMO/NuevoIngreso/infoTipIngresos');
+            $ingresosType = NuevoIngreso::where('tipoConsulta', 'Tipo_ingreso')->get();
+            return view('AcademicaFMO/NuevoIngreso/tiposIngresos', ['tiposDeIngreso' => $ingresosType]);
         }
-    // ----------------------------- FUNCION PARA EL CROQUIS ------------------------------------------------------------------------------------------------------------------------
 
-        public function verPublicCroquisFMO(){      
-            $croq = Croquis::first();
 
-            if (!$croq) {
-                return back()->with('errorPublicCalAdmin','Aún no se ha subido el croquis de la FMO.');
-            }
+        public function verRequisitosFechas()
+        {
+            $reqFechaNewIngreso = NuevoIngreso::where('tipoConsulta', 'Req_fecha')->get();
+            return view('AcademicaFMO/NuevoIngreso/requisitosFechas', ['requisitosFecha' => $reqFechaNewIngreso]);
+        }
 
+        public function verAplicarLinea()
+        {
+            $aplicarEnLinea = NuevoIngreso::where('tipoConsulta', 'Apl_linea')->get();
+            return view('AcademicaFMO/NuevoIngreso/aplicarLinea', ['datosApliLinea' => $aplicarEnLinea]);
+        }
+
+        public function verOfertAcademica()
+        {
+            $ofertaCarreras = Carrera::all();
+            return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['carrerasOferta' => $ofertaCarreras]);
+        }
+
+        public function verCatalogoAcademico()
+        {
+            $publicCatalogo = NuevoIngreso::where('tipoConsulta', 'Catalogo')->get();
+            return view('AcademicaFMO/NuevoIngreso/catalogoAcademico',[
+                'mostrarCatalogo' => $publicCatalogo
+            ]);
+        }
+
+        public function mostrarCatalogo($id)
+        {
+            $archivoCatalogo = NuevoIngreso::find($id);
+            
             // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::disk('public')->get($croq->rutaArchivo);
+            $contenidoArchivo = Storage::disk('public')->get($archivoCatalogo->rutaArchivo);
 
             // Devolver la respuesta con el contenido del archivo
             return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
         }
 
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

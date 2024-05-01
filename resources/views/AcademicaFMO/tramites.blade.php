@@ -15,9 +15,11 @@
         <div class="container">
             <h3> {{$tramiteAcademico->tramite}} </h3>
             <hr>
-            <p>
+
+            <div>
                 {!! $tramiteAcademico->contenido !!}
-            </p>
+            </div>
+            
 
             @if ($tramiteAcademico->rutaFormato)
                 <p>Descargar el formato del tramite</p>
@@ -26,5 +28,7 @@
             
         </div>
 </div>
+
+
 
 @endsection 

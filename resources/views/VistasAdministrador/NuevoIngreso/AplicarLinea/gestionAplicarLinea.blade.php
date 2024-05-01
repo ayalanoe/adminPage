@@ -4,56 +4,79 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Información para Aplicar en Linea</h2>
 
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Detalles</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+        <h2>Información para Aplicar en Línea</h2>
+
+        @if ($datosAplyEnLinea->isEmpty())
+            <div class="alert alert-warning">
+                No hay registro
+            </div>
+        @else
+
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th scope="row"></th>  
-                        <td> </td>
-
-                        <td class="d-flex">
-            
-                            <form action="" class="formDelLinea" method="POST">
-                               
-                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                            </form> 
-                            
-                            <a href=" " class="btn btn-primary mx-1">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-                            
-                        </td>
-
+                        <th scope="col">#</th>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Fecha Publicación</th>
+                        <th scope="col">Acciones</th>
                     </tr>
-                
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @php
+                        $numero = 1 
+                    @endphp
+
+                    @foreach ($datosAplyEnLinea as $aplicar)
+                        <tr>
+                            <th scope="row">{{$numero}}</th>  
+                            <td>{{$aplicar->titulo}}</td>
+                            <td>{{ date('d-m-Y', strtotime($aplicar->fechaPublicacion)) }}</td>
+
+                            <td class="d-flex">
+                                <form action="{{route('aplicarEnLineaEliminar', $aplicar->id)}}" class="formEliminarAplicarEnLinea" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+
+                                <a href="{{ route('vistaEditarAplyLinea', $aplicar->id)}}" class="btn btn-primary mx-1">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        @php
+                            $numero++
+                        @endphp
+                    @endforeach
+
+                </tbody>
+            </table>
+            
+        @endif
+
     </div>
 
+    @if ($datosAplyEnLinea->isEmpty())
+        <div class="container">
+            <a href="{{ route('infoAplicarLinea') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Registrar información</a>
+        </div>
+    @endif
     
-    <div class="container">
-        <a href="{{ route('infoAplicarLinea') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Registrar información</a>
-    </div>
+    
     
 @endsection
 
 @section('jsVistasAdmin')
 
     <script>
-        $('.formEliminarTramite').on('submit', function(e){
+        $('.formEliminarAplicarEnLinea').on('submit', function(e){
             e.preventDefault();
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará el tramite",
+                text: "Se eliminará el registro de aplicar en línea",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -68,31 +91,41 @@
         })
     </script>
 
-    @if (Session::has('resCrearTramite'))
+    @if (Session::has('resGuardarAplyLinea'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resCrearTramite') }}",
+                text: "{{ session('resGuardarAplyLinea') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEliminarTramite'))
+    @if (Session::has('errorRegistroAplyLinea'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resEliminarTramite') }}",
+                text: "{{ session('errorRegistroAplyLinea') }}",
+                icon: "error"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('resEliminarAplicarEnLinea'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarAplicarEnLinea') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEditarTramite'))
+    @if (Session::has('resEditApliLinea'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resEditarTramite') }}",
+                text: "{{ session('resEditApliLinea') }}",
                 icon: "success"
             });
         </script>  

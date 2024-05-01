@@ -19,12 +19,16 @@
             <div class="accordion-item">
                 <div class="accordion-css"> 
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_INGA" aria-expanded="false" aria-controls="#flush_INGA">
-                        Ingeniería y Arquitectura
+                        Carreras de Posgrados
                     </button>
                 </div>
                 <div id="flush_INGA" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        
+                        @foreach ($planesPosgrado as $carreraPosgrado)
+                            <a target="_blank" class="nav-link" href="#">
+                                {{$carreraPosgrado->carrera}}
+                            </a> 
+                        @endforeach
                     </div>
                 </div>
             </div>
