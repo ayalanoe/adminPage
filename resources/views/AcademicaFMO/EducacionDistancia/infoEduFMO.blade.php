@@ -11,13 +11,14 @@
 @section('contenido-publico')
     <div class="container_table">
         <div class="container">
-            <h3> nombre carrera aqui </h3>
+            
+            <h3>{{$datosCarDisFmo->carrera}}</h3>
             <hr>
-            <p>
-                Contenido de carrera aqui
-            </p>
-            <p>Descargar Plan de Estudio:</p>
-            <a href=" " class="btn btn-success mx-1"><i class="fa-solid fa-file-arrow-down"></i></a>
+            <div>
+                {!! $datosCarDisFmo->contenido !!}
+            </div>
+            <p>Ver informacion</p>
+            <a href="{{route('mostrarPdfCarDisFmo', $datosCarDisFmo->id) }}" class="btn btn-primary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
         </div>
     </div>
 @endsection 

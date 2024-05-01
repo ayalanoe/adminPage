@@ -33,7 +33,7 @@
                     <div class="card-body">
                     <h5 class="card-title"> {{$carDistancia->carrera}} </h5>
                     <p class="card-text">Para mayor información:</p>
-                    <a href="{{ route('infoDistanciaFMO')}}" class="btn btn-primary">Ver aquí</a>
+                    <a href="{{ route('infoDistanciaFMO', $carDistancia->id)}}" class="btn btn-primary">Ver aquí</a>
                     </div>
                 </div>
             

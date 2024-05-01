@@ -165,7 +165,7 @@
 
             <div class="box__copyright">
                 <hr>
-                <p>Todos los derechos reservados © 2024 <b>| Académica FMO</b></p>
+                <p>Developed By Social Service D&N | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
             </div>
         </Footer>
     

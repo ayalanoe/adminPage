@@ -176,9 +176,22 @@ class VistasPublicasController extends Controller
         }
 
 
-        public function infoEduDistanciaFMO()
+        public function infoEduDistanciaFMO($id)
         {
-            return view('AcademicaFMO/EducacionDistancia/infoEduFMO');
+            $fmoCarDistancia = CarreraDistancia::find($id);
+            return view('AcademicaFMO/EducacionDistancia/infoEduFMO', [
+                'datosCarDisFmo' => $fmoCarDistancia
+            ]);
+        }
+
+        public function mostrarInfoCarDisFMO($id)
+        {
+            $pdfCarDisFmo = CarreraDistancia::find($id);
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoPdfCarDis = Storage::disk('public')->get($pdfCarDisFmo->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoPdfCarDis, 200)->header('Content-Type', 'application/pdf')->header('Content-Disposition', 'inline; filename="CarreraDistanciaFMO.pdf"');
         }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

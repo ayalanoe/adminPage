@@ -28,34 +28,41 @@
                             <h5 class="card-title"> {{$anuncio->titulo}} </h5>
                             <p>Publicacion: {{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</p>
                             <p class="card-text">{!! Str::limit($anuncio->cuerpo, $limit = 100, $end = ' ...') !!} </p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnuncios">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnuncios{{$anuncio->id}}">
                                 Leer más
                             </button>
     
                         </div>
                     </div>  
                 </div> 
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalAnuncios{{$anuncio->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{$anuncio->titulo}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {!! $anuncio->cuerpo !!}
+
+                            @if ($anuncio->rutaArchivo)
+                                <img src="{{asset('storage/'.$anuncio->rutaArchivo)}}" class="d-block w-100" alt="...">
+                            @else
+                                
+                            @endif
+                            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                
             @endforeach
-
-            <!-- Modal -->
-            <div class="modal fade" id="modalAnuncios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">titulo anuncio aqui</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Descripcion aqui</p>
-                        <img src="imagen aqui" class="card-img-top" alt="...">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
