@@ -25,6 +25,8 @@
 
         
         <div class="container">
+            <h3>CATÁLOGO ACADÉMICO</h3>
+            <hr>
             <div class="row">
 
                 @foreach ($mostrarCatalogo as $catalogo)

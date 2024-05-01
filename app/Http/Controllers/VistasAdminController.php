@@ -2178,14 +2178,14 @@ class VistasAdminController extends Controller
         {
             $croquisFacultad = Croquis::all();
 
-        return view('VistasAdministrador/Croquis/gestionCroquis', ['croq' => $croquisFacultad ]);
+            return view('VistasAdministrador/Croquis/gestionCroquis', ['croq' => $croquisFacultad ]);
 
         }
 
         public function subirCroquis(Request $request)
         {
             $request->validate([
-                'archivo' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+                'archivo' => 'required|mimes:pdf|max:2048',
             ]);
             
             /*  El formato es definir una variable en php no se especifica el tipo. Con on objeto request se accede y se especifica 

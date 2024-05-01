@@ -210,7 +210,6 @@ class VistasPublicasController extends Controller
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
     //----------------------------- FUNCIONES PARA NUEVO INGRESO ----------------------------------------------------------------------------------------------------------
         public function verTiposIngreso()
         {
@@ -258,5 +257,20 @@ class VistasPublicasController extends Controller
 
         
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //----------------------------- FUNCION PARA EL CROQUIS -----------------------------------------------------------------------------------------------------------------------------
+        public function mostrarPdfCroquis()
+        {
+            $archivoCroquis = Croquis::first();
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoCroquis->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        }
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 }

@@ -42,6 +42,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
         Route::get('/AcademicaFMO/preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
 
+        Route::get('/AcademicaFMO/croquis-de-la-FMO',[VistasPublicasController::class, 'mostrarPdfCroquis'])->name('verPdfCroquis');
+
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 

@@ -31,7 +31,7 @@
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnuncios">
                                 Leer más
                             </button>
-                           
+    
                         </div>
                     </div>  
                 </div> 

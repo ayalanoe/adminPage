@@ -79,12 +79,12 @@
     </div>
 
     <div class="croquisIcon">            
-        <a href="{{ route('pubCroqFMO') }}" class="btn iconoOpciones" target="_blank">
+        <a href="{{route('verPdfCroquis')}}" class="btn iconoOpciones" target="_blank">
             <i class="fa-solid fa-map-location-dot"></i>
         </a>
     </div>
     <div class="FacebookIcon">            
-        <a href="{{ route('pubCroqFMO') }}" class="btn iconoOpciones" target="_blank">
+        <a href="#" class="btn iconoOpciones" target="_blank">
             <i class="fa-brands fa-facebook"></i>
         </a>
     </div>

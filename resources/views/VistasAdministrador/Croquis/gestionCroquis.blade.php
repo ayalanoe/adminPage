@@ -50,7 +50,7 @@
                     <th>1</th>
                     <td>Subir croquis</td>
                     <td colspan="3">
-                        <a class="btn btn-secondary" href="calendarioAcademico" data-bs-toggle="modal" data-bs-target="#subirCroquis"><i class="fa-sharp fa-solid fa-upload"></i></a>
+                        <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#subirCroquis"><i class="fa-sharp fa-solid fa-upload"></i></a>
                     </td>
                 </tr>
             @endforelse
