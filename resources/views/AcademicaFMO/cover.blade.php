@@ -84,7 +84,7 @@
         </a>
     </div>
     <div class="FacebookIcon">            
-        <a href="#" class="btn iconoOpciones" target="_blank">
+        <a href="https://www.facebook.com/fmoues.oficial" target="_blank" class="btn iconoOpciones" target="_blank">
             <i class="fa-brands fa-facebook"></i>
         </a>
     </div>
@@ -163,7 +163,6 @@
     
 </div>
 
-<i class="fa-solid fa-chevron-down fa-3x"></i>
 
 
 @endsection

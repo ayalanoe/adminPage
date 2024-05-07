@@ -24,7 +24,11 @@
 
     <h2>Contactos: {{$facuNombre}} </h2>
 
-    <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a las facultades</a>
+    <div class="container">
+      <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a las facultades</a>
+    
+      <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearFacultades"><i class="fa-solid fa-user-plus"></i> Agregar Oficina</button>
+    </div>
     <br>
     <br>
 
@@ -69,11 +73,6 @@
       </tbody>
     </table>
   </div>
-
-  <div class="container">
-    <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearFacultades"><i class="fa-solid fa-user-plus"></i> Agregar Oficina</button>
-  </div>
-
 
   <!-- Modal Para ingresar una nueva facultad-->
   <div class="modal fade" id="ModalCrearFacultades" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

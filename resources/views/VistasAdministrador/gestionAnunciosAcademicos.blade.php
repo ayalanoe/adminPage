@@ -51,7 +51,7 @@
         </table>
     </div>
 
-    <!-- Bton para poder insertar una carrera de pregrado -->
+    <!-- Bton para poder insertar un anuncio -->
     <div class="container">
         <a href="{{ route('vistaCrearAnuncio') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Anuncios academico</a>
     </div>

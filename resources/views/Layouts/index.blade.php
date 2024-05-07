@@ -123,12 +123,13 @@
 
             @yield('contenido-publico')
         </div>
-
+        <i class="fa-solid fa-chevron-down fa-3x"></i>
         <Footer>
             <div class="container__footer">
 
                 <div class="box__footer">
-                    <h2>Sitios de Interés</h2>
+                    <h2 class="sitios">Sitios de Interés</h2>
+                    <hr>
                     <a href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a>
                     <a href="https://www.ues.edu.sv/" target="_blank">UES-SITIO PRINCIPAL</a>
                     <a href="https://www.uese.ues.edu.sv/" target="_blank"><i class="fa-solid fa-scale-balanced"></i> UES-SOCIOECONÓMICO</a>
@@ -137,7 +138,8 @@
                 </div>
 
                 <div class="box__footer">
-                    <h2>Plataformas</h2>
+                    <h2 class="plataformas">Plataformas</h2>
+                    <hr>
                     <a href="https://virtual.fmoues.edu.sv/" target="_blank"><i class="fa-solid fa-landmark pe-2"></i>Aula Virtual UES</a>
                     <a href="https://eel.ues.edu.sv/session/index" target="_blank">
                         <i class="fa-solid fa-file pe-3"></i>Expediente en Línea</a>
@@ -155,8 +157,8 @@
                 </div>
 
                 <div class="box__footer">
-                    <h2>Medios de contacto</h2>
-                    <a href="https://www.facebook.com/fmoues.oficial" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+                    <h2 class="medios">Medios de contacto</h2>
+                    <hr>
                     <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a>
                     <a href="#"><i class="fa-solid fa-phone"></i> 2664 - 0000</a>
                     <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado"><i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
