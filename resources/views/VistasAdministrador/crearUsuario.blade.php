@@ -55,16 +55,34 @@
     <!-- Codigo de validacion y respues para el modal del cambiar password -->
     <script>
         $('#formCrearUsuario').on('submit', function(e){
-            
-            e.preventDefault(); // Corregir aquí
-
-            // Por ejemplo:
+            e.preventDefault();
+    
             var passwordIn = $('#passIngresar').val();
             var passwordConfirmar = $('#passConfirmar').val();
-
-
+            var email = $('#emailNuevoUser').val();
+    
+            // Validar el correo electrónico
+            if (!isValidEmail(email)) {
+                Swal.fire({
+                    title: "Informacion",
+                    text: "Por favor ingrese un correo institucional válido(@ues.edu.sv)",
+                    icon: "error"
+                });
+                return;
+            }
+    
+            // Validar las contraseñas
+            if (!isValidPassword(passwordIn)) {
+                Swal.fire({
+                    title: "Informacion",
+                    text: "La contraseña debe tener al menos 6 caracteres, una mayúscula y un número",
+                    icon: "error"
+                });
+                return;
+            }
+    
+            // Verificar que las contraseñas coincidan
             if (passwordIn !== passwordConfirmar) {
-                
                 Swal.fire({
                     title: "Informacion",
                     text: "Las contraseñas no coinciden",
@@ -72,11 +90,23 @@
                 });
                 return;
             }
-
-            // Si la validación es exitosa, puedes permitir que el formulario se envíe
+    
+            // Si la validación es exitosa, enviar el formulario
             this.submit();
-
-        })
+        });
+    
+        function isValidEmail(email) {
+            // Expresión regular para validar el correo electrónico de la UES
+            var regex = /^[a-zA-Z0-9._-]+@ues\.edu\.sv$/;
+            return regex.test(email);
+        }
+    
+        function isValidPassword(password) {
+            // La contraseña debe tener al menos 6 caracteres, una mayúscula y un número
+            var regex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+            return regex.test(password);
+        }
     </script>
+    
 @endsection
 

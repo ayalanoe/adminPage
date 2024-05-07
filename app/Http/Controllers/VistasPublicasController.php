@@ -45,7 +45,7 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA LOS ANUNCIOS ACADÉMICOS ------------------------------------------------------------------------------------------------------------------
         public function verAnuncios()
         {
-            $anuncios = Anuncios::all();
+            $anuncios = Anuncios::orderBy('fechaPublicacion', 'desc')->get();
             return view('AcademicaFMO/anunciosAAFMO', ['anunciosAcademicos' => $anuncios]);
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -61,6 +61,11 @@ class VistasPublicasController extends Controller
         {
             $archivoPregrado = Carrera::find($id);
             
+            if (!$archivoPregrado) {
+
+                abort(404);
+            }
+
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::disk('public')->get($archivoPregrado->rutaArchivo);
 
@@ -74,10 +79,43 @@ class VistasPublicasController extends Controller
             return view('AcademicaFMO/planesPos', ['planesPosgrado' => $planesPosgrado]);
         }
 
+        public function verArchivoPdfPosgrado($id)
+        {
+            $archivoPosgrado = Carrera::find($id);
+
+            if (!$archivoPosgrado) {
+
+                abort(404);
+            }
+            
+
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoPosgrado->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        }
+
         public function verDiplomados()
         {
             $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->get();
             return view('AcademicaFMO/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
+        }
+
+        public function verArchivoPdfDiplomado($id)
+        {
+            $archivoDiplomado = Carrera::find($id);
+
+            if (!$archivoDiplomado) {
+
+                abort(404);
+            }
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoDiplomado->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
         }
 
         public function verPlanesTecnicos()
@@ -86,13 +124,44 @@ class VistasPublicasController extends Controller
             return view('AcademicaFMO/planesTecnicos', ['carrerasTecnicas' => $planesTecnicos]);
         }
 
+        public function verArchivoPdfCarTecnica($id)
+        {
+            $archivoCarTecnica = Carrera::find($id);
+
+            if (!$archivoCarTecnica) {
+
+                abort(404);
+            }
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoCarTecnica->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        }
+
         public function verPlanesComplementarios()
         {
             $planComplementario = Carrera::where('departamento', 'PLCOM')->get();
             return view('AcademicaFMO/planesComplementarios', ['planesComplementarios' => $planComplementario]);
         }
 
-        
+        public function verArchivoPdfPlnCom($id)
+        {
+            $archivoPlnCom = Carrera::find($id);
+
+            if (!$archivoPlnCom) {
+
+                abort(404);
+            }
+            
+            // Se accede al storage de laravel para mostrar el archivo
+            $contenidoArchivo = Storage::disk('public')->get($archivoPlnCom->rutaArchivo);
+
+            // Devolver la respuesta con el contenido del archivo
+            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+        }
+
         
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -161,6 +230,12 @@ class VistasPublicasController extends Controller
         public function mostrarPdfCarDistancia($id)
         {
             $pdfCarDis = CarreraDistancia::find($id);
+
+            if (!$pdfCarDis) {
+
+                abort(404);
+            }
+
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoPdfCarDis = Storage::disk('public')->get($pdfCarDis->rutaArchivo);
 
@@ -179,6 +254,11 @@ class VistasPublicasController extends Controller
         public function infoEduDistanciaFMO($id)
         {
             $fmoCarDistancia = CarreraDistancia::find($id);
+
+            if (!$fmoCarDistancia) {
+                abort(404);
+            }
+
             return view('AcademicaFMO/EducacionDistancia/infoEduFMO', [
                 'datosCarDisFmo' => $fmoCarDistancia
             ]);
@@ -187,6 +267,13 @@ class VistasPublicasController extends Controller
         public function mostrarInfoCarDisFMO($id)
         {
             $pdfCarDisFmo = CarreraDistancia::find($id);
+
+            // Verificar si la carrera de distancia fue encontrada
+            if (!$pdfCarDisFmo) {
+
+                abort(404);
+            }
+
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoPdfCarDis = Storage::disk('public')->get($pdfCarDisFmo->rutaArchivo);
 
@@ -199,6 +286,10 @@ class VistasPublicasController extends Controller
         public function verTramite($id)
         {
             $tramite = Tramite::find($id);
+
+            if (!$tramite) {
+                abort(404);
+            }
             return view('AcademicaFMO/tramites', ['tramiteAcademico' => $tramite]);
         }
 
@@ -228,6 +319,15 @@ class VistasPublicasController extends Controller
         {
             $ingresosType = NuevoIngreso::where('tipoConsulta', 'Tipo_ingreso')->get();
             return view('AcademicaFMO/NuevoIngreso/tiposIngresos', ['tiposDeIngreso' => $ingresosType]);
+        }
+
+        public function infoTiposIngresos($id)
+        {
+            $infoTipoIngreso = NuevoIngreso::find($id);
+
+            return view('AcademicaFMO/NuevoIngreso/infoTipIngresos', [
+                'tipoDeIngreso' => $infoTipoIngreso
+            ]);
         }
 
 
@@ -260,6 +360,10 @@ class VistasPublicasController extends Controller
         public function mostrarCatalogo($id)
         {
             $archivoCatalogo = NuevoIngreso::find($id);
+
+            if (!$archivoCatalogo) {
+                abort(404);
+            }
             
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::disk('public')->get($archivoCatalogo->rutaArchivo);

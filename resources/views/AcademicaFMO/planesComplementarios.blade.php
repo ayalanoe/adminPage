@@ -23,7 +23,7 @@
                 <div id="flush_INGA" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         @foreach ($planesComplementarios as $carPlanComp)
-                            <a target="_blank" class="nav-link" href="#">
+                            <a href="{{route('mostrarPDFPlnCom', $carPlanComp->id)}}" target="_blank" class="nav-link" href="#">
                                 {{$carPlanComp->carrera}}
                             </a> 
                         @endforeach

@@ -36,7 +36,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$ingreso->titulo}}</h5>
                                 <p class="card-text">{!! $ingreso->descripcion !!}</p>
-                                <a href="#" class="btn btn-primary">Ir a la información</a>
+                                <a href="{{route('verInfoTiposIngreso', $ingreso->id)}}" class="btn btn-primary">Ir a la información</a>
                             </div>
                         </div>
                     </div>

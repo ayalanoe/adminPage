@@ -21,20 +21,17 @@
                             <tr>
                                 <th scope="row"> {{$item->diasLaborales}} </th>
                                 <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
-                            </tr>
-
-
-                            <tr>
-
-                                @if ($item->estadoMedioDia == "abierto")
+                                <td>
+                                    @if ($item->estadoMedioDia == "abierto")
                                     <th><strong>*Abierto al mediodía</strong></th>
                     
-                                @elseif ($item->estadoMedioDia == "cerrado")
-                                    <th><strong>*Cerrado al mediodía</strong></th>
+                                    @elseif ($item->estadoMedioDia == "cerrado")
+                                        <th><strong>*Cerrado al mediodía</strong></th>
 
-                                @else
-                                    <th></th>
-                                @endif
+                                    @else
+                                        <th></th>
+                                    @endif
+                                </td>
                                 
                             </tr>
                             
