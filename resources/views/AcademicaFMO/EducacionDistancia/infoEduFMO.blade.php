@@ -11,6 +11,10 @@
 @section('contenido-publico')
     <div class="container_table">
         <div class="container">
+
+            @if (!$datosCarDisFmo)
+                {{abort(404)}}
+            @endif
             
             <h3>{{$datosCarDisFmo->carrera}}</h3>
             <hr>
@@ -18,7 +22,7 @@
                 {!! $datosCarDisFmo->contenido !!}
             </div>
             <p>Ver informacion</p>
-            <a href="{{route('mostrarPdfCarDisFmo', $datosCarDisFmo->id) }}" class="btn btn-primary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
+            <a href="{{route('mostrarPdfCarDisFmo', $datosCarDisFmo->id) }}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
         </div>
     </div>
 @endsection 

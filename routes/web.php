@@ -50,21 +50,23 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     /*------------------------------ RUTAS PUBLICAS DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------*/
         //Aquí y jando siempre la identacion desgraciado
         Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
+        Route::get('/NuevoIngreso/tipo-de-ingreso/{id}', [VistasPublicasController::class, 'infoTiposIngresos'])->name('verInfoTiposIngreso');
+
         Route::get('/NuevoIngreso/requisitos-y-fechas', [VistasPublicasController::class, 'verRequisitosFechas'])->name('requisitosFechas');
         Route::get('/NuevoIngreso/aplicar-en-linea', [VistasPublicasController::class, 'verAplicarLinea'])->name('enLinea');
         Route::get('/NuevoIngreso/oferta-academica', [VistasPublicasController::class, 'verOfertAcademica'])->name('oferta');
 
         Route::get('/NuevoIngreso/catalogo-academico', [VistasPublicasController::class, 'verCatalogoAcademico'])->name('catalogoAcademico');
-        Route::get('NuevoIngreso/mostrar-catalogo-academico/{id}', [VistasPublicasController::class, 'mostrarCatalogo'])->name('mostrarCatalogoPdf');
+        Route::get('/NuevoIngreso/catalogo-academico-{id}/archivo', [VistasPublicasController::class, 'mostrarCatalogo'])->name('mostrarCatalogoPdf');
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     
     //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
         Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
-        Route::get('AcademicaFMO/info-educacion-distacia/{id}', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
+        Route::get('/AcademicaFMO/info-carrera-{id}/educacion-distacia', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
         Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
-        Route::get('/Informacion-carreras-a-distancia-FMO/{id}', [VistasPublicasController::class, 'infoEduDistanciaFMO'])->name('infoDistanciaFMO');
+        Route::get('/Educacion-a-distancia-FMO/info-carrera/{id}', [VistasPublicasController::class, 'infoEduDistanciaFMO'])->name('infoDistanciaFMO');
         Route::get('/Informacion-carrera-distancia/fmo/{id}', [VistasPublicasController::class, 'mostrarInfoCarDisFMO'])->name('mostrarPdfCarDisFmo');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -76,13 +78,21 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     
 
     //------------------------------RUTAS PÚBLICAS DE PLANES DE ESTUDIO ---------------------------------------------------------------------------------------------------/
-        Route::get('Planes-de-estudio/Carreras-Pregrado', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planesPre');
-        Route::get('/AcademicaFMO/plan-carrera-pregrado/{id}', [VistasPublicasController::class, 'verArchivoPdfPregrado'])->name('publicArchivoPregrado');
+        Route::get('/Planes-de-estudio/Carreras-Pregrado', [VistasPublicasController::class, 'verPlanesPregrado'])->name('planesPre');
+        Route::get('/Planes-de-estudio/Carrera-Pregrado-{id}/plan-de-estudio', [VistasPublicasController::class, 'verArchivoPdfPregrado'])->name('publicArchivoPregrado');
 
-        Route::get('Planes-de-estudio/Carreras-Posgrado', [VistasPublicasController::class, 'verPlanesPosgrado'])->name('planesPos');
-        Route::get('Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
-        Route::get('Planes-de-estudio/Carreras-Técnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
-        Route::get('Planes-de-estudio/Complementarios', [VistasPublicasController::class, 'verPlanesComplementarios'])->name('complementarios');
+        Route::get('/Planes-de-estudio/Carreras-Posgrado', [VistasPublicasController::class, 'verPlanesPosgrado'])->name('planesPos');
+        Route::get('/Planes-de-estudio/Carreras-Posgrado-{id}/plan-de-estudio', [VistasPublicasController::class, 'verArchivoPdfPosgrado'])->name('mostrarPDFPosgrado');
+
+        Route::get('/Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
+        Route::get('/Planes-de-estudio/Diplomados-{id}/info-diplomado', [VistasPublicasController::class, 'verArchivoPdfDiplomado'])->name('mostrarPDFDiplo');
+
+        Route::get('/Planes-de-estudio/Carreras-Tecnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
+        Route::get('/Planes-de-estudio/Carreras-Tecnicas-{id}/plan-carrra-tecnica', [VistasPublicasController::class, 'verArchivoPdfCarTecnica'])->name('mostrarPDFCarTec');
+
+        Route::get('/Planes-de-estudio/Planes-Complementarios', [VistasPublicasController::class, 'verPlanesComplementarios'])->name('complementarios');
+        Route::get('/Planes-de-estudio/Planes-Complementarios-{id}/plan-pln-complementarios', [VistasPublicasController::class, 'verArchivoPdfPlnCom'])->name('mostrarPDFPlnCom');
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //-------------------------------RUTAS PUBLICAS CALENDARIO ADMIN Y ACADEMICO --------------------------------------------------------------------------------------------

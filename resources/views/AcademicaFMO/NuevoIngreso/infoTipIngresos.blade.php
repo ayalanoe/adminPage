@@ -12,9 +12,10 @@
     <div class="container_table">
 
         <div class="container">
-            <h3> itulo TIPO DE INGRESO </h3>
+            <h3>{{$tipoDeIngreso->titulo}}</h3>
             <hr>
             <p>
+                {{$tipoDeIngreso->descripcion}}
             </p>
 
             
