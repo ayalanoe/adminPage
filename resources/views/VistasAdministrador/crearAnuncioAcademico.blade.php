@@ -26,7 +26,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Contenido del anuncio</label>
                 <textarea name="cuerpoAnuncio" id="editorAnuncio" cols="30" rows="50"></textarea>
 
                 <script>

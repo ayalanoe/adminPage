@@ -167,7 +167,7 @@ class VistasAdminController extends Controller
         public function subirArchivo(Request $request)
         {
             $request->validate([
-                'archivo' => 'required|mimes:pdf,jpg,jpeg,png|max:2048',
+                'archivo' => 'required|mimes:pdf|max:5120',
             ]);
             
             /*  El formato es definir una variable en php no se especifica el tipo. Con on objeto request se accede y se especifica 
