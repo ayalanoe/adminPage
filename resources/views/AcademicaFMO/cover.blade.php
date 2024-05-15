@@ -63,25 +63,25 @@
     </div>
   </div>
 
-    <div class="prueba">
-        <button type="button" class="btn iconoOpciones" data-bs-toggle="modal" data-bs-target="#ModalHorario">
+    <div class="scheduleIcon iconoOpciones">
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#ModalHorario">
             <i class="fa-solid fa-clock"></i>
         </button>
     </div>
 
-    <div class="prueba2">            
-        <a href="{{ route('preguntas') }}" class="btn iconoOpciones">
+    <div class="questionsIcon iconoOpciones">            
+        <a href="{{ route('preguntas') }}">
             <i class="fa-solid fa-circle-question"></i>
         </a>
     </div>
 
-    <div class="croquisIcon">            
-        <a href="{{route('verPdfCroquis')}}" class="btn iconoOpciones" target="_blank">
+    <div class="croquisIcon iconoOpciones">            
+        <a href="{{route('verPdfCroquis')}}" target="_blank">
             <i class="fa-solid fa-map-location-dot"></i>
         </a>
     </div>
-    <div class="FacebookIcon">            
-        <a href="https://www.facebook.com/fmoues.oficial" target="_blank" class="btn iconoOpciones" target="_blank">
+    <div class="FacebookIcon iconoOpciones">            
+        <a href="https://www.facebook.com/fmoues.oficial" target="_blank">
             <i class="fa-brands fa-facebook"></i>
         </a>
     </div>
@@ -89,17 +89,25 @@
         
 <div class="offcanvas offcanvas-start modal-z-index" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">¿SOBRE CUÁL TRÁMITE NECESITAS INFORMACIÓN?</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="row">
+            <div class="col-10">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">¿SOBRE CUÁL TRÁMITE NECESITAS INFORMACIÓN?</h5>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+        </div>
     </div>
     <div class="offcanvas-body">
     
         <ul class="sidebar-nav">
+                    
                     @foreach ($tramitesAcademicos as $item)
                         <li class="sidebar-item">
-                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{$item->tramite}} </a>
+                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ strtoupper($item->tramite) }} </a>
                         </li>
                     @endforeach
+
                     
         </ul>
 
@@ -113,19 +121,18 @@
     <div class="container__info">
         <h1>ADMINISTRACIÓN</h1>
         <h2>ACADÉMICA FMO</h2>
-        <p class="bienvenidaFMO">Bienvenidos al sitio web oficial de la Administración Académica de la Facultad Multidisciplinario Oriental
-            de la Universidad de El Salvador. Encontrarás información relacionada a trámites académicos de tu interés, así como anuncios,
-            entre otros asuntos importantes.</p>
+        <p class="bienvenidaFMO">Bienvenidos al sitio web oficial de la Unidad de Administración Académica de la Facultad Multidisciplinaria Oriental
+            de la Universidad de El Salvador. Encontrarás información detallada sobre trámites académicos relevantes, así como anuncios y otros aspectos de interés para nuestra comunidad educativa.</p>
 
-                <a class="btn btn-primary btn-tramites" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <a class="btn btn-primary btn-principal" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 Trámites
                 </a>
 
-                <a class="btn btn-primary btn-tramites" href="{{ route('anuncios') }}">
+                <a class="btn btn-primary btn-principal" href="{{ route('anuncios') }}">
                     Anuncios Oficiales
                     </a>
 
-                    <a class="btn btn-primary btn-tramites" href="{{ route('preguntas') }}">
+                    <a class="btn btn-primary btn-principal" href="{{ route('preguntas') }}">
                         Preguntas Frecuentes
                         </a>
 

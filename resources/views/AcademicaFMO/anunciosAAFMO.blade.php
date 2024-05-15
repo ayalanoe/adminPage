@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <h5 class="card-title"> {{$anuncio->titulo}} </h5>
                             <p>Publicacion: {{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</p>
-                            <p class="card-text">{!! Str::limit($anuncio->cuerpo, $limit = 100, $end = ' ...') !!} </p>
+                            <p class="card-text">{!! Str::limit($anuncio->cuerpo, $limit = 40, $end = ' ...') !!} </p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnuncios{{$anuncio->id}}">
                                 Leer más
                             </button>
@@ -41,7 +41,7 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{$anuncio->titulo}}</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{strtoupper($anuncio->titulo)}}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

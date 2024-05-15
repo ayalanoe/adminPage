@@ -18,6 +18,8 @@
                 {{$tipoDeIngreso->descripcion}}
             </p>
 
+            <img src="{{asset('storage/'.$tipoDeIngreso->rutaArchivo)}}" class="d-block w-100" alt="...">
+
             
         </div>
     </div>

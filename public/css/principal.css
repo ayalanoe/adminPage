@@ -12,8 +12,16 @@
     width: auto;
 }
 
-.btn.btn-tramites{
+.btn.btn-principal{
     background-color: #690605;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.btn-principal:hover {
+    background-color: #242424;
     color: white;
 }
 
@@ -97,64 +105,41 @@ nav ul li a{
     border-radius: 12px;
 }
 
-.prueba {
-    background-color: #690605;
-    height: 50px;
-    width: 50px;
-    position: fixed;
-    top: 40%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.prueba2 {
-    background-color: #690605;
-    position: fixed;
-    height: 50px;
-    width: 50px;
-    top: 50%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.croquisIcon{
-    background-color: #690605;
-    position: fixed;
-    height: 50px;
-    width: 50px;
-    top: 60%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.FacebookIcon{
-    background-color: #690605;
-    position: fixed;
-    height: 50px;
-    width: 50px;
-    top: 70%;
-    right: 0;
-    border-radius: 30px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .iconoOpciones{
+    background-color: #690605;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    right: 0;
+    border-radius: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconoOpciones a {
     color: white;
     font-size: 24px;
 }
+.iconoOpciones button i {
+    color: white;
+    font-size: 24px;
+}
+.scheduleIcon {
+    top: 40%;
+}
+
+.questionsIcon {
+    top: 50%;
+}
+.croquisIcon{
+    top: 60%;
+}
+
+.FacebookIcon{
+    top: 70%;
+}
+
 
 nav ul li a:hover{
     background-color: #690605;
@@ -207,6 +192,10 @@ nav ul li a:hover{
 }
 
 .dropdown-menu.eduDistancia{
+    min-height: 100px; 
+}
+
+.dropdown-menu.expediente{
     min-height: 100px; 
 }
 
@@ -352,11 +341,6 @@ nav ul li a:hover{
     }
 }
 
-/*MUESTRA*/
-
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-
 :root{
     --color-esqueleto:#EFF3F5;
 }
@@ -382,12 +366,12 @@ nav ul li a:hover{
 
 /*AQUI COMIENZA EL FOOTER*/
 
-footer{
+footer {
     width: 100%;
     padding: 1px;
     font-family: 'Nunito', sans-serif;
+    background-color: #690605; /* Color de fondo para el área detrás de la imagen */
     background-image: url("../Images/background-footer.svg");
-    background-color: #690605;
     background-size: cover;
 }
 
@@ -435,10 +419,13 @@ footer{
     color: #690605;
     font-weight: 600;
     text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.4s;
 }
 
 .box__footer a:hover{
-    opacity: 0.8;
+    color: #3d0302;
+    padding-left: 2px;
 }
 
 .box__footer a .fab{
@@ -478,10 +465,15 @@ footer{
     transform: translateY(5px); /* Desplazar 2px hacia abajo al pasar el cursor */
 }
 
-
-hr{
-    border-bottom: 3px solid #690605; /* Ajusta el grosor y el color según tus preferencias */
-    display: inline-block; /* Para que el ancho del borde se ajuste al texto */
+.box__footer h2::before{
+    content: '';
+    position: absolute;
+    left: 20;
+    background-color: #690605;
+  
     width: 100px;
-    margin-bottom: 10px; /* Ajusta el espacio entre el texto y la rayita */
+    border-bottom: 3.5px solid #690605; /* Ajusta el grosor y el color según tus preferencias */
+    display: inline-block; /* Para que el ancho del borde se ajuste al texto */
+    bottom: -120px;
 }
+

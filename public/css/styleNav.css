@@ -1,8 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-
-
 .dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
   display: block;
   margin-top: .125em;
@@ -14,8 +12,7 @@
   left: 100%;
 }
 
-
-  nav {
+nav {
     text-align: center;
   }
 
