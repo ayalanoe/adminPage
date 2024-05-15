@@ -24,7 +24,7 @@ class VistasPublicasController extends Controller
         public function vistaPrincipal(){
 
             $horarioAtencion = AtencionHorario::all();
-            $tramites = Tramite::all();
+            $tramites = Tramite::orderBy('tramite')->get();
             $galeria = Galeria::all();
             return view('AcademicaFMO/cover', [
                 'horarioLaboral' => $horarioAtencion,
@@ -53,7 +53,7 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA LOS PLANES DE ESTUDIO -------------------------------------------------------------------------------------------------------------------
         public function verPlanesPregrado()
         {
-            $planesPregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->get();
+            $planesPregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->orderBy('carrera')->get();
             return view('AcademicaFMO/planesFMO', ['planesPregrado' => $planesPregrado]);
         }
 
@@ -75,7 +75,7 @@ class VistasPublicasController extends Controller
 
         public function verPlanesPosgrado()
         {
-            $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->get();
+            $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->orderBy('carrera')->get();
             return view('AcademicaFMO/planesPos', ['planesPosgrado' => $planesPosgrado]);
         }
 
@@ -98,7 +98,7 @@ class VistasPublicasController extends Controller
 
         public function verDiplomados()
         {
-            $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->get();
+            $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->orderBy('carrera')->get();
             return view('AcademicaFMO/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
         }
 
@@ -120,7 +120,7 @@ class VistasPublicasController extends Controller
 
         public function verPlanesTecnicos()
         {
-            $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->get();
+            $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->orderBy('carrera')->get();
             return view('AcademicaFMO/planesTecnicos', ['carrerasTecnicas' => $planesTecnicos]);
         }
 
@@ -142,7 +142,7 @@ class VistasPublicasController extends Controller
 
         public function verPlanesComplementarios()
         {
-            $planComplementario = Carrera::where('departamento', 'PLCOM')->get();
+            $planComplementario = Carrera::where('departamento', 'PLCOM')->orderBy('carrera')->get();
             return view('AcademicaFMO/planesComplementarios', ['planesComplementarios' => $planComplementario]);
         }
 
@@ -345,7 +345,7 @@ class VistasPublicasController extends Controller
 
         public function verOfertAcademica()
         {
-            $ofertaCarreras = Carrera::all();
+            $ofertaCarreras = Carrera::orderBy('carrera')->get();
             return view('AcademicaFMO/NuevoIngreso/ofertaAcademica', ['carrerasOferta' => $ofertaCarreras]);
         }
 
