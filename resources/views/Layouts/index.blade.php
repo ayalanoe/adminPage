@@ -120,10 +120,6 @@
     </header>
     
         <div class="cover">
-            <div class="bg_color"></div>
-            <div class="wave w1"></div>
-            <div class="wave w2"></div>
-
             @yield('contenido-publico')
         </div>
         <i class="fa-solid fa-chevron-down fa-3x"></i>

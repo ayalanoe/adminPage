@@ -7,6 +7,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/registrarConstancia.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
 @endsection
 
 @section('contenido')

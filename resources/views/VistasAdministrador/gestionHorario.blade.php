@@ -4,11 +4,10 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionHorario.css')}}">   
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
 @endsection
 
 @section('contenido')
-    
-    <br><br>
 
     <h2>Horario de Atención - {{date('Y')}}</h2>
     <table class="table table-hover">

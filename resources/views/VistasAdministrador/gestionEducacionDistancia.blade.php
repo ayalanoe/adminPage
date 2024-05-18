@@ -1,6 +1,9 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Carreras a Distancia')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">    
+@endsection
 @section('contenido')
 
     <div class="container">

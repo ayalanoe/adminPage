@@ -1,6 +1,8 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Crear Tramite')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
+@endsection
 @section('contenido')
 
     <div class="container">

@@ -1,6 +1,8 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Departamentos')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
+@endsection
 @section('contenido')
 <div class="container">
     <h2>Carreras de Pregrado</h2>

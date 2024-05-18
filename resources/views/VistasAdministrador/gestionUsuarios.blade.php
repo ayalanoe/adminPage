@@ -1,8 +1,10 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Gestión de Usuarios') 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
+@endsection
 @section('contenido')
     <h2>Gestion de usuarios del sistema</h2>
-    <p>Contenido de la tabla</p>
     <table class="table table-hover">
             <thead>
               <tr>
