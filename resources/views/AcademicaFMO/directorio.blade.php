@@ -10,16 +10,21 @@
 @endsection
 
 @section('contenido-publico')
+<div class="container_tablee">
+    <h3 id="h">DIRECTORIO ADMINISTRATIVO</h3>
 
+
+    <div class="red-overlay"></div>
+</div>
     <div class="container_table">
 
             <div class="container">
-                <h3>DIRECTORIO DE ADMINISTRACIÓN ACADÉMICA</h3>
+                
                 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            
                             <th scope="col">Encargado</th>
                             <th scope="col">Correo Electrónico</th>
                             <th scope="col">Contacto</th>
@@ -33,7 +38,7 @@
                     
                         @foreach ($directorio as $contacto)
                         <tr>
-                            <th scope="row">{{$numero}}</th>  
+                            
                             <td>{{$contacto->nombre}}</td>
                             <td>{{$contacto->correo}}</td>
                             <td>{{$contacto->contacto}}</td>

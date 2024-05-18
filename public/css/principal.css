@@ -370,7 +370,7 @@ footer {
     width: 100%;
     padding: 1px;
     font-family: 'Nunito', sans-serif;
-    background-color: #690605; /* Color de fondo para el área detrás de la imagen */
+
     background-image: url("../Images/background-footer.svg");
     background-size: cover;
 }
@@ -403,20 +403,20 @@ footer {
     max-width: 350px;
     margin-top: 20px;
     font-weight: 500;
-    color: #7a7a7a;
+    color: #fffdfd;
     font-size: 18px;
 
 }
 
 .box__footer h2{
     margin-bottom: 30px;
-    color: #242424;
+    color: #ffffff;
     font-weight: 700;
 }
 
 .box__footer a{
     margin-top: 10px;
-    color: #690605;
+    color: #ffffff;
     font-weight: 600;
     text-decoration: none;
     text-transform: capitalize;
@@ -424,7 +424,7 @@ footer {
 }
 
 .box__footer a:hover{
-    color: #3d0302;
+    color: #ffffff;
     padding-left: 2px;
 }
 
@@ -441,7 +441,7 @@ footer {
 
 .box__copyright p{
     margin-top: 20px;
-    color: #690605;
+    color: #ffffff;
 }
 
 .box__copyright hr{
@@ -465,15 +465,24 @@ footer {
     transform: translateY(5px); /* Desplazar 2px hacia abajo al pasar el cursor */
 }
 
-.box__footer h2::before{
+.box__footer {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.box__footer h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.box__footer h2::after {
     content: '';
     position: absolute;
-    left: 20;
-    background-color: #690605;
-  
+    left: 51px;
+    transform: translateX(-50%);
+    bottom: -5px; 
+    background-color: white;
     width: 100px;
-    border-bottom: 3.5px solid #690605; /* Ajusta el grosor y el color según tus preferencias */
-    display: inline-block; /* Para que el ancho del borde se ajuste al texto */
-    bottom: -120px;
+    height: 3.5px;
 }
 

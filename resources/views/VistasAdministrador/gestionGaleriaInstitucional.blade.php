@@ -3,7 +3,8 @@
 @section('titulo', '- Galería Institucional')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionGaleria.css')}}">   
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionGaleria.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">    
 @endsection
 
 @section('contenido')

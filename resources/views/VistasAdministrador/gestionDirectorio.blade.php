@@ -1,11 +1,11 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Directorio') 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionDirectorio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
 @endsection
 @section('contenido')
   <div class="container">
-    <h2>DIRECTORIO</h2>
+    <h2>GESTIÓN DEL DIRECTORIO ADMINISTRATIVO</h2>
     <div class="container">
       <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalNuevoContacto"><i class="fa-solid fa-user-plus"></i> Nuevo Contacto</button>
     </div>

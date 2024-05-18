@@ -1,10 +1,12 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Anuncios Académicos')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
+@endsection
 @section('contenido')
 
     <div class="container">
-        <h2>Gestion de anuncios</h2>
+        <h2>GESTIÓN DE ANUNCIOS ACADÉMICOS</h2>
 
         <table class="table table-hover">
             <thead>

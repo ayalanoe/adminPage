@@ -9,6 +9,9 @@
 @endsection
 
 @section('contenido-publico')
+<div class="container_tablee">
+  <h3 id="h">FACULTADES UES</h3></i>
+</div>
 <div class="container_table">
     <!--TABLA DE ELEMENTOS-->
 

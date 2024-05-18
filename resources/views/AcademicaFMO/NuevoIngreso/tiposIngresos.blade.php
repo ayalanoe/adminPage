@@ -9,13 +9,16 @@
 @endsection
 
 @section('contenido-publico')
+<div class="container_tablee">
+    <h3 id="h">TIPOS DE INGRESO</h3><i class="fa-solid fa-users-viewfinder typesIcon"></i>
+</div>
 <div class="container_table">
 
     @if ($tiposDeIngreso->isEmpty())
         <div class="container">
 
             <h3>TIPOS DE INGRESO</h3>
-            <hr>
+           
             <div class="alert alert-success">
                 No hay registro
             </div>
@@ -26,7 +29,7 @@
         <div class="container">
 
             <h3> TIPOS DE INGRESO </h3>
-            <hr>
+            
 
             <div class="row">
 

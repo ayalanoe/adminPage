@@ -3,13 +3,12 @@
 @section('titulo', '- Horario De Clases')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}">   
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">  
 @endsection
 
 @section('contenido')
-    
-    <br><br>
-
+<div class="container">
     <h2>Calendario Administrativo Año - {{date('Y')}}</h2>
     <table class="table table-hover">
         <thead>
@@ -60,7 +59,7 @@
         </tbody>
     </table>
 
-
+</div>
 
     @if (Session::has('resSubirCalAdmin'))
         <script>
