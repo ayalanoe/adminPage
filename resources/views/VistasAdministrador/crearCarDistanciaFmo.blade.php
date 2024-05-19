@@ -21,7 +21,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Cargar Banner</label>
+                <label for="exampleFormControlInput1" class="form-label">Cargar imagen para el banner</label>
                 <input name="bannerCarDisFMO" accept=".jpg, .jpeg, .png" type="file" id="anuncioArchivo" class="form-control" aria-describedby="inputGroupPrepend" required>
             </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Informacion para la carrera</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Información para la carrera</label>
                 <textarea name="contenidoCarDisFMO" id="editorCarDis" cols="30" rows="50"></textarea>
 
                 <script>

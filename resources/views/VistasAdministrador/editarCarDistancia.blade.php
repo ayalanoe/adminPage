@@ -45,7 +45,7 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nombre Carrera</label>
+                <label for="exampleFormControlInput1" class="form-label">Nombre de la Carrera</label>
                 <input name="nombreCarDistancia" type="text" class="form-control" value="{{$carreraDisEdiar->carrera}}">
             </div>
 
@@ -71,7 +71,7 @@
                             @csrf
 
                             <div class="col-md-12">
-                                <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
+                                <label for="validationCustomCorreo" class="form-label">Cargar archivo informativo o plan de estudio</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
                                     <input name="editNuevoPlanCarDis" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>

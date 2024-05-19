@@ -16,12 +16,12 @@
             </div>
    
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Formato del tramite o archivo</label>
+                <label for="exampleFormControlInput1" class="form-label">Formato del tramite o archivo *OPCIONAL</label>
                 <input name="archivoTramite" accept=".pdf, .jpg, .jpeg, .png, .doc, .docx" type="file" class="form-control" aria-describedby="inputGroupPrepend">
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Contenido del tramite</label>
                 <textarea name="contenidoTramite" id="editor" cols="30" rows="50"></textarea>
 
                 <script>

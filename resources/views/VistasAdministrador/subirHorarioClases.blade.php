@@ -9,7 +9,7 @@
 
 @section('contenido')
         
-    <h2>Horario de Clases</h2>
+    <h2>Caledario Académico - {{date('Y')}}</h2>
     <table class="table table-hover">
         <thead>
             <tr>

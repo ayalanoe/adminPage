@@ -5,8 +5,8 @@
 
     <div class="container">
         <h2>Editar anuncio académico</h2>
+        <hr>
 
-        <br>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -22,7 +22,7 @@
 
                 <th scope="row">{{$numero}}</th>  
                 @if ($anuncioEditar->rutaArchivo)
-                    <td>Archivo_Cargado</td>
+                    <td>Imagen_Informativa</td>
                     <td class="d-flex">
                         <form action="{{ route('eliminarArchivoAnuncio', $anuncioEditar->id) }}" class="formElminarArchivoAnuncio" method="POST">
                             @csrf
@@ -33,7 +33,7 @@
                         <a href="{{ route('verArchivoAnuncio', $anuncioEditar->id) }}" class="btn btn-primary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
                     </td>
                 @else
-                    <td>Subir una foto para el anuncio</td>
+                    <td>Subir una imagen informativa. *OPCIONAL !</td>
                     <td class="d-flex">  
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalNuevoArchivoAnuncio"><i class="fa-sharp fa-solid fa-upload"></i></button>
                     </td>
@@ -47,7 +47,7 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo del anuncio</label>
+                <label for="exampleFormControlInput1" class="form-label">Título del anuncio</label>
                 <input value="{{$anuncioEditar->titulo}}" name="editarTituloAnuncio" type="text" class="form-control" id="exampleFormControlInput1" required>
             </div>
 
@@ -57,7 +57,7 @@
             </div>        
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Contenido del anuncio</label>
                 <textarea name="editarCuerpoAnuncio" id="editor" cols="30" rows="50">{{$anuncioEditar->cuerpo}}</textarea>
 
                 <script>
@@ -72,7 +72,7 @@
 
             <div class="mb-3">
                 <a href="{{ route('cancelarEditAnuncio') }}" class="btn btn-secondary">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </div>
 
         </form>
@@ -99,7 +99,7 @@
                             <label for="validationCustomCorreo" class="form-label">Cargar imagen</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="editarArchivoAnuncio" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="editarArchivoAnuncio" accept=".jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>

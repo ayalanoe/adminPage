@@ -76,7 +76,7 @@
                 @csrf
 
                 <div class="col-md-12">
-                    <label for="validationCustomUser" class="form-label">Nombre Archivo</label>
+                    <label for="validationCustomUser" class="form-label">Nombre de la foto o imagen</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-t"></i></span>
                         <input name="nombreGaleria" type="text" class="form-control" id="nombreCalendarioAcademico" required>

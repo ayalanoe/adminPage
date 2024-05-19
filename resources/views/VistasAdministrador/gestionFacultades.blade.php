@@ -101,8 +101,8 @@
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-university"></i></span>
                 <input name="nombreOficina" type="text" class="form-control" id="validaFacultad" required>
-                <div class="valid-feedback">
-                  Nombre invalido!
+                <div class="invalid-feedback">
+                  Ingrese una oficina!
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-at"></i></span>
                 <input name="correoOficina" type="text" class="form-control" id="validaCorreoFac" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
-                  Correo no valido!
+                  Ingrese un correo o un guión si no tiene un correo !
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@
                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-address-book"></i></span>
                 <input name="contactoOficina" type="text" class="form-control" id="validaContactoFac" aria-describedby="inputGroupPrepend" required>
                 <div class="invalid-feedback">
-                  Correo no valido!
+                  Ingrese o contacto o un guión si no tiene un contacto !
                 </div>
               </div>
             </div>

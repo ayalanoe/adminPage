@@ -4,7 +4,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Gestion de Tipos de Ingreso</h2>
+        <h2>Gestión de Tipos de Ingreso</h2>
 
         @if ($newIngresoTipos->isEmpty())
 
@@ -21,7 +21,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Tipo de Ingreso</th>
-                        <th scope="col">Fecha publicacion</th>
+                        <th scope="col">Fecha publicación</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>

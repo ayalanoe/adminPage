@@ -6,7 +6,7 @@
     <div class="container">
 
         <h2>Editar carrera a distancia de la fmo</h2>
-        <hr>
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -35,12 +35,12 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nombre Carrera</label>
+                <label for="exampleFormControlInput1" class="form-label">Nombre de la carrera</label>
                 <input name="editCarDisFMO" type="text" class="form-control" value="{{$carreraDisFmoEdit->carrera}}">
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Informacion de la carrera</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Información de la carrera</label>
                 <textarea name="editContenidoCarDisFMO" id="editorCarDis" cols="30" rows="50">{{$carreraDisFmoEdit->contenido}}</textarea>
 
                 <script>
