@@ -11,12 +11,12 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Clasificacion</label>
+                <label for="exampleFormControlInput1" class="form-label">Clasificación</label>
                 <input name="tipoConsultaTipoIngreso" value="Tipo_ingreso" type="text" class="form-control" readonly>
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo del Ingreso</label>
+                <label for="exampleFormControlInput1" class="form-label">Título del Ingreso</label>
                 <input name="tituloTipoIngreso" type="text" class="form-control" id="tipoIngreso" placeholder="Ingreso General Universitario" required>
             </div>
 
@@ -25,7 +25,7 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del tipo de ingreso:</label>
                 <div class="form-floating">
                     <textarea name="descripIngreso" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                    <label for="floatingTextarea">Descripcion</label>
+                    <label for="floatingTextarea">Descripcion 254 caracteres máximo</label>
                 </div>
             </div>
             

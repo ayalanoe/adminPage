@@ -7,7 +7,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Gestion de Carreras a Distancia</h2>
+        <h2>Gestión de carreras a distancia de otras facultades</h2>
 
         <table class="table table-hover">
             <thead>
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="validationCustomCorreo" class="form-label">Banner de la carrera</label>
+                            <label for="validationCustomCorreo" class="form-label">Banner de la carrera para adornar</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
                                 <input name="bannerCarDistancia" accept=".jpg, .png, .jpeg" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
@@ -97,7 +97,7 @@
 
             
                         <div class="col-md-12">
-                            <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio pdf</label>
+                            <label for="validationCustomCorreo" class="form-label">Cargar archivo informativo o plan de estudio .pdf</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
                                 <input name="planCarDistancia" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>

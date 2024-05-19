@@ -11,7 +11,7 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo del Ingreso</label>
+                <label for="exampleFormControlInput1" class="form-label">Título del Ingreso</label>
                 <input name="editTituloTipoIngreso" value="{{$tipoDeIngresoEditar->titulo}}" type="text" class="form-control" required>
             </div>
 
@@ -19,7 +19,7 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del tipo de ingreso:</label>
                 <div class="form-floating">
                     <textarea name="editDescripcion" class="form-control" id="floatingTextarea">{{$tipoDeIngresoEditar->descripcion}}</textarea>
-                    <label for="floatingTextarea">Descripcion</label>
+                    <label for="floatingTextarea">Descripción</label>
                 </div>
             </div>
 

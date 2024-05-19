@@ -5,6 +5,7 @@
 @endsection
 @section('contenido')
     <h2>Gestion de usuarios del sistema</h2>
+    
     <table class="table table-hover">
             <thead>
               <tr>
@@ -81,7 +82,7 @@
       event.preventDefault();
       Swal.fire({
         title: "¿Está seguro?",
-        text: "Se restablecerá la contraseña",
+        text: "Se restablecerá la contraseña del usuario. Nueva contraseña: academica.24fmo",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

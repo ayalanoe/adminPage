@@ -143,18 +143,18 @@
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-t"></i></span>
                                 <input name="tituloCatalogo" type="text" class="form-control" required>
                                 <div class="invalid-feedback">
-                                    Escriba un nombre!
+                                    Ingrese un nombre. Máximo de caracteres 254 !
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="validationCustomUser" class="form-label">Pequeña descripcion:</label>
+                            <label for="validationCustomUser" class="form-label">Pequeña descripción:</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-t"></i></span>
                                 <textarea name="descripcionCatalogo" type="text" class="form-control" required></textarea>
                                 <div class="invalid-feedback">
-                                    Escriba un nombre!
+                                    Ingrese una descripcion !
                                 </div>
                             </div>
                         </div>

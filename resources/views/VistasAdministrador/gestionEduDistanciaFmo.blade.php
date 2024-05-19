@@ -6,7 +6,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Gestion de Carreras a Distancia de la FMO</h2>
+        <h2>Gestión de carreras a distancia de la FMO</h2>
 
         <table class="table table-hover">
             <thead>

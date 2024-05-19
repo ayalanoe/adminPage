@@ -6,7 +6,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Gestion de preguntas frecuentes</h2>
+        <h2>Gestión de preguntas frecuentes</h2>
 
         <table class="table table-hover">
             <thead>

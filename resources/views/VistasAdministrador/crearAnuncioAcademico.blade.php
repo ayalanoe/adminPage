@@ -6,12 +6,13 @@
     <div class="container">
 
         <h2>Crear anuncio académico</h2>
+        <hr>
 
         <form class="formCrearAnuncio" action="{{ route('crearAnuncio') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo del anuncio</label>
+                <label for="exampleFormControlInput1" class="form-label">Título del anuncio</label>
                 <input name="tituloAnuncio" type="text" class="form-control" id="anuncioTitulo" placeholder="Cambios de horario">
             </div>
 
@@ -21,8 +22,8 @@
             </div>        
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Cargar foto</label>
-                <input name="archivoAnuncio" accept=".pdf, .jpg, .jpeg, .png" type="file" id="anuncioArchivo" class="form-control" aria-describedby="inputGroupPrepend">
+                <label for="exampleFormControlInput1" class="form-label">Cargar imagen informativa. *Opcional</label>
+                <input name="archivoAnuncio" accept=".jpg, .jpeg, .png" type="file" id="anuncioArchivo" class="form-control" aria-describedby="inputGroupPrepend">
             </div>
 
             <div class="mb-3">
@@ -41,7 +42,7 @@
 
             <div class="mb-3">
                 <a href="{{ route('cancelarCrearAnuncio') }}" class="btn btn-secondary">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar Anuncio</button>
             </div>
 
         </form>

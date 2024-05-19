@@ -11,6 +11,17 @@
 
 @section('contenido-publico')
 
+    @if ($preguntasFrecuntes->isEmpty())
+        <div class="container">
+
+            <h3>PREGUNTAS FRECUENTES</h3>
+            <hr>
+            <div class="alert alert-success">
+                Aún no se han agregado preguntas
+            </div>
+
+        </div>  
+    @else
         <div class="container">
             <h3>PREGUNTAS FRECUENTES</h3>
 
@@ -42,6 +53,8 @@
                 
             </div>
         </div>
+        
+    @endif
 
 @endsection
 
