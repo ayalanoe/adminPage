@@ -10,6 +10,7 @@
 @section('contenido')
 
     <h2>Horario de Atención - {{date('Y')}}</h2>
+    <br>
     <table class="table table-hover">
         <thead>
             <tr>

@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Editar Carrera Tecnica</h2>
+        <hr>
 
         <br>
         <table class="table table-hover">

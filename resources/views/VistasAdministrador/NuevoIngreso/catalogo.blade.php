@@ -11,6 +11,7 @@
     <br><br>
 
     <h2>Catálogo Académico Año - {{date('Y')}}</h2>
+    <br>
 
     <table class="table table-hover">
         <thead>

@@ -5,6 +5,7 @@
 
     <div class="container">
         <h2>Gestión de Tipos de Ingreso</h2>
+        <hr>
 
         @if ($newIngresoTipos->isEmpty())
 

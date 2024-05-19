@@ -7,6 +7,7 @@
 
     <div class="container">
         <h2>Gestión de carreras a distancia de la FMO</h2>
+        <hr>
 
         <table class="table table-hover">
             <thead>

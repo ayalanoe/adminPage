@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Detalles de Aplicar en Linea</h2>
+        <hr>
 
         <form class="formAplicarLinea" action="{{ route('aplicarEnLineaGuardar') }}" method="POST">
             @csrf

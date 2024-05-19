@@ -7,6 +7,7 @@
 
     <div class="container">
         <h2>Carreras de Tecnicas</h2>
+        <hr>
 
         <table class="table table-hover">
             <thead>

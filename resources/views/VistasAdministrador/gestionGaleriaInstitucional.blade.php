@@ -8,53 +8,60 @@
 @endsection
 
 @section('contenido')
-    <h2>Galería Institucional - {{date('Y')}}</h2>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Fecha de Publición</th>
-                <th scope="col">Nombre Foto</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
+    <div class="container">
 
-        <tbody>
+        <h2>Galería Institucional - {{date('Y')}}</h2>
+        <hr>
 
-            @php
-                $numero = 1 
-            @endphp
-
-            @foreach ($galeriaFotos as $fotoGaleria)
-
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <th scope="row">{{$numero}}</th>  
-                    <td>{{$fotoGaleria->fechaPublicacion}}</td>
-                    <td>{{$fotoGaleria->nombreFoto}}</td>
-                    <td class="d-flex">
-
-                        @if ($fotoGaleria->rutaArchivo)
-                            <form action="{{ route('eliminarFotoGaleria', $fotoGaleria->id)}}" class="formEleminarFotoGaleria" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                            </form>
-                                
-                            <a href="{{route('verFotoGaleriaAdmin', $fotoGaleria->id)}}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
-                        @endif
-                        
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha de Publición</th>
+                    <th scope="col">Nombre Foto</th>
+                    <th scope="col">Acciones</th>
                 </tr>
-
+            </thead>
+    
+            <tbody>
+    
                 @php
-                    $numero++
+                    $numero = 1 
                 @endphp
-                
-            @endforeach
+    
+                @foreach ($galeriaFotos as $fotoGaleria)
+    
+                    <tr>
+                        <th scope="row">{{$numero}}</th>  
+                        <td>{{$fotoGaleria->fechaPublicacion}}</td>
+                        <td>{{$fotoGaleria->nombreFoto}}</td>
+                        <td class="d-flex">
+    
+                            @if ($fotoGaleria->rutaArchivo)
+                                <form action="{{ route('eliminarFotoGaleria', $fotoGaleria->id)}}" class="formEleminarFotoGaleria" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                                    
+                                <a href="{{route('verFotoGaleriaAdmin', $fotoGaleria->id)}}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
+                            @endif
+                            
+                        </td>
+                    </tr>
+    
+                    @php
+                        $numero++
+                    @endphp
+                    
+                @endforeach
+    
+            </tbody>
+        </table>
 
-        </tbody>
-    </table>
+    </div>
+    
 
 
     <div class="container">

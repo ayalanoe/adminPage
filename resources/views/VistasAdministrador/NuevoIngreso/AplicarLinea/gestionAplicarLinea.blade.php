@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Información para Aplicar en Línea</h2>
+        <hr>
 
         @if ($datosAplyEnLinea->isEmpty())
             <div class="alert alert-warning">
