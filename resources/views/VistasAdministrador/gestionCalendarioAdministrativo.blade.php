@@ -10,6 +10,7 @@
 @section('contenido')
 <div class="container">
     <h2>Calendario Administrativo Año - {{date('Y')}}</h2>
+    <hr>
     <table class="table table-hover">
         <thead>
             <tr>

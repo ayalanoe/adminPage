@@ -6,7 +6,7 @@
     <div class="container">
 
         <h2>Editar Aplicar en Linea</h2>
-        <br>
+        <hr>
         
         <form action="{{ route('guardarNewDatosAplicar', $editApliEnLinea->id)}}" class="formEditAplicarEnLinea" method="POST">
             @csrf

@@ -8,6 +8,7 @@
     <div class="container">
 
         <h2>Crear tramite académico</h2>
+        <hr>
 
         <form class="formCrearTramite" action="{{ route('crearTramite') }}" method="POST" enctype="multipart/form-data">
             @csrf

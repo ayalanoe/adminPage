@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Detalles de Requisitos y Fechas</h2>
+        <hr>
 
         <form class="formReqFechas" action="{{ route('guardarReqFechaIngreso') }}" method="POST">
             @csrf

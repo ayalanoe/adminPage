@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Ingresar una pregunta frecuente</h2>
+        <hr>
 
         <form class="formIngresarPregunta" action="{{ route('guardarPregunta')}}" method="POST" enctype="multipart/form-data">
             @csrf

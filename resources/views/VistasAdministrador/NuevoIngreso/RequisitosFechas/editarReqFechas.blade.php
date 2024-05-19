@@ -6,7 +6,7 @@
 <div class="container">
 
     <h2>Editar Requisitos y Fechas</h2>
-    <br>
+    <hr>
 
     <form action="{{ route('guardarNewDatosReqFecha', $editarReqFecha->id) }}" class="editFormReqFechas" method="POST">
         @csrf

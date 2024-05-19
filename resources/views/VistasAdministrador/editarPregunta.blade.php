@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Editar pregunta frecuente</h2>
+        <hr>
 
         <form class="formEditarPregunta" action="{{ route('guardarNewDatosPregunta', $datosEditarPregunta->id) }}" method="POST" enctype="multipart/form-data">
             @csrf

@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Editar carrera a distancia de la fmo</h2>
+        <hr>
 
         <table class="table table-hover">
             <thead>

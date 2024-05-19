@@ -8,6 +8,7 @@
 
     <div class="container">
         <h2>Gestión de carreras a distancia de otras facultades</h2>
+        <hr>
 
         <table class="table table-hover">
             <thead>

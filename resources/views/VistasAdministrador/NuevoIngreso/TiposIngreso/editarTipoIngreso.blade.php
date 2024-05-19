@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Editar tipo de ingreso</h2>
+        <hr>
 
         <form action="{{route('nuevosDatosTipoIngreso', $tipoDeIngresoEditar->id)}}" method="POST">
             @csrf

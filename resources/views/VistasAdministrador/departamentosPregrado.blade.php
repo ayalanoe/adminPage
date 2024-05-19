@@ -6,6 +6,7 @@
 @section('contenido')
 <div class="container">
     <h2>Carreras de Pregrado</h2>
+    <hr>
     
     <table class="table table-hover">
         <thead>

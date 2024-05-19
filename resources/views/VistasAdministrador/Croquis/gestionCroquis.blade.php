@@ -9,54 +9,59 @@
 
 @section('contenido')
     
-    <br><br>
+    <div class="container">
 
-    <h2>Croquis FMO</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre del archivo</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @php
-                $numero = 1 
-            @endphp
-
-            @forelse ($croq as $informacion)
+        <h2>Croquis FMO</h2>
+        <hr>
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <th scope="row">{{$numero}}</th>  
-                    <td>{{$informacion->nombreArchivo}}</td>
-                    <td class="d-flex">
-                        @if ($informacion->rutaArchivo)
-                            <form id="formEliminarCroquis" class="fluid" action="{{ route('deleteCroquis', $informacion->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                            </form>
-                                
-                            <a href="{{ route('mostrarCroquis', $informacion->id)}}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
-                        @endif
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del archivo</th>
+                    <th scope="col">Acciones</th>
                 </tr>
+            </thead>
+    
+            <tbody>
                 @php
-                    $numero++
+                    $numero = 1 
                 @endphp
+    
+                @forelse ($croq as $informacion)
+                    <tr>
+                        <th scope="row">{{$numero}}</th>  
+                        <td>{{$informacion->nombreArchivo}}</td>
+                        <td class="d-flex">
+                            @if ($informacion->rutaArchivo)
+                                <form id="formEliminarCroquis" class="fluid" action="{{ route('deleteCroquis', $informacion->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                                    
+                                <a href="{{ route('mostrarCroquis', $informacion->id)}}" class="btn btn-secondary mx-1" target="_blank"><i class="fa-solid fa-eye"></i></a>
+                            @endif
+                        </td>
+                    </tr>
+                    @php
+                        $numero++
+                    @endphp
+    
+                    @empty
+                    <tr>
+                        <th>1</th>
+                        <td>Subir croquis</td>
+                        <td colspan="3">
+                            <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#subirCroquis"><i class="fa-sharp fa-solid fa-upload"></i></a>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
 
-                @empty
-                <tr>
-                    <th>1</th>
-                    <td>Subir croquis</td>
-                    <td colspan="3">
-                        <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#subirCroquis"><i class="fa-sharp fa-solid fa-upload"></i></a>
-                    </td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+    </div>
+
+    
 
 
 

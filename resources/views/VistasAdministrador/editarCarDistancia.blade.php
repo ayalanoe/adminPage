@@ -5,6 +5,7 @@
 
     <div class="container">
         <h2>Editar carrera a distancia</h2>
+        <hr>
 
         <br>
         <table class="table table-hover">

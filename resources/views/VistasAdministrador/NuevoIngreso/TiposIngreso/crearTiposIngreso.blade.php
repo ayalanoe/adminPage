@@ -6,6 +6,7 @@
     <div class="container">
 
         <h2>Crear tipo de ingreso</h2>
+        <hr>
 
         <form class="formCrearTipo" action="{{ route('guardarTipoIngreso') }}" method="POST" enctype="multipart/form-data">
             @csrf

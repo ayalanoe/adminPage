@@ -5,6 +5,7 @@
 @endsection
 @section('contenido')
     <h2>Gestion de usuarios del sistema</h2>
+    <br>
     
     <table class="table table-hover">
             <thead>

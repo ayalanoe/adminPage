@@ -5,7 +5,8 @@
     
     <div class="container">
 
-        <h2>Crear Carrera A Distancia</h2>
+        <h2>Crear carrera a distancia de la FMO </h2>
+        <hr>
 
         <form action="{{ route('guardarCarDisFMO') }}" class="formCrarCarDisFmo" method="POST" enctype="multipart/form-data">
             @csrf

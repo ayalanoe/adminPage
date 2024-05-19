@@ -5,6 +5,7 @@
 
     <div class="container">
         <h2>Requisitos y Fechas</h2>
+        <hr>
 
         @if ($requisitosYfechas->isEmpty())
             <div class="alert alert-warning">
