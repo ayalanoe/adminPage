@@ -127,11 +127,11 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#eduDistancia" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-folder pe-2"></i>
+                            <i class="fa-solid fa-chalkboard-user pe-2"></i>
                             Educación a Distancia
                         </a>
                         <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
+                            <li class="sidebar-item pe-2">
                                 <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Otras Facultades</a>
                             </li>
                             <li class="sidebar-item">
@@ -197,7 +197,7 @@
 
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#nuevoIngreso" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="fa-solid fa-graduation-cap pe-2"></i>
+                            <i class="fa-solid fa-address-card pe-2"></i>
                             Nuevo Ingreso
                         </a>
                         <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">

@@ -8,13 +8,13 @@
         
 
         if ($horaActual >= 5 && $horaActual < 12) {
-            $mensaje = "Buenos días";
+            $mensaje = "¡Buenos días!";
         } elseif ($horaActual >= 12 && $horaActual < 18) {
-            $mensaje = "Buenas tardes";
+            $mensaje = "¡Buenas tardes!";
         } else {
-            $mensaje = "Buenas noches";
+            $mensaje = "¡Buenas noches!";
         }
     ?>
     <h1> {{$mensaje}} </h1>
-    <h1>Bienvenido, @auth {{Auth::user()->name}} @endauth</h1>
+    <h1>¡Bienvenid@ de nuevo, @auth {{Auth::user()->name}}! 👋 @endauth</h1>
 @endsection
