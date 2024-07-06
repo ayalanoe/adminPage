@@ -19,14 +19,14 @@
                 <div class="container text-center">
                     <div class="row">
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FM']) }}'"><i class="fa-solid fa-stethoscope"></i> Facultad de Medicina</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FM']) }}'">Facultad de Medicina</div>
                       </div>
 
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FJJCCSS']) }}'"><i class="fa-solid fa-gavel"></i> Facultad de Jurisprudencia y Ciencias Sociales</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FJJCCSS']) }}'">Facultad de Jurisprudencia y Ciencias Sociales</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FCCAA']) }}'"> <i class="fa-solid fa-building-wheat"></i>Facultad de Ciencias Agronómicas</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FCCAA']) }}'">Facultad de Ciencias Agronómicas</div>
                       </div>
                       <div class="col-4">
                         <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FCCHH']) }}'">Facultad de Ciencias y Humanidades</div>
