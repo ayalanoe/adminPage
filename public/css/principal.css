@@ -486,3 +486,38 @@ footer {
     height: 3.5px;
 }
 
+/*Dispositivos móviles (320px — 480px)*/
+@media (max-width: 480px) {
+    .container__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container__nav {
+        width: 100%;
+    }
+
+    #nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    #nav ul.open {
+        display: flex;
+    }
+
+    #nav li {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    #nav a {
+        display: block;
+        width: 100%;
+    }
+
+    .btn__menu {
+        display: block;
+    }
+}

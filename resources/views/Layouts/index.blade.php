@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
 
+    
     @yield('css-publico')
 
     <!-- CDN de sweetAlert para las alertas de confirmaciones -->

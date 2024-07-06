@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/preguntasPublic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
+
+    <!-- Link de css para darle formato a la tabla que se crea con el CKeditor desde el admin -->
+    <link rel="stylesheet" href="{{ asset('css/formatoTablaCKEditor.css') }}">
 @endsection
 
 @section('contenido-publico')
