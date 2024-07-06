@@ -78,3 +78,9 @@ nav ul li a:hover{
 .container{
     background-color: white;
 }
+
+
+thead th {
+    background-color: red; /* Fondo rojo para los encabezados */
+    color: white; /* Color blanco para el texto */
+}

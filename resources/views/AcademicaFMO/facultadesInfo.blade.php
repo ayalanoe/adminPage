@@ -39,7 +39,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Oficina</th>
                         <th scope="col">Correo Electrónico</th>
                         <th scope="col">Contacto</th>
@@ -52,8 +51,7 @@
                     @endphp
 
                     @foreach ($facultadDirectorio as $contactoFacu)
-                        <tr>
-                            <th scope="row"> {{$numero}} </th>  
+                        <tr> 
                             <td> {{$contactoFacu->oficina}} </td>
                             <td> {{$contactoFacu->correo}} </td>
                             <td> {{$contactoFacu->contacto}} </td>
