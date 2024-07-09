@@ -104,7 +104,7 @@
                     
                     @foreach ($tramitesAcademicos as $item)
                         <li class="sidebar-item">
-                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ strtoupper($item->tramite) }} </a>
+                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ mb_strtoupper($item->tramite) }} </a>
                         </li>
                     @endforeach
 

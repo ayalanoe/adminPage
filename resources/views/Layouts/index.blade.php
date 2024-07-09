@@ -197,5 +197,15 @@
         </script>   
     @endif
 
+    @if (Session::has('resErrorCrquis'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resErrorCrquis') }}",
+                icon: "error"
+            });
+        </script>   
+    @endif
+
 </body>
 </html>

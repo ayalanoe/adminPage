@@ -10,54 +10,65 @@
 
 @section('contenido')
 
-    
-    <h2>INFORME DE CONSTANCIAS EMITIDAS DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h2>
-    
+    <div class="container">
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th scope="col">Tipo de Constancia</th>
-                <th scope="col">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php
-                $numero = 1 
-            @endphp
+        <h2>INFORME DE CONSTANCIAS EMITIDAS DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h2>
+        <hr>
 
-            @foreach ($totalConstancias as $total)
-                <tr>
-                    <td>{{$numero}}</td>
-                    <td>{{ $total->tipoConstancia }}</td>
-                    <td>{{ $total->total }}</td>
-                </tr>
-
-                @php
-                    $numero++
-                @endphp
-            @endforeach
-        </tbody>
-    </table>
-
-    
-    <div class="row g-0 w-100">
-        <div class="col-12 col-md-12 d-flex">       
-        
-            <div class="col-5">
-                <div class="p-3 m-1"> <!--Padding y margin del texto-->
-                <table class="table table-hover">
-                    <thead>
+        @if ($totalConstancias->isEmpty())
+            <div class="alert alert-success">
+                No hay registro
+            </div> 
+        @else
+            
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th scope="col">Total de Constancias Emitidas: </th>
-                        <th scope="col"> {{$totalGeneral}} </th>
+                        <th>#</th>
+                        <th scope="col">Tipo de Constancia</th>
+                        <th scope="col">Total</th>
                     </tr>
-                    </thead>
-                </table>  
+                </thead>
+                <tbody>
+                    @php
+                        $numero = 1 
+                    @endphp
+        
+                    @foreach ($totalConstancias as $total)
+                        <tr>
+                            <td>{{$numero}}</td>
+                            <td>{{ $total->tipoConstancia }}</td>
+                            <td>{{ $total->total }}</td>
+                        </tr>
+        
+                        @php
+                            $numero++
+                        @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        
+            
+            <div class="row g-0 w-100">
+                <div class="col-12 col-md-12 d-flex">       
+                
+                    <div class="col-5">
+                        <div class="p-3 m-1"> <!--Padding y margin del texto-->
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Total de Constancias Emitidas: </th>
+                                <th scope="col"> {{$totalGeneral}} </th>
+                            </tr>
+                            </thead>
+                        </table>  
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+        @endif
+
     </div>
     
 @endsection

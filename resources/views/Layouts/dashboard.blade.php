@@ -499,9 +499,37 @@
                     return;
                 }
 
-                // Si la validación es exitosa, puedes permitir que el formulario se envíe
-                this.submit();
+                Swal.fire({
+                    title: "¿Está seguro de actulizar la contreseña?",
+                    text: "Se cambiará la contraseña de acceso",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, Actualizar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                    this.submit()
+                    }
+                });
 
+            })
+
+            $('#formActulizarDatos').on('submit', function(e){
+                e.preventDefault();
+                Swal.fire({
+                    title: "¿Está seguro?",
+                    text: "Se actulizará el usuario y el correo de acceso",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, Actualizar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                    this.submit()
+                    }
+                });
             })
         </script>
 

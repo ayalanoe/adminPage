@@ -379,6 +379,10 @@ class VistasPublicasController extends Controller
         public function mostrarPdfCroquis()
         {
             $archivoCroquis = Croquis::first();
+
+            if (!$archivoCroquis) {
+                return back()->with('resErrorCrquis', 'No se ha encontrado el croquis');
+            }
             
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::disk('public')->get($archivoCroquis->rutaArchivo);
