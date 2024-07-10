@@ -38,7 +38,7 @@ class VistasPublicasController extends Controller
         public function verDatosDirectorios()
         {
             $contactos = Contacto::all();
-            return view('AcademicaFMO/directorio', ['directorio' => $contactos]);
+            return view('AcademicaFMO/Directorio/directorio', ['directorio' => $contactos]);
         }
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ class VistasPublicasController extends Controller
         public function verAnuncios()
         {
             $anuncios = Anuncios::orderBy('fechaPublicacion', 'desc')->get();
-            return view('AcademicaFMO/anunciosAAFMO', ['anunciosAcademicos' => $anuncios]);
+            return view('AcademicaFMO/AnunciosAcademicos/anunciosAAFMO', ['anunciosAcademicos' => $anuncios]);
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ class VistasPublicasController extends Controller
         public function verPlanesPregrado()
         {
             $planesPregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->orderBy('carrera')->get();
-            return view('AcademicaFMO/planesFMO', ['planesPregrado' => $planesPregrado]);
+            return view('AcademicaFMO/PlanesEstudio/planesFMO', ['planesPregrado' => $planesPregrado]);
         }
 
         public function verArchivoPdfPregrado($id)
@@ -76,7 +76,7 @@ class VistasPublicasController extends Controller
         public function verPlanesPosgrado()
         {
             $planesPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->orderBy('carrera')->get();
-            return view('AcademicaFMO/planesPos', ['planesPosgrado' => $planesPosgrado]);
+            return view('AcademicaFMO/PlanesEstudio/planesPos', ['planesPosgrado' => $planesPosgrado]);
         }
 
         public function verArchivoPdfPosgrado($id)
@@ -99,7 +99,19 @@ class VistasPublicasController extends Controller
         public function verDiplomados()
         {
             $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->orderBy('carrera')->get();
-            return view('AcademicaFMO/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
+            return view('AcademicaFMO/PlanesEstudio/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
+        }
+
+        public function infoDiplomados()
+        {
+            //$infoDiplomado = Carrera::find($id);
+
+            return view('AcademicaFMO/PlanesEstudio/infoDiplomados', 
+           /* [
+               // 'tipoDeIngreso' => $infoDiplomado
+            ]
+               
+            */ );
         }
 
         public function verArchivoPdfDiplomado($id)
@@ -121,7 +133,7 @@ class VistasPublicasController extends Controller
         public function verPlanesTecnicos()
         {
             $planesTecnicos = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->orderBy('carrera')->get();
-            return view('AcademicaFMO/planesTecnicos', ['carrerasTecnicas' => $planesTecnicos]);
+            return view('AcademicaFMO/PlanesEstudio/planesTecnicos', ['carrerasTecnicas' => $planesTecnicos]);
         }
 
         public function verArchivoPdfCarTecnica($id)
@@ -143,7 +155,7 @@ class VistasPublicasController extends Controller
         public function verPlanesComplementarios()
         {
             $planComplementario = Carrera::where('departamento', 'PLCOM')->orderBy('carrera')->get();
-            return view('AcademicaFMO/planesComplementarios', ['planesComplementarios' => $planComplementario]);
+            return view('AcademicaFMO/PlanesEstudio/planesComplementarios', ['planesComplementarios' => $planComplementario]);
         }
 
         public function verArchivoPdfPlnCom($id)
@@ -206,13 +218,13 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ---------------------------------------------------------------------------------------------------------
         public function verFacultadesNacional()
         {
-            return view('AcademicaFMO/facultades');
+            return view('AcademicaFMO/Facultades/facultades');
         }
 
         public function verDirectorioFacultades($facultadContactos)
         {
             $facultades = Facultad::where('facultad', $facultadContactos)->get();
-            return view('AcademicaFMO/facultadesInfo', [
+            return view('AcademicaFMO/Facultades/facultadesInfo', [
             
                 'facultadDirectorio' => $facultades,
                 'tituloFacultad' => $facultadContactos
@@ -290,7 +302,7 @@ class VistasPublicasController extends Controller
             if (!$tramite) {
                 abort(404);
             }
-            return view('AcademicaFMO/tramites', ['tramiteAcademico' => $tramite]);
+            return view('AcademicaFMO/Tramites/tramites', ['tramiteAcademico' => $tramite]);
         }
 
         public function descargarFormatoTramite($id)
@@ -310,7 +322,7 @@ class VistasPublicasController extends Controller
         public function verPreguntas()
         {
             $preguntasFre = PreguntaFrecuente::all();
-            return view('AcademicaFMO/preguntasFrecuentes', ['preguntasFrecuntes' => $preguntasFre]);
+            return view('AcademicaFMO/PreguntasFrecuentes/preguntasFrecuentes', ['preguntasFrecuntes' => $preguntasFre]);
         }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

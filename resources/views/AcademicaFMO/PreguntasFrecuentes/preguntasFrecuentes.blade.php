@@ -13,12 +13,11 @@
 @endsection
 
 @section('contenido-publico')
-
+<div class="container_tablee">
+    <h3 id="h">PREGUNTAS FRECUENTES</h3>
+</div>
     @if ($preguntasFrecuntes->isEmpty())
         <div class="container">
-
-            <h3>PREGUNTAS FRECUENTES</h3>
-            <hr>
             <div class="alert alert-success">
                 Aún no se han agregado preguntas
             </div>
@@ -26,8 +25,6 @@
         </div>  
     @else
         <div class="container">
-            <h3>PREGUNTAS FRECUENTES</h3>
-
             <div class="accordion accordion-flush" id="accordionFlushExample">
 
                 @php

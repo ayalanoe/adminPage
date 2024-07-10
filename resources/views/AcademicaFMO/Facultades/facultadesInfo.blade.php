@@ -32,7 +32,8 @@
         @endphp
 
 <div class="container_tablee">
-    <h3 id="h">DIRECTORIO ADMINISTRATIVO: {{ mb_strtoupper($nombreFacultad) }}</h3>
+    <h3 id="h">DIRECTORIO ADMINISTRATIVO:</h3>
+    <h3 id="h"><hr><br>{{ mb_strtoupper($nombreFacultad) }}</h3>
 </div>
     <div class="container_table">
         <!--TABLA DE ELEMENTOS-->

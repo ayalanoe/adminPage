@@ -85,7 +85,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/Planes-de-estudio/Carreras-Posgrado-{id}/plan-de-estudio', [VistasPublicasController::class, 'verArchivoPdfPosgrado'])->name('mostrarPDFPosgrado');
 
         Route::get('/Planes-de-estudio/Diplomados', [VistasPublicasController::class, 'verDiplomados'])->name('diplomados');
-        Route::get('/Planes-de-estudio/Diplomados-{id}/info-diplomado', [VistasPublicasController::class, 'verArchivoPdfDiplomado'])->name('mostrarPDFDiplo');
+        //Route::get('/Planes-de-estudio/Diplomados-{id}/info-diplomado', [VistasPublicasController::class, 'verArchivoPdfDiplomado'])->name('mostrarPDFDiplo');
+        Route::get('Planes-de-estudio/Diplomados/info-diplomado', [VistasPublicasController::class, 'infoDiplomados'])->name('verInfoDiplomado');
 
         Route::get('/Planes-de-estudio/Carreras-Tecnicas', [VistasPublicasController::class, 'verPlanesTecnicos'])->name('tecnicos');
         Route::get('/Planes-de-estudio/Carreras-Tecnicas-{id}/plan-carrra-tecnica', [VistasPublicasController::class, 'verArchivoPdfCarTecnica'])->name('mostrarPDFCarTec');
