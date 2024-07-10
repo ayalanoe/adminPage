@@ -11,9 +11,7 @@
 
 @section('contenido-publico')
 
-    <div class="container_table">
-        <!--TABLA DE ELEMENTOS-->
-
+    
         @php
         $facultades = [
             "FM" => "Facultad de Medicina",
@@ -33,9 +31,12 @@
         $nombreFacultad = $facultades[$tituloFacultad] ?? "No encontrado";
         @endphp
 
-        <div class="container">
-            <h3>Directorio administrativo: {{$nombreFacultad}}</h3>
-                
+<div class="container_tablee">
+    <h3 id="h">DIRECTORIO ADMINISTRATIVO: {{ mb_strtoupper($nombreFacultad) }}</h3>
+</div>
+    <div class="container_table">
+        <!--TABLA DE ELEMENTOS-->
+        <div class="container">    
             <table class="table table-hover">
                 <thead>
                     <tr>

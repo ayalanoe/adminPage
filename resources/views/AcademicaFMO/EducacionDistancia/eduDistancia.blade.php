@@ -11,11 +11,9 @@
 
 @section('contenido-publico')
 
-    <div class="container">
-        <h3>INFORMACIÓN SOBRE CARRERAS A DISTANCIA</h3>
-        <i class="fa-solid fa-chevron-down fa-3x"></i>
+    <div class="container_tablee">
+        <h3 id="h">INFORMACIÓN SOBRE CARRERAS A DISTANCIA</h3>
     </div>
-
 
     <div class="container">
         <!-- contenedor de tarjetas de plataformas-->

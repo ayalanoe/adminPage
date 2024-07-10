@@ -12,9 +12,8 @@
 
 @section('contenido-publico')
 
-    <div class="container">
-        <h3>CARRERAS DE EDUCACIÓN A DISTANCIA EN FMO</h3>
-        <i class="fa-solid fa-chevron-down fa-3x"></i>
+    <div class="container_tablee">
+        <h3 id="h">CARRERAS DE EDUCACIÓN A DISTANCIA EN FMO</h3>
     </div>
 
 

@@ -79,8 +79,11 @@ nav ul li a:hover{
     background-color: white;
 }
 
+.table thead th {
+    background-color: #690605;
+    color: white; 
+}
 
-thead th {
-    background-color: red; /* Fondo rojo para los encabezados */
-    color: white; /* Color blanco para el texto */
+.table-hover tbody tr:hover {
+    background-color: red ;
 }

@@ -9,16 +9,19 @@
 
     !-- Link de css para darle formato a la tabla que se crea con el CKeditor desde el admin -->
     <link rel="stylesheet" href="{{ asset('css/formatoTablaCKEditor.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 @endsection
 
 @section('contenido-publico')
+
+<div class="container_tablee">
+    <h3 id="h">REQUISITOS Y FECHAS PARA APLICAR</h3>
+</div>
 <div class="container_table">
 
     @if ($requisitosFecha->isEmpty())
         <div class="container">
-
-            <h3>REQUISITOS Y FECHAS PARA APLICAR</h3>
-            <hr>
+            <br>
             <div class="alert alert-success">
                 No hay registro
             </div>
