@@ -1,6 +1,36 @@
-h3{
+/*h3{
     display: flex;
     justify-content: center;
     align-items: center;    
     color: #690605;
+}*/
+
+.container_tablee{
+    height: 17vh;
+    margin: auto;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+    width: 100%;
+}
+
+#h {
+    position: absolute;
+    top: 50%; /* Posiciona el texto 50% desde la parte superior */
+    left: 50%; /* Posiciona el texto 50% desde la izquierda */
+    transform: translate(-50%, -50%);
+    color: #373737;
+  }
+
+  h3{
+    position: absolute;
+
+    left: 50%; /* Posiciona el texto 50% desde la izquierda */
+    transform: translate(-50%, 30%);
+    font-size: 40px;
+    font-weight: 900;
 }

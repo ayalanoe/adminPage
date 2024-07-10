@@ -145,35 +145,3 @@ nav ul li a:hover{
 }
 
 
-
-.container_tablee {
-    height: 20vh;
-    margin: auto;
-    padding: 0px;
-    width: 86%;
-    position: relative;
-    overflow: hidden;
-    background-color: #690605;
-  }
-  
-#h {
-    position: absolute;
-  top: 50%; /* Posiciona el texto 50% desde la parte superior */
-  left: 50%; /* Posiciona el texto 50% desde la izquierda */
-  transform: translate(-50%, -50%);
-    color: rgb(255, 255, 255); /* Cambia "blue" por el color que desees */
-  }
-  i.typesIcon {
-    font-size: 100px; /* Tamaño del icono */
-    color: rgb(255, 255, 255); /* Color del icono */
-    margin-left: 10px; /* Espacio entre el icono y el texto */
-    position: absolute;
-    top: 40%; /* Posiciona el texto 50% desde la parte superior */
-    left:58%; /* Posiciona el texto 50% desde la izquierda */
-  }
-  h3{
-    max-width: 1000px;
-    font-size: 40px;
-    font-weight: 900;
-    color: #373737;
-}

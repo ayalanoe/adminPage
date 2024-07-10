@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/planPre.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 @endsection
 
 @section('contenido-publico')
+<div class="container_tablee">
+    <h3 id="h">PLANES COMPLEMENTARIOS</h3>
+</div>
 <div class="container_table">
 
     <div class="row">

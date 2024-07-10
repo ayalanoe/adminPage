@@ -12,15 +12,9 @@
 @section('contenido-publico')
 <div class="container_tablee">
     <h3 id="h">DIRECTORIO ADMINISTRATIVO</h3>
-
-
-    <div class="red-overlay"></div>
 </div>
     <div class="container_table">
-
             <div class="container">
-                
-                
                 <table class="table table-hover">
                     <thead>
                         <tr>

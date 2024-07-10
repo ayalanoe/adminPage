@@ -5,34 +5,25 @@
 @section('css-publico')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tramitesPublic.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 @endsection
 
 @section('contenido-publico')
 <div class="container_tablee">
-    <h3 id="h">TIPOS DE INGRESO</h3><i class="fa-solid fa-users-viewfinder typesIcon"></i>
+    <h3 id="h">TIPOS DE INGRESO</h3>
 </div>
 <div class="container_table">
 
     @if ($tiposDeIngreso->isEmpty())
         <div class="container">
-
-            <h3>TIPOS DE INGRESO</h3>
-           
             <div class="alert alert-success">
                 No hay registro
             </div>
 
         </div>
     @else
-
-        <div class="container">
-
-            <h3> TIPOS DE INGRESO </h3>
-            
-
+        <div class="container">          
             <div class="row">
-
                 @foreach ($tiposDeIngreso as $ingreso)
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <div class="card">

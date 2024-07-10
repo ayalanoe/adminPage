@@ -10,7 +10,9 @@
 @endsection
 
 @section('contenido-publico')
-<h3>CARRERAS DE POSGRADO</h3>
+<div class="container_tablee">
+    <h3 id="h">CARRERAS DE POSGRADO</h3>
+</div>
 <div class="container_table">
 
     <div class="row">

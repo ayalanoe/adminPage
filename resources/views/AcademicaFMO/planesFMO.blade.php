@@ -10,11 +10,12 @@
 @endsection
 
 @section('contenido-publico')
-<h3>CARRERAS DE PREGRADO</h3>
+<div class="container_tablee">
+    <h3 id="h">CARRERAS DE PREGRADO</h3>
+</div>
+
 <div class="container_table">
-
     <div class="row">
-
         <div class="col-12 col-md-4 d-flex">
             <div class="accordion-item">
                 <div class="accordion-css"> 
