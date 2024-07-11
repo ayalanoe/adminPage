@@ -711,12 +711,19 @@ class VistasAdminController extends Controller
         {
             $pdfDiplomado = Carrera::find($id);
 
-            // Se accede al storage de laravel para mostrar el archivo
-            $contenidoPdf = Storage::disk('public')->get($pdfDiplomado->rutaArchivo);
+            $extension = pathinfo($pdfDiplomado->rutaArchivo, PATHINFO_EXTENSION);
 
-            // Devolver la respuesta con el contenido del archivo
-            return response($contenidoPdf, 200)->header('Content-Type', 'application/pdf');
+            // Se accede al storage de Laravel para obtener el contenido del archivo
+            $contenidoArchivo = Storage::disk('public')->get($pdfDiplomado->rutaArchivo);
 
+            if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif'])) {
+                
+                return response($contenidoArchivo, 200)->header('Content-Type', 'image/' . $extension);
+    
+            }
+            else {
+                return response()->json(['error' => 'El archivo no tiene un formato admitido'], 400);
+            }
         }
         
         

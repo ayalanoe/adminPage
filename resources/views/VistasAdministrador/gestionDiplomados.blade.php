@@ -66,7 +66,7 @@
             <div class="modal-content">
     
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de carrera de posgrado</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Diplomado</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -117,7 +117,7 @@
                             <label for="validationCustomCorreo" class="form-label">Cargar pdf informativo</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivoDiplomado" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivoDiplomado" accept=".jpg, .png, .jpeg" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>

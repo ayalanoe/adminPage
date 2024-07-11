@@ -11,12 +11,12 @@
 
 @section('contenido-publico')
     <div class="container_tablee">
-        <h3 id="h">ACA EL TITULO</h3>
+        <h3 id="h">{{$diplomadoInfo->carrera}}</h3>
             <hr>
     </div>
     <div class="container_table">
         <div class="container">         
-            <img src=" " class="d-block w-100" alt="..."> 
+            <img src="{{asset('storage/'.$diplomadoInfo->rutaArchivo)}}" class="d-block w-100" alt="..."> 
         </div>
     </div>
 @endsection 

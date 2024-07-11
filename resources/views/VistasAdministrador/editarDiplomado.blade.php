@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">PDF Informativo</th>
+                    <th scope="col">Imagen Informativa</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>

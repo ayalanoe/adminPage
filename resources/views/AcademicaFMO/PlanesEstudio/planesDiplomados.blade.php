@@ -18,16 +18,17 @@
     
         <div class="container">          
             <div class="row">
-     
+
+                @foreach ($diplomadosPlanes as $diplomado)
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">TITULO DEL DIPLOMADO</h5>
-                                <a href="{{ route('verInfoDiplomado') }}" class="btn btn-primary">Más detalles</a>
+                                <h5 class="card-title">{{$diplomado->carrera}}</h5>
+                                <a href="{{ route('verInfoDiplomado', $diplomado->id) }}" class="btn btn-primary">Más detalles</a>
                             </div>
                         </div>
                     </div>
-
+                @endforeach
                 
             </div>
 

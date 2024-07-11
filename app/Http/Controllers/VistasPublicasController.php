@@ -99,35 +99,18 @@ class VistasPublicasController extends Controller
         public function verDiplomados()
         {
             $planesDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->orderBy('carrera')->get();
-            return view('AcademicaFMO/PlanesEstudio/planesDiplomados', ['diplomadosPlanes' => $planesDiplomados]);
+            return view('AcademicaFMO/PlanesEstudio/planesDiplomados', [
+                'diplomadosPlanes' => $planesDiplomados
+            ]);
         }
 
-        public function infoDiplomados()
+        public function infoDiplomados($idDiplomado)
         {
-            //$infoDiplomado = Carrera::find($id);
+            $diplomadoImpartido = Carrera::find($idDiplomado);
 
-            return view('AcademicaFMO/PlanesEstudio/infoDiplomados', 
-           /* [
-               // 'tipoDeIngreso' => $infoDiplomado
-            ]
-               
-            */ );
-        }
-
-        public function verArchivoPdfDiplomado($id)
-        {
-            $archivoDiplomado = Carrera::find($id);
-
-            if (!$archivoDiplomado) {
-
-                abort(404);
-            }
-            
-            // Se accede al storage de laravel para mostrar el archivo
-            $contenidoArchivo = Storage::disk('public')->get($archivoDiplomado->rutaArchivo);
-
-            // Devolver la respuesta con el contenido del archivo
-            return response($contenidoArchivo, 200)->header('Content-Type', 'application/pdf');
+            return view('AcademicaFMO/PlanesEstudio/infoDiplomados', [
+                'diplomadoInfo' => $diplomadoImpartido
+            ]);
         }
 
         public function verPlanesTecnicos()
