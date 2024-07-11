@@ -18,7 +18,7 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-                <input name="titReqFechas" type="text" class="form-control" id="ReqFechas" placeholder="Escriba: Requisitos y Fechas">
+                <input name="titReqFechas" type="text" class="form-control" id="ReqFechas" value="REQUISITOS Y FECHAS PARA APLICAR" readonly>
             </div>
 
 

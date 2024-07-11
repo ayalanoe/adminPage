@@ -18,7 +18,7 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Titulo:</label>
-                <input name="titAplicar" type="text" class="form-control" id="ApplyLine" placeholder="Escriba: Aplicar en Línea">
+                <input name="titAplicar" type="text" class="form-control" id="ApplyLine" value="¿CÓMO APLICAR EN LÍNEA?" readonly>
             </div>
 
             <div class="mb-3">

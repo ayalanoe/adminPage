@@ -10,29 +10,29 @@
 @endsection
 
 @section('contenido-publico')
-<div class="container_tablee">
-    <h3 id="h">¿CÓMO APLICAR EN LÍNEA?</h3>
-  </div>
-<div class="container_table">
 
-    @if ($datosApliLinea->isEmpty())
-        <div class="container">
-            <div class="alert alert-success">
-                No hay registro
-            </div>
-        </div>
-    @else
+    <div class="container_tablee">
+        <h3 id="h">¿CÓMO APLICAR EN LÍNEA?</h3>
+    </div>
 
-        @foreach($datosApliLinea as $aplicar)
+    <div class="container_table">
+
+        @if ($datosApliLinea->isEmpty())
             <div class="container">
-                <h3>{{$aplicar->titulo}}</h3>
-                <hr>
-                <p>{!! $aplicar->contenido !!}</p>
+                <div class="alert alert-success">
+                    No hay registro
+                </div>
             </div>
-        @endforeach
-        
-    @endif
+        @else
 
-</div>
+            @foreach($datosApliLinea as $aplicar)
+                <div class="container">
+                    <p>{!! $aplicar->contenido !!}</p>
+                </div>
+            @endforeach
+            
+        @endif
+
+    </div>
 
 @endsection 
