@@ -11,11 +11,15 @@
 
 @section('contenido-publico')
     <div class="container_tablee">
-        <h3 id="h">{{$diplomadoInfo->carrera}}</h3>
+        <h3 id="h">{{ mb_strtoupper ($diplomadoInfo->carrera) }}</h3>
             <hr>
     </div>
+    <p class="card-text">¡La Facultad Multidisciplinaria Oriental te invita a ser parte del {{ mb_strtoupper ($diplomadoInfo->carrera) }}!</p>
+    <p class="card-text">Para obtener más información y asegurar tu lugar, contáctanos a través de nuestro canal oficial:
+        <a href="https://wa.link/jimdzt" target="_blank">WhatsApp</a>
+        </p>
     <div class="container_table">
-        <div class="container">         
+        <div class="container">      
             <img src="{{asset('storage/'.$diplomadoInfo->rutaArchivo)}}" class="d-block w-100" alt="..."> 
         </div>
     </div>

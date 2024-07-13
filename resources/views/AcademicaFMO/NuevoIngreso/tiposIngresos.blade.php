@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tiposIngresos.css') }}">
 @endsection
 
 @section('contenido-publico')
@@ -26,11 +27,15 @@
             <div class="row">
                 @foreach ($tiposDeIngreso as $ingreso)
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card">
+                        <div class="card custom-card">
                             <div class="card-body">
-                                <h5 class="card-title">{{$ingreso->titulo}}</h5>
+                                <div class="title-container">
+                                    <h5 class="card-title">{{$ingreso->titulo}}</h5>
+                                </div>
+                                <hr>
+                                
                                 <p class="card-text">{!! $ingreso->descripcion !!}</p>
-                                <a href="{{route('verInfoTiposIngreso', $ingreso->id)}}" class="btn btn-primary">Ir a la información</a>
+                                <a href="{{route('verInfoTiposIngreso', $ingreso->id)}}" class="btn btn-ver">Ir a la información</a>
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,13 @@
     background-size: cover;
     background-position: bottom;
     overflow: hidden;
-    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+
+#h.sede{
+    color: #373737;
 }
 
 #h {
@@ -23,7 +29,7 @@
     top: 50%; /* Posiciona el texto 50% desde la parte superior */
     left: 50%; /* Posiciona el texto 50% desde la izquierda */
     transform: translate(-50%, -50%);
-    color: #373737;
+    color: #690605;
   }
 
   h3{

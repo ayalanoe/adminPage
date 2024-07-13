@@ -45,13 +45,13 @@
                         <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FCIMAT']) }}'">Facultad de Ciencias Naturales y Matemática</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMOCC']) }}'"><i class="fa-solid fa-landmark"></i> Facultad Multidisciplinaria de Occidente</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMOCC']) }}'">Facultad Multidisciplinaria de Occidente</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMO']) }}'">Facultad Multidisciplinaria Oriente</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMO']) }}'">Facultad Multidisciplinaria Oriental</div>
                       </div>
                       <div class="col-4">
-                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMP']) }}'"><i class="fa-solid fa-landmark"></i> Facultad Multidisciplinaria Paracentral</div>
+                        <div class="p-3 mb-3 faq-section-titlee btncursor" onclick="window.location='{{ route('facultadDirectorio', ['facultadContactos' => 'FMP']) }}'">Facultad Multidisciplinaria Paracentral</div>
                       </div>
                     </div>
                   </div>

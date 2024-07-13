@@ -14,27 +14,19 @@
 
 @section('contenido-publico')
 
-<div class="container_tablee">
-    <h3 id="h"> {{$tramiteAcademico->tramite}}</h3>
-  </div>
-<div class="container_table">
-    <!--TABLA DE ELEMENTOS-->
-
-        <div class="container">
-
-            <div>
-                {!! $tramiteAcademico->contenido !!}
+    <div class="container_tablee">
+        <h3 id="h"> {{ mb_strtoupper ($tramiteAcademico->tramite) }}</h3>
+    </div>
+    <div class="container_table">
+            <div class="container">
+                <div>
+                    {!! $tramiteAcademico->contenido !!}
+                </div>
+                @if ($tramiteAcademico->rutaFormato)
+                    <p>Descargar el formato del tramite</p>
+                    <a href="{{ route('publicDescargarFormato', $tramiteAcademico->id) }}" class="btn btn-success mx-1"><i class="fa-solid fa-file-arrow-down"></i></a>
+                @endif
+                
             </div>
-            
-
-            @if ($tramiteAcademico->rutaFormato)
-                <p>Descargar el formato del tramite</p>
-                <a href="{{ route('publicDescargarFormato', $tramiteAcademico->id) }}" class="btn btn-success mx-1"><i class="fa-solid fa-file-arrow-down"></i></a>
-            @endif
-            
-        </div>
-</div>
-
-
-
+    </div>
 @endsection 

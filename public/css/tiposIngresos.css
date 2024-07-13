@@ -1,28 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-.container_tablee{
-    height: 20vh;
-    margin: auto;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    background-size: cover;
-    background-position: bottom;
-    overflow: hidden;
-    background-color: #690605;
+.card{
+  background-color: white;
 }
 
-#h {
-    position: absolute;
-  top: 50%; /* Posiciona el texto 50% desde la parte superior */
-  left: 50%; /* Posiciona el texto 50% desde la izquierda */
-  transform: translate(-50%, -50%);
-    color: rgb(255, 255, 255); /* Cambia "blue" por el color que desees */
-  }
+.custom-card {
+  border: 1px solid #690605; /* Cambia el color del contorno a rojo */
+  border-radius: 0.55rem; /* Mantén el radio de borde predeterminado de Bootstrap */
+  margin-bottom: 20px;
+}
 
-  h3{
-    max-width: 1000px;
-    font-size: 40px;
-    font-weight: 900;
+.btn-ver{
+  background-color: #690605;
+  color: #ffffff;
+}
+
+.btn-ver:hover{
+  background-color: #373737;
+  color: #ffffff;
+}
+
+p.card-text{
+  color: #690605;
+}
+
+hr{
+  margin-top: 10px;
+  color: #690605;
+  border: 0.1px solid #690605; 
+}
+
+.container {
+  padding: 20px 20px 20px 0px;
+}
+
+.title-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido */
+  padding-left: 0; /* Elimina cualquier padding predeterminado */
+}
+
+.title-container::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 30px;
+  background-color: #690605;
+  margin-right: 10px; /* Espacio entre la barra y el título */
+}
+
+.title-container h5 {
+  color: #690605;
+  margin: 0; /* Elimina cualquier margen predeterminado */
 }
