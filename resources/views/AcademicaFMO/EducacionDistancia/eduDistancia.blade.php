@@ -14,7 +14,7 @@
     <div class="container_tablee">
         <h3 id="h">INFORMACIÓN SOBRE CARRERAS A DISTANCIA</h3>
     </div>
-
+<div class="container_table">
     <div class="container">
         <!-- contenedor de tarjetas de plataformas-->
         <!-- Como lo intentabamos <img src="#asset($carDistancia->rutaBanner)}}" class="card-img-top" alt="..."> -->
@@ -24,13 +24,13 @@
 
             <div class="col-12 col-md-6 d-flex">
                 
-                <div class="card flex-fill border-0 illustration">
+                <div class="card flex-fill custom-card ">
                 
                     <img src="{{ asset('storage/'.$carDistancia->rutaBanner) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                     <h5 class="card-title"> {{$carDistancia->carrera}} </h5>
                     <p class="card-text">Se les invita a descargar:</p>
-                    <a href="{{ route('publicVerPdfCarDis', $carDistancia->id)}}" target="_blank" class="btn btn-primary">Leer más</a>
+                    <a href="{{ route('publicVerPdfCarDis', $carDistancia->id)}}" target="_blank" class="btn btn-ver">Leer más</a>
                     </div>
                 </div>
             
@@ -40,4 +40,5 @@
             
         </div>
     </div>
+</div>
 @endsection

@@ -1,0 +1,14 @@
+
+p {
+    margin: 0 100px 0 100px; /* Espacio entre párrafos y márgenes izquierdo/derecho */
+    font-weight: bold; 
+}
+
+.Wapp-Pos a {
+    color: #690605; /* Color del enlace */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.Wapp-Pos a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el ratón */
+}

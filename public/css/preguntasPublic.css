@@ -6,7 +6,6 @@
 
 .accordion-css {
     background-color: #690605; 
-   
     color: white; 
     padding: 10px; 
     margin-bottom: 10px; 
@@ -37,14 +36,3 @@
     float: right; 
 }
 
-
-.faq-section-titleeee {
-    background-color: #690605; 
-    width: 200px; 
-    height: 90px; 
-    color: white; 
-    padding: 10px; 
-    margin-bottom: 10px;
-    text-decoration: none;
-}
-/* Estilo para el botón del acordeón */

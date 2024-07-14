@@ -23,13 +23,13 @@
 
             @foreach ($anunciosAcademicos as $anuncio)
                 <div class="col-12 col-md-4 d-flex">
-                    <div class="card flex-fill border-0 illustration" style="width: 18rem;">
+                    <div class="card flex-fill custom-card" style="width: 18rem;">
                         <img src="{{ asset('images/fmo.png') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"> {{$anuncio->titulo}} </h5>
                             <p>Publicacion: {{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</p>
                             <p class="card-text">{!! Str::limit($anuncio->cuerpo, $limit = 40, $end = ' ...') !!} </p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnuncios{{$anuncio->id}}">
+                            <button type="button" class="btn btn-ver" data-bs-toggle="modal" data-bs-target="#modalAnuncios{{$anuncio->id}}">
                                 Leer más
                             </button>
     

@@ -29,7 +29,7 @@
                         <hr>
                             @foreach ($carrerasOferta  as $carreras)
                                 @if ($carreras->tipoCarrera == "Carrera_Pregrado")
-                                <p class="card-text">{{$carreras->carrera}}</p>
+                                <p class="item-plan" class="item-plan">{{$carreras->carrera}}</p>
                                 @endif
                             @endforeach
                        
@@ -49,7 +49,7 @@
                         <hr>
                             @foreach ($carrerasOferta  as $carreras)
                                 @if ($carreras->tipoCarrera == "Carrera_Posgrado")
-                                <p class="card-text">{{$carreras->carrera}}</p>
+                                <p class="item-plan">{{$carreras->carrera}}</p>
                                 @endif
                             @endforeach
                         
@@ -69,7 +69,7 @@
                         <hr>
                             @foreach ($carrerasOferta  as $carreras)
                                 @if ($carreras->tipoCarrera == "Carrera_Tecnica")
-                                <p class="card-text">{{$carreras->carrera}}</p>
+                                <p class="item-plan">{{$carreras->carrera}}</p>
                                 @endif
                             @endforeach
                         
@@ -89,7 +89,7 @@
                         <hr>
                             @foreach ($carrerasOferta  as $carreras)
                                 @if ($carreras->tipoCarrera == "Diplomado")
-                                <p class="card-text">{{$carreras->carrera}}</p>
+                                <p class="item-plan">{{$carreras->carrera}}</p>
                                 @endif
                             @endforeach
                         

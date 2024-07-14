@@ -6,17 +6,18 @@ h3{
 }
 
 .card{
-    box-shadow: 0 0 .875rem 0 rgba(5, 46, 60);
+
     margin-bottom: 24px;
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #690605;
+
 }
 
-.illustration{
-    background-color: white;
-   
+.custom-card {
+    border: 1px solid #690605; /* Cambia el color del contorno a rojo */
+    border-radius: 0.55rem; /* Mantén el radio de borde predeterminado de Bootstrap */
+    margin-bottom: 20px;
 }
 
 .illustration-img{
@@ -24,14 +25,15 @@ h3{
     width: 100%;
 }
 
-.btn{
+.btn-ver{
     background-color: #690605;
-    border-style: none;
-}
-
-.btn:hover{
-    background-color: #590503;
-}
+    color: #ffffff;
+  }
+  
+  .btn-ver:hover{
+    background-color: #373737;
+    color: #ffffff;
+  }
 
 .card-img-top{
     height: 150px;

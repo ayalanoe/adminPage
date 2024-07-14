@@ -14,7 +14,8 @@
     <h3 id="h">CARRERAS DE PREGRADO</h3>
 </div>
 
-<div class="container_table">
+<div class="container_profesional">
+<div id="accordionFlushExample">
     <div class="row">
         <div class="col-12 col-md-4 d-flex">
             <div class="accordion-item">
@@ -23,11 +24,12 @@
                         Ingeniería y Arquitectura
                     </button>
                 </div>
+                 
                 <div id="flush_INGA" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                                 @if ($carreraPregrado->departamento == "INGA")
-                                    <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                    <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                         {{$carreraPregrado->carrera}}
                                     </a> 
                                 @endif
@@ -48,7 +50,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "MED")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -59,18 +61,17 @@
         </div>
 
         <div class="col-12 col-md-4 d-flex">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item" id="flush_CCHH_header">
-                    <button class="accordion-button collapsed btnAccordion" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCHH" aria-expanded="false" aria-controls="flush_CCHH">
+            <div class="accordion-item">
+                <div class="accordion-css">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush_CCHH" aria-expanded="false" aria-controls="flush_CCHH">
                         Ciencias y Humanidades
                     </button>
-                    
-                    <div id="flush_CCHH" class="accordion-collapse collapse" aria-labelledby="flush_CCHH_header" data-bs-parent="#accordionFlushExample">
+                </div> 
+                    <div id="flush_CCHH" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-
                             @foreach ($planesPregrado as $carreraPregrado)
                                 @if ($carreraPregrado->departamento == "CCHH")
-                                    <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                    <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                         {{$carreraPregrado->carrera}}
                                     </a> 
                                 @endif
@@ -79,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
 
         <div class="col-12 col-md-4 d-flex">
@@ -93,7 +93,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "JCCSS")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -114,7 +114,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCEE")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -135,7 +135,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCNN")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -156,7 +156,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "CCAA")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -177,7 +177,7 @@
                     <div class="accordion-body">
                         @foreach ($planesPregrado as $carreraPregrado)
                             @if ($carreraPregrado->departamento == "QQFF")
-                                <a target="_blank" class="nav-link" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
+                                <a target="_blank" class="item-plan" href="{{ route('publicArchivoPregrado', $carreraPregrado->id)}}">
                                     {{$carreraPregrado->carrera}}
                                 </a> 
                             @endif
@@ -187,6 +187,7 @@
             </div>
         </div>
     </div>
+</div>
 
 </div>
         
