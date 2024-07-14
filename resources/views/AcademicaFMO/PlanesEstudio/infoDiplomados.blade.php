@@ -15,11 +15,9 @@
         <h3 id="h">{{ mb_strtoupper ($diplomadoInfo->carrera) }}</h3>
             <hr>
     </div>
-    
-        <p>¡La Facultad Multidisciplinaria Oriental te invita a ser parte del {{ mb_strtoupper ($diplomadoInfo->carrera) }}!
-            Para obtener más información y asegurar tu lugar, contáctanos a través de nuestro canal oficial:
-            <a href="https://wa.link/jimdzt" target="_blank" class="Wapp-Pos">WhatsApp</a></p>
-    <p>
+    <p class="card-text">¡La Facultad Multidisciplinaria Oriental te invita a ser parte del diplomado {{ mb_strtoupper ($diplomadoInfo->carrera) }}!</p>
+    <p class="card-text">Para obtener más información y asegurar tu lugar, contáctanos a través de nuestro canal oficial:
+        <a href="https://wa.link/jimdzt" target="_blank">WhatsApp</a>
         </p>
     
     

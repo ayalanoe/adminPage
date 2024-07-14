@@ -25,100 +25,83 @@
 </head>
 <body>
     
-    <header id="header">
-        <div class="container__header">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="header">
+        <div class="container-fluid">
+
             <div class="logo">
                 <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
             </div>
-            <div class="container__nav">
-                <nav id="nav">
-                    <ul>
-                        <li><a href="/" class="select">INICIO</a></li>
 
-                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO INGRESO</a>
-                            <ul class="dropdown-menu ingreso">
-                                <li class="nav-item dropend">
-                                    <a class="nav-link" href="{{ route('tiposIngresos') }}">
-                                        TIPOS DE INGRESO
-                                    </a>        
-                                    <a class="nav-link" href="{{ route('requisitosFechas') }}">
-                                        REQUISITOS Y FECHAS
-                                    </a>        
-                                    <a class="nav-link" href="{{ route('enLinea') }}">
-                                        APLICAR EN LÍNEA
-                                    </a>
-                                    <a class="nav-link" href="{{ route('oferta') }}">
-                                        OFERTA ACADÉMICA
-                                    </a>
-                                    <a class="nav-link" href="{{ route('catalogoAcademico') }}">
-                                        CATÁLOGO ACADÉMICO
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">PLANES DE ESTUDIO</a>
-                            <ul class="dropdown-menu planes">
-                                <li class="nav-item dropend">
-                                    <a class="nav-link" href="{{ route('planesPre') }}">
-                                            CARRERAS DE PREGRADO
-                                    </a>        
-                                    <a class="nav-link" href="{{ route('planesPos') }}">
-                                        CARRERAS DE POSGRADO
-                                    </a>
-                                    <a class="nav-link" href="{{ route('diplomados') }}">
-                                        DIPLOMADOS
-                                    </a>        
-                                    <a class="nav-link" href="{{ route('tecnicos') }}">
-                                        CARRERAS TÉCNICAS
-                                    </a>
-                                    <a class="nav-link" href="{{ route('complementarios') }}">
-                                        PLANES COMPLEMENTARIOS
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('directorio') }}">DIRECTORIO</a></li>
-                        <li><a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">CALENDARIO OFICIAL</a>
-                            <ul class="dropdown-menu calendario">
-                                <li class="nav-item dropend">
-                                    
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/" class="select nav-link active">INICIO</a>
+                    </li>
 
-                                    <a class="nav-link" href="{{route('publicVerCalAdmin')}}" target="_blank">
-                                        ADMINISTRATIVO
-                                    </a>
-                                    
-                                    <a class="nav-link" href="{{ route('publicVerCalAcademico') }}" target="_blank">
-                                        ACADÉMICO
-                                    </a>        
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li><a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">EDUCACIÓN A DISTANCIA</a>
-                            <ul class="dropdown-menu eduDistancia">
-                                <li class="nav-item dropend">
-                                    <a class="nav-link" href="{{ route('distanciaFMO') }}">
-                                        FMO
-                                    </a>        
-                                    <a class="nav-link" href="{{ route('educDistancia') }}">
-                                        OTRAS FACULTADES
-                                    </a>        
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li><a href="{{ route('verContactosFacultad') }}">FACULTADES</a></li>
-                    </ul>
-                </nav>
+                    
 
-                
-                <div class="btn__menu" id="btn_menu"><i class="fas fa-bars"></i></div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            NUEVO INGRESO
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('tiposIngresos') }}">TIPOS DE INGRESO</a></li>
+                            <li><a class="dropdown-item" href="{{ route('requisitosFechas') }}">REQUISITOS Y FECHAS</a></li>
+                            <li><a class="dropdown-item" href="{{ route('enLinea') }}">APLICAR EN LÍNEA</a></li>
+                            <li><a class="dropdown-item" href="{{ route('oferta') }}">OFERTA ACADÉMICA</a></li>
+                            <li><a class="dropdown-item" href="{{ route('catalogoAcademico') }}">CATÁLOGO ACADÉMICO</a></li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            PLANES DE ESTUDIO
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('planesPre') }}">CARRERAS DE PREGRADO</a></li>
+                            <li><a class="dropdown-item" href="{{ route('planesPos') }}">CARRERAS DE POSGRADO</a></li>
+                            <li><a class="dropdown-item" href="{{ route('diplomados') }}">DIPLOMADOS</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tecnicos') }}">CARRERAS TÉCNICAS</a></li>
+                            <li><a class="dropdown-item" href="{{ route('complementarios') }}">PLANES COMPLEMENTARIOS</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('directorio') }}">DIRECTORIO</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CALENDARIO OFICIAL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('publicVerCalAdmin') }}">ADMINISTRATIVO</a></li>
+                            <li><a class="dropdown-item" href="{{ route('publicVerCalAcademico') }}">ACADÉMICO</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            EDUCACIÓN A DISTANCIA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('distanciaFMO') }}">FMO</a></li>
+                            <li><a class="dropdown-item" href="{{ route('educDistancia') }}">OTRAS FACULTADES</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('verContactosFacultad') }}">FACULTADES</a>
+                    </li>
+
+                </ul>
             </div>
-
         </div>
-    </header>
+    </nav>
     
         <div class="cover">
             @yield('contenido-publico')
