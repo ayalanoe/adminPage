@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cover.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
 
     
@@ -25,30 +26,33 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="header">
+    <nav class="navbar navbar-expand-lg navstyle" id="header">
         <div class="container-fluid">
 
             <div class="logo">
-                <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
+                <a href="/">
+                    <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
+                </a>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler btnNav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <!--<button class="navbar-toggler btnNav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+                <!--<span class="navbar-toggler-icon "></span>-->
+                <i class="fa-solid fa-bars iconMenu"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse container__nav" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="/" class="select nav-link active">INICIO</a>
+                        <a href="/" class="select active">INICIO</a>
+                        <!-- <a href="/" class="select nav-link active">INICIO</a>--->
                     </li>
-
-                    
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             NUEVO INGRESO
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu ingreso">
                             <li><a class="dropdown-item" href="{{ route('tiposIngresos') }}">TIPOS DE INGRESO</a></li>
                             <li><a class="dropdown-item" href="{{ route('requisitosFechas') }}">REQUISITOS Y FECHAS</a></li>
                             <li><a class="dropdown-item" href="{{ route('enLinea') }}">APLICAR EN LÍNEA</a></li>
@@ -61,7 +65,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             PLANES DE ESTUDIO
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu planes">
                             <li><a class="dropdown-item" href="{{ route('planesPre') }}">CARRERAS DE PREGRADO</a></li>
                             <li><a class="dropdown-item" href="{{ route('planesPos') }}">CARRERAS DE POSGRADO</a></li>
                             <li><a class="dropdown-item" href="{{ route('diplomados') }}">DIPLOMADOS</a></li>
@@ -78,7 +82,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             CALENDARIO OFICIAL
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu calendario">
                             <li><a class="dropdown-item" href="{{ route('publicVerCalAdmin') }}">ADMINISTRATIVO</a></li>
                             <li><a class="dropdown-item" href="{{ route('publicVerCalAcademico') }}">ACADÉMICO</a></li>
                         </ul>
@@ -88,7 +92,7 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             EDUCACIÓN A DISTANCIA
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu eduDistancia">
                             <li><a class="dropdown-item" href="{{ route('distanciaFMO') }}">FMO</a></li>
                             <li><a class="dropdown-item" href="{{ route('educDistancia') }}">OTRAS FACULTADES</a></li>
                         </ul>
