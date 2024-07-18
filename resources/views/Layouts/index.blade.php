@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
-
+    
     
     @yield('css-publico')
 
@@ -25,11 +25,13 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="header">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-xl bg-body-tertiary fixed-top bg-custom-color">
+        <div class="container">
 
-            <div class="logo">
-                <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
+            <div class="logo me-5">
+                <a href="/">
+                    <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
+                </a>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,9 +39,9 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav w-100 justify-content-between">
                     <li class="nav-item">
-                        <a href="/" class="select nav-link active">INICIO</a>
+                        <a href="/" class="select nav-link active" id="inicioLink">INICIO</a>
                     </li>
 
                     
@@ -150,7 +152,7 @@
 
             <div class="box__copyright">
                 <hr>
-                <p>Developed By Social Service D&N | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
+                <p>Desarrollado por Servicio Social AR & DC | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
             </div>
         </Footer>
     

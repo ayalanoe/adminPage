@@ -1,0 +1,138 @@
+.modal-z-index{
+    z-index: 1051;
+    background-color: #690605;
+    position: fixed;
+}
+
+h5{
+    color: #ffffff;
+}
+
+a.sidebar-link{
+    padding: .625rem 1.625rem;
+    color: white;
+    position: relative;
+    display: block;
+    font-size: 0.875rem;
+    border-radius: 10px;
+}
+
+.sidebar-nav{
+    flex-grow: 1;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li a{
+    text-decoration: none;
+}
+
+ul li a:hover{
+    background-color: white;
+    color: #690605;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+/* Ajusta este valor según el tamaño de tu navbar fijo */
+.container_table {
+    margin-top: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn.btn-principal{
+    background-color: #690605;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.btn-principal:hover {
+    background-color: #242424;
+    color:white;
+}
+
+.custom-heading {
+    font-size: 60px; /* Tamaño ajustado para pantallas grandes */
+    font-weight: 900;
+    color: #ce1d1d;
+    margin-top: 0;
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+    
+}
+
+.custom-subheading {
+    font-size: 55px; /* Tamaño ajustado para pantallas grandes */
+    font-weight: 900;
+    color: #690605;
+    margin-top: -20px; /* Eliminar el margen negativo */
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+
+}
+
+.bienvenidaFMO {
+    margin-top: 10px;
+    color: #373737;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) { /* Tamaño grande */
+    .custom-heading {
+        font-size: 48px; /* Ajuste para pantallas grandes */
+    }
+
+    .custom-subheading {
+        font-size: 38px; /* Ajuste para pantallas grandes */
+    }
+}
+
+@media (max-width: 992px) { /* Tamaño mediano */
+    .custom-heading {
+        font-size: 38px; /* Ajuste para pantallas medianas */
+    }
+
+    .custom-subheading {
+        font-size: 32px; /* Ajuste para pantallas medianas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 14px; /* Ajuste para pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) { /* Tamaño pequeño */
+    .custom-heading {
+        font-size: 36px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .custom-subheading {
+        font-size: 34px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .btn-principal {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) { /* Tamaño extra pequeño */
+    .custom-heading {
+        font-size: 34px; /* Ajuste para pantallas extra pequeñas */
+    }
+
+    .custom-subheading {
+        font-size: 30px; /* Ajuste para pantallas extra pequeñas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas extra pequeñas */
+    }
+}

@@ -1,6 +1,6 @@
 .card{
     background-color: white;
-  }
+}
   
   .custom-card {
     border: 1px solid #373737; /* Cambia el color del contorno a rojo */
@@ -24,9 +24,6 @@
     border: 0.1px solid #690605; 
   }
   
-  .container {
-    padding: 20px 0px 0px 0px;
-  }
   
   .title-container {
     display: flex;

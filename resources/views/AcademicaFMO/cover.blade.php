@@ -1,4 +1,7 @@
 @extends('Layouts.index') 
+@section('css-publico')
+    <link rel="stylesheet" href="{{ asset('css/cover.css') }}">
+@endsection
 
 @section('contenido-publico')
 
@@ -80,69 +83,65 @@
     </div>
 </div>
 
-    <div class="container">          
-        <div class="row">
+
+    <div class="container_table">      
+
+
+
+        <div class="container">
             
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card custom-card">
-                    <div class="card-body">
-                        
-                        <div class="container__info">
-                            <h1>ADMINISTRACIÓN</h1>
-                            <h2>ACADÉMICA FMO</h2>
-                            <p class="bienvenidaFMO">Bienvenidos al sitio web oficial de la Unidad de Administración Académica de la Facultad Multidisciplinaria Oriental
-                                de la Universidad de El Salvador. Encontrarás información detallada sobre trámites académicos relevantes, así como anuncios y otros aspectos de interés para nuestra comunidad educativa.</p>
-                    
-                            <a class="btn btn-primary btn-principal" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                                Trámites
-                            </a>
-                    
-                            <a class="btn btn-primary btn-principal" href="{{ route('anuncios') }}">
-                                Anuncios Oficiales
-                            </a>
-                    
-                            <a class="btn btn-primary btn-principal" href="{{ route('preguntas') }}">
-                                Preguntas Frecuentes
-                            </a>
-                    
-                        </div>
-                    
+            <div class="row justify-content-between">
+
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="text-container">
+                        <h1 class="custom-heading">ADMINISTRACIÓN</h1>
+                        <h2 class="custom-subheading">ACADÉMICA FMO</h2>
                     </div>
-                </div>
-            </div>
+                    <p class="bienvenidaFMO">Bienvenidos al sitio web oficial de la Unidad de Administración Académica de la Facultad Multidisciplinaria Oriental
+                        de la Universidad de El Salvador. Encontrarás información detallada sobre trámites académicos relevantes, así como anuncios y otros aspectos de interés para nuestra comunidad educativa.
+                    </p>
 
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <div class="card custom-card">
-                    <div class="card-body">
-
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade">
-                            <div class="carousel-inner">    
-                
-                                @foreach ($fotosGaleria as $foto)
-                
-                                    <div class="carousel-item active">
-                                        <img src="{{asset('storage/'.$foto->rutaArchivo)}}" class="d-block w-100" alt="...">
-                                    </div>
-                                    
-                                @endforeach
-                
-                            </div>
-                
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-        
-                        </div>
-                        
+                    <div class="d-grid gap-2 d-sm-block">
+                        <a class="btn btn-primary btn-principal mb-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            Trámites
+                        </a>
+                        <a class="btn btn-primary btn-principal mb-2" href="{{ route('anuncios') }}">
+                            Anuncios Oficiales
+                        </a>
+                        <a class="btn btn-primary btn-principal mb-2" href="{{ route('preguntas') }}">
+                            Preguntas Frecuentes
+                        </a>
                     </div>
+                        
                 </div>
-            </div>
 
+                <div class="col-12 col-lg-6">
+                    
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+
+                            @foreach ($fotosGaleria as $foto)
+            
+                                <div class="carousel-item active">
+                                    <img src="{{asset('storage/'.$foto->rutaArchivo)}}" class="d-block w-100" alt="...">
+                                </div>
+            
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+                
         </div>
 
     </div>

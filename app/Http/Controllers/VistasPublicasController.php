@@ -201,7 +201,7 @@ class VistasPublicasController extends Controller
     //----------------------------- FUNCIONES PARA EL DIRECTORIO DE LAS FACULTADES ---------------------------------------------------------------------------------------------------------
         public function verFacultadesNacional()
         {
-            return view('AcademicaFMO/Facultades/facultades');
+            return view('AcademicaFMO/Facultades/listaFacultades');
         }
 
         public function verDirectorioFacultades($facultadContactos)

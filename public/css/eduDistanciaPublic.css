@@ -5,21 +5,10 @@
 
 .custom-card {
     border: 1px solid #690605; /* Cambia el color del contorno a rojo */
-    border-radius: 0.55rem; /* Mantén el radio de borde predeterminado de Bootstrap */
     margin-bottom: 20px;
   }
 
-/*.illustration{
-    background-color: white;
-   
-}*/
-.container {
-    padding: 20px 0 20px 0px;
-  } 
-.illustration-img{
-    max-width: 150px;
-    width: 100%;
-}
+
 
 .btn-ver{
     background-color: #690605;

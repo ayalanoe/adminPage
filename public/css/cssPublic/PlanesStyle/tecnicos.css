@@ -14,12 +14,9 @@
     border: 0.1px solid #690605; 
   }
   
-  .container {
-    padding: 20px 20px 20px 0px;
-  }
-  
   .title-container {
     display: flex;
+    padding: 5px;
     align-items: center; /* Alinea verticalmente el contenido */
     padding-left: 20px; /* Elimina cualquier padding predeterminado */
     background-color: #690605;
