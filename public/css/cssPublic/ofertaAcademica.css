@@ -24,10 +24,6 @@
     border: 0.1px solid #690605; 
   }
   
-  .container {
-    padding: 20px 0px 0px 0px;
-  }
-  
   .title-container {
     display: flex;
     align-items: center; /* Alinea verticalmente el contenido */

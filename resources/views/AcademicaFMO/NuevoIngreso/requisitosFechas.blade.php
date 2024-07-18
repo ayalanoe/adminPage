@@ -4,37 +4,36 @@
 
 @section('css-publico')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/formatoTablaCKEditor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 @endsection
 
 @section('contenido-publico')
 
-    <div class="container_tablee">
-        <h3 id="h">REQUISITOS Y FECHAS PARA APLICAR</h3>
-    </div>
-    <div class="container_table">
+    <div class="container margen-titulo">
 
-        @if ($requisitosFecha->isEmpty())
-            <div class="container">
-                <br>
-                <div class="alert alert-success">
+        <div class="row justify-content-center mb-4">
+            <div class="col-12">
+                <h3 class="title-text text-center">REQUISITOS Y FECHAS PARA APLICAR</h3>
+            </div>
+        </div>
+
+        <div class="container_table">
+            @if ($requisitosFecha->isEmpty())
+                <div class="alert alert-success text-center">
                     No hay registro
                 </div>
+            @else
 
-            </div>
-        @else
+                @foreach($requisitosFecha as $requisito)
+                    <div class="container contenedor-tabla">
+                        {!! $requisito->contenido !!}
+                    </div>
+                @endforeach
 
-            @foreach($requisitosFecha as $requisito)
-                <div class="container">
-                    <p>{!! $requisito->contenido !!}</p>
-                </div>
-            @endforeach
-
-            
-        @endif
+            @endif
+        </div>
 
     </div>
 

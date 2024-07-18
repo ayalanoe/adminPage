@@ -1,109 +1,138 @@
-.container_main{
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 150px;
-
-}
-.card{
-    border: none;
+.modal-z-index{
+    z-index: 1051;
+    background-color: #690605;
+    position: fixed;
 }
 
-.custom-card{
-   
-    margin: auto;
-    
-    display: flex;
-    justify-content: space-between;
+h5{
+    color: #ffffff;
+}
+
+a.sidebar-link{
+    padding: .625rem 1.625rem;
+    color: white;
     position: relative;
-    background-size: cover;
-    background-position: bottom;
-}
-.card-body{
-    padding: 0;
-    width: 600px;
-}
-.container_main .container__info{
-    max-width: 553px;
-    margin-bottom: 20px;
-    z-index: 2;
+    display: block;
+    font-size: 0.875rem;
+    border-radius: 10px;
 }
 
-.container_main h1{
-    max-width: 700px;
-    font-size: 60px;
+.sidebar-nav{
+    flex-grow: 1;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li a{
+    text-decoration: none;
+}
+
+ul li a:hover{
+    background-color: white;
+    color: #690605;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+/* Ajusta este valor según el tamaño de tu navbar fijo */
+.container_table {
+    margin-top: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn.btn-principal{
+    background-color: #690605;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.btn-principal:hover {
+    background-color: #242424;
+    color:white;
+}
+
+.custom-heading {
+    font-size: 60px; /* Tamaño ajustado para pantallas grandes */
     font-weight: 900;
-    color: #373737;
+    color: #ce1d1d;
+    margin-top: 0;
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+    
 }
 
-.container_main h2{
-    font-size: 62px;
+.custom-subheading {
+    font-size: 55px; /* Tamaño ajustado para pantallas grandes */
     font-weight: 900;
     color: #690605;
-    margin-top: -30px;
+    margin-top: -20px; /* Eliminar el margen negativo */
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+
 }
 
-.container_main p{
+.bienvenidaFMO {
     margin-top: 10px;
     color: #373737;
     text-align: justify;
     margin-bottom: 20px;
 }
 
-.container_main .custom-card-carrusel{
-    max-width: 563px;
-    margin-bottom: 20px;
-}
-
-.custom-card-carrusel img{
-    max-width: 563px;
-    height: 300px;
-}
-
-/*PARA NOTIFICACION*/
-.notificacion{
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    width: max-content;
-    padding: 20px 15px;
-    border-radius: 4px;
-    background-color: #141619;
-    color: #f6f5f9;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(30px);
-    opacity: 0;
-    visibility: hidden;
-    animation: fade-in 7s linear forwards;
-}
-
-.notificacion_progreso{
-    position: absolute;
-    left: 5px;
-    bottom: 5px;
-    width: calc(100% - 10px);
-    height: 3px;
-    transform: scaleX(0);
-    transform-origin: left;
-    background-image: linear-gradient(to right,
-    #383838, #ff0000);
-    border-radius: inherit;
-    animation: load 6s 0.25s linear forwards;
-}
-
-@keyframes fade-in {
-    5% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+@media (max-width: 1200px) { /* Tamaño grande */
+    .custom-heading {
+        font-size: 48px; /* Ajuste para pantallas grandes */
     }
-    90% {
-        opacity: 1;
-        transform: translateY(0);
+
+    .custom-subheading {
+        font-size: 38px; /* Ajuste para pantallas grandes */
     }
 }
 
-@keyframes load {
-    to {
-        transform: scaleX(1);
+@media (max-width: 992px) { /* Tamaño mediano */
+    .custom-heading {
+        font-size: 38px; /* Ajuste para pantallas medianas */
+    }
+
+    .custom-subheading {
+        font-size: 32px; /* Ajuste para pantallas medianas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 14px; /* Ajuste para pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) { /* Tamaño pequeño */
+    .custom-heading {
+        font-size: 36px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .custom-subheading {
+        font-size: 34px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas pequeñas */
+    }
+
+    .btn-principal {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) { /* Tamaño extra pequeño */
+    .custom-heading {
+        font-size: 34px; /* Ajuste para pantallas extra pequeñas */
+    }
+
+    .custom-subheading {
+        font-size: 30px; /* Ajuste para pantallas extra pequeñas */
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas extra pequeñas */
     }
 }
