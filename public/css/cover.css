@@ -1,3 +1,5 @@
+
+/* CSS para el modal donde se muestran los tramites */
 .modal-z-index{
     z-index: 1051;
     background-color: #690605;
@@ -35,6 +37,53 @@ ul li a:hover{
     white-space: nowrap;
     border-radius: 12px;
 }
+
+
+/* Cambiar el color del botón de cierre a blanco, modal de los tramites*/
+.close-z-index {
+    background: none;
+    border: none;
+    opacity: 1;
+    position: relative;
+}
+
+.close-z-index:before, .close-z-index:after {
+    content: '';
+    position: absolute;
+    width: 1.2em;
+    height: 0.15em;
+    background-color: white; /* Color blanco */
+    top: 50%;
+    left: 50%;
+}
+
+.close-z-index:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-z-index:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*CSS para el padding del carrusel */
+.contenedor-carrusel{
+    padding-top: 1%;
+}
+
+
+.carousel-inner {
+    max-height: 500px; 
+    overflow: hidden;
+}
+
+/* Ajusta este valor de las imagenes del carrusel */
+.carousel-image {
+    width: 100%;
+    height: 300px; /* Same value as max-height of carousel-inner */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    object-position: center; /* Centers the image */
+}
+
 
 /* Ajusta este valor según el tamaño de tu navbar fijo */
 .container_table {
@@ -79,6 +128,11 @@ ul li a:hover{
     text-align: justify;
     margin-bottom: 20px;
 }
+
+
+
+
+/* Medias queryes para los tamaños de pantalla letras de bienvenida y descrip */
 
 @media (max-width: 1200px) { /* Tamaño grande */
     .custom-heading {
@@ -134,5 +188,50 @@ ul li a:hover{
 
     .bienvenidaFMO {
         font-size: 16px; /* Ajuste para pantallas extra pequeñas */
+    }
+}
+
+
+/* CSS Para los cuadros de del inicio para pantallas pequeñas  es decir los cuadritos de loa tramites, anuncios y horario*/
+.btn-cuadro {
+    border: none;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 16px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn-cuadro i {
+    color: #690605;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.btn-cuadro p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+
+/* CSS para que en el cover en pantallas grandes se muestren los botones y en pequeñas las tarjetas */
+@media (min-width: 769px) {
+    .d-lg-none {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .d-lg-block {
+        display: none !important;
     }
 }

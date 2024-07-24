@@ -28,6 +28,7 @@
                 <div class="alert alert-success text-center">
                     No hay registro
                 </div>
+                <br><br><br><br><br>
             @else
                 
             <div class="row">
@@ -75,22 +76,9 @@
 
             @endif
         </div>
+
+        <br>
     </div>
 
-
-
-
-
-
-
-<div class="container_tablee">
-    <h3 id="h"></h3>
-</div>
-        
-    <div class="container">
-        <!-- contenedor de tarjetas de plataformas-->
-       
-        </div>
-    </div>
 
 @endsection

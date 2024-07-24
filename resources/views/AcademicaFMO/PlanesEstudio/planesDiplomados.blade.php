@@ -30,7 +30,7 @@
                                     <div class="title-container">
                                         <h5 class="card-title">{{$diplomado->carrera}}</h5>
                                     </div>
-                                    <hr>
+                                    <hr class="hr-diplomado">
                                     <a href="{{ route('verInfoDiplomado', $diplomado->id) }}" class="btn btn-ver">Más detalles</a>
                                 </div>
                             </div>
@@ -41,6 +41,7 @@
 
         </div>
 
+        <br>
     </div>
 
         

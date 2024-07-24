@@ -33,16 +33,19 @@
                                 </div>
                                 <a href="{{route('planesPre')}}" class="btn btn-ver">Ver planes</a>
                                 </div>
-                                <hr>
+                                <hr class="hr-ofer-academica">
                                     @foreach ($carrerasOferta  as $carreras)
                                         @if ($carreras->tipoCarrera == "Carrera_Pregrado")
-                                        <p class="item-plan">{{$carreras->carrera}}</p>
+                                            <ul>
+                                                <li>{{$carreras->carrera}}</li>
+                                            </ul>
                                         @endif
                                     @endforeach
                             </div>
                         </div>
                     </div>
         
+                    
                     <div class="col-12 col-md-6 d-flex">
                         <div class="card flex-fill custom-card">
                             <div class="card-body">
@@ -52,10 +55,12 @@
                                 </div>
                                 <a href="{{route('planesPos')}}" class="btn btn-ver">Ver planes</a>
                                 </div>
-                                <hr>
+                                <hr class="hr-ofer-academica">
                                     @foreach ($carrerasOferta  as $carreras)
                                         @if ($carreras->tipoCarrera == "Carrera_Posgrado")
-                                        <p class="item-plan">{{$carreras->carrera}}</p>
+                                            <ul>
+                                                <li>{{$carreras->carrera}}</li>
+                                            </ul>
                                         @endif
                                     @endforeach
                                 
@@ -72,10 +77,12 @@
                                 </div>
                                 <a href="{{route('tecnicos')}}" class="btn btn-ver">Ver planes</a>
                                 </div>
-                                <hr>
+                                <hr class="hr-ofer-academica">
                                     @foreach ($carrerasOferta  as $carreras)
                                         @if ($carreras->tipoCarrera == "Carrera_Tecnica")
-                                        <p class="item-plan">{{$carreras->carrera}}</p>
+                                            <ul>
+                                                <li>{{$carreras->carrera}}</li>
+                                            </ul>
                                         @endif
                                     @endforeach
                                 
@@ -92,10 +99,12 @@
                                     </div>
                                     <a href="{{route('diplomados')}}" class="btn btn-ver">Ver planes</a>
                                 </div>
-                                <hr>
+                                <hr class="hr-ofer-academica">
                                     @foreach ($carrerasOferta  as $carreras)
                                         @if ($carreras->tipoCarrera == "Diplomado")
-                                        <p class="item-plan">{{$carreras->carrera}}</p>
+                                            <ul>
+                                                <li>{{$carreras->carrera}}</li>
+                                            </ul>
                                         @endif
                                     @endforeach
                                 

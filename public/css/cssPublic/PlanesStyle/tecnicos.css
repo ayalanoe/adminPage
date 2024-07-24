@@ -8,7 +8,7 @@
     margin-bottom: 20px;
   }
 
-  hr{
+  .hr-car-tecnica{
     margin-top: 10px;
     color: #690605;
     border: 0.1px solid #690605; 
@@ -47,7 +47,7 @@
 }
 
 .item-plan::before {
-    content: "\25B6"; /* Unicode para un triángulo lateral */
+    content: "-"; /* Unicode para un triángulo lateral */
     position: absolute;
     left: 0;
     top: 50%;

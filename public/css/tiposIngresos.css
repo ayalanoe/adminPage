@@ -8,6 +8,16 @@
   margin-bottom: 20px;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body .btn-ver {
+  margin-top: auto;
+}
+
 .btn-ver{
   background-color: #690605;
   color: #ffffff;
@@ -22,7 +32,7 @@ p.card-text{
   color: #690605;
 }
 
-hr{
+.hr-card-ingresos{
   margin-top: 10px;
   color: #690605;
   border: 0.1px solid #690605; 

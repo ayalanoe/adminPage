@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* CSS General de la pagina */
 *{
     margin: 0;
     padding: 0;
@@ -14,91 +15,86 @@
 
 
 /*AQUI COMIENZA EL FOOTER*/
-
 footer {
     width: 100%;
-    padding: 1px;
     font-family: 'Nunito', sans-serif;
-
     background-image: url("../Images/background-footer.svg");
     background-size: cover;
 }
 
-.ubicado {
-    max-width: 200px; /* Ancho máximo del contenedor */
-    display: inline-block; /* Hace que el enlace se comporte como un bloque en línea */
-    word-wrap: break-word; /* Permite que las palabras largas se dividan y se envuelvan en la línea siguiente */
-}
-.container__footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    padding-top: 100px;
+.footer-margen{
+    margin-top: 100px;
 }
 
-.box__footer{
+/* CSS para los bones flotantes, en este caso los que dicen Otros Enlaces*/
+.iconos-footer {
+    font-size: 1rem; /* Ajusta el tamaño del icono según sea necesario */
+    color: #690605; /* Ajusta el color del icono según sea necesario */
+}
+.btn-light {
+    background-color: #f8f9fa; /* Fondo claro */
+    border: none; /* Sin borde */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    width: 40px; /* Ajusta el ancho del contenedor */
+    height: 40px; /* Ajusta la altura del contenedor */
     display: flex;
-    flex-direction: column;
-    padding: 40px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn-light:hover {
+    background-color: #e0e0e0; /* Fondo más oscuro al pasar el cursor */
+}
+
+/* CSS para los demás elementos del footer */
+.footer-margen h2{
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.titulos-footer a{
+    margin-top: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    
+    transition: 0.4s;
+}
+
+.titulos-footer a:hover{
+    color: #ffffff;
+    padding-left: 2px;
+}
+
+
+.titulos-footer a .fab{
+    font-size: 20px;
+}
+
+/* CSS para crear la linea blanca debajo de los titulos en el footer */
+.footer-margen h2::after {
+    content: '';
+    display: block;
+    width: 100px; /* Ajusta el ancho de la línea */
+    height: 4px; /* Ajusta el grosor de la línea */
+    background-color: white; /* Color de la línea */
+    margin: 0;
+    border-radius: 2px; /* Redondea las esquinas de la línea */
+}
+
+/* CSS para la ultima lina del footer */
+.creditos{
+    margin-top: 80px;
+    color: white;
 }
 
 .box__footer .logo img{
     width: 180px;
 }
 
-.box__footer .terms{
-    max-width: 350px;
-    margin-top: 20px;
-    font-weight: 500;
-    color: #fffdfd;
-    font-size: 18px;
-
-}
-
-.box__footer h2{
-    margin-bottom: 30px;
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.box__footer a{
-    margin-top: 10px;
-    color: #ffffff;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: capitalize;
-    transition: 0.4s;
-}
-
-.box__footer a:hover{
-    color: #ffffff;
-    padding-left: 2px;
-}
-
-.box__footer a .fab{
-    font-size: 20px;
-}
-
-.box__copyright{
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
-    padding: 0px 40px;
-}
-
-.box__copyright p{
-    margin-top: 20px;
-    color: #ffffff;
-}
-
-.box__copyright hr{
-    border: none;
-    height: 1px;
-    background-color: #7a7a7a;
-}
-
+/* FLECHA que indica la info del footer */
 .fa-chevron-down{
     display: flex;
     justify-content: center;
@@ -114,23 +110,3 @@ footer {
     transform: translateY(5px); /* Desplazar 2px hacia abajo al pasar el cursor */
 }
 
-.box__footer {
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.box__footer h2 {
-    position: relative;
-    display: inline-block;
-}
-
-.box__footer h2::after {
-    content: '';
-    position: absolute;
-    left: 51px;
-    transform: translateX(-50%);
-    bottom: -5px; 
-    background-color: white;
-    width: 100px;
-    height: 3.5px;
-}

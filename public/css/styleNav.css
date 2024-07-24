@@ -13,13 +13,13 @@
 }
 
 .bg-custom-color {
-  background-color:white !important; /* Color azul personalizado */
+  background-color:white !important; /* Color blanco para el nav personalizado */
   
 }
 
 nav {
     text-align: center;
-    font-size: 14px;
+
   }
 
 /* Estilos para el botón siempre se mantenga en rojo*/
@@ -69,6 +69,8 @@ nav {
   color: #690605; /* Texto rojo al pasar el cursor */
 }
 
+
+
 /* Media query para pantallas de 1200px hacia abajo */
 @media (max-width: 1200px) {
   #inicioLink {
@@ -83,3 +85,12 @@ nav {
     color: white;
   }
 }
+
+
+/* Media query para pantallas de 1200px hacia abajo */
+@media (min-width: 1200px) {
+  .center-icon {
+    display: none; /* Ocultar el ícono de inicio en pantallas grandes */
+  }
+}
+

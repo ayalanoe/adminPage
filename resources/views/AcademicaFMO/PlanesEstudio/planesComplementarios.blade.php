@@ -31,7 +31,7 @@
                                     <h5 class="card-title">Para ver el plan de estudio, haz click en la carrera</h5>   
                                 </div>
                             </div>
-                            <hr>
+                            <hr class="hr-planes-com">
                             @foreach ($planesComplementarios as $carPlanComp)
                                 <a href="{{route('mostrarPDFPlnCom', $carPlanComp->id)}}" target="_blank" class="item-plan" href="#">
                                     {{$carPlanComp->carrera}}
@@ -45,6 +45,7 @@
 
     </div>
 
+    <br>
 </div>
         
 @endsection

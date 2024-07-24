@@ -31,7 +31,7 @@
                                     <h5 class="card-title">Para ver el plan de estudio, haz click en la carrera</h5>   
                                 </div>
                             </div>
-                            <hr>
+                            <hr class="hr-posgrado">
                             @foreach ($planesPosgrado as $carreraPosgrado)
                                 <a href="{{route('mostrarPDFPosgrado', $carreraPosgrado->id)}}" target="_blank" class="item-plan" href="#">
                                     {{$carreraPosgrado->carrera}}
@@ -45,6 +45,7 @@
 
     </div>
 
+    <br>
 </div>
 
 @endsection

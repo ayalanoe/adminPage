@@ -28,14 +28,15 @@
     <nav class="navbar navbar-expand-xl bg-body-tertiary fixed-top bg-custom-color">
         <div class="container">
 
-            <div class="logo me-5">
+            <div class="logo me-4">
                 <a href="/">
                     <img src="{{ asset('images/logoues.png') }}" alt="logo de la universidad de El Salvador" class="imgLogo">
                 </a>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+            <button class="navbar-toggler contenedor-hamburg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon hamburg"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -81,8 +82,8 @@
                             CALENDARIO OFICIAL
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('publicVerCalAdmin') }}">ADMINISTRATIVO</a></li>
-                            <li><a class="dropdown-item" href="{{ route('publicVerCalAcademico') }}">ACADÉMICO</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="{{ route('publicVerCalAdmin') }}">ADMINISTRATIVO</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="{{ route('publicVerCalAcademico') }}">ACADÉMICO</a></li>
                         </ul>
                     </li>
 
@@ -109,52 +110,83 @@
             @yield('contenido-publico')
         </div>
         <i class="fa-solid fa-chevron-down fa-3x"></i>
-        <Footer>
-            <div class="container__footer">
 
-                <div class="box__footer">
-                    <h2 class="sitios">Sitios de Interés</h2>
-                    <a href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a>
-                    <a href="https://www.ues.edu.sv/" target="_blank">UES-SITIO PRINCIPAL</a>
-                    <a href="https://www.uese.ues.edu.sv/" target="_blank">UES-SOCIOECONÓMICO</a>
-                    <a href="http://proyeccionsocial.fmoues.edu.sv/" target="_blank">UES-PROYECCIÓN SOCIAL</a>
-                    <a href="https://saa.ues.edu.sv/" target="_blank">UES-SAA</a>
+        <footer class="py-4">
+
+            <div class="container footer-margen">
+
+                <!-- BOTONES FLOTANTES ////////////////////////////////////////////--->
+                <div class="mb-4">
+                    <h2>Otros enlaces</h2>
+                    <div class="d-flex justify-content-start">
+                        <div class="me-2">
+                            
+                        </div>
+
+                        <div class="me-2">
+                            <a href="{{ route('preguntas') }}" class="btn btn-light">
+                                <i class="fa-solid fa-circle-question iconos-footer"></i>
+                            </a>
+                        </div>
+
+                        <div class="me-2">
+                            <a href="{{route('verPdfCroquis')}}" target="_blank" class="btn btn-light">
+                                <i class="fa-solid fa-map-location-dot iconos-footer"></i>
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="https://www.facebook.com/fmoues.oficial" target="_blank" class="btn btn-light">
+                                <i class="fa-brands fa-facebook iconos-footer"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="box__footer">
-                    <h2 class="plataformas">Plataformas</h2>
-                    <a href="https://virtual.fmoues.edu.sv/" target="_blank">
-                        <i class="fa-solid fa-landmark pe-2"></i>Aula Virtual UES</a>
-                    <a href="https://eel.ues.edu.sv/session/index" target="_blank">
-                        <i class="fa-solid fa-file pe-3"></i>Expediente en Línea</a>
 
-
-                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-list pe-2"></i>Expediente Móvil</a>
-                        <ul class="dropdown-menu expediente">
-                            <li class="nav-item dropend">
-                                <a class="nav-link" href="https://appgallery.huawei.com/#/app/C102387785" target="_blank">App Galery</a>
-                                <a class="nav-link" href="https://play.google.com/store/apps/details?id=meel.ganimedes" target="_blank">Google Play</a>  
-                            </li>
-                        </ul>
-                    
-
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4 mb-4 mb-lg-0 titulos-footer">
+                        <h2>Sitios de Interés</h2>
+                        <a href="http://www.fmoues.edu.sv/" target="_blank">UES-FMO</a><br>
+                        <a href="https://www.ues.edu.sv/" target="_blank">UES-SITIO PRINCIPAL</a><br>
+                        <a href="https://www.uese.ues.edu.sv/" target="_blank">UES-SOCIOECONÓMICO</a><br>
+                        <a href="http://proyeccionsocial.fmoues.edu.sv/" target="_blank">UES-PROYECCIÓN SOCIAL</a><br>
+                        <a href="https://saa.ues.edu.sv/" target="_blank">UES-SAA</a>
+                    </div>
+        
+                    <div class="col-12 col-sm-6 col-lg-4 mb-4 mb-lg-0 titulos-footer">
+                        <h2>Plataformas</h2>
+                        <a href="https://virtual.fmoues.edu.sv/" target="_blank">
+                            <i class="fa-solid fa-landmark pe-2"></i>Aula Virtual UES</a><br>
+                        <a href="https://eel.ues.edu.sv/session/index" target="_blank">
+                            <i class="fa-solid fa-file pe-2"></i>Expediente en Línea</a><br>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-list pe-2"></i>Expediente Móvil
+                            </a>
+                            <ul class="dropdown-menu expediente">
+                                <li><a class="dropdown-item" href="https://appgallery.huawei.com/#/app/C102387785" target="_blank">App Galery</a></li>
+                                <li><a class="dropdown-item" href="https://play.google.com/store/apps/details?id=meel.ganimedes" target="_blank">Google Play</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="col-12 col-sm-6 col-lg-4 titulos-footer">
+                        <h2>Medios de contacto</h2>
+                        <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a><br>
+                        <a href="#"><i class="fa-solid fa-phone"></i> 2668 - 9233</a><br>
+                        <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado">
+                            <i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
+                    </div>
                 </div>
-
-                <div class="box__footer">
-                    <h2 class="medios">Medios de contacto</h2>
-                    <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a>
-                    <a href="#"><i class="fa-solid fa-phone"></i> 2664 - 0000</a>
-                    <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado">
-                        <i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
+        
+                <div class="text-center creditos">
+                    <hr>
+                    <p>Desarrollado por Servicio Social AR & DC | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
                 </div>
             </div>
-
-            <div class="box__copyright">
-                <hr>
-                <p>Desarrollado por Servicio Social AR & DC | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
-            </div>
-        </Footer>
+        </footer>
+        
     
 
 

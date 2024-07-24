@@ -22,17 +22,20 @@
                 <div class="alert alert-success text-center">
                     No hay registro
                 </div>
+
+                <br><br><br><br><br>
             @else
                 <div class="row">
                     @foreach ($tiposDeIngreso as $ingreso)
-                        <div class="col-sm-6 mb-3">
+                        <div class="col-12 col-md-6 d-flex">
                             <div class="card custom-card">
                                 <div class="card-body">
                                     <div class="title-container">
                                         <h5 class="card-title">{{$ingreso->titulo}}</h5>
                                     </div>
-                                    <hr>
+                                    <hr class="hr-card-ingresos">
                                     <p class="card-text">{!! $ingreso->descripcion !!}</p>
+                                    
                                     <a href="{{route('verInfoTiposIngreso', $ingreso->id)}}" class="btn btn-ver">Ir a la información</a>
                                 </div>
                             </div>

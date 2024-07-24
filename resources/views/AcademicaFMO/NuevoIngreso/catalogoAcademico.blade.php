@@ -24,6 +24,7 @@
                 <div class="alert alert-success text-center">
                     No hay registro
                 </div>
+                <br><br><br><br><br>
             @else
 
                 <div class="row">
@@ -34,7 +35,7 @@
                                     <div class="title-container">
                                         <h5 class="card-title">{{$catalogo->titulo}}</h5>
                                     </div>
-                                    <hr>
+                                    <hr class="hr-catalogo-acadmco">
                                         <p class="card-text">{{$catalogo->descripcion}}</p>
                                         <a href="{{route('mostrarCatalogoPdf', $catalogo->id)}}" target="_blank" class="btn btn-ver">Ver el catálogo</a>
                                 </div>
@@ -45,6 +46,8 @@
 
             @endif
         </div>
+
+        <br><br><br><br>
 
     </div
 

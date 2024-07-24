@@ -34,7 +34,7 @@
 }
 
 .item-plan::before {
-    content: "\25B6"; /* Unicode para un triángulo lateral */
+    content: "-"; /* Unicode para un triángulo lateral */
     position: absolute;
     left: 0;
     top: 50%;

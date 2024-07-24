@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center mb-4">
             <div class="col-12">
-                <h3 class="title-text text-center">{{$tipoDeIngreso->titulo}}</h3>
+                <h3 class="title-text text-center">{{mb_strtoupper($tipoDeIngreso->titulo)}}</h3>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
                     {{$tipoDeIngreso->descripcion}}
                 </p>
     
-                <img src="{{asset('storage/'.$tipoDeIngreso->rutaArchivo)}}" class="d-block w-100" alt="...">
+                <img src="{{asset('storage/'.$tipoDeIngreso->rutaArchivo)}}" class="d-block mx-auto w-100" alt="...">
             </div>
 
         </div>

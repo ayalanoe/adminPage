@@ -18,7 +18,7 @@
     color: #ffffff;
   }
   
-  hr{
+  .hr-ofer-academica{
     margin-top: 10px;
     color: #690605;
     border: 0.1px solid #690605; 
@@ -46,29 +46,3 @@
   
 
   /** ESTILOS PARA EÑ ICONO EN LOS PLANES*************************************************************/
-.item-plan {
-  position: relative;
-  padding-left: 20px; /* Ajusta el espacio para el triángulo */
-  display: block;
-  margin: 10px 0;
-  text-decoration: none;
-  color: #373737; /* Ajusta el color del texto */
-}
-
-.item-plan::before {
-  content: "\25B6"; /* Unicode para un triángulo lateral */
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #373737; /* Ajusta el color del triángulo */
-  font-size: 1em; /* Ajusta el tamaño del triángulo */
-}
-
-.item-plan:hover {
-  color: #690605; /* Cambia el color del texto al pasar el cursor */
-}
-
-.item-plan:hover::before {
-  color: #690605; /* Cambia el color del triángulo al pasar el mouse*/
-}
