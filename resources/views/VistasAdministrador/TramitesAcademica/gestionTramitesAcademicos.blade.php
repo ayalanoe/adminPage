@@ -1,21 +1,22 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Anuncios Académicos')
+@section('titulo', '- Tramites Academicos')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
 @endsection
 @section('contenido')
 
     <div class="container">
-        <h2>GESTIÓN DE ANUNCIOS ACADÉMICOS</h2>
+        <h2>Gestión de tramites académicos</h2>
         <hr>
-
+        <!-- Bton para poder insertar una carrera de pregrado -->
+        <div class="container">
+            <a href="{{ route('crearTramiteAcademico') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Tramite Academico</a>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Fecha_Publicacion</th>
-                    <th scope="col">Fecha_Expiracion</th>
+                    <th scope="col">Tramite Académico</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -24,22 +25,20 @@
                     $numero = 1 
                 @endphp
         
-                @foreach ($anuncios as $anuncio)
+                @foreach ($datosTramites as $tramite)
                 <tr>
                     <th scope="row">{{$numero}}</th>  
-                    <td>{{$anuncio->titulo}}</td>
-                    <td>{{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</td>
-                    <td>{{ date('d-m-Y', strtotime($anuncio->fechaExpiracion)) }}</td>
+                    <td>{{$tramite->tramite}}</td>
 
                     <td class="d-flex">
         
-                        <form action="{{ route('eliminarAnuncio', $anuncio->id) }}" class="formEliminarAnuncio" method="POST">
+                        <form action="{{ route('eliminarTramite', $tramite->id) }}" class="formEliminarTramite" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
                         
-                        <a href="{{ route('vistaEditarAnuncio', $anuncio->id) }}" class="btn btn-primary mx-1">
+                        <a href="{{ route('editarTramite', $tramite->id)}}" class="btn btn-primary mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
@@ -49,14 +48,10 @@
                 @php
                     $numero++
                 @endphp
+
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <!-- Bton para poder insertar un anuncio -->
-    <div class="container">
-        <a href="{{ route('vistaCrearAnuncio') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Anuncios academico</a>
     </div>
     
 @endsection
@@ -64,12 +59,12 @@
 @section('jsVistasAdmin')
 
     <script>
-        $('.formEliminarAnuncio').on('submit', function(e){
+        $('.formEliminarTramite').on('submit', function(e){
             e.preventDefault();
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará el anuncio",
+                text: "Se eliminará el tramite",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -84,31 +79,31 @@
         })
     </script>
 
-    @if (Session::has('resCrearAnuncio'))
+    @if (Session::has('resCrearTramite'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resCrearAnuncio') }}",
+                text: "{{ session('resCrearTramite') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEliminarAnuncio'))
+    @if (Session::has('resEliminarTramite'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resEliminarAnuncio') }}",
+                text: "{{ session('resEliminarTramite') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEditarAnuncio'))
+    @if (Session::has('resEditarTramite'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resEditarAnuncio') }}",
+                text: "{{ session('resEditarTramite') }}",
                 icon: "success"
             });
         </script>  

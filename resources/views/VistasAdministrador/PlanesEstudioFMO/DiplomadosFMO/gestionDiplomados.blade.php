@@ -9,6 +9,10 @@
         <h2>Diplomados impartidos</h2>
         <hr>
 
+        <!-- Bton para poder insertar un diplomado -->
+        <div class="container">
+            <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalAgregarDiplomado"><i class="fa-solid fa-plus"></i> Agregar Diplomado</button>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -54,11 +58,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <!-- Bton para poder insertar un diplomado -->
-    <div class="container">
-        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalAgregarDiplomado"><i class="fa-solid fa-plus"></i> Agregar Diplomado</button>
     </div>
 
     <div class="modal fade" id="modalAgregarDiplomado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

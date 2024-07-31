@@ -31,6 +31,12 @@ footer {
     font-size: 1rem; /* Ajusta el tamaño del icono según sea necesario */
     color: #690605; /* Ajusta el color del icono según sea necesario */
 }
+
+.expediente:hover {
+    background-color: #690605;  
+    color: white;          
+    
+  }
 .btn-light {
     background-color: #f8f9fa; /* Fondo claro */
     border: none; /* Sin borde */
@@ -52,6 +58,13 @@ footer {
     margin-bottom: 30px;
     color: #ffffff;
     font-weight: 700;
+}
+ul.dropdown-menu.expediente{
+    background-color: #690605;
+}
+
+.titulos-footer{
+    background-color: #690605;
 }
 
 .titulos-footer a{

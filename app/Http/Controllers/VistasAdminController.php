@@ -33,7 +33,7 @@ class VistasAdminController extends Controller
         {
             if (Auth::check()) {
                 $usuarios = User::all();
-                return view('VistasAdministrador/gestionUsuarios', ['usuarios' => $usuarios]);
+                return view('VistasAdministrador/Usuarios/gestionUsuarios', ['usuarios' => $usuarios]);
             }
             else{
                 return redirect()->route('login');
@@ -126,7 +126,7 @@ class VistasAdminController extends Controller
             $horarioAcademico = CalendarioClase::all();
 
             // Se carga la vista correspondiente para subir el archivo
-            return view('VistasAdministrador/subirHorarioClases', ['horario' => $horarioAcademico]);
+            return view('VistasAdministrador/CalendarioOficial/Academico/subirHorarioClases', ['horario' => $horarioAcademico]);
         }
 
         public function eliminarHorarioAcademico($id)
@@ -193,7 +193,7 @@ class VistasAdminController extends Controller
         public function verDatosDirectorios()
         {
             $contactos = Contacto::all();
-            return view('VistasAdministrador/gestionDirectorio', ['directorio' => $contactos]);
+            return view('VistasAdministrador/DirectorioAcademica/gestionDirectorio', ['directorio' => $contactos]);
         }
 
         public function insertarDatosDirectorio(Request $request)
@@ -252,7 +252,7 @@ class VistasAdminController extends Controller
         {
             $calendarioAdmin = CalendarioAdministrativo::all();
 
-            return view('VistasAdministrador/gestionCalendarioAdministrativo', [
+            return view('VistasAdministrador/CalendarioOficial/Administrativo/gestionCalendarioAdministrativo', [
 
                 'calAdmin' => $calendarioAdmin 
             ]);
@@ -326,7 +326,7 @@ class VistasAdminController extends Controller
         
         public function filtrarDepartamento()
         {
-            return view('VistasAdministrador/departamentosPregrado');
+            return view('VistasAdministrador/PlanesEstudioFMO/Pregrado/departamentosPregrado');
         }
 
         public function regresarAdepartementos()
@@ -338,7 +338,7 @@ class VistasAdminController extends Controller
         {
             $carrerasDePregrado = Carrera::where('tipoCarrera', 'Carrera_Pregrado')->where('departamento', $departamento)->get();
 
-            return view("VistasAdministrador/gestionCarrerasPregrado", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Pregrado/gestionCarrerasPregrado", [
 
                 'carrerasPregrado' => $carrerasDePregrado,
                 'departamento' => $departamento //Se manda el parametro departamento que se recibe por url para poder mostrar el nombre del depto en la vista
@@ -395,7 +395,7 @@ class VistasAdminController extends Controller
         {
             $carrera = Carrera::find($id);
 
-            return view("VistasAdministrador/editarCarreraPregrado", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Pregrado/editarCarreraPregrado", [
 
                 'carreraPregradoEdit' => $carrera
             ]);
@@ -486,7 +486,7 @@ class VistasAdminController extends Controller
         {
             $carrerasPosgrado = Carrera::where('tipoCarrera', 'Carrera_Posgrado')->get();
 
-            return view("VistasAdministrador/gestionCarrerasPosgrado", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Posgrado/gestionCarrerasPosgrado", [
 
                 'carrerasPosgrado' => $carrerasPosgrado
             ]);
@@ -521,7 +521,7 @@ class VistasAdminController extends Controller
         {
             $carrera = Carrera::find($id);
 
-            return view("VistasAdministrador/editarCarreraPosgrado", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Posgrado/editarCarreraPosgrado", [
 
                 'carreraPosgradoEdit' => $carrera
             ]);
@@ -634,7 +634,7 @@ class VistasAdminController extends Controller
         {
             $listaDiplomados = Carrera::where('tipoCarrera', 'Diplomado')->get();
 
-            return view("VistasAdministrador/gestionDiplomados", [
+            return view("VistasAdministrador/PlanesEstudioFMO/DiplomadosFMO/gestionDiplomados", [
 
                 'listadoDiplomados' => $listaDiplomados
             ]);
@@ -685,7 +685,7 @@ class VistasAdminController extends Controller
         {
             $diplomadoEdit = Carrera::find($id);
 
-            return view("VistasAdministrador/editarDiplomado", [
+            return view("VistasAdministrador/PlanesEstudioFMO/DiplomadosFMO/editarDiplomado", [
 
                 'diplomadoEditar' => $diplomadoEdit
             ]);
@@ -735,7 +735,7 @@ class VistasAdminController extends Controller
         {
             $carrerasTecnicas = Carrera::where('tipoCarrera', 'Carrera_Tecnica')->get();
 
-            return view("VistasAdministrador/gestionCarrerasTecnicas", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Tecnicas/gestionCarrerasTecnicas", [
 
                 'carrerasTecnicas' => $carrerasTecnicas
             ]);
@@ -770,7 +770,7 @@ class VistasAdminController extends Controller
         {
             $carrera = Carrera::find($id);
 
-            return view("VistasAdministrador/editarCarreraTecnica", [
+            return view("VistasAdministrador/PlanesEstudioFMO/Tecnicas/editarCarreraTecnica", [
 
                 'carreraTecnicaEdit' => $carrera
             ]);
@@ -880,7 +880,7 @@ class VistasAdminController extends Controller
     //----------------------------- FUNCIONES PARA LA GESTION DE LOS CONTACTOS DE LA FACULTADES --------------------------------------------------------------------------------------------------------
         public function filtrarFacultades()
         {
-            return view('VistasAdministrador/contactosFacultades');
+            return view('VistasAdministrador/FacultadesUES/contactosFacultades');
         }
 
         public function regresarAcontactosFacu()
@@ -892,7 +892,7 @@ class VistasAdminController extends Controller
         public function verDatosFacultad($pertenceFacultad)
         {
             $facultades = Facultad::where('facultad', $pertenceFacultad)->get();
-            return view('VistasAdministrador/gestionFacultades', [
+            return view('VistasAdministrador//FacultadesUES/gestionFacultades', [
 
                 /*
                     El primer parametro contiene todos los resultados de la consulta anterior es decir 
@@ -986,12 +986,12 @@ class VistasAdminController extends Controller
             $listaAnuncios = Anuncios::all();
 
             // Retornar la vista con la lista actualizada de anuncios
-            return view('VistasAdministrador/gestionAnunciosAcademicos', ['anuncios' => $listaAnuncios]);
+            return view('VistasAdministrador/AnunciosAcademicos/gestionAnunciosAcademicos', ['anuncios' => $listaAnuncios]);
         }
 
         public function vistaCrarAnuncio(){
 
-            return view('VistasAdministrador/crearAnuncioAcademico');
+            return view('VistasAdministrador/AnunciosAcademicos/crearAnuncioAcademico');
         }
 
         public function crearAnuncio(Request $datosAnucio)
@@ -1056,7 +1056,7 @@ class VistasAdminController extends Controller
                 return back()->with('anucioEncontrado', 'Anuncio no encontrada');
             }
 
-            return view('VistasAdministrador/editarAnuncioAcademico', [
+            return view('VistasAdministrador/AnunciosAcademicos/editarAnuncioAcademico', [
 
                 'anuncioEditar' => $anuncio
             ]);
@@ -1165,7 +1165,7 @@ class VistasAdminController extends Controller
         public function verHorarioAtencion()
         {
             $horarioA = AtencionHorario::all();
-            return view('VistasAdministrador/gestionHorario', ['horarioAtencion' => $horarioA]);
+            return view('VistasAdministrador/HorarioAtencion/gestionHorario', ['horarioAtencion' => $horarioA]);
         }
 
         public function guardarHorarioAtencion(Request $datosAtencionHorario)
@@ -1216,7 +1216,7 @@ class VistasAdminController extends Controller
 
             $tramites = Tramite::all();
 
-            return view('VistasAdministrador/gestionTramitesAcademicos', [
+            return view('VistasAdministrador/TramitesAcademica/gestionTramitesAcademicos', [
 
                 'datosTramites' => $tramites
             ]);
@@ -1282,7 +1282,7 @@ class VistasAdminController extends Controller
                 return back()->with('tramiteNoEncontrado', 'Tramite no encontrado !!');
             }
 
-            return view('VistasAdministrador/editarTramite', [
+            return view('VistasAdministrador/TramitesAcademica/editarTramite', [
 
                 'datosTramiteEditar' => $tramiteEditar
             ]);
@@ -1391,7 +1391,7 @@ class VistasAdminController extends Controller
 
             $preguntas = PreguntaFrecuente::all();
 
-            return view('VistasAdministrador/gestionPreguntasFrecuentes', [
+            return view('VistasAdministrador/PreguntasFrecuentes/gestionPreguntasFrecuentes', [
 
                 'preguntasFrecuentes' => $preguntas
             ]);
@@ -1436,7 +1436,7 @@ class VistasAdminController extends Controller
                 return back()->with('preguntaNoEncontrada', 'Pregunta no encontrada');
             }
 
-            return view('VistasAdministrador/editarPregunta', [
+            return view('VistasAdministrador/PreguntasFrecuentes/editarPregunta', [
 
                 'datosEditarPregunta' => $editarPregunta
             ]);
@@ -1466,16 +1466,16 @@ class VistasAdminController extends Controller
         }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //----------------------------- FUNCIONES PARA LA GESTION DE CONSTANCIAS --------------------------------------------------------------------------------------------------------
+    //----------------------------- FUNCIONES PARA LA GESTION DE CONSTANCIAS -------------------------------------------------------------------------------------------------------- 
         public function verInformeConstancias()
         {
-            return view('VistasAdministrador/gestionConstancias');
+            return view('VistasAdministrador/Constancias/gestionConstancias');
         }
 
 
         public function vistaCrearConstancia()
         {
-            return view('VistasAdministrador/registrarConstancia');
+            return view('VistasAdministrador/Constancias/registrarConstancia');
         }
 
         public function guardarConstancias(Request $datosConstancias)
@@ -1517,7 +1517,7 @@ class VistasAdminController extends Controller
             // Calcula el total general
             $totalGeneralConstancias = $totalesPorTipo->sum('total');
 
-            return view('VistasAdministrador/estadisticasConstancias', [
+            return view('VistasAdministrador/Constancias/estadisticasConstancias', [
                 'totalConstancias' => $totalesPorTipo,
                 'fechaInicial' => $fechasFiltro->fechaInicialConstancia,
                 'fechaFinal' => $fechasFiltro->fechaFinalConstancia,
@@ -1532,7 +1532,7 @@ class VistasAdminController extends Controller
         public function verGaleria()
         {
             $galeria = Galeria::all();
-            return view('VistasAdministrador/gestionGaleriaInstitucional', ['galeriaFotos' => $galeria]);
+            return view('VistasAdministrador/GaleriaInstitucional/gestionGaleriaInstitucional', ['galeriaFotos' => $galeria]);
         }
 
         public function guardarFotoGaleria(Request $datosGaleria)
@@ -1619,7 +1619,7 @@ class VistasAdminController extends Controller
         {
             $carrerasDistancia = CarreraDistancia::where('facultad', 'OTRA_FACULTAD')->get();
 
-            return view('VistasAdministrador/gestionEducacionDistancia', [
+            return view('VistasAdministrador/EducacionDistancia/OtrasFacultades/gestionEducacionDistancia', [
 
                 'educacionDistancia' => $carrerasDistancia
             ]);
@@ -1684,7 +1684,7 @@ class VistasAdminController extends Controller
         {
             $carrera = CarreraDistancia::find($id);
 
-            return view("VistasAdministrador/editarCarDistancia", [
+            return view("VistasAdministrador/EducacionDistancia/OtrasFacultades/editarCarDistancia", [
 
                 'carreraDisEdiar' => $carrera
             ]);
@@ -1764,7 +1764,7 @@ class VistasAdminController extends Controller
         {
             $carDisFMO = CarreraDistancia::where('facultad', 'FMO')->get();
 
-            return view('VistasAdministrador/gestionEduDistanciaFmo', [
+            return view('VistasAdministrador/EducacionDistancia/FMO/gestionEduDistanciaFmo', [
 
                 'carrerasDisFMO' => $carDisFMO
                 
@@ -1773,7 +1773,7 @@ class VistasAdminController extends Controller
 
         public function crearCarDisFmo()
         {
-            return view('VistasAdministrador/crearCarDistanciaFmo');
+            return view('VistasAdministrador/EducacionDistancia/FMO/crearCarDistanciaFmo');
         }
 
         public function guardarCarDisFmo(Request $datosCarDisFMO)
@@ -1802,7 +1802,7 @@ class VistasAdminController extends Controller
         {
             $carDisFmoEdit = CarreraDistancia::find($id);
 
-            return view("VistasAdministrador/editarCarDisFmo", [
+            return view("VistasAdministrador/EducacionDistancia/FMO/editarCarDisFmo", [
 
                 'carreraDisFmoEdit' => $carDisFmoEdit
             ]);
@@ -2106,7 +2106,7 @@ class VistasAdminController extends Controller
             {
                 $catalogo = NuevoIngreso::where('tipoConsulta', 'Catalogo')->get();
 
-                return view('VistasAdministrador/NuevoIngreso/catalogo', [
+                return view('VistasAdministrador/NuevoIngreso/CatalogoAcademico/catalogo', [
                     'catalogoDisponible' => $catalogo
                 ]);
 

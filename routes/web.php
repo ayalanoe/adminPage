@@ -106,8 +106,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
 
 //--------------------- RUTAS PUBLICAS QUE NO LLEVAN MIDDLEWARE, ES DECIR LAS QUE SE OCUPAN PARA INICIAR SESION ----------------------------------------------
-    Route::view('login-admin', 'VistasAdministrador.loginAdministrativo')->name('login');
-    Route::view('password', 'VistasAdministrador.passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
+    Route::view('login-admin', 'VistasAdministrador/AdminAccess/loginAdministrativo')->name('login');
+    Route::view('password', 'VistasAdministrador/AdminAccess/passwordAdministrativo')->name("password")->middleware('verificarCorreo'); //Ruta protegida
     Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
     Route::post('/inicia-sesion',[LoginController::class, 'login'])->name('inicia-sesion');
@@ -150,10 +150,10 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     Route::middleware(['auth', 'rol:1'])->group(function(){
 
         //Ruta principal
-        Route::view('dashboard-admin', 'VistasAdministrador.indexAdmin')->name('privada'); //Ruta protegidaf
+        Route::view('dashboard-admin', 'VistasAdministrador/AdminAccess/indexAdmin')->name('privada'); //Ruta protegidaf
 
         //-------------- Rutas para el manejo de las vistas en el dashboard ----------------------------------------------------------------------------------------------------------
-        Route::view('registro-admin','VistasAdministrador.crearUsuario')->name('registro');
+        Route::view('registro-admin','VistasAdministrador/Usuarios/crearUsuario')->name('registro');
         Route::post('/validar-registro',[VistasAdminController::class, 'register'])->name('validar-registro');
         Route::post('/actualizar/{id}/datos-usuario', [VistasAdminController::class, 'editarDatosUsuario'])->name('actulizarDatosUsuario');
         Route::post('/actualizar/{id}/password-user', [VistasAdminController::class, 'cambiarPassword'])->name('actulizarPassword');
@@ -241,7 +241,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::delete('/eliminar-horario-atencion', [VistasAdminController::class, 'eliminarHorarioAtencion'])->name('eliminarHorarioAtencion');
 
         Route::get('/tramites-academicos', [VistasAdminController::class, 'mostrarTramites'])->name("verTramitesAcademicos");
-        Route::view('/vista-crear-tramite', 'VistasAdministrador/crearTramiteAcademico')->name("crearTramiteAcademico");
+        Route::view('/vista-crear-tramite', 'VistasAdministrador/TramitesAcademica/crearTramiteAcademico')->name("crearTramiteAcademico");
         Route::post('/guardar-tramite', [VistasAdminController::class, 'guardarTramite'])->name('crearTramite');
         Route::delete('/eliminar-tramite/{id}', [VistasAdminController::class, 'eliminarTramite'])->name('eliminarTramite');
         Route::get('/editar-tramite/{id}', [VistasAdminController::class, 'vistaEditarTramite'])->name('editarTramite');
@@ -269,7 +269,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
         Route::get('/ver-pdf-car-distancia/fmo/{id}', [VistasAdminController::class, 'verPdfCarDisFMO'])->name('verPDFCarreraDisFmo');
     
         Route::get('/ver-preguntas-frecuentes', [VistasAdminController::class, 'mostrarPreguntas'])->name('verPreguntasFrecuentes');
-        Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/crearPregunta')->name('vistaIngresarPregunta');
+        Route::view('/ingresar-pregunta-frecuente', 'VistasAdministrador/PreguntasFrecuentes/crearPregunta')->name('vistaIngresarPregunta');
         Route::post('/guardar-pregunta', [VistasAdminController::class, 'guardarPregunta'])->name('guardarPregunta');
         Route::delete('/eliminar-pregunta/{id}', [VistasAdminController::class, 'eliminarPregunta'])->name('eliminarPreguntaFrecuente');
         Route::get('editar-pregunta/{id}', [VistasAdminController::class, 'vistaEditarPregunta'])->name('editarPreguntaVista');

@@ -74,12 +74,8 @@
                         <li class="sidebar-item">
                             <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ mb_strtoupper($item->tramite) }} </a>
                         </li>
-                    @endforeach
-
-                    
+                    @endforeach    
         </ul>
-
-
     </div>
 </div>
 

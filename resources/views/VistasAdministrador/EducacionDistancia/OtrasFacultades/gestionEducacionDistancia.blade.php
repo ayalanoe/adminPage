@@ -10,6 +10,10 @@
         <h2>Gestión de carreras a distancia de otras facultades</h2>
         <hr>
 
+    <!-- Bton para poder insertar una carrera de pregrado -->
+    <div class="container">
+        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalCarreraDistancia"><i class="fa-solid fa-plus"></i> Agregar Carrera</button>
+    </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -51,14 +55,7 @@
             </tbody>
         </table>
     </div>
-
-
-    <!-- Bton para poder insertar una carrera de pregrado -->
-    <div class="container">
-        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalCarreraDistancia"><i class="fa-solid fa-plus"></i> Agregar Carrea A Distancia</button>
-    </div>
     
-
     <div class="modal fade" id="modalCarreraDistancia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

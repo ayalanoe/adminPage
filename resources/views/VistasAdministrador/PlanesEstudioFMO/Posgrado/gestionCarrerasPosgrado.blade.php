@@ -8,7 +8,10 @@
     <div class="container">
         <h2>Carreras de Posgrado</h2>
         <hr>
-
+        <!-- Bton para poder insertar una carrera de pregrado -->
+        <div class="container">
+            <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPosgrado"><i class="fa-solid fa-plus"></i> Agregar Carrera Posgrado</button>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -54,11 +57,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <!-- Bton para poder insertar una carrera de pregrado -->
-    <div class="container">
-        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPosgrado"><i class="fa-solid fa-plus"></i> Agregar Carrera Posgrado</button>
     </div>
 
     <div class="modal fade" id="ModalAgregarCarreraPosgrado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

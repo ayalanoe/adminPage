@@ -6,30 +6,13 @@
 @section('contenido')
 
     <div class="container">
-        @php
-            $nombresDeptos = [
-                "INGA" => "Ingeniería y Arquitectura",
-                "MED" => "Medicina",
-                "CCHH" => "Ciencias y Humanidades",
-                "JCCSS" => "Jurisprudencia y Ciencias Sociales",
-                "CCEE" => "Ciencias Económicas",
-                "CCNN" => "Ciencias Naturales y Matemáticas",
-                "CCAA" => "Ciencias Agronómicas",
-                "QQFF" => "Química y Farmacia",
-                "EPOS" => "Posgrado",
-                "ECTM" => "Carreras Técnicas",
-                "PLCOM" => "Planes Complementarios"
-            ];
+        <h2>Carreras de Tecnicas</h2>
+        <hr>
 
-            $nombreDepto = $nombresDeptos[$departamento] ?? "No encontrado";
-        @endphp
-
-        <h2>Departamento: {{$nombreDepto}}</h2>
-        <br>
-        <a href="{{ route('regresarA_Departamentos') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Ver Departementos</a>
-        <br>
-        <br>
-    
+        <!-- Bton para poder insertar una carrera de pregrado -->
+        <div class="container">
+            <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraTecnica"><i class="fa-solid fa-plus"></i> Agregar Carrera Tecnica</button>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -46,22 +29,22 @@
                     $numero = 1 
                 @endphp
         
-                @foreach ($carrerasPregrado as $carrera)
+                @foreach ($carrerasTecnicas as $carrera)
                 <tr>
                     <th scope="row">{{$numero}}</th>  
                     <td>{{$carrera->carrera}}</td>
                     <td>{{$carrera->codigoCarrera}}</td>
                     <td>{{$carrera->tipoCarrera}}</td>
-                    <td>{{$nombreDepto}}</td><!--Actualizar agregando campo tramites-->
+                    <td>{{$carrera->departamento}}</td><!--Actualizar agregando campo tramites-->
                     <td class="d-flex">
         
-                        <form class="formEliminarCarreraPergrado" action="{{ route('eliminarCarreraDePregrado', $carrera->id) }}" method="POST">
+                        <form action="{{ route('eliminarCarreraTecnica', $carrera->id) }}" class="formEliminarCarreraTecnica" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
                         
-                        <a href="{{ route('editarCarreraDePregrado', $carrera->id) }}" class="btn btn-primary mx-1">
+                        <a href="{{ route('editarCarreraTecnica', $carrera->id) }}" class="btn btn-primary mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
@@ -77,33 +60,25 @@
         </table>
     </div>
 
-
-
-    <!-- Bton para poder insertar una carrera de pregrado -->
-    <div class="container">
-        <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalAgregarCarreraPregrado"><i class="fa-solid fa-plus"></i> Agregar Carrera Pre_Grado</button>
-    </div>
-    
-
-    <div class="modal fade" id="ModalAgregarCarreraPregrado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ModalAgregarCarreraTecnica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
     
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de carrera de pregrado</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de carrera de tecnica</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
     
-                    <form action="{{ route("carreraPregradoIngresar") }}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidate>
+                    <form action="{{ route('carreraTecnicaIngresar') }}" enctype="multipart/form-data" method="POST" class="row g-3 needs-validation" novalidat>
                         @csrf
 
                         <div class="col-md-12">
                             <label for="validationCustomUser" class="form-label">Tipo de Carrera</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-bars"></i></span>
-                                <input name="tipoCarreraPregrado" type="text" class="form-control" id="validaUser" value="Carrera_Pregrado" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
+                                <input name="tipoCarreraTecnica" type="text" class="form-control" value="Carrera_Tecnica" readonly> <!-- La propiedad readonly permite que el input sea solo de lectura ya que disable no envia el valor del input y el objetivo es que esté deshabilitado pero que se envíe -->
                             </div>
                         </div>
 
@@ -111,9 +86,9 @@
                             <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
-                                <input name="namePregradoCarrera" type="text" class="form-control" id="validaUser" required>
-                                <div class="invalid-feedback">
-                                    Ingrese una carrera!
+                                <input name="nameCarreraTecnica" type="text" class="form-control" required>
+                                <div class="valid-feedback">
+                                    Carrera invalida!
                                 </div>
                             </div>
                         </div>
@@ -122,7 +97,7 @@
                             <label for="validationCustomCorreo" class="form-label">Codigo de la carrera</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-file-lines"></i></span>
-                                <input name="codigoCarreraPregrado" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
+                                <input name="codigoCarreraTecnica" type="text" class="form-control" id="validaCorreo" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Codigo no valido!
                                 </div>
@@ -131,17 +106,17 @@
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departamento..." required>
+                            <input name="departamentoCarreraTecnica" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento...">
                             <datalist id="datalistOptions">
-                                <option value="{{$departamento}}" label="{{$nombreDepto}}"></option>
+                                <option value="ECTM" label="Carreras Técnicas"></option>
                             </datalist>
                         </div>
-                        
+            
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivoPregradoCarrera" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivoCarreraTecnica" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>
@@ -159,14 +134,14 @@
             </div>
         </div>
     </div>
-
+    
 @endsection
 
 @section('jsVistasAdmin')
 
     <!-- Para preguntar si está de acuerdo con eliminar la carrera -->
     <script>
-        $('.formEliminarCarreraPergrado').on('submit', function(e){
+        $('.formEliminarCarreraTecnica').on('submit', function(e){
             e.preventDefault();
 
             Swal.fire({
@@ -185,37 +160,35 @@
 
         })
     </script>
-
-    @if (Session::has('resCarreraPregrado'))
+    
+    @if (Session::has('resCarreraTecnica'))
         <script>
             Swal.fire({
                 title: "Informacion",
-                text: "{{ session('resCarreraPregrado') }}",
+                text: "{{ session('resCarreraTecnica') }}",
                 icon: "success"
             });
         </script>  
     @endif
 
-    @if (Session::has('resEliminarCarreraPregrado'))
+    @if (Session::has('resUpdateCarrTecnica'))
     <script>
         Swal.fire({
             title: "Informacion",
-            text: "{{ session('resEliminarCarreraPregrado') }}",
+            text: "{{ session('resUpdateCarrTecnica') }}",
             icon: "success"
         });
     </script>  
     @endif
 
-    @if (Session::has('resUpdateCarrPre'))
-    <script>
-        Swal.fire({
-            title: "Informacion",
-            text: "{{ session('resUpdateCarrPre') }}",
-            icon: "success"
-        });
-    </script>  
+    @if (Session::has('resEliminarCarreraTecnica'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarCarreraTecnica') }}",
+                icon: "success"
+            });
+        </script>  
     @endif
-
-
-        
+    
 @endsection

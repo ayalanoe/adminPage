@@ -160,6 +160,9 @@
                             <i class="fa-solid fa-landmark pe-2"></i>Aula Virtual UES</a><br>
                         <a href="https://eel.ues.edu.sv/session/index" target="_blank">
                             <i class="fa-solid fa-file pe-2"></i>Expediente en Línea</a><br>
+
+
+                        
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-list pe-2"></i>Expediente Móvil

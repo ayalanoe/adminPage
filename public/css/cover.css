@@ -114,7 +114,7 @@ ul li a:hover{
 }
 
 .custom-subheading {
-    font-size: 55px; /* Tamaño ajustado para pantallas grandes */
+    font-size: 60px; /* Tamaño ajustado para pantallas grandes */
     font-weight: 900;
     color: #690605;
     margin-top: -20px; /* Eliminar el margen negativo */
@@ -140,7 +140,7 @@ ul li a:hover{
     }
 
     .custom-subheading {
-        font-size: 38px; /* Ajuste para pantallas grandes */
+        font-size: 48px; /* Ajuste para pantallas grandes */
     }
 }
 
@@ -150,7 +150,7 @@ ul li a:hover{
     }
 
     .custom-subheading {
-        font-size: 32px; /* Ajuste para pantallas medianas */
+        font-size: 38px; /* Ajuste para pantallas medianas */
     }
 
     .bienvenidaFMO {
@@ -161,10 +161,12 @@ ul li a:hover{
 @media (max-width: 768px) { /* Tamaño pequeño */
     .custom-heading {
         font-size: 36px; /* Ajuste para pantallas pequeñas */
+        text-align: center;
     }
 
     .custom-subheading {
-        font-size: 34px; /* Ajuste para pantallas pequeñas */
+        font-size: 36px; /* Ajuste para pantallas pequeñas */
+        text-align: center;
     }
 
     .bienvenidaFMO {
@@ -183,7 +185,7 @@ ul li a:hover{
     }
 
     .custom-subheading {
-        font-size: 30px; /* Ajuste para pantallas extra pequeñas */
+        font-size: 34px; /* Ajuste para pantallas extra pequeñas */
     }
 
     .bienvenidaFMO {

@@ -1,19 +1,23 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Carreras Distancia FMO')
+@section('titulo', '- Preguntas Frecuentes')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
 @endsection
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de carreras a distancia de la FMO</h2>
+        <h2>Gestión de preguntas frecuentes</h2>
         <hr>
+        <!-- Bton para poder insertar una carrera de pregrado -->
+        <div class="container">
+            <a href="{{ route('vistaIngresarPregunta') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Pregunta Frecuente</a>
+        </div>
 
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Carrera</th>
+                    <th scope="col">Pregunta</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -22,20 +26,20 @@
                     $numero = 1 
                 @endphp
         
-                @foreach ($carrerasDisFMO as $carreraFMO)
+                @foreach ($preguntasFrecuentes as $pregunta)
                 <tr>
                     <th scope="row">{{$numero}}</th>  
-                    <td>{{$carreraFMO->carrera}}</td>
+                    <td>{{$pregunta->pregunta}}</td>
 
                     <td class="d-flex">
         
-                        <form action="{{ route('elimarCarDisFmo', $carreraFMO->id)}}" class="formDeleteCarDisFMO" method="POST">
+                        <form action="{{ route('eliminarPreguntaFrecuente', $pregunta->id) }}" class="formEliminarPregunta" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
                         </form> 
                         
-                        <a href="{{ route('vistaEditarCarDisFMO', $carreraFMO->id) }}" class="btn btn-primary mx-1">
+                        <a href="{{ route('editarPreguntaVista', $pregunta->id) }}" class="btn btn-primary mx-1">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         
@@ -47,57 +51,21 @@
                 @endphp
 
                 @endforeach
-
             </tbody>
         </table>
-    </div>
-
-    <!-- Bton para poder insertar una carrera a distancia de la fmo -->
-    <div class="container">
-        <a href="{{ route('vistaCrearCarDisFmo') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Carrera A Distancia</a>
     </div>
     
 @endsection
 
 @section('jsVistasAdmin')
 
-    @if (Session::has('resGuardarCarDisFMO'))
-        <script>
-        Swal.fire({
-            title: "Informacion",
-            text: "{{ session('resGuardarCarDisFMO') }}",
-            icon: "success"
-        });
-        </script>  
-    @endif
-
-    @if (Session::has('resNewDatosCarDisFMO'))
-        <script>
-        Swal.fire({
-            title: "Informacion",
-            text: "{{ session('resNewDatosCarDisFMO') }}",
-            icon: "success"
-        });
-        </script>  
-    @endif
-
-    @if (Session::has('resEliminarCarDistanciaFMO'))
-        <script>
-        Swal.fire({
-            title: "Informacion",
-            text: "{{ session('resEliminarCarDistanciaFMO') }}",
-            icon: "success"
-        });
-        </script>  
-    @endif
-
     <script>
-        $('.formDeleteCarDisFMO').on('submit', function(e){
+        $('.formEliminarPregunta').on('submit', function(e){
             e.preventDefault();
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará la carrera",
+                text: "Se eliminará la pregunta",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -112,4 +80,34 @@
         })
     </script>
 
+    @if (Session::has('resCrearPregunta'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resCrearPregunta') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('resEliminarPregunta'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEliminarPregunta') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+
+    @if (Session::has('resEditarPregunta'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('resEditarPregunta') }}",
+                icon: "success"
+            });
+        </script>  
+    @endif
+    
 @endsection

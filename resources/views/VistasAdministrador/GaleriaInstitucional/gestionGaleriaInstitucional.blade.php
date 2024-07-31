@@ -14,6 +14,9 @@
         <h2>Galería Institucional - {{date('Y')}}</h2>
         <hr>
 
+        <div class="container">
+            <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearGaleria"><i class="fa-solid fa-plus"></i> Agregar Foto</button>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -60,12 +63,6 @@
             </tbody>
         </table>
 
-    </div>
-    
-
-
-    <div class="container">
-        <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearGaleria"><i class="fa-regular fa-image"></i>+ Agregar Foto</button>
     </div>
 
 
