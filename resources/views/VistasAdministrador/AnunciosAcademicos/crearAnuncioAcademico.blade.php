@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Crear anuncio académico</h2>
+        <h2 class="global-tittle">CREAR ANUNCIO ACADÉMICO</h2>
         <hr>
 
         <form class="formCrearAnuncio" action="{{ route('crearAnuncio') }}" method="POST" enctype="multipart/form-data">

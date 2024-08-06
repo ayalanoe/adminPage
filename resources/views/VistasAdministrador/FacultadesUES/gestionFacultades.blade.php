@@ -1,8 +1,6 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Facultades') 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
+
 @section('contenido')
   <div class="container">
 
@@ -25,7 +23,7 @@
       $facuNombre = $facultades[$facultadPertenece] ?? "No encontrado";
       @endphp
 
-    <h2>Contactos: {{$facuNombre}} </h2>
+    <h2 class="global-tittle">CONTACTOS: {{$facuNombre}} </h2>
 
     <div class="container">
       <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a las facultades</a>
@@ -34,7 +32,12 @@
     </div>
     <br>
     <br>
-
+    @if ($facultad->isEmpty())
+    <div class="alert alert-empty text-center">
+        ¡NO SE HAN REGISTRADO CONTACTOS!
+    </div>
+    <br><br><br><br><br>
+    @else
     <table class="table table-hover">
       <thead>
         <tr>
@@ -75,6 +78,7 @@
         @endforeach
       </tbody>
     </table>
+    @endif
   </div>
 
   <!-- Modal Para ingresar una nueva facultad-->

@@ -6,7 +6,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Diplomados impartidos</h2>
+        <h2 class="global-tittle">DIPLOMAS IMPARTIDOS</h2>
         <hr>
 
         <!-- Bton para poder insertar un diplomado -->

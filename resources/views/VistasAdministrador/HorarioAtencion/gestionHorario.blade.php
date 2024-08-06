@@ -8,8 +8,8 @@
 @endsection
 
 @section('contenido')
-
-    <h2>Horario de Atención - {{date('Y')}}</h2>
+<div class="container">
+    <h2 class="global-tittle">HORARIO DE ATENCIÓN - {{date('Y')}}</h2>
     <br>
     <table class="table table-hover">
         <thead>
@@ -71,7 +71,7 @@
         </div>
     @endif
     
-
+</div>
 @endsection
 
 @section('jsVistasAdmin')

@@ -1,12 +1,10 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Preguntas Frecuentes')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
+
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de preguntas frecuentes</h2>
+        <h2 class="global-tittle">GESTIÓN DE PREGUNTAS FRECUENTES</h2>
         <hr>
         <!-- Bton para poder insertar una carrera de pregrado -->
         <div class="container">

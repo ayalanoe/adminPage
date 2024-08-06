@@ -7,10 +7,8 @@
 @endsection
 
 @section('contenido')
-    
-    <br><br>
-
-    <h2>Catálogo Académico Año - {{date('Y')}}</h2>
+<div class="container">
+    <h2 class="global-tittle">CATÁLOGO ACADÉMICO - {{date('Y')}}</h2>
     <br>
 
     <table class="table table-hover">
@@ -85,7 +83,7 @@
             });
         </script>
     @endif
-
+</div>
 @endsection
 
 @section('jsVistasAdmin')

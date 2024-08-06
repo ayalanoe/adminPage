@@ -12,7 +12,8 @@
 
     <div class="container">
 
-        <h2>INFORME DE CONSTANCIAS EMITIDAS DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h2>
+        <h2 class="global-tittle">INFORME DE CONSTANCIAS EMITIDAS</h2>
+        <h2 class="global-tittle">DEL {{ date('d/m/Y', strtotime($fechaInicial)) }} AL {{date('d/m/Y', strtotime($fechaFinal))}} </h2>
         <hr>
 
         @if ($totalConstancias->isEmpty())

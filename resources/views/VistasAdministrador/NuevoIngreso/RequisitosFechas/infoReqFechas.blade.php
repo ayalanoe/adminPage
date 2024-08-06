@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Detalles de Requisitos y Fechas</h2>
+        <h2 class="global-tittle">DETALLES DE REQUISITOS Y FECHAS</h2>
         <hr>
 
         <form class="formReqFechas" action="{{ route('guardarReqFechaIngreso') }}" method="POST">

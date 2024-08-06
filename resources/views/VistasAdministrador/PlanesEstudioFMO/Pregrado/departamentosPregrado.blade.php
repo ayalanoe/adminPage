@@ -5,7 +5,7 @@
 @endsection
 @section('contenido')
 <div class="container">
-    <h2>Carreras de Pregrado</h2>
+    <h2 class="global-tittle">CARRERAS DE PREGRADO</h2>
     <hr>
     
     <table class="table table-hover">

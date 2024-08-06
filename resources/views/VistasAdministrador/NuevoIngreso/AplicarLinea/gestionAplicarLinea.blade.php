@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Información para Aplicar en Línea</h2>
+        <h2 class="global-tittle">INFORMACIÓN PARA APLICAR EN LÍNEA</h2>
         <hr>
 
         @if ($datosAplyEnLinea->isEmpty())

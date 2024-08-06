@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Crear tipo de ingreso</h2>
+        <h2 class="global-tittle">CREAR TIPO DE INGRESO</h2>
         <hr>
 
         <form class="formCrearTipo" action="{{ route('guardarTipoIngreso') }}" method="POST" enctype="multipart/form-data">

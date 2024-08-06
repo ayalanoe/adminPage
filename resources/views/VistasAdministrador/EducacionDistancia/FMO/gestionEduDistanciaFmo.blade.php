@@ -1,17 +1,21 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Carreras Distancia FMO')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
+
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de carreras a distancia de la FMO</h2>
+        <h2 class="global-tittle">CARRERAS A DISTANCIA EN FMO</h2>
         <hr>
     <!-- Bton para poder insertar una carrera a distancia de la fmo -->
     <div class="container">
         <a href="{{ route('vistaCrearCarDisFmo') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Carrera</a>
     </div>
+    @if ($carrerasDisFMO->isEmpty())
+            <div class="alert alert-empty text-center">
+                ¡NO SE HAN REGISTRADO CARRERAS!
+            </div>
+            <br><br><br><br><br>
+        @else
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -53,6 +57,7 @@
 
             </tbody>
         </table>
+        @endif
     </div>
     
 @endsection

@@ -4,12 +4,11 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}"> 
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">  
 @endsection
 
 @section('contenido')
 <div class="container">
-    <h2>Calendario Administrativo Año - {{date('Y')}}</h2>
+    <h2 class="global-tittle">CALENDARIO ADMINISTRATIVO - {{date('Y')}}</h2>
     <hr>
     <table class="table table-hover">
         <thead>

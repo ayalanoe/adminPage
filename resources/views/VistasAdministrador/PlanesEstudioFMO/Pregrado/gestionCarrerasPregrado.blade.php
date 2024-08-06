@@ -24,7 +24,7 @@
             $nombreDepto = $nombresDeptos[$departamento] ?? "No encontrado";
         @endphp
 
-        <h2>Departamento: {{$nombreDepto}}</h2>
+        <h2 class="global-tittle">DEPARTAMENTO: {{ mb_strtoupper($nombreDepto) }}</h2>
         <br>
 
         

@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/f3b9f07ba0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/tablas.css') }}">
 
     <!-- CDN de sweetAlert para las alertas de confirmaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

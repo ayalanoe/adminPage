@@ -33,7 +33,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 /*//-------------------- RUTAS DEL PUBLICAS PARA LA PARTE PUBLICA DE LA WEB ---------------------------------------------------------------------------------------------------*/
     
     //------------------------------ OTRAS RUTAS PUBLICAS --------------------------------------------------------------------------------------------------------------------
-        Route::get('AcademicaFMO/directorio', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
+        Route::get('directorio-administrativo', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
         Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
         Route::get('/AcademicaFMO/formato-tramite/{id}', [VistasPublicasController::class, 'descargarFormatoTramite'])-> name('publicDescargarFormato');
@@ -48,7 +48,6 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     
 
     /*------------------------------ RUTAS PUBLICAS DE NUEVO INGRESO -------------------------------------------------------------------------------------------------------*/
-        //Aquí y jando siempre la identacion desgraciado
         Route::get('/NuevoIngreso/tipos-de-ingreso', [VistasPublicasController::class, 'verTiposIngreso'])->name('tiposIngresos');
         Route::get('/NuevoIngreso/tipo-de-ingreso/{id}', [VistasPublicasController::class, 'infoTiposIngresos'])->name('verInfoTiposIngreso');
 
@@ -62,7 +61,7 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     
     //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
-        Route::get('/AcademicaFMO/educacion-a-distancia', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+        Route::get('/educacion-a-distancia-otras-facultades', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
         Route::get('/AcademicaFMO/info-carrera-{id}/educacion-distacia', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
         Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');

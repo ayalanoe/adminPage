@@ -1,13 +1,11 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Crear Tramite')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
+
 @section('contenido')
 
     <div class="container">
 
-        <h2>Crear tramite académico</h2>
+        <h2 class="global-tittle">REGISTRO DE TRÁMITE ACADÉMICO</h2>
         <hr>
 
         <form class="formCrearTramite" action="{{ route('crearTramite') }}" method="POST" enctype="multipart/form-data">

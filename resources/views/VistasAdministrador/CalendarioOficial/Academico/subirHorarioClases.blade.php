@@ -8,8 +8,9 @@
 @endsection
 
 @section('contenido')
-        
-    <h2>Caledario Académico - {{date('Y')}}</h2>
+<div class="container">       
+    <h2 class="global-tittle">CALENDARIO ACADÉMICO - {{date('Y')}}</h2>
+    <br>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -58,7 +59,7 @@
             @endforelse
         </tbody>
     </table>
-
+</div>
     @if (Session::has('resCalendarioAcademico'))
         <script>
             Swal.fire({

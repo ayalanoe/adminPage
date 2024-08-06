@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <h2>Editar Requisitos y Fechas</h2>
+    <h2 class="global-tittle">EDITAR REQUISITOS Y FECHAS</h2>
     <hr>
 
     <form action="{{ route('guardarNewDatosReqFecha', $editarReqFecha->id) }}" class="editFormReqFechas" method="POST">

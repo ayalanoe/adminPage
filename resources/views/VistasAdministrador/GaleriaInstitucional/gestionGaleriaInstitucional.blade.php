@@ -2,16 +2,11 @@
 
 @section('titulo', '- Galería Institucional')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionGaleria.css')}}"> 
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">    
-@endsection
-
 @section('contenido')
 
     <div class="container">
 
-        <h2>Galería Institucional - {{date('Y')}}</h2>
+        <h2 class="global-tittle">GALERÍA INSTITUCIONAL - {{date('Y')}}</h2>
         <hr>
 
         <div class="container">

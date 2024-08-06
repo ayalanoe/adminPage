@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Ingresar una pregunta frecuente</h2>
+        <h2 class="global-tittle">REGISTRO DE PREGUNTA FRECUENTE</h2>
         <hr>
 
         <form class="formIngresarPregunta" action="{{ route('guardarPregunta')}}" method="POST" enctype="multipart/form-data">

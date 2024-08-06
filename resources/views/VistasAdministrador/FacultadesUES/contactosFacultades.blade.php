@@ -1,11 +1,8 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Contactos Facultades')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
 @section('contenido')
 <div class="container">
-    <h2>Contactos de facultades</h2>
+    <h2 class="global-tittle">CONTACTOS DE FACULTADES</h2>
     <hr>
     
     <table class="table table-hover">

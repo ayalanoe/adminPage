@@ -1,60 +1,68 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Anuncios Académicos')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
-@endsection
+
 @section('contenido')
 
 <div class="container">
-    <h2>GESTIÓN DE ANUNCIOS ACADÉMICOS</h2>
+    <h2 class="global-tittle">GESTIÓN DE ANUNCIOS ACADÉMICOS</h2>
     <hr>
     <!-- Bton para poder insertar un anuncio -->
     <div class="container">
         <a href="{{ route('vistaCrearAnuncio') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Anuncios académicos</a>
     </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Fecha_Publicacion</th>
-                    <th scope="col">Fecha_Expiracion</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $numero = 1 
-                @endphp
-        
-                @foreach ($anuncios as $anuncio)
-                <tr>
-                    <th scope="row">{{$numero}}</th>  
-                    <td>{{$anuncio->titulo}}</td>
-                    <td>{{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</td>
-                    <td>{{ date('d-m-Y', strtotime($anuncio->fechaExpiracion)) }}</td>
+    <br>
+    <br>
+    
+        @if ($anuncios->isEmpty())
+            <div class="alert alert-empty text-center">
+                ¡No se han registrado anuncios!
+            </div>
+            <br><br><br><br><br>
+        @else
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Fecha_Publicacion</th>
+                        <th scope="col">Fecha_Expiracion</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $numero = 1 
+                    @endphp
+            
+                    @foreach ($anuncios as $anuncio)
+                    <tr>
+                        <th scope="row">{{$numero}}</th>  
+                        <td>{{$anuncio->titulo}}</td>
+                        <td>{{ date('d-m-Y', strtotime($anuncio->fechaPublicacion)) }}</td>
+                        <td>{{ date('d-m-Y', strtotime($anuncio->fechaExpiracion)) }}</td>
 
-                    <td class="d-flex">
-        
-                        <form action="{{ route('eliminarAnuncio', $anuncio->id) }}" class="formEliminarAnuncio" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                        </form> 
-                        
-                        <a href="{{ route('vistaEditarAnuncio', $anuncio->id) }}" class="btn btn-primary mx-1">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        
-                    </td>
+                        <td class="d-flex">
+            
+                            <form action="{{ route('eliminarAnuncio', $anuncio->id) }}" class="formEliminarAnuncio" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                            </form> 
+                            
+                            <a href="{{ route('vistaEditarAnuncio', $anuncio->id) }}" class="btn btn-primary mx-1">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            
+                        </td>
 
-                </tr>
-                @php
-                    $numero++
-                @endphp
-                @endforeach
-            </tbody>
-        </table>
+                    </tr>
+                    @php
+                        $numero++
+                    @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
     
 @endsection

@@ -4,7 +4,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Editar tramite académico</h2>
+        <h2 class="global-tittle">EDITAR TRÁMITE ACADÉMICO</h2>
         <hr>
 
         <table class="table table-hover">

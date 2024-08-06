@@ -2,18 +2,24 @@
 @section('titulo', '- Carreras a Distancia')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/tablas.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/alertVacio.css') }}">
 @endsection
+
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de carreras a distancia de otras facultades</h2>
+        <h2 class="global-tittle">CARRERAS A DISTANCIA DE OTRAS FACULTADES</h2>
         <hr>
-
-    <!-- Bton para poder insertar una carrera de pregrado -->
     <div class="container">
         <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalCarreraDistancia"><i class="fa-solid fa-plus"></i> Agregar Carrera</button>
     </div>
+    @if ($educacionDistancia->isEmpty())
+            <div class="alert alert-empty text-center">
+                ¡NO SE HAN REGISTRADO CARRERAS!
+            </div>
+            <br><br><br><br><br>
+        @else
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -54,6 +60,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
     
     <div class="modal fade" id="modalCarreraDistancia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

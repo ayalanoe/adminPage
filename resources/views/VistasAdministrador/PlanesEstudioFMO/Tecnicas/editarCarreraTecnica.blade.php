@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Editar Carrera Tecnica</h2>
+        <h2 class="global-tittle">EDITAR CARRERA TÉCNICA</h2>
         <hr>
 
         <br>

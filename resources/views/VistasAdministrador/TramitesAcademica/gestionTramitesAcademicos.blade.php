@@ -1,12 +1,10 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Tramites Academicos')
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
+
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de tramites académicos</h2>
+        <h2 class="global-tittle">GESTIÓN DE TRÁMITES ACADÉMICOS</h2>
         <hr>
         <!-- Bton para poder insertar una carrera de pregrado -->
         <div class="container">

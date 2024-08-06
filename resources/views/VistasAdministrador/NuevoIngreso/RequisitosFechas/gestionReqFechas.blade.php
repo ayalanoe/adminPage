@@ -4,7 +4,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Requisitos y Fechas</h2>
+        <h2 class="global-tittle">REQUISITOS Y FECHAS</h2>
         <hr>
 
         @if ($requisitosYfechas->isEmpty())

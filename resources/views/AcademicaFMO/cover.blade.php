@@ -81,9 +81,6 @@
 
 
     <div class="container_table">      
-
-
-
         <div class="container">
             
             <div class="row justify-content-between">

@@ -5,8 +5,8 @@
 
     <div class="container">
 
-        <h3>Editar Carrera de pregrado</h3>
-        <h4>Carrera: {{$carreraPregradoEdit->carrera}}</h4>
+        <h2 class="global-tittle">EDITAR CARRERA DE PREGRADO</h2>
+        <h2 class="global-tittle">: {{ mb_strtoupper($carreraPregradoEdit->carrera) }}</h2>
 
         <br>
         <table class="table table-hover">

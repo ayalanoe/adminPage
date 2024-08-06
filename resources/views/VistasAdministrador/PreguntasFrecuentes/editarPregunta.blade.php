@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Editar pregunta frecuente</h2>
+        <h2 class="global-tittle">EDITAR PREGUNTA FRECUENTE</h2>
         <hr>
 
         <form class="formEditarPregunta" action="{{ route('guardarNewDatosPregunta', $datosEditarPregunta->id) }}" method="POST" enctype="multipart/form-data">

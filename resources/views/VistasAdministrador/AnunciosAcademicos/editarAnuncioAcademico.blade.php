@@ -4,7 +4,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Editar anuncio académico</h2>
+        <h2 class="global-tittle">EDITAR ANUNCIO ACADÉMICO</h2>
         <hr>
 
         <table class="table table-hover">

@@ -5,7 +5,8 @@
 
     <div class="container">
 
-        <h2>Editar Diplomado</h2>
+        <h2 class="global-tittle">EDITAR DIPLOMADO</h2>
+       
         <hr>
         <table class="table table-hover">
             <thead>

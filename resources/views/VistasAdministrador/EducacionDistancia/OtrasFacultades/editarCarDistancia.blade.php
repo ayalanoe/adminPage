@@ -1,10 +1,14 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Editar Carrera Distancia')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/tablas.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/alertVacio.css') }}">
+@endsection
 @section('contenido')
 
     <div class="container">
-        <h2>Editar carrera a distancia</h2>
+        <h2 class="global-tittle">EDITAR CARRERA A DISTANCIA</h2>
         <hr>
 
         <br>

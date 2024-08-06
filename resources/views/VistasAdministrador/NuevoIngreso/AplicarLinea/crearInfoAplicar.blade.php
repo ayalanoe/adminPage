@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Detalles de Aplicar en Linea</h2>
+        <h2 class="global-tittle">DETALLES DE APLICAR EN LÍNEA</h2>
         <hr>
 
         <form class="formAplicarLinea" action="{{ route('aplicarEnLineaGuardar') }}" method="POST">

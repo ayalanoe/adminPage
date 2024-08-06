@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Editar tipo de ingreso</h2>
+        <h2 class="global-tittle">EDITAR TIPO DE INGRESO</h2>
         <hr>
 
         <form action="{{route('nuevosDatosTipoIngreso', $tipoDeIngresoEditar->id)}}" method="POST">

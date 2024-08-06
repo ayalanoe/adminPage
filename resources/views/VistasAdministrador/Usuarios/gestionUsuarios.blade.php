@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
 @endsection
 @section('contenido')
-    <h2>Gestion de usuarios del sistema</h2>
+<div class="container">
+    <h2 class="global-tittle">GESTIÓN DE USUARIOS EN SITIO WEB</h2>
     <br>
     
     <table class="table table-hover">
@@ -58,6 +59,7 @@
               @endforeach
             </tbody>
       </table>
+</div>
 @endsection
 
 @section('jsVistasAdmin')

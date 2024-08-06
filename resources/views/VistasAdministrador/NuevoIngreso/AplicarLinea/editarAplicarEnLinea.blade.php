@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <h2>Editar Aplicar en Linea</h2>
+        <h2 class="global-tittle">EDITAR INFORMACIÓN PARA APLICAR EN LÍNEA</h2>
         <hr>
         
         <form action="{{ route('guardarNewDatosAplicar', $editApliEnLinea->id)}}" class="formEditAplicarEnLinea" method="POST">

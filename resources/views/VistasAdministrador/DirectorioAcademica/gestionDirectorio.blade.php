@@ -1,54 +1,61 @@
 @extends('Layouts.dashboard')
 @section('titulo', '- Directorio') 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
-@endsection
+
 @section('contenido')
   <div class="container">
-    <h2>GESTIÓN DEL DIRECTORIO ADMINISTRATIVO</h2>
+    <h2 class="global-tittle">GESTIÓN DEL DIRECTORIO ADMINISTRATIVO</h2>
+    <br>
     <div class="container">
       <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalNuevoContacto"><i class="fa-solid fa-user-plus"></i> Nuevo Contacto</button>
     </div>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Encargado</th>
-          <th scope="col">Correo Electrónico</th>
-          <th scope="col">Contacto</th>
-          <th scope="col">Trámites a cargo</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @php
-          $numero = 1 
-        @endphp
-
-        @foreach ($directorio as $contacto)
+    <br><br>
+    @if ($directorio->isEmpty())
+            <div class="alert alert-empty text-center">
+                ¡No se creado el directorio!
+            </div>
+            <br><br><br><br><br>
+      @else
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <th scope="row">{{$numero}}</th>  
-            <td>{{$contacto->nombre}}</td>
-            <td>{{$contacto->correo}}</td>
-            <td>{{$contacto->contacto}}</td>
-            <td>{{$contacto->tramitesAsignado}}</td><!--Actualizar agregando campo tramites-->
-            <td class="d-flex">
-
-              <form class="formEliminarContacto" action="{{route('eliminarContacto', $contacto->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-              </form> 
-
-              <button type="button" class="btn btn-primary mx-1 btnAbrirModalEditarContacto" data-bs-toggle="modal" data-bs-target="#modalEditarContacto{{$contacto->id}}"><i class="fa-solid fa-pen-to-square"></i></button>
-            </td>
+            <th scope="col">#</th>
+            <th scope="col">Encargado</th>
+            <th scope="col">Correo Electrónico</th>
+            <th scope="col">Contacto</th>
+            <th scope="col">Trámites a cargo</th>
+            <th scope="col">Acciones</th>
           </tr>
+        </thead>
+        <tbody>
           @php
-            $numero++
+            $numero = 1 
           @endphp
-        @endforeach
-      </tbody>
-    </table>
+
+          @foreach ($directorio as $contacto)
+            <tr>
+              <th scope="row">{{$numero}}</th>  
+              <td>{{$contacto->nombre}}</td>
+              <td>{{$contacto->correo}}</td>
+              <td>{{$contacto->contacto}}</td>
+              <td>{{$contacto->tramitesAsignado}}</td><!--Actualizar agregando campo tramites-->
+              <td class="d-flex">
+
+                <form class="formEliminarContacto" action="{{route('eliminarContacto', $contacto->id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                </form> 
+
+                <button type="button" class="btn btn-primary mx-1 btnAbrirModalEditarContacto" data-bs-toggle="modal" data-bs-target="#modalEditarContacto{{$contacto->id}}"><i class="fa-solid fa-pen-to-square"></i></button>
+              </td>
+            </tr>
+            @php
+              $numero++
+            @endphp
+          @endforeach
+        </tbody>
+      </table>
+      @endif
   </div>
 
   <!-- Modal Para ingresar un contacto-->

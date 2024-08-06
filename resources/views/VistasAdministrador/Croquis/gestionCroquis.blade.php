@@ -2,16 +2,11 @@
 
 @section('titulo', '- Croquis')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
-@endsection
-
 @section('contenido')
     
     <div class="container">
 
-        <h2>Croquis FMO</h2>
+        <h2 class="global-tittle">CROQUIS FMO</h2>
         <hr>
         <table class="table table-hover">
             <thead>

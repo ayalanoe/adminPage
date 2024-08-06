@@ -5,44 +5,40 @@
 -->
 @section('titulo', '- Informe de Constancias') 
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/cssAdministrador/gestionConstancias.css') }}">
-@endsection
-
 @section('contenido')
+<div class="container">
+  <h2 class="global-tittle">FILTRAR INFORME DE CONSTANCIAS</h2>
 
-<h2>FILTRAR INFORME DE CONSTANCIAS</h2>
-
-    <div class="col-12">
-      <div class="p-3 m-1"> <!--Padding y margin del texto-->           
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Fecha Inicial</th>
-              <th scope="col">Fecha Final</th>
-              <th scope="col">Acción</th>
-            </tr>
-          </thead>
-          <form method="post" action="{{ route('totalConstanciasAsis') }}" onsubmit="return validarFechas()">
-            @csrf
-            <tbody>
-                <tr>
-                    <th scope="row">
-                        <input name="fechaInicialConstancia" type="date" class="form-control" placeholder="Fecha Inicial" style="width: 200px;">
-                    </th>
-                    <td>
-                        <input name="fechaFinalConstancia" type="date" class="form-control" placeholder="Fecha Final" style="width: 200px;">
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-secondary" id="btnGenerarInforme">Generar Informe</button>
-                    </td>
-                </tr>
-            </tbody>
-        </form>
-        </table>
-      </div>
-    </div>  
-
+      <div class="col-12">
+        <div class="p-3 m-1"> <!--Padding y margin del texto-->           
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Fecha Inicial</th>
+                <th scope="col">Fecha Final</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+            <form method="post" action="{{ route('totalConstanciasAsis') }}" onsubmit="return validarFechas()">
+              @csrf
+              <tbody>
+                  <tr>
+                      <th scope="row">
+                          <input name="fechaInicialConstancia" type="date" class="form-control" placeholder="Fecha Inicial" style="width: 200px;">
+                      </th>
+                      <td>
+                          <input name="fechaFinalConstancia" type="date" class="form-control" placeholder="Fecha Final" style="width: 200px;">
+                      </td>
+                      <td>
+                          <button type="submit" class="btn btn-secondary" id="btnGenerarInforme">Generar Informe</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </form>
+          </table>
+        </div>
+      </div>  
+    </div>
 @endsection
 
 @section('jsVistasAdmin')

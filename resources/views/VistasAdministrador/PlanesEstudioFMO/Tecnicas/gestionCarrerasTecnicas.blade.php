@@ -6,7 +6,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Carreras de Tecnicas</h2>
+        <h2 class="global-tittle">CARRERAS TÉCNICAS</h2>
         <hr>
 
         <!-- Bton para poder insertar una carrera de pregrado -->

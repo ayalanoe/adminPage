@@ -4,7 +4,7 @@
 @section('contenido')
 
     <div class="container">
-        <h2>Gestión de Tipos de Ingreso</h2>
+        <h2 class="global-tittle">GESTIÓN DE TIPOS DE INGRESO</h2>
         <hr>
 
         @if ($newIngresoTipos->isEmpty())

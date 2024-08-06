@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 *,
 ::after,::before{
@@ -61,6 +63,7 @@ h4{
     flex-direction: column; 
     align-items: center;
     justify-content: start;
+    background-color: #dadada;
 }
 
 
@@ -72,12 +75,12 @@ h4{
 }
 
 .sidebar-logo{
-    padding: 1.15rem;
+    padding: 1.25rem;
 }
 
 .sidebar-logo a{
     color: white;
-    font-size: 1.15rem;
+    font-size: 1.6rem;
     font-weight: 600;
 }
 
@@ -101,6 +104,10 @@ a.sidebar-link{
     position: relative;
     display: block;
     font-size: 0.875rem;
+}
+
+a.asa{
+    padding-left: 20px;
 }
 
 a.sidebar-link:hover{
@@ -137,6 +144,27 @@ transition: all .2s ease-out;
     background-color: #690605;
     /*background: var(--bs-dark);*/
 }
+
+.myuser-link{
+    padding: .625rem 1.625rem;
+    width: 200px;
+    right: 40px; /* Alinea el menú a la derecha del contenedor */
+    font-size: 0.875rem;
+    
+    font-weight: bold;
+}
+.myuser-link:hover{
+    color: #690605;
+    white-space: nowrap;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+}
+.user-options{
+    transform: translateX(-53%) translateY(10px);  
+}
+
 [data-bs-theme="light"] .footer {
     color: black; /* Puedes ajustar el color según tus preferencias */
 }
@@ -162,10 +190,6 @@ transition: all .2s ease-out;
     max-width: 40px;
     max-height: 40px;
 }
-
-
-
-
 
 .content{
     flex: 1;
