@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/f3b9f07ba0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styleNav.css') }}">
+   
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/tablas.css') }}">
 
@@ -34,23 +34,13 @@
                 <div class="sidebar-logo">
                     <div class="row">
                         <div class="col-12 col-md-12 d-flex">
-                                    <!--posicion de la imagen dentro del contenedor-->
-                                        <div class="row">
-                                            <div class="col-6 col-md-12 d-flex">
-                                                <div class=""> <!--Padding y margin del texto-->
-                                                    <img src="{{ asset('images/logoues.png') }}" alt="" class="img-fluid-logo">
-                                                </div> 
-                                            </div>                                      
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-12 d-flex">
-                                                <div class="p-2"> <!--Padding y margin del texto-->
-                                                    <a href="{{route('vistaPrincipalAsistente')}}">Académica FMO</a>
-                                                </div> 
-                                            </div>                                              
-                                        </div>
-                                        
-                                    
+                            <div class="row">
+                                <div class="col-12 col-md-12 d-flex">
+                                    <div class="p-1"> <!--Padding y margin del texto-->
+                                        <a href="{{route('vistaPrincipalAsistente')}}" class="academic-text">Académica FMO</a>
+                                    </div> 
+                                </div>                                              
+                            </div>
                         </div>
                     </div>
 
@@ -65,10 +55,10 @@
                         </a>
                         <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('registrosConstanciasAsis') }}" class="sidebar-link">Registrar Constancia</a>
+                                <a href="{{ route('registrosConstanciasAsis') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('informeConstanciasAsis') }}" class="sidebar-link">Generar Informe</a>
+                                <a href="{{ route('informeConstanciasAsis') }}" class="sidebar-link sub-options">> Generar Informe</a>
                             </li>
                         </ul>
                     </li>
@@ -95,12 +85,12 @@
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-circle-user"></i> @auth {{Auth::user()->name}} @endauth
                                     </a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu user-options">
                                         <li class="nav-item">
-                                            <a class="nav-link " href="Datos" data-bs-toggle="modal" data-bs-target="#ModalMisDatos">Mi Perfil</a>
-                                            <a class="nav-link " href="EdiciónPass" data-bs-toggle="modal" data-bs-target="#ModalEditarContraseña">Cambiar Contraseña</a>
+                                            <a class="nav-link myuser-link" href="Datos" data-bs-toggle="modal" data-bs-target="#ModalMisDatos">Mi Perfil</a>
+                                            <a class="nav-link myuser-link" href="EdiciónPass" data-bs-toggle="modal" data-bs-target="#ModalEditarContraseña">Cambiar Contraseña</a>
 
-                                            <a class="nav-link " href="{{ route('logout') }}">Cerrar Sesión</a>                                            
+                                            <a class="nav-link myuser-link" href="{{ route('logout') }}">Cerrar Sesión</a>                                            
                                         </li>
                                     </ul>
                                 </li>
@@ -226,15 +216,7 @@
                 -->
                 @yield('contenido')
                 
-            </main>
-
-            
-            
-            <a href="#" class="theme-toggle">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-sun"></i>
-            </a>
-            
+            </main>            
         </div>
     </div>
 

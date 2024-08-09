@@ -35,8 +35,6 @@
             
             <button type="submit">Registrar</button>
         </form>
-
-        <a href="#">Ayuda</a>
     </div>
 
 @endsection

@@ -6,7 +6,7 @@
     <div class="container">
         <h2 class="global-tittle">REQUISITOS Y FECHAS</h2>
         <hr>
-
+        <br>
         @if ($requisitosYfechas->isEmpty())
             <div class="alert alert-warning">
                 No hay registro

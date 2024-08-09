@@ -7,7 +7,7 @@
 
         <h2 class="global-tittle">INFORMACIÓN PARA APLICAR EN LÍNEA</h2>
         <hr>
-
+        <br>
         @if ($datosAplyEnLinea->isEmpty())
             <div class="alert alert-warning">
                 No hay registro

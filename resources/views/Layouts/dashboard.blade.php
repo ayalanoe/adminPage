@@ -35,17 +35,15 @@
                 <div class="sidebar-logo">
                     <div class="row">
                         <div class="col-12 col-md-12 d-flex">
-                                        <div class="row">
-                                            <div class="col-12 col-md-12 d-flex">
-                                                <div class="p-1"> <!--Padding y margin del texto-->
-                                                    <a href="{{route('privada')}}" class="academic-text">Académica FMO</a>
-                                                </div> 
-                                            </div>                                              
-                                        </div>   
+                            <div class="row">
+                                <div class="col-12 col-md-12 d-flex">
+                                    <div class="p-1"> <!--Padding y margin del texto-->
+                                        <a href="{{route('privada')}}" class="academic-text">Académica FMO</a>
+                                    </div> 
+                                </div>                                              
+                            </div>   
                         </div>
                     </div>
-
-
                 </div>
                 <ul class="sidebar-nav">
 
@@ -56,7 +54,7 @@
                         </a>
                         <ul id="Anuncios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionAnuncios') }}" class="sidebar-link asa">> Registro de Anuncios</a>
+                                <a href="{{ route('gestionAnuncios') }}" class="sidebar-link sub-options">> Registro de Anuncios</a>
                             </li>
                             
                         </ul>
@@ -69,10 +67,10 @@
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link">Calendario Administrativo</a>
+                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link sub-options">> Calendario Administrativo</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link">Calendario Académico</a>
+                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link sub-options">> Calendario Académico</a>
                             </li>
                         </ul>
                     </li>
@@ -84,10 +82,10 @@
                         </a>
                         <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link">Registrar Constancia</a>
+                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('informeConstancias') }}" class="sidebar-link">Generar Informe</a>
+                                <a href="{{ route('informeConstancias') }}" class="sidebar-link sub-options">> Generar Informe</a>
                             </li>
                         </ul>
                     </li>
@@ -99,7 +97,7 @@
                         </a>
                         <ul id="croquisFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('croquis') }}" class="sidebar-link">Gestionar Croquis</a>
+                                <a href="{{ route('croquis') }}" class="sidebar-link sub-options">> Gestionar Croquis</a>
                             </li>
                         </ul>
                     </li>
@@ -112,7 +110,7 @@
                         </a>
                         <ul id="DirectContact" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionDirectorio') }}" class="sidebar-link">Ver Directorio</a>
+                                <a href="{{ route('gestionDirectorio') }}" class="sidebar-link sub-options">> Ver Directorio</a>
                             </li>
                             
                         </ul>
@@ -125,10 +123,10 @@
                         </a>
                         <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item pe-2">
-                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link">Otras Facultades</a>
+                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link sub-options">> Otras Facultades</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasDistanciaFmo') }}" class="sidebar-link">Facultad Oriente - FMO</a>
+                                <a href="{{ route('carrerasDistanciaFmo') }}" class="sidebar-link sub-options">> Facultad Oriente - FMO</a>
                             </li>
                         </ul>
                     </li>
@@ -140,7 +138,7 @@
                         </a>
                         <ul id="DirectFacultad" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('filtroContactosFacultades') }}" class="sidebar-link">Ver Directorio</a>
+                                <a href="{{ route('filtroContactosFacultades') }}" class="sidebar-link sub-options">> Ver Directorio</a>
                             </li>
                             
                         </ul>
@@ -153,7 +151,7 @@
                         </a>
                         <ul id="GaleriaAcademica" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionGaleria') }}" class="sidebar-link">Gestionar Galería</a>
+                                <a href="{{ route('gestionGaleria') }}" class="sidebar-link sub-options">> Gestionar Galería</a>
                             </li>
                             
                         </ul>
@@ -166,10 +164,10 @@
                         </a>
                         <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link">Ver usuarios</a>
+                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link sub-options">> Ver usuarios</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('registro') }}" class="sidebar-link">Crear Usuario</a>
+                                <a href="{{ route('registro') }}" class="sidebar-link sub-options">> Crear Usuario</a>
                             </li>
                             
                         </ul>
@@ -182,7 +180,7 @@
                         </a>
                         <ul id="HorarioAdministrativo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionHorario') }}" class="sidebar-link">Horario Actual</a>
+                                <a href="{{ route('gestionHorario') }}" class="sidebar-link sub-options">> Horario Actual</a>
                             </li>
                             
                         </ul>
@@ -195,16 +193,16 @@
                         </a>
                         <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('vertiposingreso') }}" class="sidebar-link">Tipos de Ingreso</a>
+                                <a href="{{ route('vertiposingreso') }}" class="sidebar-link sub-options">> Tipos de Ingreso</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('ReqFe') }}" class="sidebar-link">Requisitos y Fechas</a>
+                                <a href="{{ route('ReqFe') }}" class="sidebar-link sub-options">> Requisitos y Fechas</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('aplicarLinea') }}" class="sidebar-link">Aplicar en Línea</a>
+                                <a href="{{ route('aplicarLinea') }}" class="sidebar-link sub-options">> Aplicar en Línea</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('verCatalogo') }}" class="sidebar-link">Catálogo Académico</a>
+                                <a href="{{ route('verCatalogo') }}" class="sidebar-link sub-options">> Catálogo Académico</a>
                             </li>
                         </ul>
                     </li>
@@ -216,16 +214,16 @@
                         </a>
                         <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link">Carreras de Pregrado</a>
+                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link sub-options">> Carreras de Pregrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link">Carreras de Posgrado</a>
+                                <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link sub-options">> Carreras de Posgrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('verListaDiplomados') }}" class="sidebar-link">Diplomados Impartidos</a>
+                                <a href="{{ route('verListaDiplomados') }}" class="sidebar-link sub-options">> Diplomados Impartidos</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link">Carreras Técnicas</a>
+                                <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link sub-options">> Carreras Técnicas</a>
                             </li>
                         </ul>
                     </li>
@@ -237,7 +235,7 @@
                         </a>
                         <ul id="PreguntasFrecuentes" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('verPreguntasFrecuentes') }}" class="sidebar-link">Listado de Preguntas</a>
+                                <a href="{{ route('verPreguntasFrecuentes') }}" class="sidebar-link sub-options">> Listado de Preguntas</a>
                             </li>
                             
                         </ul>
@@ -250,7 +248,7 @@
                         </a>
                         <ul id="paginas" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('verTramitesAcademicos') }}" class="sidebar-link">Gestion de Trámites</a>
+                                <a href="{{ route('verTramitesAcademicos') }}" class="sidebar-link sub-options">> Gestion de Trámites</a>
                             </li>
                             
                         </ul>
@@ -409,8 +407,6 @@
             
             
             <a href="#" class="theme-toggle">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-sun"></i>
             </a>
             
         </div>

@@ -10,7 +10,9 @@
 @section('contenido')
 <div class="container">
     <h2 class="global-tittle">HORARIO DE ATENCIÓN - {{date('Y')}}</h2>
+    <hr>
     <br>
+
     <table class="table table-hover">
         <thead>
             <tr>

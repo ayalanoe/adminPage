@@ -8,7 +8,7 @@
 
         <h2 class="global-tittle">GALERÍA INSTITUCIONAL - {{date('Y')}}</h2>
         <hr>
-
+        <br>
         <div class="container">
             <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearGaleria"><i class="fa-solid fa-plus"></i> Agregar Foto</button>
         </div>

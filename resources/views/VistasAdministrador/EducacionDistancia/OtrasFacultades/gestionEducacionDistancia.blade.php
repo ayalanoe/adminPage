@@ -11,6 +11,7 @@
     <div class="container">
         <h2 class="global-tittle">CARRERAS A DISTANCIA DE OTRAS FACULTADES</h2>
         <hr>
+    <br>
     <div class="container">
         <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#modalCarreraDistancia"><i class="fa-solid fa-plus"></i> Agregar Carrera</button>
     </div>

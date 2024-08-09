@@ -43,9 +43,7 @@
                 <ul class="navbar-nav w-100 justify-content-between">
                     <li class="nav-item">
                         <a href="/" class="select nav-link active" id="inicioLink">INICIO</a>
-                    </li>
-
-                    
+                    </li>                  
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -177,7 +175,7 @@
                     <div class="col-12 col-sm-6 col-lg-4 titulos-footer">
                         <h2>Medios de contacto</h2>
                         <a href="#"><i class="fa-solid fa-envelope"></i> academica.fmoues@ues.edu.sv</a><br>
-                        <a href="#"><i class="fa-solid fa-phone"></i> 2668 - 9233</a><br>
+                        <a href="#"><i class="fa-solid fa-phone"></i> (+503) 2668-9233</a><br>
                         <a href="https://maps.app.goo.gl/v5TpzoRMaBS7LXwA9" target="_blank" class="ubicado">
                             <i class="fa-solid fa-location-dot"></i> Km. 144 Carretera al Cuco, Cantón El Jute, San Miguel. El Salvador, Centro América.</a>
                     </div>
@@ -185,7 +183,8 @@
         
                 <div class="text-center creditos">
                     <hr>
-                    <p>Desarrollado por Servicio Social AR & DC | Todos los derechos reservados © {{date('Y')}} <b>| Académica FMO</b></p>
+                    <br>
+                    <p>© {{date('Y')}} Académica FMO <b> Todos los derechos reservados</b></p>
                 </div>
             </div>
         </footer>

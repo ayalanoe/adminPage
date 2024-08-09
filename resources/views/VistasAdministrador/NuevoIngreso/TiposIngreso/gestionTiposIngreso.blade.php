@@ -6,6 +6,7 @@
     <div class="container">
         <h2 class="global-tittle">GESTIÓN DE TIPOS DE INGRESO</h2>
         <hr>
+        <br>
 
         @if ($newIngresoTipos->isEmpty())
 

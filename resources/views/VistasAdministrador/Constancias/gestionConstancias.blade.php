@@ -8,7 +8,7 @@
 @section('contenido')
 <div class="container"> 
   <h2 class="global-tittle">FILTRAR INFORME DE CONSTANCIAS</h2>
-
+    <hr>
       <div class="col-12">
         <div class="p-3 m-1"> <!--Padding y margin del texto-->           
           <table class="table table-hover">

@@ -23,7 +23,7 @@
 
             @if ($datosApliLinea->isEmpty())
                 <div class="container">
-                    <div class="alert alert-success">
+                    <div class="alert alert-success text-center">
                         No hay registro
                     </div>
                 </div>
@@ -37,10 +37,8 @@
                 @endforeach
                     
             @endif
-            
-
         </div>
-
+        <br><br><br><br>
     </div>
 
     

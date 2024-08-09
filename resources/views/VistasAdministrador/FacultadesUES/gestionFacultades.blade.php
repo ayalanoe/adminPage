@@ -23,15 +23,17 @@
       $facuNombre = $facultades[$facultadPertenece] ?? "No encontrado";
       @endphp
 
-    <h2 class="global-tittle">CONTACTOS: {{$facuNombre}} </h2>
+    <h2 class="global-tittle">DIRECTORIO ADMINISTRATIVO:</h2>
+    <h2 class="global-tittle">{{  mb_strtoupper($facuNombre) }} </h2>
+    <hr>
+    <br>
 
     <div class="container">
       <a href="{{ route('volverAContactosFacultad') }}" class="btn btn-secondary mx-1"><i class="fa-solid fa-circle-arrow-left"></i> Volver a las facultades</a>
     
       <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalCrearFacultades"><i class="fa-solid fa-user-plus"></i> Agregar Oficina</button>
     </div>
-    <br>
-    <br>
+
     @if ($facultad->isEmpty())
     <div class="alert alert-empty text-center">
         ¡NO SE HAN REGISTRADO CONTACTOS!

@@ -25,6 +25,7 @@
         @endphp
 
         <h2 class="global-tittle">DEPARTAMENTO: {{ mb_strtoupper($nombreDepto) }}</h2>
+        <hr>
         <br>
 
         
@@ -35,52 +36,59 @@
         </div>
         <br>
         <br>
-    
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Carrera</th>
-                    <th scope="col">Codigo_Carrera</th>
-                    <th scope="col">Tipo_Carrera</th>
-                    <th scope="col">Departamento</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $numero = 1 
-                @endphp
-        
-                @foreach ($carrerasPregrado as $carrera)
-                <tr>
-                    <th scope="row">{{$numero}}</th>  
-                    <td>{{$carrera->carrera}}</td>
-                    <td>{{$carrera->codigoCarrera}}</td>
-                    <td>{{$carrera->tipoCarrera}}</td>
-                    <td>{{$nombreDepto}}</td><!--Actualizar agregando campo tramites-->
-                    <td class="d-flex">
-        
-                        <form class="formEliminarCarreraPergrado" action="{{ route('eliminarCarreraDePregrado', $carrera->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
-                        </form> 
-                        
-                        <a href="{{ route('editarCarreraDePregrado', $carrera->id) }}" class="btn btn-primary mx-1">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        
-                        
-                    </td>
+        @if ($carrerasPregrado->isEmpty())
+        <div class="alert alert-empty text-center">
+            ¡No se han registrado carerras!
+        </div>
+        <br><br><br><br><br>
+        @else
 
-                </tr>
-                @php
-                    $numero++
-                @endphp
-                @endforeach
-            </tbody>
-        </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Carrera</th>
+                        <th scope="col">Codigo_Carrera</th>
+                        <th scope="col">Tipo_Carrera</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $numero = 1 
+                    @endphp
+            
+                    @foreach ($carrerasPregrado as $carrera)
+                    <tr>
+                        <th scope="row">{{$numero}}</th>  
+                        <td>{{$carrera->carrera}}</td>
+                        <td>{{$carrera->codigoCarrera}}</td>
+                        <td>{{$carrera->tipoCarrera}}</td>
+                        <td>{{$nombreDepto}}</td><!--Actualizar agregando campo tramites-->
+                        <td class="d-flex">
+            
+                            <form class="formEliminarCarreraPergrado" action="{{ route('eliminarCarreraDePregrado', $carrera->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mx-1"><i class="fa-solid fa-trash"></i></button>
+                            </form> 
+                            
+                            <a href="{{ route('editarCarreraDePregrado', $carrera->id) }}" class="btn btn-primary mx-1">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            
+                            
+                        </td>
+
+                    </tr>
+                    @php
+                        $numero++
+                    @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
     
     <div class="modal fade" id="ModalAgregarCarreraPregrado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

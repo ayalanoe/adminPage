@@ -106,8 +106,8 @@ a.sidebar-link{
     font-size: 0.875rem;
 }
 
-a.asa{
-    padding-left: 20px;
+a.sub-options{
+    padding-left: 40px;
 }
 
 a.sidebar-link:hover{
@@ -161,17 +161,12 @@ transition: all .2s ease-out;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: bold;
 }
-.user-options{
-    transform: translateX(-53%) translateY(10px);  
-}
 
-[data-bs-theme="light"] .footer {
-    color: black; /* Puedes ajustar el color según tus preferencias */
-}
 
-/* Reglas de estilo para el modo oscuro */
-[data-bs-theme="dark"] .footer {
-    color: white;
+.dropdown-menu.user-options {
+    right: 0;
+    left: auto;
+    transform: translateX(6px) translateY(10px);  
 }
 
 /* Otras reglas de estilo comunes para el footer */
@@ -248,37 +243,4 @@ transition: all .2s ease-out;
     .navbar,footer{
         width: 100vw;
     }
-}
-
-
-
-/*Tema del Toggler*/
-.theme-toggle{
-    position: fixed;
-    top: 50%;
-    transform: translateY(-65%);
-    text-align: center;
-    z-index: 10;
-    right: 0;
-    left: auto;
-    border: none;
-    background-color: var(--bs-body-color);
-}
-
-
-html[data-bs-theme="dark"] .theme-toggle .fa-sun,
-html[data-bs-theme="light"] .theme-toggle .fa-moon{
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    font-size: 1.25rem;
-    color: #FFF;
-}
-
-html[data-bs-theme="dark"] .theme-toggle .fa-moon{
-    display: none;
-}
-
-html[data-bs-theme="light"] .theme-toggle .fa-sun{
-    display: none;
 }

@@ -13,7 +13,6 @@
     width: auto;
 }
 
-
 /*AQUI COMIENZA EL FOOTER*/
 footer {
     width: 100%;
@@ -59,7 +58,15 @@ footer {
     color: #ffffff;
     font-weight: 700;
 }
-ul.dropdown-menu.expediente{
+
+.expediente .dropdown-item:hover {
+    background-color: transparent;
+    color: #ffffff; 
+    box-shadow: none;
+    outline: none;
+}
+
+.expediente {
     background-color: #690605;
 }
 

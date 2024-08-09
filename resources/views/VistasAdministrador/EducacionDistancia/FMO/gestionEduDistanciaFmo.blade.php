@@ -6,6 +6,7 @@
     <div class="container">
         <h2 class="global-tittle">CARRERAS A DISTANCIA EN FMO</h2>
         <hr>
+        <br>
     <!-- Bton para poder insertar una carrera a distancia de la fmo -->
     <div class="container">
         <a href="{{ route('vistaCrearCarDisFmo') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Carrera</a>

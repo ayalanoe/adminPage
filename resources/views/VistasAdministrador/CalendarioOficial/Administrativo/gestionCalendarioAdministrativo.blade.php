@@ -10,6 +10,7 @@
 <div class="container">
     <h2 class="global-tittle">CALENDARIO ADMINISTRATIVO - {{date('Y')}}</h2>
     <hr>
+    <br>
     <table class="table table-hover">
         <thead>
             <tr>

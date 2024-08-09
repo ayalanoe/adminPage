@@ -4,11 +4,11 @@
 @section('contenido')
   <div class="container">
     <h2 class="global-tittle">GESTIÓN DEL DIRECTORIO ADMINISTRATIVO</h2>
+    <hr>
     <br>
     <div class="container">
       <button type="submit" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#ModalNuevoContacto"><i class="fa-solid fa-user-plus"></i> Nuevo Contacto</button>
     </div>
-    <br><br>
     @if ($directorio->isEmpty())
             <div class="alert alert-empty text-center">
                 ¡No se creado el directorio!

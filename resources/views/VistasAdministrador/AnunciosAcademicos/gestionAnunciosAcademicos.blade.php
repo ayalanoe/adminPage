@@ -6,13 +6,11 @@
 <div class="container">
     <h2 class="global-tittle">GESTIÓN DE ANUNCIOS ACADÉMICOS</h2>
     <hr>
+    <br>
     <!-- Bton para poder insertar un anuncio -->
     <div class="container">
         <a href="{{ route('vistaCrearAnuncio') }}" class="btn btn-success mx-1"><i class="fa-solid fa-plus"></i> Agregar Anuncios académicos</a>
     </div>
-    <br>
-    <br>
-    
         @if ($anuncios->isEmpty())
             <div class="alert alert-empty text-center">
                 ¡No se han registrado anuncios!

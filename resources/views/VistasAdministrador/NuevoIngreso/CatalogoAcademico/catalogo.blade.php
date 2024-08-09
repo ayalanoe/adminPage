@@ -9,6 +9,7 @@
 @section('contenido')
 <div class="container">
     <h2 class="global-tittle">CATÁLOGO ACADÉMICO - {{date('Y')}}</h2>
+    <hr>
     <br>
 
     <table class="table table-hover">

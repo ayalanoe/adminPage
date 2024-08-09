@@ -6,6 +6,7 @@
 @section('contenido')
 <div class="container">
     <h2 class="global-tittle">GESTIÓN DE USUARIOS EN SITIO WEB</h2>
+    <hr>
     <br>
     
     <table class="table table-hover">

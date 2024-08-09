@@ -32,6 +32,7 @@ nav {
   .navbar-nav .nav-link,
   .navbar-nav .dropdown-menu .dropdown-item {
     border-radius: 10px; 
+    box-shadow: none !important;
   }
 
 /* Estilos para que cundo parse el cursor se ponga rojo y el fondo blanco */

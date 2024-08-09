@@ -40,7 +40,7 @@
                         @foreach ($preguntasFrecuntes as $pregunta)
                             <div class="accordion-item">
                                 <div class="accordion-css"> 
-                                    <button class="accordion-button collapsed hols" type="button" data-bs-toggle="collapse" data-bs-target="#flush-{{$contador}}" aria-expanded="false" aria-controls="flush-{{$contador}}">
+                                    <button class="accordion-button collapsed btnacc" type="button" data-bs-toggle="collapse" data-bs-target="#flush-{{$contador}}" aria-expanded="false" aria-controls="flush-{{$contador}}">
                                         {{$pregunta->pregunta}}
                                         <span class="accordion-icon"></span>
                                     </button>

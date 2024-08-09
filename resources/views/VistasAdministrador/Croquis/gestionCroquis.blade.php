@@ -8,6 +8,7 @@
 
         <h2 class="global-tittle">CROQUIS FMO</h2>
         <hr>
+        <br>
         <table class="table table-hover">
             <thead>
                 <tr>

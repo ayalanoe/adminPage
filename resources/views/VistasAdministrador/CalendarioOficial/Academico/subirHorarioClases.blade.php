@@ -10,6 +10,7 @@
 @section('contenido')
 <div class="container">       
     <h2 class="global-tittle">CALENDARIO ACADÉMICO - {{date('Y')}}</h2>
+    <hr>
     <br>
     <table class="table table-hover">
         <thead>
