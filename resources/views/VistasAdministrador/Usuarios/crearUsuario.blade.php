@@ -20,9 +20,16 @@
             <input type="text" id="newUser" name="name" required>
             <label for="rol">Rol de usuario:</label>
             <select name="rolUsuario" class="form-select" aria-label="Default select example">
-                <option selected>Selccione una opcion</option>
+                <option selected>Seleccione una opcion</option>
                 <option value="1">Administrador</option>
                 <option value="2">Asistente</option>
+            </select>
+            <br>
+            <label for="genero">Género de usuario:</label>
+            <select name="generoUsuario" class="form-select" aria-label="Default select example">
+                <option selected>Seleccione una opcion</option>
+                <option value="1">Femenino</option>
+                <option value="2">Masculino</option>
             </select>
             <br>
 

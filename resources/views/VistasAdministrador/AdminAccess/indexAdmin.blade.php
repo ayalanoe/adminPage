@@ -30,7 +30,15 @@
               </div>
               <div class="row">
                 <div class="col-12 message-user">
-                    <h6>¡BIENVENID@ DE NUEVO, @auth {{Auth::user()->name}}! 👋 @endauth</h6>
+                  <?php
+                    $user = Auth::user();
+                    if ($user->genero == 1) {
+                      $genCreado = "¡BIENVENIDA DE NUEVO,";
+                    }else {
+                      $genCreado ="¡BIENVENIDO DE NUEVO,";
+                    }
+                  ?>
+                  <h6>{{$genCreado}} @auth {{Auth::user()->name}}! 👋 @endauth</h6>
                 </div>
               </div>
             </div>

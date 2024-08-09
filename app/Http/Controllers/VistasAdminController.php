@@ -106,12 +106,13 @@ class VistasAdminController extends Controller
         //Funcion para el registro de usuarios, es decir que en esta funcion se crearan los usuarios que tendran acceso al sistema 
         public function register(Request $request){
 
-            $user = new User(); //La clase User es la que tiene laravel podefecto
+            $user = new User(); //La clase User es la que tiene laravel por defecto
             
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->rol = $request->rolUsuario;
+            $user->genero = $request->generoUsuario;
 
             $user->save(); //Insersion en la base de datos
             return back()->with('crearUsuarioRespuesta', "Usuario creado correctamente");

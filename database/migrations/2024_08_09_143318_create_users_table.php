@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedInteger('rol')->default(2);
+            $table->unsignedInteger('genero');
             $table->rememberToken();
             $table->timestamps();
         });

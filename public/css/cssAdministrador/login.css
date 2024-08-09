@@ -43,7 +43,7 @@ body {
     width: 400px;
     text-align: center;
     /*Con el margin-top lo que se hace es dar espacio entre el inicio de sesion y el nav */
-    margin-top: 100px; 
+    margin-top: 115px; 
 }
 
 .login-container img {
