@@ -19,15 +19,15 @@
             <label for="name">Nombre de usuario:</label>
             <input type="text" id="newUser" name="name" required>
             <label for="rol">Rol de usuario:</label>
-            <select name="rolUsuario" class="form-select" aria-label="Default select example">
-                <option selected>Seleccione una opcion</option>
+            <select name="rolUsuario" id="userTipo" class="form-select" aria-label="Default select example">
+                <option value="" selected>Seleccione una opcion</option>
                 <option value="1">Administrador</option>
                 <option value="2">Asistente</option>
             </select>
             <br>
             <label for="genero">Género de usuario:</label>
-            <select name="generoUsuario" class="form-select" aria-label="Default select example">
-                <option selected>Seleccione una opcion</option>
+            <select name="generoUsuario" id="generoUsu" class="form-select" aria-label="Default select example">
+                <option value="" selected>Seleccione una opcion</option>
                 <option value="1">Femenino</option>
                 <option value="2">Masculino</option>
             </select>
@@ -62,10 +62,22 @@
         $('#formCrearUsuario').on('submit', function(e){
             e.preventDefault();
     
+            var usuarioWeb = $('#userTipo').val();
             var passwordIn = $('#passIngresar').val();
             var passwordConfirmar = $('#passConfirmar').val();
             var email = $('#emailNuevoUser').val();
+            var generoUsuario = $('#generoUsu').val();
     
+            // Verificar que se haya seleccionado una opción de tipo de usuario
+            if (usuarioWeb === "") {
+                Swal.fire({
+                    title: "Información",
+                    text: "Por favor seleccione un tipo de usuario",
+                    icon: "error"
+                });
+                return;
+            }
+
             // Validar el correo electrónico
             if (!isValidEmail(email)) {
                 Swal.fire({
@@ -95,7 +107,17 @@
                 });
                 return;
             }
-    
+
+            // Verificar que se haya seleccionado una opción de género
+            if (generoUsuario === "") {
+                Swal.fire({
+                    title: "Información",
+                    text: "Por favor seleccione una opción para el género",
+                    icon: "error"
+                });
+                return;
+            }
+            
             // Si la validación es exitosa, enviar el formulario
             this.submit();
         });
