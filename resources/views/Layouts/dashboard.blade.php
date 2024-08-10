@@ -67,10 +67,10 @@
                         </a>
                         <ul id="calendarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link sub-options">> Calendario Administrativo</a>
+                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link sub-options">> Calendario Académico</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{route('subirHorarioClases')}}" class="sidebar-link sub-options">> Calendario Académico</a>
+                                <a href="{{route ('mostrarCalendarioAdmin')}}" class="sidebar-link sub-options">> Calendario Administrativo</a>
                             </li>
                         </ul>
                     </li>
@@ -82,10 +82,10 @@
                         </a>
                         <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
+                                <a href="{{ route('informeConstancias') }}" class="sidebar-link sub-options">> Generar Informe</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('informeConstancias') }}" class="sidebar-link sub-options">> Generar Informe</a>
+                                <a href="{{ route('registrosConstancias') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
                             </li>
                         </ul>
                     </li>
@@ -122,11 +122,11 @@
                             Educación a Distancia
                         </a>
                         <ul id="eduDistancia" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item pe-2">
-                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link sub-options">> Otras Facultades</a>
-                            </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('carrerasDistanciaFmo') }}" class="sidebar-link sub-options">> Facultad Oriente - FMO</a>
+                            </li>
+                            <li class="sidebar-item pe-2">
+                                <a href="{{ route('carrerasDistancia') }}" class="sidebar-link sub-options">> Otras Facultades</a>
                             </li>
                         </ul>
                     </li>
@@ -164,12 +164,11 @@
                         </a>
                         <ul id="GesUser" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link sub-options">> Ver usuarios</a>
-                            </li>
-                            <li class="sidebar-item">
                                 <a href="{{ route('registro') }}" class="sidebar-link sub-options">> Crear Usuario</a>
                             </li>
-                            
+                            <li class="sidebar-item">
+                                <a href="{{ route('gestionUsuarios') }}" class="sidebar-link sub-options">> Ver usuarios</a>
+                            </li>                           
                         </ul>
                     </li>
 
@@ -193,16 +192,16 @@
                         </a>
                         <ul id="nuevoIngreso" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('vertiposingreso') }}" class="sidebar-link sub-options">> Tipos de Ingreso</a>
+                                <a href="{{ route('aplicarLinea') }}" class="sidebar-link sub-options">> Aplicar en Línea</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('verCatalogo') }}" class="sidebar-link sub-options">> Catálogo Académico</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('ReqFe') }}" class="sidebar-link sub-options">> Requisitos y Fechas</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('aplicarLinea') }}" class="sidebar-link sub-options">> Aplicar en Línea</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{ route('verCatalogo') }}" class="sidebar-link sub-options">> Catálogo Académico</a>
+                                <a href="{{ route('vertiposingreso') }}" class="sidebar-link sub-options">> Tipos de Ingreso</a>
                             </li>
                         </ul>
                     </li>
@@ -214,16 +213,16 @@
                         </a>
                         <ul id="planesEstudio" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link sub-options">> Carreras de Pregrado</a>
-                            </li>
-                            <li class="sidebar-item">
                                 <a href="{{ route('carrerasPosgrado') }}" class="sidebar-link sub-options">> Carreras de Posgrado</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('verListaDiplomados') }}" class="sidebar-link sub-options">> Diplomados Impartidos</a>
+                                <a href="{{ route('departamentosPregrado') }}" class="sidebar-link sub-options">> Carreras de Pregrado</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('carrerasTecnicas') }}" class="sidebar-link sub-options">> Carreras Técnicas</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('verListaDiplomados') }}" class="sidebar-link sub-options">> Diplomados Impartidos</a>
                             </li>
                         </ul>
                     </li>
@@ -404,8 +403,6 @@
                 
             </main>
 
-            
-            
             <a href="#" class="theme-toggle">
             </a>
             

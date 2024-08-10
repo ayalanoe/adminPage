@@ -8,6 +8,8 @@
 @section('contenido')
 <div class="container">
   <h2 class="global-tittle">REGISTRO DE CONSTANCIAS EMITIDAS</h2>
+  <hr>
+  <br>
   <div class="row g-0 w-100">
     <div class="col-12 col-md-12 d-flex">       
       

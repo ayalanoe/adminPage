@@ -55,10 +55,10 @@
                         </a>
                         <ul id="constanciasFMO" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('registrosConstanciasAsis') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
+                                <a href="{{ route('informeConstanciasAsis') }}" class="sidebar-link sub-options">> Generar Informe</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('informeConstanciasAsis') }}" class="sidebar-link sub-options">> Generar Informe</a>
+                                <a href="{{ route('registrosConstanciasAsis') }}" class="sidebar-link sub-options">> Registrar Constancia</a>
                             </li>
                         </ul>
                     </li>
@@ -216,7 +216,9 @@
                 -->
                 @yield('contenido')
                 
-            </main>            
+            </main>  
+            <a href="#" class="theme-toggle">
+            </a>         
         </div>
     </div>
 
@@ -231,10 +233,7 @@
     <script src="{{ asset('AdminJS/tema.js') }}"></script>
     <script src="{{ asset('AdminJS/scriptNav.js') }}"></script>
 
-
     <script src="{{ asset('AdminJS/PerfilModal.js') }}"></script>
-
-    
     
     @yield('jsVistasAdmin') <!-- para ingresar los java script de las vistas personalizdas -->
 
