@@ -1,4 +1,5 @@
 .contenedor-tabla {
+    text-align: justify; /* Justificar el contenido de la info de los tramites y demás vistas */
     overflow-x: auto;
 }
 

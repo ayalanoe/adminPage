@@ -1,5 +1,5 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Carrera Distancia FMO')
+@section('titulo', '- Crear Carrera Distancia FMO')
 
 @section('contenido')
     

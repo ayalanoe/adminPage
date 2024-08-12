@@ -25,9 +25,10 @@
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción del tipo de ingreso:</label>
                 <div class="form-floating">
-                    <textarea name="descripIngreso" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <textarea name="descripIngreso" class="form-control h-auto" placeholder="Leave a comment here" id="floatingTextarea" maxlength="255"></textarea>
                     <label for="floatingTextarea">Descripcion 254 caracteres máximo</label>
                 </div>
+                <div id="charCount" class="text-muted">254 caracteres restantes</div>
             </div>
             
 
@@ -49,6 +50,21 @@
 
 @section('jsVistasAdmin')
     <script>
+        const textarea = document.getElementById('floatingTextarea');
+        const charCount = document.getElementById('charCount');
+        const maxChars = 254;
+
+        textarea.addEventListener('input', () => {
+            const remaining = maxChars - textarea.value.length;
+            charCount.textContent = `${remaining} caracteres restantes`;
+
+            if (remaining < 0) {
+                charCount.style.color = 'red';
+            } else {
+                charCount.style.color = 'gray';
+            }
+        });
+
         $('.formCrearTipo').on('submit', function(e) {
 
             var tramiteTitulo = $('#tituloTramite').val().trim();

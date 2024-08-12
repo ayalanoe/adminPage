@@ -45,7 +45,7 @@
 
             <br>
             <div class="col-md-12">
-                <label for="validationCustomUser" class="form-label">Nombre de la carrera</label>
+                <label for="validationCustomUser" class="form-label">Nombre Diplomado</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-pen-to-square"></i></span>
                     <input value="{{$diplomadoEditar->carrera}}" name="editDiploNombre" type="text" class="form-control" id="nombreCarreraTecnica">
@@ -58,7 +58,7 @@
             
             <br>
             <div class="col-md-12">
-                <label for="validationCustomCorreo" class="form-label">Codigo de la carrera</label>
+                <label for="validationCustomCorreo" class="form-label">Codigo del Diplomado</label>
                 <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-file-lines"></i></span>
                     <input value="{{$diplomadoEditar->codigoCarrera}}" name="editDiploCodigo" type="text" class="form-control" id="codigoCarreraTecnica" aria-describedby="inputGroupPrepend">

@@ -96,7 +96,7 @@
     </div>
 
 
-    <!------------- Modal para subir el archivo pdf nuevamente el pdf del plan de estudio de la carrera de pregrado -->
+    <!------------- Modal para subir el archivo pdf nuevamente el pdf del plan de estudio de la carrera de tecnica -->
     <div class="modal fade" id="modalAddNuevoPlanCarTecnica" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

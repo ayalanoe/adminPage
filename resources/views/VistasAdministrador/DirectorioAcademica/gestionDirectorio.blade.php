@@ -1,5 +1,5 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Directorio') 
+@section('titulo', '- Directorio Administrativo') 
 
 @section('contenido')
   <div class="container">

@@ -27,7 +27,7 @@
                 <div class="alert alert-success text-center">
                     No hay registro
                 </div>
-                <br><br><br><br><br>
+                <br><br><br><br><br><br>
             @else
                 <div class="container">
 
@@ -41,7 +41,7 @@
                             <div class="accordion-item">
                                 <div class="accordion-css"> 
                                     <button class="accordion-button collapsed btnacc" type="button" data-bs-toggle="collapse" data-bs-target="#flush-{{$contador}}" aria-expanded="false" aria-controls="flush-{{$contador}}">
-                                        {{$pregunta->pregunta}}
+                                        <h5>{{$pregunta->pregunta}}</h5>
                                         <span class="accordion-icon"></span>
                                     </button>
                                 </div>
@@ -51,6 +51,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
         
                             @php
                                 $contador++
@@ -60,6 +61,8 @@
                     </div>
 
                 </div>
+
+                <br><br>
             @endif
         </div>
     </div>

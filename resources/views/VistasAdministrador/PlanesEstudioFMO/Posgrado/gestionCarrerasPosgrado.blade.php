@@ -1,5 +1,5 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Planes de Estudio')
+@section('titulo', '- Carreras Posgrado')
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/textoGestionGlobal.css') }}">   
 @endsection
@@ -103,19 +103,19 @@
                             </div>
                         </div>
             
+                    
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraPosgrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento..." required>
-                            <datalist id="datalistOptions">
-                                <option value="EPOS" label="Posgrado"></option>
-                            </datalist>
+                            <select name="departamentoCarreraPosgrado" class="form-control" id="exampleDataList" required>
+                                <option value="EPOS" selected>EPOS - Posgrado</option>
+                            </select>
                         </div>
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivoPosgradoCarrera" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivoPosgradoCarrera" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>

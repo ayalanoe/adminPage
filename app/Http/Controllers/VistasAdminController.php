@@ -22,6 +22,7 @@ use App\Models\Croquis;
 use App\Models\NuevoIngreso;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -106,16 +107,30 @@ class VistasAdminController extends Controller
         //Funcion para el registro de usuarios, es decir que en esta funcion se crearan los usuarios que tendran acceso al sistema 
         public function register(Request $request){
 
-            $user = new User(); //La clase User es la que tiene laravel por defecto
-            
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->rol = $request->rolUsuario;
-            $user->genero = $request->generoUsuario;
+            try {
 
-            $user->save(); //Insersion en la base de datos
-            return back()->with('crearUsuarioRespuesta', "Usuario creado correctamente");
+                $user = new User(); //La clase User es la que tiene laravel por defecto
+            
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->rol = $request->rolUsuario;
+                $user->genero = $request->generoUsuario;
+    
+                $user->save(); //Insersion en la base de datos
+                return back()->with('crearUsuarioRespuesta', "Usuario creado correctamente");
+                
+
+            } 
+            catch (QueryException $error) {
+            
+                if ($error->errorInfo[1] == 1062) { // Código de error MySQL para clave duplicada
+                    return back()->with('errorEmail', "El correo ya lo está usando otro usuario");
+                }
+                // Manejo de otros posibles errores de base de datos
+                return back()->withErrors(['errorDB' => 'Ocurrió un error al crear el usuario.']);
+            }
+
         } 
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

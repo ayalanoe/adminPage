@@ -103,20 +103,19 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraTecnica" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento...">
-                            <datalist id="datalistOptions">
-                                <option value="ECTM" label="Carreras Técnicas"></option>
-                            </datalist>
+                            <select name="departamentoCarreraTecnica" class="form-control" id="exampleDataList" required>
+                                <option value="ECTM" selected>ECTM - Carreras Técnicas</option>
+                            </select>
                         </div>
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivoCarreraTecnica" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivoCarreraTecnica" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>

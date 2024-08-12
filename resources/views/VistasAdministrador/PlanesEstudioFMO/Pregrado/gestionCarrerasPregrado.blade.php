@@ -134,20 +134,19 @@
                                 </div>
                             </div>
                         </div>
-            
+    
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="departamentoCarreraPregrado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departamento..." required>
-                            <datalist id="datalistOptions">
-                                <option value="{{$departamento}}" label="{{$nombreDepto}}"></option>
-                            </datalist>
+                            <select name="departamentoCarreraPregrado" class="form-control" id="exampleDataList" required>
+                                <option value="{{$departamento}}" selected>{{$departamento}} - {{$nombreDepto}}</option>
+                            </select>
                         </div>
                         
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Cargar archivo del plan de estudio</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
-                                <input name="archivoPregradoCarrera" accept=".pdf, .jpg, .jpeg, .png" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
+                                <input name="archivoPregradoCarrera" accept=".pdf" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>
                                 <div class="invalid-feedback">
                                     Seleccione un archivo
                                 </div>

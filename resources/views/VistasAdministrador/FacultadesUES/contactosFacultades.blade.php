@@ -1,5 +1,5 @@
 @extends('Layouts.dashboard')
-@section('titulo', '- Contactos Facultades')
+@section('titulo', '- Facultades')
 @section('contenido')
 <div class="container">
     <h2 class="global-tittle">CONTACTOS DE FACULTADES</h2>

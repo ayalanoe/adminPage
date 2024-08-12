@@ -47,12 +47,33 @@
 @endsection
 
 @section('jsVistasAdmin')
+
     @if (Session::has('crearUsuarioRespuesta'))
         <script>
             Swal.fire({
                 title: "Informacion",
                 text: "{{ session('crearUsuarioRespuesta') }}",
                 icon: "success"
+            });
+        </script>   
+    @endif
+
+    @if (Session::has('errorDB'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('errorDB') }}",
+                icon: "error"
+            });
+        </script>   
+    @endif
+
+    @if (Session::has('errorEmail'))
+        <script>
+            Swal.fire({
+                title: "Informacion",
+                text: "{{ session('errorEmail') }}",
+                icon: "error"
             });
         </script>   
     @endif

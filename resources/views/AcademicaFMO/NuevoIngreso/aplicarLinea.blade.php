@@ -27,7 +27,7 @@
                         No hay registro
                     </div>
                 </div>
-                <br><br><br><br><br>
+                <br><br><br><br><br><br>
             @else
 
                 @foreach($datosApliLinea as $aplicar)
@@ -38,7 +38,7 @@
                     
             @endif
         </div>
-        <br><br><br><br>
+        
     </div>
 
     

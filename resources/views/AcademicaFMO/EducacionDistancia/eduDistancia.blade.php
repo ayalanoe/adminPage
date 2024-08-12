@@ -26,7 +26,7 @@
                 No hay registro
             </div>
 
-            <br><br><br><br><br>
+            <br><br><br><br><br><br>
         @else
 
             <div class="row">

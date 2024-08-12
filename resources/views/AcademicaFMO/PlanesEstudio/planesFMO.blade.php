@@ -194,7 +194,7 @@
             </div>
         </div>
         
-        <br>
+        <br><br>
     </div>
 
 @endsection

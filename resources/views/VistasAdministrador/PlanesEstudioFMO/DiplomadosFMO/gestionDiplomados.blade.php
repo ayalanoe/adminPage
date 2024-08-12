@@ -106,14 +106,13 @@
             
                         <div class="col-md-12">
                             <label for="validationCustomCorreo" class="form-label">Departamento</label>
-                            <input name="deptoDiplomado" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Buscar Departmento..." required>
-                            <datalist id="datalistOptions">
-                                <option value="EPOS" label="Posgrado"></option>
-                            </datalist>
+                            <select name="deptoDiplomado" class="form-control" id="exampleDataList" required>
+                                <option value="EPOS" selected>EPOS - Posgrado</option>
+                            </select>
                         </div>
             
                         <div class="col-md-12">
-                            <label for="validationCustomCorreo" class="form-label">Cargar pdf informativo</label>
+                            <label for="validationCustomCorreo" class="form-label">Cargar imagen informativa</label>
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputGroupPrepend"><i class="fa-regular fa-file"></i></span>
                                 <input name="archivoDiplomado" accept=".jpg, .png, .jpeg" type="file" class="form-control" aria-describedby="inputGroupPrepend" required>

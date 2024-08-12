@@ -62,7 +62,7 @@
 
             Swal.fire({
                 title: "¿Está seguro?",
-                text: "Se eliminará el tramite",
+                text: "Se eliminará el trámite",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",

@@ -1,6 +1,6 @@
 @extends('Layouts.dashboard')
 
-@section('titulo', '- Horario De Clases')
+@section('titulo', '- Calendario Administrativo')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/cssAdministrador/calendarioAdministrativo.css')}}"> 

@@ -24,7 +24,7 @@
                 <div class="alert alert-success text-center">
                     No hay registro
                 </div>
-                <br><br><br><br><br>
+                <br><br><br><br><br><br>
             @else
 
                 @foreach($requisitosFecha as $requisito)
@@ -35,7 +35,7 @@
 
             @endif
         </div>
-        <br><br><br><br>
+        
     </div>
 
 @endsection 
