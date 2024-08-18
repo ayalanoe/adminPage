@@ -20,29 +20,34 @@
     </div>
 
     <div class="container_table">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 d-flex mx-auto">
-                    <div class="card flex-fill custom-card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="title-container">
-                                    <h5 class="card-title">Para ver el plan de estudio, haz click en la carrera</h5>   
+        @if ($planesComplementarios->isEmpty())
+            <div class="alert alert-success text-center">
+                Los planes de estudio no se han publicado.
+            </div>
+            <br><br><br><br><br>
+        @else
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 d-flex mx-auto">
+                        <div class="card flex-fill custom-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="title-container">
+                                        <h5 class="card-title">Para ver el plan de estudio, haz click en la carrera</h5>   
+                                    </div>
                                 </div>
+                                <hr class="hr-planes-com">
+                                @foreach ($planesComplementarios as $carPlanComp)
+                                    <a href="{{route('mostrarPDFPlnCom', $carPlanComp->id)}}" target="_blank" class="item-plan" href="#">
+                                        {{$carPlanComp->carrera}}
+                                    </a> 
+                                @endforeach
                             </div>
-                            <hr class="hr-planes-com">
-                            @foreach ($planesComplementarios as $carPlanComp)
-                                <a href="{{route('mostrarPDFPlnCom', $carPlanComp->id)}}" target="_blank" class="item-plan" href="#">
-                                    {{$carPlanComp->carrera}}
-                                </a> 
-                            @endforeach
                         </div>
                     </div>
-                </div>
-            </div>       
-        </div>
-
+                </div>       
+            </div>
+        @endif
     </div>
 
     <br>

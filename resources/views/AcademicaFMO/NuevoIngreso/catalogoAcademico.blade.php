@@ -22,7 +22,7 @@
         <div class="container_table">
             @if ($mostrarCatalogo->isEmpty())
                 <div class="alert alert-success text-center">
-                    No hay registro
+                    No ha sido publicado.
                 </div>
                 <br><br><br><br><br><br>
             @else

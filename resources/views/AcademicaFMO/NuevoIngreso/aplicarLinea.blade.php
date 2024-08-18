@@ -24,7 +24,7 @@
             @if ($datosApliLinea->isEmpty())
                 <div class="container">
                     <div class="alert alert-success text-center">
-                        No hay registro
+                        La información no está disponible.
                     </div>
                 </div>
                 <br><br><br><br><br><br>

@@ -25,7 +25,7 @@
         <div class="container_table">
             @if ($preguntasFrecuntes->isEmpty())
                 <div class="alert alert-success text-center">
-                    No hay registro
+                    No hay preguntas publicadas.
                 </div>
                 <br><br><br><br><br><br>
             @else

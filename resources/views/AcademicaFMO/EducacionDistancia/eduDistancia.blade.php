@@ -23,7 +23,7 @@
 
         @if ($eduDisOtraFacultad->isEmpty())
             <div class="alert alert-success text-center">
-                No hay registro
+                La información no está disponible
             </div>
 
             <br><br><br><br><br><br>

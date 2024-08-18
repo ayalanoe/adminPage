@@ -20,13 +20,12 @@
         </div>
 
         <div class="container_table">
-
             @if ($diplomadosPlanes->isEmpty())
                 <div class="alert alert-success text-center">
-                    No hay registro
+                    No se han publicado diplomados.
                 </div>
-                <br><br><br><br><br><br>
-            @else 
+                <br><br><br><br><br>
+            @else
                 <div class="container">          
                     <div class="row">
                         @foreach ($diplomadosPlanes as $diplomado)
@@ -44,10 +43,7 @@
                         @endforeach 
                     </div>
                 </div>
-
-                <br><br><br>
             @endif
-
         </div>
 
     </div>
