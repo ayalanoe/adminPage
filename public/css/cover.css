@@ -146,46 +146,46 @@ ul li a:hover{
 
 @media (max-width: 992px) { /* Tamaño mediano */
     .custom-heading {
-        font-size: 38px; /* Ajuste para pantallas medianas */
-    }
-
-    .custom-subheading {
-        font-size: 38px; /* Ajuste para pantallas medianas */
-    }
-
-    .bienvenidaFMO {
-        font-size: 14px; /* Ajuste para pantallas medianas */
-    }
-}
-
-@media (max-width: 768px) { /* Tamaño pequeño */
-    .custom-heading {
-        font-size: 36px; /* Ajuste para pantallas pequeñas */
+        font-size: 57px; /* Ajuste para pantallas medianas */
         text-align: center;
     }
 
     .custom-subheading {
-        font-size: 36px; /* Ajuste para pantallas pequeñas */
+        font-size: 59px; /* Ajuste para pantallas medianas */
+        text-align: center;
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas medianas */
+    }
+    
+}
+
+@media (max-width: 767px) { /* Tamaño pequeño */
+    .custom-heading {
+        font-size: 37px; /* Ajuste para pantallas pequeñas */
+        text-align: center;
+    }
+
+    .custom-subheading {
+        font-size: 38px; /* Ajuste para pantallas pequeñas */
         text-align: center;
     }
 
     .bienvenidaFMO {
         font-size: 16px; /* Ajuste para pantallas pequeñas */
     }
-
-    .btn-principal {
-        display: block;
-        width: 100%;
-    }
 }
 
 @media (max-width: 576px) { /* Tamaño extra pequeño */
     .custom-heading {
-        font-size: 34px; /* Ajuste para pantallas extra pequeñas */
+        font-size: 33px; /* Ajuste para pantallas extra pequeñas */
+        text-align: center;
     }
 
     .custom-subheading {
         font-size: 34px; /* Ajuste para pantallas extra pequeñas */
+        text-align: center;
     }
 
     .bienvenidaFMO {
@@ -198,6 +198,7 @@ ul li a:hover{
 .btn-cuadro {
     border: none;
     background-color: white;
+    position: relative;
     color: black;
     display: flex;
     flex-direction: column;
@@ -223,17 +224,21 @@ ul li a:hover{
     font-size: 14px;
 }
 
-
-
 /* CSS para que en el cover en pantallas grandes se muestren los botones y en pequeñas las tarjetas */
-@media (min-width: 769px) {
+@media (min-width: 913px) {
     .d-lg-none {
         display: none !important;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 912px) {
     .d-lg-block {
         display: none !important;
     }
 }
+
+    .btn-principal .badge {
+        font-size: 0.75rem;
+        padding: 0.5em;
+        transform: translate(-50%, -50%);
+    }

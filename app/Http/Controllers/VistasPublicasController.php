@@ -26,12 +26,15 @@ class VistasPublicasController extends Controller
             $horarioAtencion = AtencionHorario::all();
             $tramites = Tramite::orderBy('tramite')->get();
             $galeria = Galeria::all();
+            $anunciosAcademicos = Anuncios::all();
             return view('AcademicaFMO/cover', [
                 'horarioLaboral' => $horarioAtencion,
                 'tramitesAcademicos' => $tramites,
                 'fotosGaleria' => $galeria,
+                'anunciosAcademicos' => $anunciosAcademicos,
             ]);
         }
+        
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //----------------------------- FUNCIONES PARA EL DIRECTORIO PERSONAL ACADÉMICO ----------------------------------------------------------------------------------------------------------
@@ -169,7 +172,7 @@ class VistasPublicasController extends Controller
             
             if (!$calAdmin) {
 
-                return back()->with('errorPublicCalAdmin','Aún no se ha subido calendario administrativo');
+                return back()->with('errorPublicCalAdmin','El calendario administrativo aún no ha sido publicado.');
             }
 
             // Se accede al storage de laravel para mostrar el archivo
@@ -187,7 +190,7 @@ class VistasPublicasController extends Controller
             
             if (!$calendarioAcademico) {
 
-                return back()->with('errorPublicCalAcademico','Aún no se ha subido calendario academico');
+                return back()->with('errorPublicCalAcademico','El calendario académico aún no ha sido publicado.');
             }
             // Se accede al storage de laravel para mostrar el archivo
             $contenidoArchivo = Storage::disk('public')->get($calendarioAcademico->rutaArchivo);

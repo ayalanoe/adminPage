@@ -184,7 +184,7 @@
                 <div class="text-center creditos">
                     <hr>
                     <br>
-                    <p>© {{date('Y')}} Académica FMO <b> Todos los derechos reservados</b></p>
+                    <p>© {{date('Y')}} Académica FMO |<b> Todos los derechos reservados</b></p>
                 </div>
             </div>
         </footer>
@@ -199,7 +199,7 @@
     @if (Session::has('errorPublicCalAdmin'))
         <script>
             Swal.fire({
-                title: "Informacion",
+                title: "Información",
                 text: "{{ session('errorPublicCalAdmin') }}",
                 icon: "error"
             });
@@ -209,7 +209,7 @@
     @if (Session::has('errorPublicCalAcademico'))
         <script>
             Swal.fire({
-                title: "Informacion",
+                title: "Información",
                 text: "{{ session('errorPublicCalAcademico') }}",
                 icon: "error"
             });
@@ -219,7 +219,7 @@
     @if (Session::has('resErrorCrquis'))
         <script>
             Swal.fire({
-                title: "Informacion",
+                title: "Información",
                 text: "{{ session('resErrorCrquis') }}",
                 icon: "error"
             });

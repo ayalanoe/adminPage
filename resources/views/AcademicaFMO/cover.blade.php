@@ -12,39 +12,39 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">HORARIO DE ATENCIÓN</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <table class="table table-striped">
-                    <thead>
-                    </thead>
-                    <tbody>
-                        
-                        @foreach ($horarioLaboral as $item)
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            @if ($horarioLaboral->isEmpty())
+                                <br>
+                                <div class="alert alert-success text-center">
+                                    El horario no ha sido publicado.
+                                </div>
+                            @else
+                                @foreach ($horarioLaboral as $item)
 
-                            <tr>
-                                <th scope="row"> {{$item->diasLaborales}} </th>
-                                <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
-                                <td>
-                                    @if ($item->estadoMedioDia == "abierto")
-                                    <th><strong>*Abierto al mediodía</strong></th>
-                    
-                                    @elseif ($item->estadoMedioDia == "cerrado")
-                                        <th><strong>*Cerrado al mediodía</strong></th>
-
-                                    @else
-                                        <th></th>
-                                    @endif
-                                </td>
-                                
-                            </tr>
+                                    <tr>
+                                        <th scope="row"> {{$item->diasLaborales}} </th>
+                                        <td>De {{ DateTime::createFromFormat('H:i:s', $item->horaInicio)->format('h:i a') }} a {{ DateTime::createFromFormat('H:i:s', $item->horaCierre)->format('h:i a') }}</td>
+                                        <td>
+                                            @if ($item->estadoMedioDia == "abierto")
+                                            <th><strong>*Abierto al mediodía</strong></th>
                             
-                        @endforeach
-                        
-                    </tbody>
-                    
-                </table>
+                                            @elseif ($item->estadoMedioDia == "cerrado")
+                                                <th><strong>*Cerrado al mediodía</strong></th>
 
-            </div>
-
+                                            @else
+                                                <th></th>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 
@@ -67,15 +67,20 @@
         </div>
     </div>
     <div class="offcanvas-body">
-    
-        <ul class="sidebar-nav">
-                    
-                    @foreach ($tramitesAcademicos as $item)
-                        <li class="sidebar-item">
-                            <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ mb_strtoupper($item->tramite) }} </a>
-                        </li>
-                    @endforeach    
-        </ul>
+        @if ($tramitesAcademicos->isEmpty())
+            <div class="alert alert-success text-center">
+                No hay trámites disponibles.
+            </div>
+            <br><br><br><br><br>
+        @else
+            <ul class="sidebar-nav">      
+                @foreach ($tramitesAcademicos as $item)
+                    <li class="sidebar-item">
+                        <a href="{{ route('verTramiteAcademico', $item->id) }}" class="sidebar-link"> {{ mb_strtoupper($item->tramite) }} </a>
+                    </li>
+                @endforeach    
+            </ul>
+        @endif
     </div>
 </div>
 
@@ -100,9 +105,16 @@
                         <a class="btn btn-primary btn-principal mb-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                             <i class="fa-solid fa-file-alt pe-2"></i> Trámites
                         </a>
-                        <a class="btn btn-primary btn-principal mb-2" href="{{ route('anuncios') }}">
+                      
+                        <a class="btn btn-primary btn-principal mb-2 position-relative" href="{{ route('anuncios') }}">
                             <i class="fa-solid fa-bullhorn pe-2"></i> Anuncios
+                            @if(isset($anunciosAcademicos) && $anunciosAcademicos->count() > 0)
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $anunciosAcademicos->count() }}
+                                </span>
+                            @endif
                         </a>
+                        
                         <a class="btn btn-primary btn-principal mb-2" href="{{ route('preguntas') }}">
                             <i class="fa-solid fa-question-circle pe-2"></i> Preguntas
                         </a>
@@ -126,6 +138,11 @@
                                 <a class="btn btn-cuadro" href="{{ route('anuncios') }}">
                                     <i class="fa-solid fa-bullhorn"></i>
                                     <p>Anuncios Oficiales</p>
+                                    @if(isset($anunciosAcademicos) && $anunciosAcademicos->count() > 0)
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $anunciosAcademicos->count() }}
+                                </span>
+                            @endif
                                 </a>
                             </div>
                             <div class="col-6 col-md-3 mb-3">

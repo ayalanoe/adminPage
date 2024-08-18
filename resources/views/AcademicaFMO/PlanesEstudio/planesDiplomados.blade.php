@@ -20,25 +20,30 @@
         </div>
 
         <div class="container_table">
-
-            <div class="container">          
-                <div class="row">
-                    @foreach ($diplomadosPlanes as $diplomado)
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <div class="card custom-card">
-                                <div class="card-body">
-                                    <div class="title-container">
-                                        <h5 class="card-title">{{$diplomado->carrera}}</h5>
+            @if ($diplomadosPlanes->isEmpty())
+                <div class="alert alert-success text-center">
+                    No se han publicado diplomados.
+                </div>
+                <br><br><br><br><br>
+            @else
+                <div class="container">          
+                    <div class="row">
+                        @foreach ($diplomadosPlanes as $diplomado)
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="card custom-card">
+                                    <div class="card-body">
+                                        <div class="title-container">
+                                            <h5 class="card-title">{{$diplomado->carrera}}</h5>
+                                        </div>
+                                        <hr class="hr-diplomado">
+                                        <a href="{{ route('verInfoDiplomado', $diplomado->id) }}" class="btn btn-ver">Más detalles</a>
                                     </div>
-                                    <hr class="hr-diplomado">
-                                    <a href="{{ route('verInfoDiplomado', $diplomado->id) }}" class="btn btn-ver">Más detalles</a>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach 
+                        @endforeach 
+                    </div>
                 </div>
-            </div>
-
+            @endif
         </div>
 
         <br>

@@ -35,14 +35,14 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     //------------------------------ OTRAS RUTAS PUBLICAS --------------------------------------------------------------------------------------------------------------------
         Route::get('directorio-administrativo', [VistasPublicasController::class, 'verDatosDirectorios'])->name('directorio');
 
-        Route::get('/AcademicaFMO/tramite-academico/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
-        Route::get('/AcademicaFMO/formato-tramite/{id}', [VistasPublicasController::class, 'descargarFormatoTramite'])-> name('publicDescargarFormato');
+        Route::get('tramites-academicos/{id}', [VistasPublicasController::class, 'verTramite'])->name('verTramiteAcademico');
+        Route::get('formato-tramite/{id}', [VistasPublicasController::class, 'descargarFormatoTramite'])-> name('publicDescargarFormato');
 
-        Route::get('AcademicaFMO/anuncios-oficiales', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
+        Route::get('anuncios-academicos', [VistasPublicasController::class, 'verAnuncios'])->name('anuncios');
 
-        Route::get('/AcademicaFMO/preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
+        Route::get('preguntas-frecuentes', [VistasPublicasController::class, 'verPreguntas'])->name('preguntas');
 
-        Route::get('/AcademicaFMO/croquis-de-la-FMO',[VistasPublicasController::class, 'mostrarPdfCroquis'])->name('verPdfCroquis');
+        Route::get('croquis-de-la-FMO',[VistasPublicasController::class, 'mostrarPdfCroquis'])->name('verPdfCroquis');
 
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -61,18 +61,18 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
 
     
     //----------------------------- RUTAS PUBLICAS EDUCACION A DISTANCIA-----------------------------------------------------------------------------------------------------
-        Route::get('/educacion-a-distancia-otras-facultades', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
-        Route::get('/AcademicaFMO/info-carrera-{id}/educacion-distacia', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
+        Route::get('educacion-a-distancia-otras-facultades', [VistasPublicasController::class, 'verInfoEduDistancia'])->name('educDistancia');
+        Route::get('info-carrera-{id}/educacion-distacia', [VistasPublicasController::class, 'mostrarPdfCarDistancia'])->name('publicVerPdfCarDis');
 
-        Route::get('/Educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
-        Route::get('/Educacion-a-distancia-FMO/info-carrera/{id}', [VistasPublicasController::class, 'infoEduDistanciaFMO'])->name('infoDistanciaFMO');
-        Route::get('/Informacion-carrera-distancia/fmo/{id}', [VistasPublicasController::class, 'mostrarInfoCarDisFMO'])->name('mostrarPdfCarDisFmo');
+        Route::get('educacion-a-distancia-FMO', [VistasPublicasController::class, 'verEduDistanciaFMO'])->name('distanciaFMO');
+        Route::get('/educacion-a-distancia-FMO/info-carrera/{id}', [VistasPublicasController::class, 'infoEduDistanciaFMO'])->name('infoDistanciaFMO');
+        Route::get('/informacion-carrera-distancia/fmo/{id}', [VistasPublicasController::class, 'mostrarInfoCarDisFMO'])->name('mostrarPdfCarDisFmo');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
     //------------------------------RUTAS PUBLICAS DE LAS FACULTADES ---------------------------------------------------------------------------------------------------------
-        Route::get('/AcademicaFMO/facultades', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
-        Route::get('/AcademicaFMO/facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
+        Route::get('facultades-UES', [VistasPublicasController::class, 'verFacultadesNacional'])->name('verContactosFacultad');
+        Route::get('facultades/directorio/{facultadContactos}', [VistasPublicasController::class, 'verDirectorioFacultades'])->name('facultadDirectorio');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 
@@ -95,8 +95,8 @@ Route::get('/', [VistasPublicasController::class, 'vistaPrincipal']);
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //-------------------------------RUTAS PUBLICAS CALENDARIO ADMIN Y ACADEMICO --------------------------------------------------------------------------------------------
-        Route::get('/AcademicaFMO/calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
-        Route::get('/AcademicaFMO/calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
+        Route::get('calendario-administrativo', [VistasPublicasController::class, 'verPublicCalendarioAdministrativo'])->name('publicVerCalAdmin');
+        Route::get('calendario-academico', [VistasPublicasController::class, 'verPublicCalendarioAcademico'])->name('publicVerCalAcademico');
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

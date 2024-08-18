@@ -26,7 +26,7 @@
 
             @if ($anunciosAcademicos->isEmpty())
                 <div class="alert alert-success text-center">
-                    No hay registro
+                    No se han publicado anuncios
                 </div>
                 <br><br><br><br><br>
             @else
