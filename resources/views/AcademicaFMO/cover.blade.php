@@ -102,11 +102,11 @@
                     <!-- Botones en forma de lista desde 768px en adelante -->
                     <div class="d-grid gap-2 d-sm-block d-none d-lg-block">
 
-                        <a class="btn btn-primary btn-principal mb-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        <a class="btn btn-primary btn-principal mb-2 mx-1" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                             <i class="fa-solid fa-file-alt pe-2"></i> Trámites
                         </a>
                       
-                        <a class="btn btn-primary btn-principal mb-2 position-relative" href="{{ route('anuncios') }}">
+                        <a class="btn btn-primary btn-principal mb-2 mx-2 position-relative" href="{{ route('anuncios') }}">
                             <i class="fa-solid fa-bullhorn pe-2"></i> Anuncios
                             @if(isset($anunciosAcademicos) && $anunciosAcademicos->count() > 0)
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -115,16 +115,16 @@
                             @endif
                         </a>
                         
-                        <a class="btn btn-primary btn-principal mb-2" href="{{ route('preguntas') }}">
+                        <a class="btn btn-primary btn-principal mb-2 mx-1" href="{{ route('preguntas') }}">
                             <i class="fa-solid fa-question-circle pe-2"></i> Preguntas
                         </a>
-                        <button type="button" class="btn btn-primary btn-principal mb-2" data-bs-toggle="modal" data-bs-target="#ModalHorario">
-                            <i class="fa-solid fa-clock"></i> Horario
+                        <button type="button" class="btn btn-primary btn-principal mb-2 mx-1" data-bs-toggle="modal" data-bs-target="#ModalHorario">
+                            <i class="fa-solid fa-clock pe-2"></i> Horario
                         </button>
 
                     </div>
                 
-                    <!-- Botones en forma de cuadrícula hasta 768px -->
+                    <!-- Botones de tarjeta de pantallas de 768px -->
                     <div class="container d-lg-none">
                         <div class="row text-center justify-content-between">
 
@@ -167,7 +167,7 @@
                 
 
                 <div class="col-12 col-lg-6 contenedor-carrusel">
-                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                         <div class="carousel-inner">
                             @foreach ($fotosGaleria as $index => $foto)
                                 <div class="carousel-item @if($index == 0) active @endif">

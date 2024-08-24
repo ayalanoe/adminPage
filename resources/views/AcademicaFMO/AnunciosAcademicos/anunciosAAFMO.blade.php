@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/anunciosPublic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tituloEncabezadoGlobal.css') }}">
 
-    <!-- Link de css para darle formato a la tabla que se crea con el CKeditor desde el admin -->
+    <!-- Link de css para formato del CKEditor -->
     <link rel="stylesheet" href="{{ asset('css/formatoTablaCKEditor.css') }}">
 @endsection
 
