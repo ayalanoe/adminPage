@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.accordion-css {
+    background-color: #690605; /* Fondo azul */
+    color: white; /* Texto blanco */
+    padding: 10px; /* Espacio interno para el texto */
+    
+}
+/* Estilo para el botón del acordeón */
+
+.accordion-button::after {
+    background-image: none;
+    content: "\002B";
+    font-family: fontawesome;
+    float: right; 
+}
+/* Icono cuando el acordeón está abierto */
+.accordion-button:not(.collapsed)::after {
+    background-image: none;
+    content: "\2212";
+    font-family: fontawesome;
+    float: right; 
+}
+
+/** ESTILOS PARA EÑ ICONO EN LOS PLANES*************************************************************/
+.item-plan {
+    position: relative;
+    padding-left: 20px; /* Ajusta el espacio para el triángulo */
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #373737; /* Ajusta el color del texto */
+}
+
+.item-plan::before {
+    content: "-"; /* Unicode para un triángulo lateral */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #373737; /* Ajusta el color del triángulo */
+    font-size: 1em; /* Ajusta el tamaño del triángulo */
+}
+
+.item-plan:hover {
+    color: #690605; /* Cambia el color del texto al pasar el cursor */
+}
+
+.item-plan:hover::before {
+    color: #690605; /* Cambia el color del triángulo al pasar el mouse*/
+}

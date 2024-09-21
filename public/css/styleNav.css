@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+  margin-top: .125em;
+}
+
+.dropend:hover > .dropdown-menu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.bg-custom-color {
+  background-color:white !important; /* Color blanco para el nav personalizado */
+  
+}
+
+nav {
+    text-align: center;
+
+  }
+
+/* Estilos para el botón siempre se mantenga en rojo*/
+#inicioLink {
+  background-color: #690605; 
+  color: white; 
+}
+
+  /*Esto es para aplicar el border radius primero y luego rellenar, es decir a los elmentos 
+  a no se va ver como rectangulo si  no como ovalado*/
+  .navbar-nav .nav-link,
+  .navbar-nav .dropdown-menu .dropdown-item {
+    border-radius: 10px; 
+    box-shadow: none !important;
+  }
+
+/* Estilos para que cundo parse el cursor se ponga rojo y el fondo blanco */
+.navbar-nav .nav-link:hover {
+  background-color: #690605;  
+  color: white;           
+
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+  background-color: #690605;  
+  color: white;          
+  
+}
+
+/* Ajustar el espacio entre las opciones del menú desplegable */
+.navbar-nav .dropdown-menu .dropdown-item {
+  padding: 0.5rem 1rem; 
+}
+
+
+/* Estilos base para los elementos del menú desplegable */
+.navbar-nav .dropdown-menu {
+  background-color: #690605; /* Fondo rojo para el menú desplegable */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+  color: white; /* Texto negro para los elementos del menú desplegable */
+}
+
+/* Estilos para el hover de los elementos del menú desplegable */
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+  background-color: white; /* Fondo blanco al pasar el cursor */
+  color: #690605; /* Texto rojo al pasar el cursor */
+}
+
+
+
+/* Media query para pantallas de 1200px hacia abajo */
+@media (max-width: 1200px) {
+  #inicioLink {
+    background-color: initial; /* Quitar el color rojo */
+    color: initial; /* Restablecer el color del texto */
+  }
+
+  #inicioLink:hover, 
+  #inicioLink:focus, 
+  #inicioLink:active {
+    background-color: #690605; /* Mantener el color rojo cuando está seleccionado o activo */
+    color: white;
+  }
+}
+
+
+/* Media query para pantallas de 1200px hacia abajo */
+@media (min-width: 1200px) {
+  .center-icon {
+    display: none; /* Ocultar el ícono de inicio en pantallas grandes */
+  }
+}
+

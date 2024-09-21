@@ -1,0 +1,65 @@
+.card{
+    background-color: white;
+  }
+  
+  .custom-card {
+    border: 1px solid #690605; /* Cambia el color del contorno a rojo */
+    border-radius: 0.55rem; /* Mantén el radio de borde predeterminado de Bootstrap */
+    margin-bottom: 20px;
+  }
+
+  .hr-posgrado{
+    margin-top: 10px;
+    color: #690605;
+    border: 0.1px solid #690605; 
+  }
+  
+  
+  .title-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido */
+    padding-left: 20px; /* Elimina cualquier padding predeterminado */
+    background-color: #690605;
+  }
+  
+  .title-container::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: #690605;
+    margin-right: 10px; /* Espacio entre la barra y el título */
+  }
+  
+  .title-container h5 {
+    color: #ffffff;
+    margin: 0; /* Elimina cualquier margen predeterminado de bootstrap*/
+  }
+
+/** ESTILOS PARA EÑ ICONO EN LOS PLANES*************************************************************/
+.item-plan {
+    position: relative;
+    padding-left: 20px; /* Ajusta el espacio para el triángulo */
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #373737; /* Ajusta el color del texto */
+}
+
+.item-plan::before {
+    content: "-"; /* Unicode para un triángulo lateral */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #373737; /* Ajusta el color del triángulo */
+    font-size: 1em; /* Ajusta el tamaño del triángulo */
+}
+
+.item-plan:hover {
+    color: #690605; /* Cambia el color del texto al pasar el cursor */
+}
+
+.item-plan:hover::before {
+    color: #690605; /* Cambia el color del triángulo al pasar el mouse*/
+}

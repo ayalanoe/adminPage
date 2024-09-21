@@ -1,0 +1,28 @@
+.card{
+    background-color: white; 
+    color: #690605;
+}
+
+.custom-card {
+    border: 1px solid #690605; /* Cambia el color del contorno a rojo */
+    margin-bottom: 20px;
+  }
+
+
+
+.btn-ver{
+    background-color: #690605;
+    color: #ffffff;
+  }
+  
+  .btn-ver:hover{
+    background-color: #373737;
+    color: #ffffff;
+  }
+  
+.card-img-top{
+    height: 150px;
+}
+
+
+

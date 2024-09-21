@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container__header{
+    max-width: 1200px;
+    height: 100%;  
+    display: flex;
+    justify-content: space-between; 
+    margin: auto;
+    padding: 0px 20px;
+}
+
+header .logo{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: 150px;
+}
+
+nav ul li{
+    margin: 0px 10px;
+    list-style: none;
+
+}
+
+nav ul li a{
+    background-color: white;
+    color: #373737;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+nav ul li a:hover{
+    background-color: #690605;
+    color: white;
+    padding: 10px;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+.select{
+    background: #690605;
+    padding: 10px;
+    color: white;
+    border-radius: 12px;
+}
+
+.nav_mod{
+    height: 70px;
+    box-shadow: 1px 1px 10px 0px #00000010;
+    background: white;
+}
+
+.cover{
+    width: 100%;
+    padding-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 100px;
+}
+
+.container_table{
+    max-width: 86%;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+}
+.container{
+    background-color: white;
+}
+
+.table thead th {
+    background-color: #690605;
+    color: white; 
+}
+
+.table-hover tbody tr:hover {
+    background-color: red ;
+}

@@ -1,0 +1,48 @@
+.card{
+    background-color: white;
+  }
+  
+  .custom-card {
+    border: 1px solid #373737; /* Cambia el color del contorno a rojo */
+    border-radius: 0.55rem; /* Mantén el radio de borde predeterminado de Bootstrap */
+    margin-bottom: 20px;
+  }
+  
+  .btn-ver{
+    background-color: #373737;
+    color: #ffffff;
+  }
+  
+  .btn-ver:hover{
+    background-color: #690605;
+    color: #ffffff;
+  }
+  
+  .hr-ofer-academica{
+    margin-top: 10px;
+    color: #690605;
+    border: 0.1px solid #690605; 
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el contenido */
+    padding-left: 0; /* Elimina cualquier padding predeterminado */
+  }
+  
+  .title-container::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 25px;
+    background-color: #373737;
+    margin-right: 10px; /* Espacio entre la barra y el título */
+  }
+  
+  .title-container h5 {
+    
+    margin: 0; /* Elimina cualquier margen predeterminado */
+  }
+  
+
+  /** ESTILOS PARA EÑ ICONO EN LOS PLANES*************************************************************/

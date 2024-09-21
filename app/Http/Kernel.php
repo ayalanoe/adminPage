@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\VerificarCorreoMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Support\Facades\App;
 
 class Kernel extends HttpKernel
 {
@@ -63,5 +65,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'verificarCorreo' => \App\Http\Middleware\VerificarCorreoMiddleware::class, //Este es el midelwere es el que proteje la vista de contraseña si aun no se ha ingresado el corrreo
+        'rol' => \App\Http\Middleware\VerificarRolDeUsuario::class // Con este middleware verificamos el rol del usuario para poder bloquar algunas rutas y que no se pueda acceder
     ];
 }

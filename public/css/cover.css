@@ -1,0 +1,244 @@
+
+/* CSS para el modal donde se muestran los tramites */
+.modal-z-index{
+    z-index: 1051;
+    background-color: #690605;
+    position: fixed;
+}
+
+h5{
+    color: #ffffff;
+}
+
+a.sidebar-link{
+    padding: .625rem 1.625rem;
+    color: white;
+    position: relative;
+    display: block;
+    font-size: 0.875rem;
+    border-radius: 10px;
+}
+
+.sidebar-nav{
+    flex-grow: 1;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li a{
+    text-decoration: none;
+}
+
+ul li a:hover{
+    background-color: white;
+    color: #690605;
+    white-space: nowrap;
+    border-radius: 12px;
+}
+
+
+/* Cambiar el color del botón de cierre a blanco, modal de los tramites*/
+.close-z-index {
+    background: none;
+    border: none;
+    opacity: 1;
+    position: relative;
+}
+
+.close-z-index:before, .close-z-index:after {
+    content: '';
+    position: absolute;
+    width: 1.2em;
+    height: 0.15em;
+    background-color: white; /* Color blanco */
+    top: 50%;
+    left: 50%;
+}
+
+.close-z-index:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-z-index:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*CSS para el padding del carrusel */
+.contenedor-carrusel{
+    padding-top: 1%;
+}
+
+
+.carousel-inner {
+    max-height: 500px; 
+    overflow: hidden;
+}
+
+/* Ajusta este valor de las imagenes del carrusel */
+.carousel-image {
+    width: 100%;
+    height: 300px; /* Same value as max-height of carousel-inner */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    object-position: center; /* Centers the image */
+}
+
+
+/* Ajusta este valor según el tamaño de tu navbar fijo */
+.container_table {
+    margin-top: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn.btn-principal{
+    background-color: #690605;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.btn-principal:hover {
+    background-color: #242424;
+    color:white;
+}
+
+.custom-heading {
+    font-size: 60px; /* Tamaño ajustado para pantallas grandes */
+    font-weight: 900;
+    color: #ce1d1d;
+    margin-top: 0;
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+    
+}
+
+.custom-subheading {
+    font-size: 60px; /* Tamaño ajustado para pantallas grandes */
+    font-weight: 900;
+    color: #690605;
+    margin-top: -20px; /* Eliminar el margen negativo */
+    max-width: 100%; /* Asegura que se ajuste al contenedor */
+
+}
+
+.bienvenidaFMO {
+    margin-top: 10px;
+    color: #373737;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Medias queryes para los tamaños de pantalla letras de bienvenida y descrip */
+
+@media (max-width: 1200px) { /* Tamaño grande */
+    .custom-heading {
+        font-size: 48px; /* Ajuste para pantallas grandes */
+    }
+
+    .custom-subheading {
+        font-size: 48px; /* Ajuste para pantallas grandes */
+    }
+}
+
+@media (max-width: 992px) { /* Tamaño mediano */
+    .custom-heading {
+        font-size: 57px; /* Ajuste para pantallas medianas */
+        text-align: center;
+    }
+
+    .custom-subheading {
+        font-size: 59px; /* Ajuste para pantallas medianas */
+        text-align: center;
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas medianas */
+    }
+    
+}
+
+@media (max-width: 767px) { /* Tamaño pequeño */
+    .custom-heading {
+        font-size: 37px; /* Ajuste para pantallas pequeñas */
+        text-align: center;
+    }
+
+    .custom-subheading {
+        font-size: 38px; /* Ajuste para pantallas pequeñas */
+        text-align: center;
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) { /* Tamaño extra pequeño */
+    .custom-heading {
+        font-size: 33px; /* Ajuste para pantallas extra pequeñas */
+        text-align: center;
+    }
+
+    .custom-subheading {
+        font-size: 34px; /* Ajuste para pantallas extra pequeñas */
+        text-align: center;
+    }
+
+    .bienvenidaFMO {
+        font-size: 16px; /* Ajuste para pantallas extra pequeñas */
+    }
+}
+
+
+/* CSS Para los cuadros de del inicio para pantallas pequeñas  es decir los cuadritos de loa tramites, anuncios y horario*/
+.btn-cuadro {
+    border: none;
+    background-color: white;
+    position: relative;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 16px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn-cuadro i {
+    color: #690605;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.btn-cuadro p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* CSS para que en el cover en pantallas grandes se muestren los botones y en pequeñas las tarjetas */
+@media (min-width: 913px) {
+    .d-lg-none {
+        display: none !important;
+    }
+}
+
+@media (max-width: 912px) {
+    .d-lg-block {
+        display: none !important;
+    }
+}
+
+    .btn-principal .badge {
+        font-size: 0.75rem;
+        padding: 0.5em;
+        transform: translate(-50%, -50%);
+    }

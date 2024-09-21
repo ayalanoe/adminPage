@@ -1,0 +1,11 @@
+.container{
+    padding: 20px 20px 20px 0px;
+
+}
+
+h2 {
+    color: #690605;
+    border-left: 8px solid #690605;
+    padding-left: 10px; 
+    height: 40px;
+}

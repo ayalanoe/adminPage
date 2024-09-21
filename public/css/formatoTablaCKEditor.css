@@ -1,0 +1,50 @@
+.contenedor-tabla {
+    text-align: justify; /* Justificar el contenido de la info de los tramites y demás vistas */
+    overflow-x: auto;
+}
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container td, .container th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Adjust font size and padding for small screens */
+@media (max-width: 768px) {
+    .container td, .container th {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container td, .container th {
+        font-size: 0.8rem;
+        padding: 4px;
+    }
+}
+
+/* Additional adjustments for extra small screens */
+@media (max-width: 320px) {
+    .container td, .container th {
+        font-size: 0.7rem;
+        padding: 3px;
+    }
+}
+
+/* Specific adjustments for very small screens (220px and up) */
+@media (max-width: 220px) {
+    .container td, .container th {
+        font-size: 0.6rem;
+        padding: 2px;
+    }
+}
