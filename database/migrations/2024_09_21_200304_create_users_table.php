@@ -1,8 +1,9 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -25,6 +26,17 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+            // Crear un usuario justo después de crear la tabla
+        DB::table('users')->insert([
+            'name' => 'David',
+            'email' => 'david@ues.edu.sv',
+            'password' => Hash::make('12345'),
+            'rol' => 1,
+            'genero' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     /**
