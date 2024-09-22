@@ -18,7 +18,7 @@ use App\Http\Controllers\VistasPublicasController;
 |
 */
 
-/*
+/* ruta no disponible
 Route::get('/', function () {
     return view('AcademicaFMO/index');
 });
