@@ -17,7 +17,7 @@
 footer {
     width: 100%;
     font-family: 'Nunito', sans-serif;
-    background-image: url("../Images/background-footer.svg");
+    background-image: url("/images/background-footer.svg");
     background-size: cover;
 }
 
