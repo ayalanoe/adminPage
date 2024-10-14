@@ -29,9 +29,9 @@ return new class extends Migration
 
             // Crear un usuario justo después de crear la tabla
         DB::table('users')->insert([
-            'name' => 'David',
-            'email' => 'david@ues.edu.sv',
-            'password' => Hash::make('12345'),
+            'name' => 'Academica',
+            'email' => 'academica@ues.edu.sv',
+            'password' => Hash::make('academica.24fmo'),
             'rol' => 1,
             'genero' => 1,
             'created_at' => now(),
